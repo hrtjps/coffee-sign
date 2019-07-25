@@ -1,9 +1,9 @@
 {
   "name": "@coreui/coreui-pro-vue-admin-template",
   "version": "2.0.3",
-  "description": "CoreUI Pro Vue Open Source Bootstrap Admin Template",
+  "description": "Coffe Sign",
   "author": {
-    "name": "Łukasz Holeczek",
+    "name": "JPerfectSolution",
     "url": "http://holeczek.pl",
     "github": "https://github.com/mrholek",
     "twitter": "https://twitter.com/lukaszholeczek"
@@ -15,7 +15,7 @@
     }
   ],
   "homepage": "http://coreui.io",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2019 JPerfectSolution",
   "license": "https://coreui.io/pro/license/",
   "private": true,
   "scripts": {
