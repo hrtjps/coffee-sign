@@ -22,7 +22,7 @@
       </div>
       <hr class="mb-4"/>
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
           <div class="doc-container">
             <div class="d-flex flex-wrap mb-5">
               <div class="doc-control">
@@ -181,7 +181,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="content-container">
             <div class="documents">
               <div class="title">

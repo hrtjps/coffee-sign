@@ -27,11 +27,22 @@ html, body {
 	background-color: #fcfafa;
 	height: 100%;
 	margin: 0;
+	// display: flex;
+	// justify-content: center;
+	// display: flex
 }
 .app {
 	min-height: calc(100vh - 191px);
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
 }
-
+h1 {
+	font-size: 22px;
+}
+.app-header {
+	height: 56px !important;
+}
 .btn-primary {
 	color: white !important;
 	background-color: $col-primary;
@@ -248,7 +259,7 @@ html, body {
 // ----------------------
 
 .form-control {
-	height: 50px;
+	height: 40px;
 	color: #202020;
 	&::placeholder {
 		color: #9ea0a5
@@ -265,7 +276,7 @@ html, body {
 }
 
 .btn {
-	height: 50px;
+	height: 40px;
 }
 .form-group {
   margin-bottom: 20px;
@@ -318,7 +329,7 @@ html, body {
 	
 	.input-group-prepend {
 		.input-group-text {
-			height: 50px;
+			height: 40px;
 			width: 46px;
 			color: #9ea0a5;
 			border: none;
