@@ -2,16 +2,16 @@
   <div class="app">
     <div class="app-body">
       <AppSidebar fixed>
-        <b-link class="navbar-brand header" to="#">
+        <b-link class="navbar-brand header" to="/">
           <img class="navbar-brand-full" src="img/logo3x.png" width="125" height="41" alt="Coffee Sign">
         </b-link>
         <div class="p-3 side-menu">
           <div class="w-100">
             <b-button block variant="primary">Close and go to Home page</b-button>
-            <b-button block variant="other">Close and go to Home page</b-button>
-            <b-button block variant="trans">Close and go to Home page</b-button>
-            <b-button block variant="outline-primary">Close and go to Home page</b-button>
-            <b-button block variant="link">Close and go to Home page</b-button>
+            <div class="prepare-tool-nav" v-if="show_tool_menu">
+              <hr class="seperate-bar"/>
+              <SidebarNav :navItems="nav"></SidebarNav>              
+            </div>
           </div>
           <div class="w-100">
             <hr class="seperate-bar"/>
@@ -25,7 +25,7 @@
         <AppHeader class="pr-3">
           <SidebarToggler class="d-lg-none" display="md" mobile />
           <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true />
-          <b-button variant="primary" class="ml-3"  v-b-modal.modal-1>Upgrade Your Plan</b-button>
+          <UpgradePlan></UpgradePlan>
           <b-form-radio-group
             id="basicCustomRadios1"
             name="customRadioInline1" class="d-none d-xl-inline ml-auto">
@@ -49,13 +49,7 @@
               <label class="custom-control-label" for="customRadioInline4">Review</label>
             </div>
           </b-form-radio-group>
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item class="d-md-down-none">
-              <i class="fa fa-bell fa-lg"></i>
-              <b-badge pill variant="primary">2</b-badge>
-            </b-nav-item>
-            <DefaultHeaderDropdownAccnt/>
-          </b-navbar-nav>
+          <DefaultHeaderDropdownAccnt/>
           <!--<AsideToggler class="d-lg-none" mobile />-->
         </AppHeader>
         <div class="container-fluid main-container">
@@ -160,10 +154,12 @@ import DefaultHeaderDropdownNotif from './DefaultHeaderDropdownNotif'
 import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
 import DefaultHeaderDropdownMssgs from './DefaultHeaderDropdownMssgs'
 import DefaultHeaderDropdownTasks from './DefaultHeaderDropdownTasks'
+import UpgradePlan from './UpgradePlan'
 
 export default {
   name: 'DocumentsContainer',
   components: {
+    UpgradePlan,
     AsideToggler,
     AppHeader,
     AppSidebar,
@@ -185,7 +181,90 @@ export default {
   },
   data () {
     return {
-      nav: nav.items
+      nav: [
+        {
+          name: 'Roger Waters',
+          url: '/',
+          icon: 'fa fa-user',
+          children: [
+            {
+              name: 'Signature',
+              url: '/base/breadcrumbs',
+              icon: 'fa fa-pencil'
+            },
+            {
+              name: 'Full Name',
+              url: '/base/cards',
+              icon: 'fa fa-user'
+            },
+            {
+              name: 'Company',
+              url: '/base/cards',
+              icon: 'fa fa-building'
+            },
+            {
+              name: 'Title',
+              url: '/base/carousels',
+              icon: 'fa fa-briefcase'
+            },
+            {
+              name: 'Text',
+              url: '/base/collapses',
+              icon: 'fa fa-file-text'
+            },
+            {
+              name: 'Date Signed',
+              url: '/base/jumbotrons',
+              icon: 'fa fa-calendar'
+            },
+            {
+              name: 'Check box',
+              url: '/base/list-groups',
+              icon: 'fa fa-check-square'
+            },
+            {
+              name: 'Radio Button',
+              url: '/base/list-groups',
+              icon: 'fa fa-dot-circle-o'
+            },
+            {
+              name: 'Dropdown',
+              url: '/base/list-groups',
+              icon: 'fa fa-toggle-down'
+            },
+            {
+              name: 'Attachments',
+              url: '/base/list-groups',
+              icon: 'fa fa-paperclip'
+            },
+          ]
+        },
+        {
+          name: 'Barrett Nash-Willi',
+          url: '/buttons',
+          icon: 'fa fa-user',
+          children: [
+            {
+              name: 'Buttons',
+              url: '/buttons/standard-buttons',
+              icon: 'fa fa-user'
+            },
+          ]
+        },
+        {
+          name: 'Barrett Nash-Willi',
+          url: '/editors',
+          icon: 'fa fa-user',
+          
+          children: [
+            {
+              name: 'Code Editors',
+              url: '/editors/code-editors',
+              icon: 'fa fa-code',
+            },
+          ]
+        }],
+      show_tool_menu: false
     }
   },
   computed: {
@@ -198,6 +277,25 @@ export default {
   },
   mounted() {
     this.$refs['welcome-modal'].show();
+  },
+  methods: {
+    gotoPage(page) {
+      this.$router.push({path: page});
+    }
+  },
+  watch: {
+    $route (to) {
+      if(to.fullPath == '/prepare' || this.$router.currentRoute == '/prepare') {
+        this.show_tool_menu = true;
+      } else {
+        this.show_tool_menu = false;
+      }
+    }
   }
+
 }
 </script>
+<style lang="scss">
+@import './DocumentsContainer.scss';
+</style>
+

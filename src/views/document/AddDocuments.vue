@@ -13,11 +13,11 @@
             <div class="drag-a-file" v-bind:class="{'has-file':files.length>0}">
               Drag a file here or <span class="text-style-1">browse</span> for a file to upload
             </div>
-            <div class="you-can-use">
+            <div class="you-can-use " v-bind:class="{'text-left':files.length>0}">
               Or you can use one of the following options:
             </div>
           </div>
-          <div class="store-src">
+          <div class="store-src" v-bind:class="{'mt-0':files.length>0}">
             <img src="img/add_doc/dropbox.png"
               srcset="img/add_doc/dropbox@2x.png 2x,
                       img/add_doc/dropbox@3x.png 3x"
@@ -44,7 +44,7 @@
         </form>
       </div>
       <div class="file-list">
-        <div v-for="file in files" :key="file" class="file-listing">
+        <div v-for="(file, index) in files" :key="index" class="file-listing">
           <div class="file-content">
              <img v-bind:src="getFileType(file.name)" class="folder-2">
              <div class="file-info ml-3">
@@ -58,11 +58,15 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-end pt-4">
+        <button class="btn btn-primary min-width-124px" v-on:click="moveNextPage()">Next</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'AddDocument',
   data() {
@@ -82,6 +86,9 @@ export default {
               && 'FormData' in window
               && 'FileReader' in window;
     },
+    moveNextPage(){
+      this.$router.push('/add-recipients');
+    }
   },
   mounted(){
     this.dragAndDropCapable = this.determineDragAndDropCapable();
@@ -95,7 +102,6 @@ export default {
 
       this.$refs.fileform.addEventListener('drop', function(e) {
         for( let i = 0; i < e.dataTransfer.files.length; i++ ){
-          console.log(e.dataTransfer.files[i]);
           this.files.push( e.dataTransfer.files[i] );
         }
       }.bind(this));

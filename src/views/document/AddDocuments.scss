@@ -1,6 +1,6 @@
 .drag-drop-container {
   width: 100%;
-  min-height: 645px;
+  min-height: 550px;
   border-radius: 3px;
   box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
   background-color: #ffffff;
@@ -55,6 +55,7 @@
       line-height: 1.29;
       color: #9ea0a5;
       margin-top: 20px;
+      text-align: center;
     }
   }
   .has-files {
