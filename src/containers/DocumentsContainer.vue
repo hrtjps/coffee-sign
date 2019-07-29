@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app ">
     <div class="app-body">
       <AppSidebar fixed>
         <b-link class="navbar-brand header" to="/">
@@ -24,7 +24,7 @@
       <main class="main">
         <AppHeader class="pr-3">
           <SidebarToggler class="d-lg-none" display="md" mobile />
-          <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true />
+          <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
           <UpgradePlan></UpgradePlan>
           <b-form-radio-group
             id="basicCustomRadios1"
