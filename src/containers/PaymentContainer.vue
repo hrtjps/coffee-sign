@@ -23,8 +23,8 @@
       </AppSidebar>
       <main class="main">
         <AppHeader class="pr-3">
-          <!-- <SidebarToggler class="d-lg-none" display="md" mobile />
-          <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
+          <SidebarToggler class="d-lg-none" display="md" mobile />
+          <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
           <UpgradePlan></UpgradePlan>
           <span class="comments ml-3 mr-1">Your current plan: </span>
           <span>
