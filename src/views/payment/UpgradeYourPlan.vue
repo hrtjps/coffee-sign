@@ -37,7 +37,7 @@
               <div>Per user</div>
               <div>$120 annually</div>
             </div>
-            <span class="price">$10<sup>.00</sup></span>
+            <span class="price">${{swtich_annual?10:5}}<sup>.00</sup></span>
           </div>
           <hr>
           <div class="text-center">
@@ -57,7 +57,7 @@
               <div>per user, per month</div>
               <div>$300 annually</div>
             </div>
-            <span class="price">$25<sup>.00</sup></span>
+            <span class="price">${{swtich_annual?25:10}}<sup>.00</sup></span>
           </div>
           <hr>
           <div class="text-center">
@@ -77,7 +77,7 @@
               <div>per user, per month</div>
               <div>$480 annually</div>
             </div>
-            <span class="price">$40<sup>.00</sup></span>
+            <span class="price">${{swtich_annual?40:20}}<sup>.00</sup></span>
           </div>
           <hr>
           <div class="text-center">

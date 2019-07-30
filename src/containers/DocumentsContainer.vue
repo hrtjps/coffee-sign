@@ -89,11 +89,8 @@
             <div class="form-group">
               <select class="form-control" id="purpose" >
                 <option>Purpose of using</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>For My Personnel use</option>
+                <option>For My Business</option>
               </select>
             </div>
             <div class="row">
@@ -105,12 +102,15 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <select class="form-control" id="purpose">
-                    <option>Employee</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="" disabled="" selected="">Employee</option>
+                    <option value="1">0-5</option>
+                    <option value="2">6-10</option>
+                    <option value="3">11-20</option>
+                    <option value="4">21-50</option>
+                    <option value="5">51-100</option>
+                    <option value="6">101-300</option>
+                    <option value="7">301-1000</option>
+                    <option value="8">More then 1000</option>                   
                   </select>
                 </div>
               </div>
@@ -124,12 +124,46 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <select class="form-control" id="purpose">
-                    <option>Select Industry</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="">Select Industry</option>
+                    <option value="1">Accounting &amp; Tax Accounting</option>
+                    <option value="2">Business Services / Consulting Business Services</option>
+                    <option value="3">Construction - General Construction</option>
+                    <option value="4">Construction - Home Builder Real Estate - Construction</option>
+                    <option value="5">Debt Settlement Debt Settlement/Loan Modification</option>
+                    <option value="6">Education Education</option>
+                    <option value="7">Financial Services - Banking Banking</option>
+                    <option value="8">Financial Services - Credit Unions Credit Unions</option>
+                    <option value="9">Financial Services - Other Financial Services</option>
+                    <option value="10">Financial Services - Wealth &amp; Asset Management Wealth Management</option>
+                    <option value="11">Government - City Government - City</option>
+                    <option value="12">Government - County Government - County</option>
+                    <option value="13">Government - Federal Government - National</option>
+                    <option value="14">Government - State Government - State</option>
+                    <option value="15">Healthcare - Health Plans &amp; Payers Insurance - Health</option>
+                    <option value="16">Healthcare - Providers Healthcare - Providers</option>
+                    <option value="17">HR Staffing HR Staffing</option>
+                    <option value="18">Insurance - Agents / Brokers Insurance - Agency</option>
+                    <option value="19">Insurance - Carriers Insurance - Carriers</option>
+                    <option value="20">Legal Legal</option>
+                    <option value="21">Life Sciences - Medical Devices Life Sciences - Medical Devices</option>
+                    <option value="22">Life Sciences - Other Life Sciences - Other</option>
+                    <option value="23">Life Sciences - Pharmaceuticals Life Sciences - Pharmaceuticals</option>
+                    <option value="24">Life Sciences - Wholesale Distributors Life Sciences -
+                        Wholesale/Distributor</option>
+                    <option value="25">Manufacturing </option>
+                    <option value="26">Mortgage Broker Real Estate - Mortgage</option>
+                    <option value="27">Not For Profit</option>
+                    <option value="28">Real Estate - Agent Real Estate - Agent</option>
+                    <option value="29">Real Estate - Broker/Owner Real Estate - Broker/Owner</option>
+                    <option value="30">Real Estate - Commercial Real Estate - Commercial</option>
+                    <option value="31">Real Estate - Property Management Real Estate - Property Management
+                    </option>
+                    <option value="32">Retail Retail</option>
+                    <option value="33">Sports &amp; Entertainment Travel &amp; Leisure</option>
+                    <option value="34">Technology - General Technology</option>
+                    <option value="35">Technology - Startup Technology</option>
+                    <option value="36">Telecommunications</option>
+                    <option value="37">Other</option>
                   </select>
                 </div>
               </div>
