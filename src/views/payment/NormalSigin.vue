@@ -37,7 +37,7 @@
       </div>
       <hr class="mb-4"/>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-5">
           <div class="content-card sign-signature">
             <div class="header">SIGNATURE</div>
             <div class="sign">Suzanne Thompson</div>
@@ -59,9 +59,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-7">
           <div class="drag-drop-container" v-bind:class="{'drag-has-file':files.length>0}">
-            <form class="drag-drop-div" v-bind:class="{'has-files':files.length>0}">
+            <form class="drag-drop-div" v-bind:class="{'has-files px-2':files.length>0}">
               <img src="img/add_doc/folder-2.png"
                 srcset="img/add_doc/folder-2@2x.png 2x,
                         img/add_doc/folder-2@3x.png 3x"
@@ -76,26 +76,18 @@
               </div>
               <div class="store-src" v-bind:class="{'mt-0':files.length>0}">
                 <img src="img/add_doc/dropbox.png"
-                  srcset="img/add_doc/dropbox@2x.png 2x,
-                          img/add_doc/dropbox@3x.png 3x"
-                  class="store-src-item">
+                  class="store-src-item" v-bind:class="{'mx-0':files.length>0}">
                 <img src="img/add_doc/google-drive.png"
-                  srcset="img/add_doc/google-drive@2x.png 2x,
-                          img/add_doc/google-drive@3x.png 3x"
-                  class="store-src-item">
+                  class="store-src-item" v-bind:class="{'mx-0':files.length>0}">
                 <img src="img/add_doc/onedrive.png"
-                  srcset="img/add_doc/onedrive@2x.png 2x,
-                          img/add_doc/onedrive@3x.png 3x"
-                  class="store-src-item">
+                  class="store-src-item" v-bind:class="{'mx-0':files.length>0}">
                 <img src="img/add_doc/box.png"
-                  srcset="img/add_doc/box@2x.png 2x,
-                          img/add_doc/box@3x.png 3x"
-                  class="store-src-item">
+                  class="store-src-item" v-bind:class="{'mx-0':files.length>0}">
               </div>
               <div class="you-can-use"  v-bind:class="{'d-none':files.length>0}">
                 Or you can use your templates
               </div>
-              <b-button variant="outline-primary" v-bind:class="{'mt-0':files.length>0}">
+              <b-button variant="outline-primary" :class="{'mt-2':files.length==0}" style="min-width: 155px">
                 Go to My Templates
               </b-button>
             </form>

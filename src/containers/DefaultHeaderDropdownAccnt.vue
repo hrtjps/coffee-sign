@@ -1,5 +1,15 @@
 <template>
   <b-navbar-nav class="ml-auto">
+     <AppHeaderDropdown right >
+      <template slot="header">
+        <i class="flag-icon h5" :class="language" />
+      </template>
+      <template slot="dropdown">
+        <b-dropdown-item v-on:click="language='flag-icon-jp'"><i class="flag-icon flag-icon-jp" /> 日本語</b-dropdown-item>
+        <b-dropdown-item v-on:click="language='flag-icon-kr'"><i class="flag-icon flag-icon-kr" /> 한국어</b-dropdown-item>
+        <b-dropdown-item v-on:click="language='flag-icon-gb'"><i class="flag-icon flag-icon-gb" /> English</b-dropdown-item>
+      </template>
+    </AppHeaderDropdown>
     <b-nav-item class="d-md-down-none">
       <i class="fa fa-bell fa-lg"></i>
       <b-badge pill variant="primary">2</b-badge>
@@ -31,7 +41,10 @@ export default {
     AppHeaderDropdown
   },
   data: () => {
-    return { itemsCount: 42 }
+    return { 
+      itemsCount: 42,
+      language: "flag-icon-gb"
+    }
   },
   methods: {
     gotoPage(url){

@@ -19,26 +19,18 @@
           </div>
           <div class="store-src" v-bind:class="{'mt-0':files.length>0}">
             <img src="img/add_doc/dropbox.png"
-              srcset="img/add_doc/dropbox@2x.png 2x,
-                      img/add_doc/dropbox@3x.png 3x"
               class="store-src-item">
             <img src="img/add_doc/google-drive.png"
-              srcset="img/add_doc/google-drive@2x.png 2x,
-                      img/add_doc/google-drive@3x.png 3x"
               class="store-src-item">
             <img src="img/add_doc/onedrive.png"
-              srcset="img/add_doc/onedrive@2x.png 2x,
-                      img/add_doc/onedrive@3x.png 3x"
               class="store-src-item">
             <img src="img/add_doc/box.png"
-              srcset="img/add_doc/box@2x.png 2x,
-                      img/add_doc/box@3x.png 3x"
               class="store-src-item">
           </div>
           <div class="you-can-use"  v-bind:class="{'d-none':files.length>0}">
             Or you can use your templates
           </div>
-          <b-button variant="outline-primary" v-bind:class="{'mt-0':files.length>0}">
+          <b-button variant="outline-primary" :class="{'mt-2':files.length==0}">
             Go to My Templates
           </b-button>
         </form>

@@ -11,7 +11,7 @@
               <span v-on:click="removeRecipient(index)"><UserIcon icon="delete-button.png"/></span>
             </div>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-input-group>
                     <b-input-group-prepend>
@@ -25,7 +25,7 @@
                   </b-input-group>
                 </b-form-group>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-button :variant="recipient.com_type?'primary':'outline-primary'" class="w-50" :pressed.sync="recipient.com_type">Send email</b-button>
                   <b-button :variant="!recipient.com_type?'primary':'outline-primary'" class="w-50" :pressed.sync="recipient.com_type">Kakao Talk</b-button>
@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-input-group>
                     <b-input-group-prepend>
@@ -43,7 +43,7 @@
                   </b-input-group>
                 </b-form-group>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-input-group>
                     <b-input-group-prepend>
@@ -58,7 +58,7 @@
               <b-form-checkbox v-model="recipient.set_password">Set Password</b-form-checkbox>
             </b-form-group>
             <div class="row" v-if="recipient.set_password">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-input-group>
                     <b-input-group-prepend>
@@ -68,7 +68,7 @@
                   </b-input-group>
                 </b-form-group>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <b-form-group>
                   <b-input-group>
                     <b-input-group-prepend>

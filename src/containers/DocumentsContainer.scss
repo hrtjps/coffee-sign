@@ -7,3 +7,21 @@
     // background-color: white;
   }
 }
+.timeline-item {
+  display: flex;
+  align-items: center;
+  .timeline-title {
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: #2e221e;
+  }
+  .ready {
+    background-color: rgba(239, 99, 76, 0.1);
+    color: #ef634c;
+  }
+  .waiting {
+    color: #9ea0a5;
+  }
+}
