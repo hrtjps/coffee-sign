@@ -5,22 +5,23 @@
         <h1>Prepare document</h1>
         <div class="d-flex align-items-center control-actions">
           <b-button variant="outline-primary">
-            <UserIcon icon="back.png"/>
+            <UserIcon icon="back.png" />
           </b-button>
           <b-button variant="outline-primary">
-            <UserIcon icon="Next.png"/>
+            <UserIcon icon="Next.png" />
           </b-button>
-          <b-form-select class="mx-3"
+          <b-form-select
+            class="mx-3"
             :plain="true"
             :options="['10%','20%', '30%', '50%', '75%','100%', '200%']"
-            value="50%">
-          </b-form-select>
+            value="50%"
+          ></b-form-select>
           <b-button variant="outline-primary">
-            <UserIcon icon="Fill190.png"/>
+            <UserIcon icon="Fill190.png" />
           </b-button>
         </div>
       </div>
-      <hr class="mb-4"/>
+      <hr class="mb-4" />
       <div class="row">
         <div class="col-md-9">
           <div class="doc-container">
@@ -35,13 +36,14 @@
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                 </div>
               </div>
 
@@ -54,15 +56,16 @@
                   </div>
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
-                
+
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                 </div>
               </div>
               <div class="doc-control">
@@ -74,15 +77,16 @@
                   </div>
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
-                
+
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                 </div>
               </div>
               <div class="doc-control">
@@ -103,18 +107,19 @@
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                   <div class="mt-3">Enter value</div>
                   <b-input class="mt-2"></b-input>
                   <div class="add-one-more mt-3">
                     <i class="fa fa-plus-circle"></i>
-                    <span >Add one more</span>
+                    <span>Add one more</span>
                   </div>
                 </div>
               </div>
@@ -136,13 +141,14 @@
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                 </div>
               </div>
               <div class="doc-control">
@@ -154,15 +160,16 @@
                   </div>
                   <i class="fa fa-times-circle-o control"></i>
                 </div>
-                
+
                 <div class="who-fill">
-                  <div class="arrow-popover" ></div>
+                  <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
-                  <b-form-select 
-                    :plain="true" class="mt-2"
+                  <b-form-select
+                    :plain="true"
+                    class="mt-2"
                     :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters">
-                  </b-form-select>   
+                    value="Roger Waters"
+                  ></b-form-select>
                 </div>
               </div>
               <div class="doc-control">
@@ -176,8 +183,9 @@
                 </div>
               </div>
             </div>
-            <div class="doc-content w-100" >
-              <img src="img/contents/content-1.png" class="w-100">
+            <div class="doc-content w-100">
+              <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
+              <!-- <img src="img/contents/content-1.png" class="w-100"> -->
             </div>
           </div>
         </div>
@@ -192,33 +200,24 @@
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
-              <hr >
+              <hr />
               <div class="documents-list">
                 <div class="document-content">
-                  <div class="item-title">
-                    Continuous Improvement lorem ipsum sit dollor amet.doc
+                  <div class="item-title" v-b-toggle.collapse1>
+                    <span>Continuous Improvement lorem ipsum sit dollor amet.doc</span>
+                    <i class="fa fa-caret-down"></i>
                   </div>
-                  <div class="item-pages">
-                    <div class="page">
-                      <div class="page-content"></div>
-                      <div class="page-no">1</div>
+                  <b-collapse id="collapse1" class="item-pages">
+                    <div
+                      class="page-content"
+                      v-for="i in numPages"
+                      :key="i"
+                      v-on:click="selectPage(src, i)"
+                    >
+                      <pdf :src="src" :page="i" class="pdf-content"></pdf>
+                      <div class="page-no">{{i}}</div>
                     </div>
-                    <div class="page">
-                      <div class="page-content"></div>
-                      <div class="page-no">2</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="document-content">
-                  <div class="item-title">
-                    Ad cum numquam efficiantur.pdf
-                  </div>
-                  <div class="item-pages">
-                    <div class="page">
-                      <div class="page-content"></div>
-                      <div class="page-no">1</div>
-                    </div>
-                  </div>
+                  </b-collapse>
                 </div>
               </div>
             </div>
@@ -227,7 +226,10 @@
             </div>
           </div>
           <div class="d-flex justify-content-end pt-4">
-            <button class="btn btn-outline-primary min-width-124px mr-2" v-on:click="moveBackPage()">Back</button>
+            <button
+              class="btn btn-outline-primary min-width-124px mr-2"
+              v-on:click="moveBackPage()"
+            >Back</button>
             <button class="btn btn-primary min-width-124px" v-on:click="moveNextPage()">Next</button>
           </div>
         </div>
@@ -237,41 +239,60 @@
 </template>
 
 <script>
-import UserIcon from '../../components/UserIcon'
+import UserIcon from "../../components/UserIcon";
+import pdf from "vue-pdf";
 
 export default {
   name: "Prepare",
   components: {
+    pdf,
     UserIcon
   },
   data() {
     return {
-    
-    }
+      viewSrc: null,
+      viewPage: 0,
+      currentPage: 0,
+      pageCount: 0,
+      src: null,
+      numPages: undefined
+    };
+  },
+  mounted() {
+    this.src = pdf.createLoadingTask("doc/1.pdf");
 
+    this.src.then(pdf => {
+      this.numPages = pdf.numPages;
+      this.viewPage = 1;
+      this.viewSrc = this.src;
+    });
   },
   methods: {
-    getFileType(fileName){ 
-      return "img/add_doc/" + fileName.substr(fileName.length - 3 )+".png";
+    selectPage(src, no) {
+      this.viewPage = no;
+      this.viewSrc = src;
+    },
+    getFileType(fileName) {
+      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
     },
     moveNextPage() {
-      this.$router.push('/review');
+      this.$router.push("/review");
     },
     moveBackPage() {
-      this.$router.push('/add-recipients');
+      this.$router.push("/add-recipients");
     },
     addRecipient() {
       this.recipients.push({
-          sign_type: 'Need to sign',
-          com_type: false,
-          name: '',
-          email: '',
-          set_password: false,
-          password: '',
-          confirm_password: ''
-      })
+        sign_type: "Need to sign",
+        com_type: false,
+        name: "",
+        email: "",
+        set_password: false,
+        password: "",
+        confirm_password: ""
+      });
     },
-    removeRecipient(index){
+    removeRecipient(index) {
       this.recipients.splice(index, 1);
     }
   }

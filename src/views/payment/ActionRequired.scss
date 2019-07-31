@@ -21,7 +21,7 @@
   .table-body {
     .table-row {
       padding: 0 0;
-      .row-content {        
+      .row-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -37,7 +37,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding:40px;
+            padding: 40px;
             border: dashed 2px #ebebeb;
             background-color: #ffffff;
           }
@@ -47,9 +47,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 18px 30px;   
+        padding: 18px 30px;
         border-bottom: solid 1px lightgray;
-        
+
         .remove-margin-left {
           margin-left: 0;
         }
@@ -93,7 +93,7 @@
       padding: 13px;
     }
     .completed {
-      color: #8a6454;    
+      color: #8a6454;
     }
     .waiting {
       color: #d4670b;
@@ -110,5 +110,12 @@
   }
   .col-action {
     min-width: 100px;
+    i {
+      color: #9ea0a5;
+      &:hover {
+        color: #8a6454;
+        cursor: pointer;
+      }
+    }
   }
 }
