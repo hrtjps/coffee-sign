@@ -274,9 +274,13 @@ h1 {
   	border: solid 1px #ebebeb;
 	}
 }
-.was-validated .form-control:invalid, .form-control.is-invalid {
-	border: solid 1px #d22a20;
+.was-validated .form-control:invalid, .form-control.is-invalid, .input-error {
+	border: solid 1px #d22a20 !important;
+	box-shadow: 0 0 3px 0 #d22a20;
+}
+.error-text {
 	color: #d22a20;
+	margin-top: 10px;
 }
 
 .btn {
@@ -370,7 +374,42 @@ h1 {
 		}
 	}
 }
-
+.vue-tel-input {
+	height: 40px;
+	border-radius: 4px;
+	border: solid 1px #ebebeb;
+	.dropdown {
+		width: 56px;
+		border: solid 1px #ebebeb;
+		background-color: rgba(235, 235, 235, 0.3);
+		.selection{
+			justify-content: space-between;
+		}
+	}
+	input{
+		border: none;
+		padding-left: 15px;
+		&:focus{
+			border-left: none !important;
+			box-shadow: none;
+		}
+	}
+	&:focus-within {
+		box-shadow: 0 0 3px 0 #775649 !important;
+		color: #775649;
+		border: solid 1px #ebebeb !important;
+		input {
+			color: #775649;
+		}
+	}
+	&:hover{
+		box-shadow: 0 0 3px 0 #775649;
+		
+		input {
+			color: #775649;
+		}
+	}
+}
 .content-card {
 	width: 100%;
   border-radius: 3px;
@@ -402,14 +441,17 @@ h1 {
     background-color: #775649;
     border-color: #775649;
 }
-
+.nav-link {
+	height: 34px;
+	padding: 0.5rem 1rem !important;
+}
 .sidebar-nav {
 	position: unset !important;
 	width: 100% !important;
 	section {
 		position: unset !important;
 		width:100% !important;
-		max-height: 700px !important;
+		max-height: 520px !important;
 		ul.nav {
 			width: 100%;
 			.nav-dropdown.open {
@@ -450,7 +492,9 @@ h1 {
 	}
 } 
 .sidebar .nav-link .nav-icon {
-  font-size: 1.3rem;
+	font-size: 1.3rem;
+	margin-right: 20px;
+	color: rgb(170, 165,162);
 }
 .sidebar .nav-link.active {
 	border-radius: 5px;
@@ -470,3 +514,25 @@ h1 {
 		background-color: #8a6454;
 	}
 }
+
+/* remove the original arrow */
+select.input-lg {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  /* no standardized syntax available, no ie-friendly solution available */
+}
+
+select + i.fa {
+	align-self: center;
+  float: right;
+  margin-right: 5px;
+  pointer-events: none;
+  background-color: #fff;
+  padding-right: 5px;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+	background: rgba($color: #775649, $alpha: 0.05)
+}
+

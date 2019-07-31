@@ -13,12 +13,7 @@
               <SidebarNav :navItems="nav"></SidebarNav>              
             </div>
           </div>
-          <div class="w-100">
-            <hr class="seperate-bar"/>
-            <b-button block variant="trans">
-              <i class="fa fa-sign-out fa-lg"></i> Logout
-            </b-button>
-          </div>
+          <Logout></Logout>
         </div>
       </AppSidebar>
       <main class="main">
@@ -65,10 +60,12 @@ import DefaultHeaderDropdownMssgs from './DefaultHeaderDropdownMssgs'
 import DefaultHeaderDropdownTasks from './DefaultHeaderDropdownTasks'
 import UserIcon from '../components/UserIcon'
 import UpgradePlan from './UpgradePlan'
+import Logout from '../components/Logout'
 
 export default {
   name: 'DocumentsContainer',
   components: {
+    Logout,
     UserIcon,
     UpgradePlan,
     AsideToggler,
@@ -111,7 +108,7 @@ export default {
         {
           name: 'Branding',
           url: '/base/carousels',
-          icon: 'fa fa-pencil'
+          icon: 'fa fa-id-card'
         },
       ],
       show_tool_menu: true

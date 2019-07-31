@@ -60,6 +60,7 @@
     "vue-select": "2.4.0",
     "vue-simple-calendar": "^3.0.2",
     "vue-tables-2": "^1.4.70",
+    "vue-tel-input": "^2.5.0",
     "vue-text-mask": "^6.1.2",
     "vue2-google-maps": "^0.10.2",
     "vuelidate": "^0.7.4"

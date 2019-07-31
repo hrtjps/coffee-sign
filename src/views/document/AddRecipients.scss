@@ -17,6 +17,14 @@
       line-height: 1.56;
       color: #2e221e;
     }
+    
+    i {
+      color: #9ea0a5;
+      &:hover {
+        color: #8a6454;
+        cursor: pointer;          
+      }
+    }
   }
 }
 .document {

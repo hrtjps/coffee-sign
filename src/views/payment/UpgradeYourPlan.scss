@@ -37,7 +37,7 @@
   align-items: center;
   .plan-card {
     padding: 30px;
-    max-width: 360px;
+    max-width: 265px;
     .plan-card-head{
       display: flex;
       justify-content: space-between;
@@ -51,7 +51,7 @@
       }
     }
     .limit-for-sending {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       line-height: 1.31;
       color: #2e221e;
@@ -63,4 +63,8 @@
       color: #ef634c;
     }
   }
+}
+.plan-cancel {
+  position: absolute;
+  bottom: 0;
 }

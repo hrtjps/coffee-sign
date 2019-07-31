@@ -121,5 +121,12 @@
         }
       }
     }
+    i {
+      color: #9ea0a5;
+      &:hover {
+        color: #8a6454;
+        cursor: pointer;          
+      }
+    }
   }
 }

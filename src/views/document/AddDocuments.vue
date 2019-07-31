@@ -46,12 +46,27 @@
           </div>
           <div class="file-control">
             <i class="fa fa-ellipsis-h fa-lg mr-4"></i>
-            <i class="fa fa-trash fa-lg "></i>
+            <i class="fa fa-trash "></i>
+          </div>
+        </div>
+        <div v-if="files.length>0">
+          <div class="file-listing w-100">
+            <div class="file-content w-100">
+              <img v-bind:src="getFileType(files[0].name)" class="folder-2">
+              <div class="file-info ml-3 w-100">
+                <div class="doc-file-name">168 KB of 378 KB (56% Done)</div>
+                <div class="text-right">
+                  <i class="fa fa-times-circle-o"></i>
+                  <b-progress :value="56" :max="100" class="mt-10"></b-progress>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-end pt-4">
-        <button class="btn btn-primary min-width-124px" v-on:click="moveNextPage()">Next</button>
+      <div class="d-flex justify-content-end pt-4 align-items-center">
+        <b-form-checkbox >I am the only signer</b-form-checkbox>
+        <button class="btn btn-primary min-width-124px ml-3" v-on:click="moveNextPage()">Next</button>
       </div>
     </div>
   </div>

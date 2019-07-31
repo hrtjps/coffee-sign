@@ -1,5 +1,5 @@
 <template>
-  <div class="app" v-bind:class="[(currentStepNo == 2) ? 'app-width-full': '']">
+  <div class="app" >
     <div class="app-body">
       <AppSidebar fixed>
         <b-link class="navbar-brand header" to="/">
@@ -13,12 +13,7 @@
               <SidebarNav :navItems="nav"></SidebarNav>              
             </div>
           </div>
-          <div class="w-100">
-            <hr class="seperate-bar"/>
-            <b-button block variant="trans" class="text-left">
-              <i class="fa fa-sign-out fa-lg"></i> Logout
-            </b-button>
-          </div>
+          <Logout></Logout>
         </div>
       </AppSidebar>
       <main class="main">
@@ -72,36 +67,47 @@
         <div class="welcome-body">
           <h1>Welcome!</h1>
           <div class="subtitle">Now you can use easy and simple digital signatuers</div>
-          <div class="summary">Now you can use easy and simple digital signatuers</div>
-          <form class="w-100">
+          <div class="summary">You can use 5 times for FREE</div>
+          <div class="w-100">
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name" required>
+                  <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name" 
+                  v-bind:class="{'input-error': isError(form_data.first_name)}"
+                  v-model="form_data.first_name">
+                  <div v-if="isError(form_data.first_name)" class="error-text">Please input Frist Name</div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name" required>
+                  <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name"
+                  v-bind:class="{'input-error': isError(form_data.last_name)}"
+                  v-model="form_data.last_name">
+                  <div v-if="isError(form_data.last_name)" class="error-text">Please input Last Name</div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <select class="form-control" id="purpose" >
+              <select class="form-control" id="purpose" v-model="form_data.purpose"
+                  v-bind:class="{'input-error': isError(form_data.purpose)}">
                 <option>Purpose of using</option>
                 <option>For My Personnel use</option>
                 <option>For My Business</option>
               </select>
+              <div v-if="isError(form_data.purpose)" class="error-text">Please select.</div>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="company" placeholder="Company" name="company" required>
+                  <input type="text" class="form-control" id="company" 
+                  v-bind:class="{'input-error': isError(form_data.company)}" placeholder="Company" name="company" v-model="form_data.company">
+                  <div v-if="isError(form_data.company)" class="error-text">Please input Company</div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <select class="form-control" id="purpose">
+                  <select class="form-control" id="purpose"
+                  v-bind:class="{'input-error': isError(form_data.employee)}" v-model="form_data.employee">
                     <option value="" disabled="" selected="">Employee</option>
                     <option value="1">0-5</option>
                     <option value="2">6-10</option>
@@ -112,18 +118,22 @@
                     <option value="7">301-1000</option>
                     <option value="8">More then 1000</option>                   
                   </select>
+                  <div v-if="isError(form_data.employee)" class="error-text">Please select Employee</div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="job_title" placeholder="Job Title" name="job_title" required>
+                  <input type="text" class="form-control" id="job_title"
+                  v-bind:class="{'input-error': isError(form_data.title)}" placeholder="Job Title" name="job_title" v-model="form_data.title">
+                  <div v-if="isError(form_data.title)" class="error-text">Please input Job Title</div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <select class="form-control" id="purpose">
+                  <select class="form-control" id="purpose"
+                  v-bind:class="{'input-error': isError(form_data.industry)}" v-model="form_data.industry">
                     <option value="">Select Industry</option>
                     <option value="1">Accounting &amp; Tax Accounting</option>
                     <option value="2">Business Services / Consulting Business Services</option>
@@ -165,11 +175,12 @@
                     <option value="36">Telecommunications</option>
                     <option value="37">Other</option>
                   </select>
+                  <div v-if="isError(form_data.industry)" class="error-text">Please select Industry</div>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Get Started</button>
-          </form>
+            <button v-on:click="getStarted()" class="btn btn-primary w-100">Get Started</button>
+          </div>
         </div>
       </div>
     </b-modal>
@@ -185,10 +196,12 @@ import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
 import DefaultHeaderDropdownMssgs from './DefaultHeaderDropdownMssgs'
 import DefaultHeaderDropdownTasks from './DefaultHeaderDropdownTasks'
 import UpgradePlan from './UpgradePlan'
+import Logout from '../components/Logout'
 
 export default {
   name: 'DocumentsContainer',
   components: {
+    Logout,
     UpgradePlan,
     AsideToggler,
     AppHeader,
@@ -212,6 +225,16 @@ export default {
   data () {
     return {
       currentStepNo: 0,
+      form_data: {
+        error_flag: false,
+        first_name: '',
+        last_name: '',
+        purpose: '',
+        company: '',
+        employee: '',
+        title: '',
+        industry: '',
+      },
       nav: [
         {
           name: 'Roger Waters',
@@ -248,21 +271,21 @@ export default {
               url: '/base/jumbotrons',
               icon: 'fa fa-calendar'
             },
-            {
-              name: 'Check box',
-              url: '/base/list-groups',
-              icon: 'fa fa-check-square'
-            },
-            {
-              name: 'Radio Button',
-              url: '/base/list-groups',
-              icon: 'fa fa-dot-circle-o'
-            },
-            {
-              name: 'Dropdown',
-              url: '/base/list-groups',
-              icon: 'fa fa-toggle-down'
-            },
+            // {
+            //   name: 'Check box',
+            //   url: '/base/list-groups',
+            //   icon: 'fa fa-check-square'
+            // },
+            // {
+            //   name: 'Radio Button',
+            //   url: '/base/list-groups',
+            //   icon: 'fa fa-dot-circle-o'
+            // },
+            // {
+            //   name: 'Dropdown',
+            //   url: '/base/list-groups',
+            //   icon: 'fa fa-toggle-down'
+            // },
             {
               name: 'Attachments',
               url: '/base/list-groups',
@@ -311,6 +334,17 @@ export default {
     this.setOptions();
   },
   methods: {
+    isError(value) {
+      return this.form_data.error_flag && (
+        value === undefined ||
+        value === null ||
+        (typeof value === 'object' && Object.keys(value).length === 0) ||
+        (typeof value === 'string' && value.trim().length === 0)
+      );
+    },
+    getStarted() {
+      this.form_data.error_flag = true;
+    },
     gotoPage(page) {
       this.$router.push({path: page});
     },
