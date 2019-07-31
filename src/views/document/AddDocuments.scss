@@ -43,8 +43,13 @@
       text-align: center;
       color: #2e221e;
       margin-top: 25px;
-      .text-style-1 {
-        color: #ef634c;
+      .btn-link {
+        padding-bottom: 0;
+        padding-top: 0;
+        .text-style-1 {
+          color: #ef634c;
+          font-size: 26px;
+        }
       }
     }
     .has-file {

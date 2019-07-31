@@ -11,7 +11,9 @@
             class="folder-2">
           <div v-bind:class="{'text-left ml-3':files.length>0}">
             <div class="drag-a-file" v-bind:class="{'has-file':files.length>0}">
-              Drag a file here or <span class="text-style-1">browse</span> for a file to upload
+              Drag a file here or 
+              <b-button variant="link"><span class="text-style-1">browse</span></b-button>
+              for a file to upload
             </div>
             <div class="you-can-use " v-bind:class="{'text-left':files.length>0}">
               Or you can use one of the following options:
