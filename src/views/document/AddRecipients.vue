@@ -74,7 +74,7 @@
                     <b-input-group-prepend>
                       <b-input-group-text><i class="fa fa-key"></i></b-input-group-text>
                     </b-input-group-prepend>
-                    <b-form-input type="password" placeholder="Password*" autocomplete="current-password"></b-form-input>
+                    <b-form-input type="password" placeholder="Confirm Password" autocomplete="current-password"></b-form-input>
                   </b-input-group>
                 </b-form-group>
               </div>

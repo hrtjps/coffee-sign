@@ -5,7 +5,7 @@
         <h1>Upgrade Your Plan</h1>
         <div class="switch-button" v-on:click="clickSwitch()">
           <div class="switch-item" v-bind:class="{'selected': swtich_annual}">Annual</div>
-          <div class="switch-item" v-bind:class="{'selected': !swtich_annual}">Manthly</div>
+          <div class="switch-item" v-bind:class="{'selected': !swtich_annual}">Monthly</div>
         </div>
       </div>
       <hr class="mb-4"/>

@@ -1,13 +1,13 @@
 <template>
   <b-navbar-nav class="ml-auto">
-     <AppHeaderDropdown right >
+    <AppHeaderDropdown right class="language-selector">
       <template slot="header">
         <i class="flag-icon h5" :class="language" />
       </template>
       <template slot="dropdown">
-        <b-dropdown-item v-on:click="language='flag-icon-jp'"><i class="flag-icon flag-icon-jp" /> 日本語</b-dropdown-item>
-        <b-dropdown-item v-on:click="language='flag-icon-kr'"><i class="flag-icon flag-icon-kr" /> 한국어</b-dropdown-item>
-        <b-dropdown-item v-on:click="language='flag-icon-gb'"><i class="flag-icon flag-icon-gb" /> English</b-dropdown-item>
+        <b-dropdown-item v-on:click="language='flag-icon-gb'"><i class="flag-icon flag-icon-gb" /> </b-dropdown-item>
+        <b-dropdown-item v-on:click="language='flag-icon-jp'"><i class="flag-icon flag-icon-jp" /> </b-dropdown-item>
+        <b-dropdown-item v-on:click="language='flag-icon-kr'"><i class="flag-icon flag-icon-kr" /> </b-dropdown-item>
       </template>
     </AppHeaderDropdown>
     <b-nav-item class="d-md-down-none">
@@ -21,6 +21,7 @@
           src="img/avatars/NoPath.png"
           class="img-avatar"
           alt="admin@bootstrapmaster.com" />
+          Hello, Suzzane!
       </template>
       <template slot="dropdown">
         <b-dropdown-item v-on:click="gotoPage('/payment/normal-sign')">
@@ -54,3 +55,14 @@ export default {
 
 }
 </script>
+<style lang="scss">
+.language-selector {
+  .dropdown-menu {
+    min-width: 50px;
+    width: 50px;
+    .dropdown-item {
+      min-width: 48px !important;
+    }
+  }
+}
+</style>

@@ -31,8 +31,8 @@
             <UserIcon icon="smile.png" /> Free
           </span>
           <div class="ml-auto">
-            <span class="comments mr-5">DOCUMENTS</span>
-            <span class="comments">TEMPLATES</span>
+            <b-button variant="trans" class="mr-5"><span class="comments">DOCUMENTS</span></b-button>
+            <b-button variant="trans"><span class="comments">TEMPLATES</span></b-button>
           </div>
           <DefaultHeaderDropdownAccnt/>
           <!--<AsideToggler class="d-lg-none" mobile />-->
