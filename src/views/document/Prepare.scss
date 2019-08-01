@@ -11,13 +11,14 @@
   box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
   display: flex;
   flex-wrap: wrap;
-  padding: 0 20px;
+  font-size: 13px;
+  padding: 0 2px;
   .doc-control {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    max-width: 160px;
-    margin: 20px 10px;
+    max-width: 145px;
+    margin: 20px 8px;
     flex-direction: column;
     .doc-item {
       margin-bottom: 15px;
@@ -127,7 +128,7 @@
   .documents {
     padding: 15px;
     overflow-y: auto;
-    max-height: 500px;
+    max-height: 600px;
     .title {
       display: flex;
       justify-content: space-between;

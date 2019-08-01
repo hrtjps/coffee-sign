@@ -23,7 +23,7 @@
       </div>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 pr-0">
           <div class="doc-container">
             <div class="d-flex flex-wrap mb-5">
               <div class="doc-control">
@@ -189,7 +189,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 pl-3">
           <div class="content-container">
             <div class="documents">
               <div class="title">
