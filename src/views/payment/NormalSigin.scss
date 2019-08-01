@@ -19,6 +19,10 @@
       border-right: solid 1px #d8d4d4;
       padding: 0 25px;
       margin-right: 10px;
+      @media (max-width: 1200px) {
+        padding: 0 5px;
+        margin-right: 5px;
+      }
       .action-numbers {
         height: 48px;
         font-size: 36px;
@@ -39,6 +43,9 @@
     .user-plan {
       padding: 0 25px;
       display: flex;
+      @media (max-width: 1200px) {
+        padding: 0 5px;
+      }
       img {
         min-width: 40px;
       }
@@ -78,9 +85,14 @@
     color: #775649;
     padding: 48px 0;
     text-align: center;
+
+    @media (max-width: 500px) {
+      padding: 15px 0;
+    }
   }
   .initials {
     font-size: 73px;
+    margin-left: -30px;
   }
 }
 .message {
