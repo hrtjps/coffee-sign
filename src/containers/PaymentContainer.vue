@@ -3,14 +3,20 @@
     <div class="app-body">
       <AppSidebar fixed>
         <b-link class="navbar-brand header" to="/#">
-          <img class="navbar-brand-full" src="img/logo3x.png" width="125" height="41" alt="Coffee Sign">
+          <img
+            class="navbar-brand-full"
+            src="img/logo3x.png"
+            width="125"
+            height="41"
+            alt="Coffee Sign"
+          />
         </b-link>
         <div class="p-3 side-menu">
           <div class="w-100">
             <b-button block variant="other">Start Now</b-button>
-            <div class="prepare-tool-nav" >
-              <hr class="seperate-bar"/>
-              <SidebarNav :navItems="nav"></SidebarNav>              
+            <div class="prepare-tool-nav">
+              <hr class="seperate-bar" />
+              <SidebarNav :navItems="nav"></SidebarNav>
             </div>
           </div>
           <Logout></Logout>
@@ -21,15 +27,17 @@
           <SidebarToggler class="d-lg-none" display="md" mobile />
           <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
           <UpgradePlan></UpgradePlan>
-          <span class="comments ml-3 mr-1">Your current plan: </span>
-          <span>
-            <UserIcon icon="smile.png" /> Free
-          </span>
-          <div class="ml-auto">
-            <b-button variant="trans" class="mr-5"><span class="comments">DOCUMENTS</span></b-button>
-            <b-button variant="trans"><span class="comments">TEMPLATES</span></b-button>
+          <div class="your-cur-plan">
+            <span class="comments ml-3 mr-1">Your current plan:</span>
+            <span>
+              <UserIcon icon="smile.png" />Free
+            </span>
           </div>
-          <DefaultHeaderDropdownAccnt/>
+          <div class="sign-doc-type">
+            <div class="clickable-text">DOCUMENTS</div>
+            <div class="clickable-text">TEMPLATES</div>
+          </div>
+          <DefaultHeaderDropdownAccnt />
           <!--<AsideToggler class="d-lg-none" mobile />-->
         </AppHeader>
         <div class="container-fluid main-container">
@@ -38,7 +46,7 @@
       </main>
       <AppAside fixed>
         <!--aside-->
-        <DefaultAside/>
+        <DefaultAside />
       </AppAside>
     </div>
     <TheFooter>
@@ -51,19 +59,32 @@
 </template>
 
 <script>
-import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
-import DefaultAside from './DefaultAside'
-import DefaultHeaderDropdown from './DefaultHeaderDropdown'
-import DefaultHeaderDropdownNotif from './DefaultHeaderDropdownNotif'
-import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
-import DefaultHeaderDropdownMssgs from './DefaultHeaderDropdownMssgs'
-import DefaultHeaderDropdownTasks from './DefaultHeaderDropdownTasks'
-import UserIcon from '../components/UserIcon'
-import UpgradePlan from './UpgradePlan'
-import Logout from '../components/Logout'
+import {
+  Header as AppHeader,
+  SidebarToggler,
+  Sidebar as AppSidebar,
+  SidebarFooter,
+  SidebarForm,
+  SidebarHeader,
+  SidebarMinimizer,
+  SidebarNav,
+  Aside as AppAside,
+  AsideToggler,
+  Footer as TheFooter,
+  Breadcrumb
+} from "@coreui/vue";
+import DefaultAside from "./DefaultAside";
+import DefaultHeaderDropdown from "./DefaultHeaderDropdown";
+import DefaultHeaderDropdownNotif from "./DefaultHeaderDropdownNotif";
+import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
+import DefaultHeaderDropdownMssgs from "./DefaultHeaderDropdownMssgs";
+import DefaultHeaderDropdownTasks from "./DefaultHeaderDropdownTasks";
+import UserIcon from "../components/UserIcon";
+import UpgradePlan from "./UpgradePlan";
+import Logout from "../components/Logout";
 
 export default {
-  name: 'DocumentsContainer',
+  name: "DocumentsContainer",
   components: {
     Logout,
     UserIcon,
@@ -87,63 +108,61 @@ export default {
     SidebarNav,
     SidebarMinimizer
   },
-  data () {
+  data() {
     return {
       nav: [
         {
-          name: 'Account',
-          url: '/payment/normal-sign',
-          icon: 'fa fa-user'
+          name: "Account",
+          url: "/payment/normal-sign",
+          icon: "fa fa-user"
         },
         {
-          name: 'Signature',
-          url: '/payment/action-required',
-          icon: 'fa fa-pencil'
+          name: "Signature",
+          url: "/payment/action-required",
+          icon: "fa fa-pencil"
         },
         {
-          name: 'Pricing Plan',
-          url: '/payment/pricing-plan',
-          icon: 'fa fa-tag'
+          name: "Pricing Plan",
+          url: "/payment/pricing-plan",
+          icon: "fa fa-tag"
         },
         {
-          name: 'Branding',
-          url: '/base/carousels',
-          icon: 'fa fa-id-card'
-        },
+          name: "Branding",
+          url: "/base/carousels",
+          icon: "fa fa-id-card"
+        }
       ],
       show_tool_menu: true
-    }
+    };
   },
   computed: {
-    name () {
-      return this.$route.name
+    name() {
+      return this.$route.name;
     },
-    list () {
-      return this.$route.matched.filter((route) => route.name || route.meta.label )
+    list() {
+      return this.$route.matched.filter(
+        route => route.name || route.meta.label
+      );
     }
   },
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
     gotoPage(page) {
-      this.$router.push({path: page});
+      this.$router.push({ path: page });
     }
   },
   watch: {
-    $route (to) {
-      if(to.fullPath == '/prepare') {
+    $route(to) {
+      if (to.fullPath == "/prepare") {
         this.show_tool_menu = true;
       } else {
         this.show_tool_menu = false;
       }
     }
   }
-
-}
+};
 </script>
 <style lang="scss">
-@import './PaymentContainer.scss';
-
+@import "./PaymentContainer.scss";
 </style>
 

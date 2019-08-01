@@ -9,7 +9,7 @@
             <div class="recipient-head">
               <span class="name">RECIPIENT #{{index+1}}</span>
               <span v-on:click="removeRecipient(index)">
-                <i class="fa fa-trash" />
+                <UserIcon icon="delete.png" :button="true" />
               </span>
             </div>
             <div class="row">
@@ -109,7 +109,8 @@
                   <b-input-group>
                     <b-input-group-prepend>
                       <b-input-group-text>
-                        <i class="fa fa-lock"></i>
+                        <!-- <i class="fa fa-lock"></i> -->
+                        <UserIcon icon="pass.png"></UserIcon>
                       </b-input-group-text>
                     </b-input-group-prepend>
                     <b-form-input
@@ -125,7 +126,8 @@
                   <b-input-group>
                     <b-input-group-prepend>
                       <b-input-group-text>
-                        <i class="fa fa-lock"></i>
+                        <!-- <i class="fa fa-lock"></i> -->
+                        <UserIcon icon="pass.png"></UserIcon>
                       </b-input-group-text>
                     </b-input-group-prepend>
                     <b-form-input
@@ -182,16 +184,6 @@ export default {
         {
           sign_type: "Needs to Sign",
           com_type: true,
-          name: "",
-          email: "",
-          phone: "",
-          set_password: false,
-          password: "",
-          confirm_password: ""
-        },
-        {
-          sign_type: "Needs to Sign",
-          com_type: false,
           name: "",
           email: "",
           phone: "",

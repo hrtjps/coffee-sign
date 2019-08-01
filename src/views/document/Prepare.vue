@@ -10,12 +10,12 @@
           <b-button variant="outline-primary">
             <UserIcon icon="Next.png" />
           </b-button>
-          <b-form-select
-            class="mx-3"
-            :plain="true"
-            :options="['10%','20%', '30%', '50%', '75%','100%', '200%']"
-            value="50%"
-          ></b-form-select>
+          <UserSelect
+            v-bind:value="percent"
+            v-bind:items="['10%','20%', '30%', '50%', '75%','100%', '200%']"
+            @changeValue="changePercent"
+            class="mb-0 mx-2"
+          />
           <b-button variant="outline-primary">
             <UserIcon icon="Fill190.png" />
           </b-button>
@@ -193,7 +193,7 @@
           <div class="content-container">
             <div class="documents">
               <div class="title">
-                <span>DOCIUMENTS</span>
+                <span>DOCUMENTS</span>
                 <div class="actions">
                   <i class="fa fa-rotate-left mr-2"></i>
                   <i class="fa fa-rotate-right mr-2"></i>
@@ -203,18 +203,26 @@
               <hr />
               <div class="documents-list">
                 <div class="document-content">
-                  <div class="item-title" v-b-toggle.collapse1>
+                  <div class="collapse-header item-title" v-b-toggle.collapse1>
                     <span>Continuous Improvement lorem ipsum sit dollor amet.doc</span>
-                    <i class="fa fa-caret-down"></i>
+                    <span class="collapse-icon">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <!-- <i class="collapse-icon"></i> -->
                   </div>
-                  <b-collapse id="collapse1" class="item-pages">
+                  <b-collapse id="collapse1" class="item-pages" visible>
                     <div
                       class="page-content"
                       v-for="i in numPages"
                       :key="i"
                       v-on:click="selectPage(src, i)"
                     >
-                      <pdf :src="src" :page="i" class="pdf-content"></pdf>
+                      <pdf
+                        :src="src"
+                        :page="i"
+                        class="pdf-content"
+                        v-bind:class="i==viewPage?'selected-pdf':''"
+                      ></pdf>
                       <div class="page-no">{{i}}</div>
                     </div>
                   </b-collapse>
@@ -240,16 +248,19 @@
 
 <script>
 import UserIcon from "../../components/UserIcon";
+import UserSelect from "../../components/UserSelect";
 import pdf from "vue-pdf";
 
 export default {
   name: "Prepare",
   components: {
     pdf,
-    UserIcon
+    UserIcon,
+    UserSelect
   },
   data() {
     return {
+      percent: "50%",
       viewSrc: null,
       viewPage: 0,
       currentPage: 0,
@@ -268,6 +279,9 @@ export default {
     });
   },
   methods: {
+    changePercent(e) {
+      this.percent = e;
+    },
     selectPage(src, no) {
       this.viewPage = no;
       this.viewSrc = src;
