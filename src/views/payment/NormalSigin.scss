@@ -3,7 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
   .user-happy {
     display: flex;
     align-items: center;
@@ -82,7 +84,7 @@
   }
 }
 .message {
-  position: absolute;
+  position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 999;

@@ -13,7 +13,7 @@
         </b-link>
         <div class="p-3 side-menu">
           <div class="w-100">
-            <b-button block variant="primary">Close and go to Home page</b-button>
+            <b-button block variant="primary">Cancel</b-button>
             <div class="prepare-tool-nav" v-if="show_tool_menu">
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>

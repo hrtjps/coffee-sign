@@ -23,6 +23,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
   .history-item {
     display: flex;
@@ -32,10 +35,14 @@
     font-size: 16px;
     font-weight: 500;
     color: #2e221e;
+    @media (max-width: 600px) {
+      flex-wrap: wrap;
+    }
   }
-  
+
   .other-fields {
     width: calc((100% - 88px) / 4);
+    min-width: 105px;
   }
   .receipt {
     width: 88px;

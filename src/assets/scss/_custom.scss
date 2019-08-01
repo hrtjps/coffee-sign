@@ -26,7 +26,7 @@ $font-color-primary: #2e221e;
 
 html,
 body {
-  font-family: Roboto, sans-serif;
+  font-family: Roboto;
   color: #2e221e;
   background-color: #e8e4e2;
   height: 100%;
@@ -582,6 +582,9 @@ select option {
 }
 
 .user-custom-select {
+  background: white;
+  display: flex;
+  align-items: center;
   border-radius: 4px;
   color: #202020;
   border: solid 1px #ebebeb;
@@ -620,7 +623,7 @@ select option {
     }
   }
   .dropdown-menu {
-    margin: 9px 0 0;
+    margin: 5px 0 0;
     max-height: 400px;
     overflow-y: auto;
   }

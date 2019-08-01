@@ -4,9 +4,9 @@
       <h1>Add Documents</h1>
       <hr />
       <FileUpload />
-      <div class="d-flex justify-content-end pt-4 align-items-center">
-        <b-form-checkbox>I am the only signer</b-form-checkbox>
-        <button class="btn btn-primary min-width-124px ml-3" v-on:click="moveNextPage()">Next</button>
+      <div class="d-flex justify-content-end pt-4 flex-wrap align-items-center">
+        <b-form-checkbox class="m-1">I am the only signer</b-form-checkbox>
+        <button class="btn btn-primary min-width-124px m-1" v-on:click="moveNextPage()">Next</button>
       </div>
     </div>
   </div>
