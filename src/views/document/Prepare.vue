@@ -8,7 +8,7 @@
             <UserIcon icon="back.png" />
           </b-button>
           <b-button variant="outline-primary">
-            <UserIcon icon="Next.png" />
+            <UserIcon icon="next.png" />
           </b-button>
           <UserSelect
             v-bind:value="percent"
