@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield");
 .profile-header {
   display: flex;
   justify-content: space-between;
@@ -25,6 +24,13 @@
       color: #2e221e;
     }
     .socials {
+      margin-top: 30px;
+      @media (max-width: 640px) {
+        margin-top: 10px;
+      }
+    }
+    @media (max-width: 640px) {
+      margin-left: 105px;
       margin-top: 30px;
     }
   }

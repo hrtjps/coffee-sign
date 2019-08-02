@@ -22,6 +22,7 @@ const UpgradeYourPlan = () => import("@/views/payment/UpgradeYourPlan");
 const PricingPlan = () => import("@/views/payment/PricingPlan");
 const UpgradeToPlan = () => import("@/views/payment/UpgradeToPlan");
 const Account = () => import("@/views/profile/Account");
+const CustomBranding = () => import("@/views/profile/CustomBranding");
 
 Vue.use(Router);
 
@@ -61,13 +62,18 @@ export default new Router({
     {
       path: "/profile",
       redirect: "/profile/account",
-      name: "profile",
+      name: "Profile",
       component: PaymentContainer,
       children: [
         {
           path: "account",
-          name: "Normal Sign",
+          name: "NormalSign",
           component: Account
+        },
+        {
+          path: "custom-branding",
+          name: "CustomBranding",
+          component: CustomBranding
         }
       ]
     },
@@ -79,27 +85,27 @@ export default new Router({
       children: [
         {
           path: "normal-sign",
-          name: "Normal Sign",
+          name: "NormalSign",
           component: NormalSign
         },
         {
           path: "action-required",
-          name: "Action Required",
+          name: "ActionRequired",
           component: ActionRequired
         },
         {
           path: "upgrade-plan",
-          name: "Upgrade Your Plan",
+          name: "UpgradeYourPlan",
           component: UpgradeYourPlan
         },
         {
           path: "pricing-plan",
-          name: "Pricing Plan",
+          name: "PricingPlan",
           component: PricingPlan
         },
         {
           path: "upgrade-to-plan",
-          name: "Upgrade To Plan",
+          name: "UpgradeToPlan",
           component: UpgradeToPlan
         }
       ]

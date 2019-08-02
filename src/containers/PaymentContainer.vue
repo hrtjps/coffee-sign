@@ -128,7 +128,7 @@ export default {
         },
         {
           name: "Branding",
-          url: "/base/carousels",
+          url: "/profile/custom-branding",
           icon: "fa fa-id-card"
         }
       ],

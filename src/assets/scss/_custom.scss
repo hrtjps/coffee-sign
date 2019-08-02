@@ -149,6 +149,7 @@ h1 {
 
 .btn-link {
   color: $col-primary !important;
+  padding: 0;
   &:not(:disabled) {
     &:not(.disabled) {
       &:active {
@@ -587,6 +588,13 @@ select option {
     cursor: pointer;
   }
 }
+.clickable-icon {
+  color: #9ea0a5;
+  &:hover {
+    color: #775649;
+    cursor: pointer;
+  }
+}
 
 .user-custom-select {
   background: white;
@@ -693,3 +701,16 @@ label {
 //   .collapse-icon {
 //   }
 // }
+
+.tooltip {
+  .arrow {
+    &::before {
+      border-top-color: transparent;
+    }
+  }
+  .tooltip-inner {
+    max-width: 400;
+    background: #41302a;
+    border-radius: 4px;
+  }
+}

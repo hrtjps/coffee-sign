@@ -26,12 +26,6 @@ export default {
     value: String,
     items: Array
   },
-  computed() {
-    return {
-      // value: this.props.value;
-      // items: items;
-    };
-  },
   methods: {
     changeValue(item) {
       console.log(item);
