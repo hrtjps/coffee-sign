@@ -10,104 +10,36 @@
       </div>
       <hr class="mb-4" />
       <div class="row plans">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3" v-for="(plan, index) in plans" :key="index">
           <div class="plan-card content-card">
             <div class="plan-card-head">
-              <div class="plan-title">Free</div>
-              <UserIcon icon="smile.png" />
-            </div>
-            <div class="plan-card-head mt-4">
-              <span class="comments">Per month</span>
-              <span class="price">
-                $0
-                <sup>.00</sup>
-              </span>
-            </div>
-            <hr />
-            <div class="text-center">
-              <div class="limit-for-sending">Limit for Sending for Signature</div>
-              <div class="limit-times">5 Times total</div>
-            </div>
-            <hr />
-            <b-button block variant="secondary" disabled>Current plan</b-button>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="plan-card content-card">
-            <div class="plan-card-head">
-              <div class="plan-title">Personnel</div>
-              <UserIcon icon="personeel.png" />
+              <div class="plan-title">{{plan.title}}</div>
+              <UserIcon :icon="plan.title + '.png'" />
             </div>
             <div class="plan-card-head mt-4">
               <div class="comments">
-                <div>Per user</div>
-                <div v-if="switch_annual">$120 annually</div>
+                <div v-if="index==0">Per month</div>
+                <div v-if="index==1">Per user</div>
+                <div v-if="index>1">per user, per month</div>
+                <div v-if="(switch_annual && (plan.price>0))">${{plan.price*12}} annually</div>
               </div>
               <span class="price">
-                ${{switch_annual?10:5}}
+                ${{switch_annual?plan.price:plan.monthly}}
                 <sup>.00</sup>
               </span>
             </div>
             <hr />
             <div class="text-center">
               <div class="limit-for-sending">Limit for Sending for Signature</div>
-              <div class="limit-times">5 Times total</div>
+              <div class="limit-times">{{plan.limit}}</div>
             </div>
             <hr />
-            <b-button block variant="other">Choose this plan</b-button>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="plan-card content-card">
-            <div class="plan-card-head">
-              <div class="plan-title">Standard</div>
-              <UserIcon icon="fire.png" />
-            </div>
-            <span class="plan-card-head mt-4">
-              <div class="comments">
-                <div>per user, per month</div>
-                <div v-if="switch_annual">$300 annually</div>
-              </div>
-              <span class="price">
-                ${{switch_annual?25:10}}
-                <sup>.00</sup>
-              </span>
-            </span>
-            <hr />
-            <div class="text-center">
-              <div class="limit-for-sending">Limit for Sending for Signature</div>
-              <div class="limit-times">30 Times total</div>
-            </div>
-            <hr />
-            <b-button block variant="other">Choose this plan</b-button>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="plan-card content-card">
-            <div class="plan-card-head">
-              <div class="plan-title">Pro</div>
-              <UserIcon icon="rocket.png" />
-            </div>
-            <div class="plan-card-head mt-4">
-              <div class="comments">
-                <div>per user, per month</div>
-                <div v-if="switch_annual">$480 annually</div>
-              </div>
-              <span class="price">
-                ${{switch_annual?40:20}}
-                <sup>.00</sup>
-              </span>
-            </div>
-            <hr />
-            <div class="text-center">
-              <div class="limit-for-sending">Limit for Sending for Signature</div>
-              <div class="limit-times">No Limit ∞</div>
-            </div>
-            <hr />
-            <b-button block variant="other">Choose this plan</b-button>
+            <b-button
+              block
+              :variant="current_plan==index?'secondary':'other'"
+              :disabled="current_plan==index"
+              v-on:click="chooseThisPlan(plan, index)"
+            >{{current_plan == index?"Current plan":"Choose this plan"}}</b-button>
           </div>
         </div>
       </div>
@@ -129,9 +61,43 @@ export default {
   },
   data() {
     return {
+      current_plan: 0,
       switch_annual: true,
-      plans: [{}]
+      plans: [
+        {
+          title: "Free",
+          price: 0,
+          monthly: 0,
+          limit: "5 Times total"
+        },
+        {
+          title: "Personnel",
+          price: 10,
+          monthly: 5,
+          limit: "5 Times total"
+        },
+        {
+          title: "Standard",
+          price: 25,
+          monthly: 30,
+          limit: "30 Times total"
+        },
+        {
+          title: "Pro",
+          price: 40,
+          monthly: 20,
+          limit: "No Limit ∞"
+        }
+      ]
     };
+  },
+  created() {
+    const id = this.$route.query.id;
+    if (id) {
+      this.current_plan = id;
+    } else {
+      this.current_plan = 0;
+    }
   },
   methods: {
     getFileType(fileName) {
@@ -139,6 +105,13 @@ export default {
     },
     clickSwitch() {
       this.switch_annual = !this.switch_annual;
+    },
+    chooseThisPlan(toPlan, id) {
+      console.log(toPlan);
+      this.$router.push({
+        path: "/payment/upgrade-to-plan",
+        query: { plan: toPlan, id: id }
+      });
     }
   }
 };
