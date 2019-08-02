@@ -21,6 +21,7 @@ const ActionRequired = () => import("@/views/payment/ActionRequired");
 const UpgradeYourPlan = () => import("@/views/payment/UpgradeYourPlan");
 const PricingPlan = () => import("@/views/payment/PricingPlan");
 const UpgradeToPlan = () => import("@/views/payment/UpgradeToPlan");
+const Account = () => import("@/views/profile/Account");
 
 Vue.use(Router);
 
@@ -54,6 +55,19 @@ export default new Router({
           path: "review",
           name: "Review",
           component: Review
+        }
+      ]
+    },
+    {
+      path: "/profile",
+      redirect: "/profile/account",
+      name: "profile",
+      component: PaymentContainer,
+      children: [
+        {
+          path: "account",
+          name: "Normal Sign",
+          component: Account
         }
       ]
     },

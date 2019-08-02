@@ -113,7 +113,7 @@ export default {
       nav: [
         {
           name: "Account",
-          url: "/payment/normal-sign",
+          url: "/profile/account",
           icon: "fa fa-user"
         },
         {
