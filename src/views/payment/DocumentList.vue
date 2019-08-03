@@ -1,6 +1,6 @@
 <template>
   <div class="app flex-row">
-    <div class="w-100">
+    <div class="w-100 document-list">
       <div class="action-header">
         <h1>Document List</h1>
         <div class="action-search-field">
@@ -31,7 +31,7 @@
         <div class="table-header">
           <div class="d-flex align-items-center">
             <b-check></b-check>
-            <div class="col-basic-info comments">Document Subject</div>
+            <div class="col-basic-info comments">DOCUMENT SUBJECT</div>
           </div>
           <div class="d-flex align-items-center">
             <div class="col-status comments">STATUS</div>
@@ -45,7 +45,7 @@
               <div class="d-flex align-items-center">
                 <b-check></b-check>
                 <div class="col-basic-info">
-                  <img :src="getFileType('Continuous Improvement.pdf')" />
+                  <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
                   <div class="ml-3">
                     <div class="doc-name">Continuous Improvement</div>
                     <div class="senders comments">
@@ -142,8 +142,8 @@
               </div>
               <div class="user-document">
                 <div class="doc-div">
-                  <img :src="getFileType('Continuous Improvement.pdf')" />
-                  <div class="doc-name mt-3">Continuous Improvement</div>
+                  <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
+                  <div class="doc-name mt-2">Continuous Improvement</div>
                   <div class="senders comments">5 pages</div>
                 </div>
               </div>
@@ -154,7 +154,7 @@
               <div class="d-flex align-items-center">
                 <b-check></b-check>
                 <div class="col-basic-info">
-                  <img :src="getFileType('Continuous Improvement.pdf')" />
+                  <img :src="getFileType('Continuous Improvement.pdf')" class="doc-icon" />
                   <div class="ml-3">
                     <div class="doc-name">Continuous Improvement</div>
                     <div class="senders comments">
@@ -251,8 +251,8 @@
               </div>
               <div class="user-document">
                 <div class="doc-div">
-                  <img :src="getFileType('Continuous Improvement.pdf')" />
-                  <div class="doc-name mt-3">Continuous Improvement</div>
+                  <img :src="getFileType('Continuous Improvement.pdf')" class="doc-icon" />
+                  <div class="doc-name mt-2">Continuous Improvement</div>
                   <div class="senders comments">5 pages</div>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default {
   },
   methods: {
     getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
+      return "img/icons/" + fileName.substr(fileName.length - 3) + ".svg";
     },
     changePeriod(e) {
       this.period = e;

@@ -1,154 +1,162 @@
-.action-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  .action-search-field {
-    display: flex;
-    align-items: center;
-    input {
-      height: fit-content;
-      padding: 10px 15px;
-    }
+.document-list {
+  .doc-icon {
+    width: 32px;
   }
-}
-.actions-table {
-  .table-header {
+  .action-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
-    @media (max-width: 1100px) {
-      display: none;
+    .action-search-field {
+      display: flex;
+      align-items: center;
+      input {
+        height: fit-content;
+        padding: 10px 15px;
+      }
     }
   }
-  .table-body {
-    .table-row {
-      padding: 0 0;
-      .row-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 30px;
-        @media (max-width: 1100px) {
-          flex-wrap: wrap;
-        }
+  .actions-table {
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      @media (max-width: 1100px) {
+        display: none;
       }
-      .row-body {
-        border-top: solid 1px lightgray;
-        .user-document {
+    }
+    .table-body {
+      .table-row {
+        padding: 0 0;
+        .row-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 8px 20px;
+          @media (max-width: 1100px) {
+            flex-wrap: wrap;
+          }
+        }
+        .row-body {
           border-top: solid 1px lightgray;
-          padding: 20px 20px 20px 54px;
-          .doc-div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            border: dashed 2px #ebebeb;
-            background-color: #ffffff;
+          .user-document {
+            border-top: solid 1px lightgray;
+            padding: 12px 12px 12px 42px;
+            .doc-div {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              padding: 10px;
+              border: dashed 2px #ebebeb;
+              background-color: #ffffff;
+            }
+          }
+        }
+        .row-detail {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 7px 20px;
+          border-bottom: solid 1px lightgray;
+
+          .remove-margin-left {
+            margin-left: 0;
+          }
+          .user-name {
+            font-size: 14px;
+            line-height: 1.36;
+            text-align: left;
+            color: #41302a;
+          }
+
+          @media (max-width: 500px) {
+            padding: 10px;
+            flex-wrap: wrap;
+          }
+        }
+        .add-margin-left {
+          margin-left: 42px;
+
+          @media (max-width: 500px) {
+            margin-left: 15px;
           }
         }
       }
-      .row-detail {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 30px;
-        border-bottom: solid 1px lightgray;
-
-        .remove-margin-left {
-          margin-left: 0;
-        }
-        .user-name {
-          font-size: 14px;
-          line-height: 1.36;
-          text-align: left;
-          color: #41302a;
-        }
-
-        @media (max-width: 500px) {
-          padding: 10px;
-          flex-wrap: wrap;
-        }
+    }
+    .col-basic-info {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      .doc-name {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.31;
+        color: #2e221e;
       }
-      .add-margin-left {
-        margin-left: 54px;
-
-        @media (max-width: 500px) {
-          margin-left: 15px;
-        }
+      .senders {
+        margin-top: 5px;
+      }
+      @media (max-width: 500px) {
+        margin-left: 5px;
       }
     }
-  }
-  .col-basic-info {
-    margin-left: 30px;
-    display: flex;
-    align-items: center;
-    .doc-name {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 1.31;
-      color: #2e221e;
-    }
-    .senders {
-      margin-top: 10px;
-    }
-    @media (max-width: 500px) {
-      margin-left: 5px;
-    }
-  }
-  .col-status {
-    min-width: 300px;
-    .status {
-      border-radius: 5px;
-      background-color: rgb(251, 239, 230);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.36;
-      text-align: center;
-      min-width: 200px;
-      width: 219px;
-      padding: 13px;
+    .col-status {
+      min-width: 300px;
+      .status {
+        border-radius: 5px;
+        background-color: rgb(251, 239, 230);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.36;
+        text-align: center;
+        min-width: 200px;
+        width: 219px;
+        padding: 13px;
+
+        @media (max-width: 1100px) {
+          min-width: 100px;
+          width: 100px;
+          margin-right: 10px;
+        }
+      }
+      .completed {
+        color: #8a6454;
+      }
+      .waiting {
+        color: #d4670b;
+      }
 
       @media (max-width: 1100px) {
         min-width: 100px;
-        width: 100px;
-        margin-right: 10px;
+        margin-left: 20px;
+        margin-top: 10px;
       }
     }
-    .completed {
-      color: #8a6454;
+    .col-last-change {
+      min-width: 200px;
+      .date {
+        font-size: 15px;
+        font-weight: 500;
+        text-align: left;
+        color: #202020;
+      }
+      @media (max-width: 1100px) {
+        min-width: 100px;
+      }
     }
-    .waiting {
-      color: #d4670b;
-    }
-
-    @media (max-width: 1100px) {
+    .col-action {
       min-width: 100px;
-      margin-left: 20px;
-      margin-top: 10px;
-    }
-  }
-  .col-last-change {
-    min-width: 200px;
-    .date {
-      font-size: 16px;
-      font-weight: 500;
-      text-align: left;
-      color: #202020;
-    }
-    @media (max-width: 1100px) {
-      min-width: 100px;
-    }
-  }
-  .col-action {
-    min-width: 100px;
-    i {
-      color: #9ea0a5;
-      &:hover {
-        color: #8a6454;
-        cursor: pointer;
+      display: flex;
+      align-items: center;
+      i {
+        font-size: 20px;
+        color: #9ea0a5;
+        &:hover {
+          color: #8a6454;
+          cursor: pointer;
+        }
       }
     }
   }

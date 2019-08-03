@@ -2,7 +2,7 @@
   <div class="app flex-row">
     <div class="w-100 position-relative">
       <div class="plan-header">
-        <h1>Upgrade Your Plan</h1>
+        <h1>Upgrade {{plans[current_plan].title}} Plan</h1>
         <div class="switch-button" v-on:click="clickSwitch()">
           <div class="switch-item" v-bind:class="{'selected': switch_annual}">Annual</div>
           <div class="switch-item" v-bind:class="{'selected': !switch_annual}">Monthly</div>

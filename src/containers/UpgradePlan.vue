@@ -7,7 +7,7 @@ export default {
   name: "UpgradePlan",
   methods: {
     upgradePlan() {
-      this.$router.push({ path: "/payment/upgrade-plan" });
+      this.$router.push({ path: "/payment/pricing-plan" });
     }
   }
 };
