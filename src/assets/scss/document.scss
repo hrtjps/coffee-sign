@@ -35,6 +35,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 6px 6px 0px 0px;
+
+  @media (max-width: 575px) {
+    height: 80px;
+  }
 }
 .welcome-body {
   padding: 30px 50px;
@@ -43,6 +47,10 @@
   justify-content: center;
   // text-align: center;
   align-items: center;
+
+  @media (max-width: 575px) {
+    padding: 10px 10px;
+  }
 }
 .subtitle {
   font-size: 14px;

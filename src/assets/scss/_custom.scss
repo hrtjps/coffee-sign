@@ -299,6 +299,9 @@ h1 {
 }
 .form-group {
   margin-bottom: 20px;
+  @media (max-width: 575px) {
+    margin-bottom: 15px;
+  }
 }
 .seperate-bar {
   background: gray;
