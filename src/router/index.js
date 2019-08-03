@@ -17,12 +17,13 @@ const Review = () => import("@/views/document/Review");
 // Container and Views of Pricing and Payment
 const PaymentContainer = () => import("@/containers/PaymentContainer");
 const NormalSign = () => import("@/views/payment/NormalSigin");
-const ActionRequired = () => import("@/views/payment/ActionRequired");
+const DocumentList = () => import("@/views/payment/DocumentList");
 const UpgradeYourPlan = () => import("@/views/payment/UpgradeYourPlan");
 const PricingPlan = () => import("@/views/payment/PricingPlan");
 const UpgradeToPlan = () => import("@/views/payment/UpgradeToPlan");
 const Account = () => import("@/views/profile/Account");
 const CustomBranding = () => import("@/views/profile/CustomBranding");
+const Signature = () => import("@/views/profile/Signature");
 
 Vue.use(Router);
 
@@ -77,6 +78,20 @@ export default new Router({
         }
       ]
     },
+
+    {
+      path: "/signature",
+      redirect: "/signature/signature",
+      name: "SigntureStamp",
+      component: PaymentContainer,
+      children: [
+        {
+          path: "signature",
+          name: "Signature",
+          component: Signature
+        }
+      ]
+    },
     {
       path: "/payment",
       redirect: "/payment/normal-sign",
@@ -89,9 +104,9 @@ export default new Router({
           component: NormalSign
         },
         {
-          path: "action-required",
-          name: "ActionRequired",
-          component: ActionRequired
+          path: "document-list",
+          name: "DocumentList",
+          component: DocumentList
         },
         {
           path: "upgrade-plan",

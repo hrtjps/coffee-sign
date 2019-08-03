@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     changeValue(item) {
-      console.log(item);
       this.$emit("changeValue", item);
     }
   }

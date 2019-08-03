@@ -90,14 +90,19 @@
         <button class="btn btn-primary min-width-124px m-1" v-on:click="moveNextPage()">Send</button>
       </div>
     </div>
-    <b-modal id="modal-1" ref="send-modal" hide-footer size="md">
+    <b-modal id="send-modal" ref="send-modal" hide-footer>
       <div class="send-modal">
         <img src="img/add_doc/send.png" class="mb-4" />
-        <h2>You're Done</h2>
+        <div class="you-done">You're Done</div>
         <div
-          class="comments text-center py-4"
+          class="comments text-center"
+          style="margin-bottom:30px"
         >Thank You for using CoffeeSign! After all recipients finish signing, you will recieve an email with a link to the document.</div>
-        <button type="submit" class="btn btn-primary">Go to the Home page</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          v-on:click="$router.push('/payment/document-list');"
+        >Go to the Home page</button>
       </div>
     </b-modal>
   </div>

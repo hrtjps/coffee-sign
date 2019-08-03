@@ -8,7 +8,7 @@
     border-radius: 3px;
     box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
     background-color: #ffffff;
-    padding: 30px;
+    padding: 25px;
     margin-right: 10px;
     width: 100%;
     min-width: 300px;
@@ -67,13 +67,36 @@
   color: #202020;
   margin-top: 0;
 }
+
+#send-modal {
+  @media (min-width: 620px) {
+    .modal-dialog {
+      max-width: 605px;
+      margin: 1.75rem auto;
+    }
+    .modal-content {
+      width: 605px;
+    }
+  }
+}
 .send-modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px;
-  padding-top: 15px;
+  padding: 55px;
+  padding-top: 2px;
+  img {
+    margin-bottom: 25px;
+  }
+  .you-done {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    color: #41302a;
+    margin-bottom: 30px;
+  }
 }
 .modal-header {
   border-bottom: none;

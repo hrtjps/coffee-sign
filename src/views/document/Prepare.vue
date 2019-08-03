@@ -195,9 +195,9 @@
               <div class="title">
                 <span>DOCUMENTS</span>
                 <div class="actions">
-                  <i class="fa fa-rotate-left mr-2"></i>
-                  <i class="fa fa-rotate-right mr-2"></i>
-                  <i class="fa fa-trash"></i>
+                  <i class="fa fa-rotate-left mr-2 clickable-icon"></i>
+                  <i class="fa fa-rotate-right mr-2 clickable-icon"></i>
+                  <i class="fa fa-trash clickable-icon"></i>
                 </div>
               </div>
               <hr />

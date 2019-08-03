@@ -8,6 +8,76 @@
       <div class="row plans">
         <div class="col-12 col-sm-6 col-md-8 col-lg-8">
           <div class="content-card">
+            <div class="content-header">Payment information</div>
+            <b-tabs>
+              <b-tab title="Card" active>
+                <div class="row">
+                  <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                      <label for="name">Credit/debit card number</label>
+                      <b-input-group class="pl-3">
+                        <b-form-input
+                          placeholder="**** **** **** 5432"
+                          autocomplete="current-password"
+                        ></b-form-input>
+                        <b-input-group-prepend class="mr-0">
+                          <b-input-group-text class="h-auto">
+                            <UserIcon icon="mastercard.png" />
+                          </b-input-group-text>
+                        </b-input-group-prepend>
+                      </b-input-group>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6 pl-lg-0">
+                    <div class="d-flex align-items-end">
+                      <div class="form-group">
+                        <label for="name">Expiration month</label>
+                        <div class="d-flex align-items-center">
+                          <UserSelect
+                            v-bind:value="month"
+                            v-bind:items="['Month', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
+                            @changeValue="month=$event"
+                            class="mb-0"
+                            style="min-width:105px"
+                          />
+                          <span class="mx-2">/</span>
+                        </div>
+                      </div>
+
+                      <div class="form-group mr-3">
+                        <label for="name">Expiration year</label>
+                        <UserSelect
+                          v-bind:value="year"
+                          v-bind:items="years"
+                          @changeValue="year=$event"
+                          class="mb-0"
+                          style="min-width:95px"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">CVV</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cvv"
+                          placeholder="Your CVV"
+                          name="cvv"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b-tab>
+              <b-tab title="PAYPAL">
+                <label class="mr-3">Pay with PayPal</label>
+                <a href="https://www.paypal.com">
+                  <img src="img/icons/paypal.png" />
+                </a>
+              </b-tab>
+            </b-tabs>
+          </div>
+          <div class="content-card">
             <div class="content-header">Billing information</div>
             <div class="row">
               <div class="col-sm-6">
@@ -94,71 +164,6 @@
               </div>
             </div>
           </div>
-          <div class="content-card">
-            <div class="content-header">Payment information</div>
-            <b-tabs>
-              <b-tab title="Card" active>
-                <div class="row">
-                  <div class="col-12 col-lg-6">
-                    <div class="form-group">
-                      <label for="name">Credit/debit card number</label>
-                      <b-input-group class="pl-3">
-                        <b-form-input
-                          placeholder="**** **** **** 5432"
-                          autocomplete="current-password"
-                        ></b-form-input>
-                        <b-input-group-prepend class="mr-0">
-                          <b-input-group-text class="h-auto">
-                            <UserIcon icon="mastercard.png" />
-                          </b-input-group-text>
-                        </b-input-group-prepend>
-                      </b-input-group>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-lg-2 pl-lg-0 pr-lg-0">
-                    <div class="form-group">
-                      <label for="name">Expiration month</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exp_month"
-                        placeholder="Exp. month"
-                        name="exp_month"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-lg-2 pr-lg-0">
-                    <div class="form-group">
-                      <label for="name">Expiration year</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exp_ear"
-                        placeholder="Exp. year"
-                        name="exp_year"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-lg-2">
-                    <div class="form-group">
-                      <label for="name">CVV</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="cvv"
-                        placeholder="Your CVV"
-                        name="cvv"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-              </b-tab>
-              <b-tab title="PAYPAL">Paypal Info</b-tab>
-            </b-tabs>
-          </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4">
           <div class="plan-card content-card">
@@ -172,10 +177,17 @@
                 <span class="comments">Per month</span>
                 <span class="price">
                   ${{plan.price}}
-                  <sup>.00</sup>
+                <sup>.00</sup>
                 </span>
               </div>
             </div>
+            <UserSelect
+              v-bind:value="subscription"
+              v-bind:items="['Monthly Subscription', '1', '2', '3']"
+              @changeValue="subscription=$event"
+              class="mb-0 mt-3"
+              style="min-width:105px"
+            />
             <hr />
             <div class="text-center">
               <div class="limit-for-sending">Limit for Sending for Signature</div>
@@ -196,15 +208,23 @@
 
 <script>
 import UserIcon from "../../components/UserIcon";
+import UserSelect from "../../components/UserSelect";
 
 export default {
   name: "UpgradeToPlan",
   components: {
-    UserIcon
+    UserIcon,
+    UserSelect
   },
   data() {
     return {
-      plan: null
+      plan: null,
+      subscription: "Monthly subscription",
+      country: "",
+      region: "",
+      month: "Month",
+      year: "Year",
+      years: []
     };
   },
   created() {
@@ -215,7 +235,11 @@ export default {
         path: "/payment/upgrade-plan"
       });
     }
-    console.log(this.plan);
+    const dt = new Date();
+    const start = dt.getYear();
+    for (let i = start; i < start + 10; i++) {
+      this.years.push((i + 1900).toString());
+    }
   },
   methods: {
     upgradeMyPlan() {

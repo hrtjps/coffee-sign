@@ -4,16 +4,16 @@
   border-radius: 3px;
   box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
   background-color: #ffffff;
-  padding: 30px;
+  padding: 15px;
 
   position: relative;
 
   .drag-drop-div {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
     border: dashed 2px #ebebeb;
     background-color: #fcfafa;
 
@@ -123,9 +123,8 @@
 
   .file-listing {
     background: white;
-    height: 80px;
     border-radius: 3px;
-    padding: 18px 30px;
+    padding: 18px 15px;
     box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
 
     display: flex;

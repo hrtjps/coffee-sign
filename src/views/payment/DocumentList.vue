@@ -2,22 +2,22 @@
   <div class="app flex-row">
     <div class="w-100">
       <div class="action-header">
-        <h1>Action Required</h1>
+        <h1>Document List</h1>
         <div class="action-search-field">
           <UserSelect
             v-bind:value="progress_status"
-            v-bind:items="['In Progress', 'Checking', 'Completed']"
+            v-bind:items="['Status', 'All', 'In Progress', 'Completed', 'Declined', 'Voided']"
             @changeValue="changeProgressStatus"
-            class="mb-0 mx-2"
+            class="mb-0 mx-1"
           />
           <UserSelect
             v-bind:value="period"
-            v-bind:items="['Last 6 Months', 'Last a Month', 'Last a Week', 'Last a Day']"
+            v-bind:items="['Date', 'Last 24 Hours', 'Last Week', 'Last 30 Days', 'Last 6 Months', 'Custom']"
             @changeValue="changePeriod"
-            class="mb-0 mx-2"
+            class="mb-0 mx-1"
           />
-          <b-input-group class="max-height-43px min-width-230px">
-            <b-form-input placeholder="Type here to search...*" autocomplete="current-password"></b-form-input>
+          <b-input-group class="min-width-378px ml-1">
+            <b-form-input placeholder="Type here to search..." autocomplete="current-password"></b-form-input>
             <b-input-group-prepend class="mr-0">
               <b-input-group-text class="h-auto">
                 <i class="fa fa-search"></i>
@@ -31,7 +31,7 @@
         <div class="table-header">
           <div class="d-flex align-items-center">
             <b-check></b-check>
-            <div class="col-basic-info comments">BASIC INFO</div>
+            <div class="col-basic-info comments">Document Subject</div>
           </div>
           <div class="d-flex align-items-center">
             <div class="col-status comments">STATUS</div>
@@ -65,10 +65,14 @@
                   <div class="comments">11:03:53 am</div>
                 </div>
                 <div class="col-action comments">
-                  <i class="fa fa-ellipsis-h mr-3"></i>
-                  <span class="action-collapse-icon" v-b-toggle.collapse1>
-                    <i class="fa fa-caret-down"></i>
-                  </span>
+                  <i class="fa fa-ellipsis-h mr-3" v-b-toggle.collapse1></i>
+                  <b-dropdown variant="link">
+                    <b-dropdown-item>Create a copy</b-dropdown-item>
+                    <b-dropdown-item>Save as template</b-dropdown-item>
+                    <b-dropdown-item>History</b-dropdown-item>
+                    <b-dropdown-item>Export as CSV</b-dropdown-item>
+                    <b-dropdown-item>Delete</b-dropdown-item>
+                  </b-dropdown>
                 </div>
               </div>
             </div>
@@ -170,10 +174,14 @@
                   <div class="comments">11:03:53 am</div>
                 </div>
                 <div class="col-action comments">
-                  <i class="fa fa-ellipsis-h mr-3"></i>
-                  <span class="action-collapse-icon" v-b-toggle.collapse2>
-                    <i class="fa fa-caret-down"></i>
-                  </span>
+                  <i class="fa fa-ellipsis-h mr-3" v-b-toggle.collapse2></i>
+                  <b-dropdown variant="link">
+                    <b-dropdown-item>Create a copy</b-dropdown-item>
+                    <b-dropdown-item>Save as template</b-dropdown-item>
+                    <b-dropdown-item>History</b-dropdown-item>
+                    <b-dropdown-item>Export as CSV</b-dropdown-item>
+                    <b-dropdown-item>Delete</b-dropdown-item>
+                  </b-dropdown>
                 </div>
               </div>
             </div>
@@ -252,15 +260,17 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <span class="comments mr-3">(1~25/57) Per page</span>
-          <span class="mr-3">
-            <strong>10</strong>
-          </span>
-          <span class="mr-3 comments">25</span>
-          <span class="mr-3 comments">50</span>
-          <span class="mr-3 comments">100</span>
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <span class="comments mr-3">Per page</span>
+          <div>
+            <span class="mr-3">
+              <strong>10</strong>
+            </span>
+            <span class="mr-3 comments">25</span>
+            <span class="mr-3 comments">50</span>
+            <span class="mr-3 comments">100</span>
+          </div>
         </div>
 
         <b-pagination align="right" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
@@ -274,7 +284,7 @@ import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
 
 export default {
-  name: "ActionRequired",
+  name: "DocumentList",
   components: {
     UserIcon,
     UserSelect
@@ -282,8 +292,8 @@ export default {
   data() {
     return {
       currentPage: 1,
-      period: "Last 6 Months",
-      progress_status: "In Progress",
+      period: "Date",
+      progress_status: "Status",
       actions: [
         {
           setted: false,
@@ -307,6 +317,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./ActionRequired.scss";
+@import "./DocumentList.scss";
 </style>
 

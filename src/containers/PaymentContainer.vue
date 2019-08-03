@@ -30,11 +30,11 @@
           <div class="your-cur-plan">
             <span class="comments ml-3 mr-1">Your current plan:</span>
             <span>
-              <UserIcon icon="smile.png" />Free
+              <UserIcon icon="smile.png" class="mr-2" />Free
             </span>
           </div>
           <div class="sign-doc-type">
-            <div class="clickable-text">DOCUMENTS</div>
+            <div class="clickable-text" v-on:click="gotoPage('/payment/document-list')">DOCUMENTS</div>
             <div class="clickable-text">TEMPLATES</div>
           </div>
           <DefaultHeaderDropdownAccnt />
@@ -118,12 +118,12 @@ export default {
         },
         {
           name: "Signature",
-          url: "/payment/action-required",
+          url: "/signature",
           icon: "fa fa-pencil"
         },
         {
           name: "Pricing Plan",
-          url: "/payment/pricing-plan",
+          url: "/payment/upgrade-plan",
           icon: "fa fa-tag"
         },
         {

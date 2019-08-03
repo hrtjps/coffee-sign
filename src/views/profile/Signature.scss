@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield");
+.sign-stamp {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px;
+    border: dashed 2px #ebebeb;
+    background-color: #fcfafa;
+    .header {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.31;
+      color: #2e221e;
+      margin-bottom: 10px;
+    }
+  }
+  .sign-signature {
+    padding: 15px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    .sign {
+      font-family: "Mrs Saint Delafield";
+      font-size: 30px;
+      line-height: 1.53;
+      color: #775649;
+      text-align: center;
+    }
+    .initials {
+      font-size: 40px;
+    }
+  }
+
+  .mark {
+    width: 100px;
+    height: 100px;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    .action {
+      margin: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+  .stamp {
+    width: calc(50% - 10px);
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    // @media (max-width: 500px) {
+    //   width: 100%;
+    //   margin: 0px;
+    // }
+    .stamp-action {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-between;
+      .action {
+        margin: 7px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+}

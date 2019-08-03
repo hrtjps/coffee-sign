@@ -1,98 +1,100 @@
 @import url("https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield");
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: 1200px) {
-    flex-wrap: wrap;
-  }
-  .user-happy {
-    display: flex;
-    align-items: center;
-    max-width: 700px;
-  }
-  .user-actions {
+.normal-sign {
+  .profile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .user-action {
-      border-right: solid 1px #d8d4d4;
-      padding: 0 25px;
-      margin-right: 10px;
-      @media (max-width: 1200px) {
-        padding: 0 5px;
-        margin-right: 5px;
-      }
-      .action-numbers {
-        height: 48px;
-        font-size: 36px;
-        font-weight: 500;
-        line-height: 1.33;
-        color: #775649;
-      }
-      .action-type {
-        margin-top: 21px;
-        height: 21px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.56;
-        text-align: left;
-        color: #2e221e;
-      }
+    @media (max-width: 1200px) {
+      flex-wrap: wrap;
     }
-    .user-plan {
-      padding: 0 25px;
+    .user-happy {
       display: flex;
-      @media (max-width: 1200px) {
-        padding: 0 5px;
-      }
-      img {
-        min-width: 40px;
-      }
-      .upgrade-content {
-        margin-left: 10px;
-        .upgrade-to {
-          font-size: 26px;
+      align-items: center;
+      max-width: 700px;
+    }
+    .user-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .user-action {
+        border-right: solid 1px #d8d4d4;
+        padding: 0 25px;
+        margin-right: 10px;
+        @media (max-width: 1200px) {
+          padding: 0 5px;
+          margin-right: 5px;
+        }
+        .action-numbers {
+          height: 48px;
+          font-size: 36px;
           font-weight: 500;
-          line-height: 1.31;
-          text-align: left;
+          line-height: 1.33;
           color: #775649;
         }
-        .click-here {
-          font-size: 14px;
-          line-height: 1.79;
+        .action-type {
+          margin-top: 21px;
+          height: 21px;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.56;
           text-align: left;
-          color: #ef634c;
+          color: #2e221e;
+        }
+      }
+      .user-plan {
+        padding: 0 25px;
+        display: flex;
+        @media (max-width: 1200px) {
+          padding: 0 5px;
+        }
+        img {
+          min-width: 40px;
+        }
+        .upgrade-content {
+          margin-left: 10px;
+          .upgrade-to {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 1.31;
+            text-align: left;
+            color: #775649;
+          }
+          .click-here {
+            font-size: 14px;
+            line-height: 1.79;
+            text-align: left;
+            color: #ef634c;
+          }
         }
       }
     }
   }
-}
-.sign-signature {
-  padding: 15px;
-  .header {
-    height: 21px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.56;
-    text-align: left;
-    color: #2e221e;
-  }
-  .sign {
-    font-family: "Mrs Saint Delafield";
-    font-size: 58px;
-    line-height: 1.53;
-    color: #775649;
-    padding: 48px 0;
-    text-align: center;
-
-    @media (max-width: 500px) {
-      padding: 15px 0;
+  .sign-signature {
+    padding: 15px;
+    .header {
+      height: 21px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.56;
+      text-align: left;
+      color: #2e221e;
     }
-  }
-  .initials {
-    font-size: 73px;
-    margin-left: -30px;
+    .sign {
+      font-family: "Mrs Saint Delafield";
+      font-size: 58px;
+      line-height: 1.53;
+      color: #775649;
+      padding: 48px 0;
+      text-align: center;
+
+      @media (max-width: 500px) {
+        padding: 15px 0;
+      }
+    }
+    .initials {
+      font-size: 73px;
+      margin-left: -30px;
+    }
   }
 }
 .message {

@@ -9,8 +9,12 @@
         </div>
       </div>
       <hr class="mb-4" />
-      <div class="row plans">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3" v-for="(plan, index) in plans" :key="index">
+      <div class="row plans px-2">
+        <div
+          class="col-12 col-sm-6 col-md-6 col-lg-3 px-1"
+          v-for="(plan, index) in plans"
+          :key="index"
+        >
           <div class="plan-card content-card">
             <div class="plan-card-head">
               <div class="plan-title">{{plan.title}}</div>
@@ -79,7 +83,7 @@ export default {
         {
           title: "Standard",
           price: 25,
-          monthly: 30,
+          monthly: 10,
           limit: "30 Times total"
         },
         {
