@@ -68,7 +68,7 @@
     <b-modal id="modal-1" ref="welcome-modal" hide-footer hide-header size="lg">
       <div class="welcome-modal">
         <div class="welcome-header">
-          <img class="navbar-brand-full" src="img/logo3x.png" alt height="65" width="200" />
+          <img class="navbar-brand-full" src="img/dark@3xvv.png" alt height="65" width="200" />
         </div>
         <div class="welcome-body">
           <h1>Welcome!</h1>
