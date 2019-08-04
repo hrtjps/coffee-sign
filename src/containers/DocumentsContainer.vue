@@ -286,6 +286,9 @@ export default {
           name: "Roger Waters",
           url: "/",
           icon: "fa fa-user",
+          // label: {
+          //   variant: "danger"
+          // },
           children: [
             {
               name: "Signature",
@@ -343,6 +346,9 @@ export default {
           name: "Barrett Nash-Willi",
           url: "/buttons",
           icon: "fa fa-user",
+          // label: {
+          //   variant: "info"
+          // },
           children: [
             {
               name: "Buttons",
@@ -355,7 +361,9 @@ export default {
           name: "Barrett Nash-Willi",
           url: "/editors",
           icon: "fa fa-user",
-
+          // label: {
+          //   variant: "warning"
+          // },
           children: [
             {
               name: "Code Editors",
