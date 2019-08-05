@@ -2,18 +2,10 @@
   <div class="app">
     <div class="app-body">
       <AppSidebar fixed>
-        <b-link class="navbar-brand header" to="/">
-          <img
-            class="navbar-brand-full"
-            src="img/logo3x.png"
-            width="125"
-            height="41"
-            alt="Coffee Sign"
-          />
-        </b-link>
+        <AppLogo></AppLogo>
         <div class="p-3 side-menu">
           <div class="w-100">
-            <b-button block variant="primary">Cancel</b-button>
+            <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
             <div class="prepare-tool-nav" v-if="show_tool_menu">
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>
@@ -65,7 +57,7 @@
         <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved..</span>
       </div>
     </TheFooter>
-    <b-modal id="modal-1" ref="welcome-modal" hide-footer hide-header size="lg">
+    <b-modal id="modal-1" ref="welcomemodal" @hidden="hideModal" hide-footer hide-header size="lg">
       <div class="welcome-modal">
         <div class="welcome-header">
           <img class="navbar-brand-full" src="img/dark@3xvv.png" alt height="65" width="200" />
@@ -90,7 +82,7 @@
                   <div
                     v-if="isError(form_data.first_name)"
                     class="error-text"
-                  >Please input Frist Name</div>
+                  >Please input First Name</div>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -242,10 +234,12 @@ import DefaultHeaderDropdownTasks from "./DefaultHeaderDropdownTasks";
 import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
 import UserSelect from "../components/UserSelect";
+import AppLogo from "../components/AppLogo";
 
 export default {
   name: "DocumentsContainer",
   components: {
+    AppLogo,
     UserSelect,
     Logout,
     UpgradePlan,
@@ -387,10 +381,16 @@ export default {
     }
   },
   mounted() {
-    this.$refs["welcome-modal"].show();
+    console.log(this.$route);
+    if (!this.$route.query.withoutModal) {
+      this.$refs["welcomemodal"].show();
+    }
     this.setOptions();
   },
   methods: {
+    hideModal() {
+      this.gotoPage("/payment/normal-sign");
+    },
     changePurposeValue(e) {
       this.form_data.purpose = e;
     },
@@ -413,7 +413,7 @@ export default {
       this.form_data.error_flag = true;
       if (this.isError(this.form_data.first_name)) return;
       if (this.isError(this.form_data.last_name)) return;
-      this.$refs["welcome-modal"].hide();
+      this.$refs["welcomemodal"].hide();
     },
     gotoPage(page) {
       this.$router.push({ path: page });

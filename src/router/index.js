@@ -68,7 +68,7 @@ export default new Router({
       children: [
         {
           path: "account",
-          name: "NormalSign",
+          name: "Account",
           component: Account
         },
         {

@@ -177,13 +177,13 @@
                 <span class="comments">Per month</span>
                 <span class="price">
                   ${{plan.price}}
-                <sup>.00</sup>
+                  <sup>.00</sup>
                 </span>
               </div>
             </div>
             <UserSelect
               v-bind:value="subscription"
-              v-bind:items="['Monthly Subscription', '1', '2', '3']"
+              v-bind:items="['Monthly Subscription', 'Annuel Subscription']"
               @changeValue="subscription=$event"
               class="mb-0 mt-3"
               style="min-width:105px"

@@ -66,18 +66,15 @@
     </div>
     <b-modal id="modal-1" ref="edit-payment-method-modal" hide-footer size="lg">
       <div class="payment-modal">
-        <h1>Edit payment method</h1>
+        <h1>Change payment method</h1>
         <form class="w-100 mt-5">
           <div class="form-group">
             <label for="name">Select payment method</label>
-            <select class="form-control" id="purpose">
-              <option>Purpose of using</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <UserSelect
+              :value="payment_method"
+              :items="['Credit Card', 'Paypal']"
+              @changeValue="payment_method = $event"
+            />
           </div>
           <div class="form-group">
             <label for="name">Credit/debit card number</label>
@@ -97,9 +94,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="first_name"
+                  id="exp_month"
                   placeholder="Expiration month"
-                  name="first_name"
+                  name="exp_month"
                   required
                 />
               </div>
@@ -110,9 +107,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="last_name"
+                  id="exp_year"
                   placeholder="Expiration year"
-                  name="last_name"
+                  name="exp_year"
                   required
                 />
               </div>
@@ -151,9 +148,9 @@
             <input
               type="text"
               class="form-control"
-              id="company"
+              id="billing_addr"
               placeholder="Enter your billing address"
-              name="company"
+              name="billing_addr"
               required
             />
           </div>
@@ -164,9 +161,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="company"
+                  id="zip_code"
                   placeholder="Zip code"
-                  name="company"
+                  name="zip_code"
                   required
                 />
               </div>
@@ -174,14 +171,11 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="name">Country/Region</label>
-                <select class="form-control" id="purpose">
-                  <option>Select Country</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <UserSelect
+                  :value="country_region"
+                  :items="['Select Country', 'United States']"
+                  @changeValue="country_region = $event"
+                />
               </div>
             </div>
           </div>
@@ -198,14 +192,18 @@
 
 <script>
 import UserIcon from "../../components/UserIcon";
+import UserSelect from "../../components/UserSelect";
 
 export default {
   name: "PricingPlan",
   components: {
+    UserSelect,
     UserIcon
   },
   data() {
     return {
+      payment_method: "Credit Card",
+      country_region: "Select Country",
       countries: [],
       swtich_annual: true,
       plans: [{}]

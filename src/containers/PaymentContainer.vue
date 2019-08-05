@@ -2,18 +2,10 @@
   <div class="app">
     <div class="app-body">
       <AppSidebar fixed>
-        <b-link class="navbar-brand header" to="/#">
-          <img
-            class="navbar-brand-full"
-            src="img/logo3x.png"
-            width="125"
-            height="41"
-            alt="Coffee Sign"
-          />
-        </b-link>
+        <AppLogo />
         <div class="p-3 side-menu">
           <div class="w-100">
-            <b-button block variant="other">Start Now</b-button>
+            <b-button block variant="other" v-on:click="gotoStartPage()">Start Now</b-button>
             <div class="prepare-tool-nav">
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>
@@ -82,10 +74,12 @@ import DefaultHeaderDropdownTasks from "./DefaultHeaderDropdownTasks";
 import UserIcon from "../components/UserIcon";
 import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
+import AppLogo from "../components/AppLogo";
 
 export default {
   name: "DocumentsContainer",
   components: {
+    AppLogo,
     Logout,
     UserIcon,
     UpgradePlan,
@@ -149,6 +143,12 @@ export default {
   methods: {
     gotoPage(page) {
       this.$router.push({ path: page });
+    },
+    gotoStartPage() {
+      this.$router.push({
+        path: "/add-document",
+        query: { withoutModal: true }
+      });
     }
   },
   watch: {
