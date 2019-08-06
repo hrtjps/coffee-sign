@@ -213,7 +213,7 @@
                 </div>
               </div>
             </div>
-            <button v-on:click="getStarted()" class="btn btn-primary w-100">Get Started</button>
+            <button v-on:click="getStarted()" class="btn btn-primary w-100">Update</button>
           </div>
         </div>
       </div>
