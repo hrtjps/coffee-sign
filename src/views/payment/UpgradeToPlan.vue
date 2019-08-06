@@ -215,8 +215,8 @@ var toastrConfigs = {
   delay: 0,
   timeOut: 5000,
   hideDuration: 500,
-  progressBar: true
-  // icon: "img/icons/Info.png"
+  progressBar: true,
+  icon: "img/icons/Info@2x.png"
 };
 Vue.use(CxltToastr, toastrConfigs);
 
@@ -267,7 +267,7 @@ export default {
   methods: {
     upgradeMyPlan() {
       this.$toast.success({
-        title: "Success Message",
+        title: "Congratulation!",
         message: "Selected " + this.plan.title + " plan!"
       });
       this.$router.push({
