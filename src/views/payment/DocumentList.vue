@@ -8,13 +8,13 @@
             v-bind:value="progress_status"
             v-bind:items="['Status', 'All', 'In Progress', 'Completed', 'Declined', 'Voided']"
             @changeValue="changeProgressStatus"
-            class="mb-0 mx-1"
+            class="mb-0 mx-1 mobile-style"
           />
           <UserSelect
             v-bind:value="period"
             v-bind:items="['Date', 'Last 24 Hours', 'Last Week', 'Last 30 Days', 'Last 6 Months', 'Custom']"
             @changeValue="changePeriod"
-            class="mb-0 mx-1"
+            class="mb-0 mx-1 mobile-style"
           />
           <b-input-group class="min-width-378px ml-1">
             <b-form-input placeholder="Type here to search..." autocomplete="current-password"></b-form-input>

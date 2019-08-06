@@ -20,9 +20,9 @@
           <Logout></Logout>
         </div>
       </AppSidebar>
-      <main class="main">
+      <main class="main" v-on:click="clickMain">
         <AppHeader class="pr-3">
-          <SidebarToggler class="d-lg-none" display="md" mobile />
+          <SidebarToggler ref="sidebarToggleBtn" class="d-lg-none" display="md" mobile />
           <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
           <UpgradePlan class="d-none d-sm-block"></UpgradePlan>
           <div class="your-cur-plan">
@@ -150,6 +150,12 @@ export default {
   },
   mounted() {},
   methods: {
+    clickMain(e) {
+      if (e.target.className == "main") {
+        console.log(e);
+        this.$refs.sidebarToggleBtn.toggle();
+      }
+    },
     gotoPage(page) {
       this.$router.push({ path: page });
     },
