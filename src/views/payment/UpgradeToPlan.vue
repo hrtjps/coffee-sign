@@ -82,28 +82,32 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="name">First name</label>
                   <input
                     type="text"
                     class="form-control"
                     id="first_name"
                     placeholder="First Name"
                     name="first_name"
-                    required
+                    v-bind:class="{'input-error': isError(first_name)}"
+                    v-model="first_name"
+                    @focus="error_flag = true"
                   />
+                  <div v-if="isError(first_name)" class="error-text">Please input First Name</div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="name">Last name</label>
                   <input
                     type="text"
                     class="form-control"
                     id="last_name"
                     placeholder="Last Name"
                     name="last_name"
-                    required
+                    v-bind:class="{'input-error': isError(last_name)}"
+                    v-model="last_name"
+                    @focus="error_flag = true"
                   />
+                  <div v-if="isError(last_name)" class="error-text">Please input Last Name</div>
                 </div>
               </div>
             </div>
@@ -236,7 +240,11 @@ export default {
       region: "Select Region",
       month: "Month",
       year: "Year",
-      years: []
+      years: [],
+
+      error_flag: false,
+      first_name: "",
+      last_name: ""
     };
   },
   created() {
@@ -266,6 +274,15 @@ export default {
     );
   },
   methods: {
+    isError(value) {
+      return (
+        this.error_flag &&
+        (value === undefined ||
+          value === null ||
+          (typeof value === "object" && Object.keys(value).length === 0) ||
+          (typeof value === "string" && value.trim().length === 0))
+      );
+    },
     upgradeMyPlan() {
       this.$toast.success({
         title: "Congratulation!",
