@@ -111,13 +111,10 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="name">Country</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="country"
-                    placeholder="Country"
-                    name="country"
-                    required
+                  <UserSelect
+                    v-bind:value="country"
+                    v-bind:items="countries"
+                    @changeValue="country=$event"
                   />
                 </div>
               </div>
@@ -183,7 +180,7 @@
             </div>
             <UserSelect
               v-bind:value="subscription"
-              v-bind:items="['Monthly Subscription', 'Annuel Subscription']"
+              v-bind:items="['Monthly Subscription', 'Annual Subscription']"
               @changeValue="subscription=$event"
               class="mb-0 mt-3"
               style="min-width:105px"
@@ -209,6 +206,19 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
+import axios from "axios";
+import Vue from "vue";
+import CxltToastr from "cxlt-vue2-toastr";
+var toastrConfigs = {
+  position: "top right",
+  showDuration: 500,
+  delay: 0,
+  timeOut: 5000,
+  hideDuration: 500,
+  progressBar: true
+  // icon: "img/icons/Info.png"
+};
+Vue.use(CxltToastr, toastrConfigs);
 
 export default {
   name: "UpgradeToPlan",
@@ -220,8 +230,9 @@ export default {
     return {
       plan: null,
       subscription: "Monthly subscription",
-      country: "",
-      region: "",
+      country: "Select Country",
+      countries: [],
+      region: "Select Region",
       month: "Month",
       year: "Year",
       years: []
@@ -240,9 +251,25 @@ export default {
     for (let i = start; i < start + 10; i++) {
       this.years.push((i + 1900).toString());
     }
+    axios({ method: "GET", url: "https://restcountries.eu/rest/v1/all" }).then(
+      result => {
+        this.countries = [];
+        this.countries.push("Select Country");
+        result.data.forEach(country => {
+          this.countries.push(country.name);
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   },
   methods: {
     upgradeMyPlan() {
+      this.$toast.success({
+        title: "Success Message",
+        message: "Selected " + this.plan.title + " plan!"
+      });
       this.$router.push({
         path: "/payment/upgrade-plan",
         query: { id: this.id }

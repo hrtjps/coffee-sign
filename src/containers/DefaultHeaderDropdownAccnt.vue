@@ -26,7 +26,7 @@
         <span class="hello">Hello, Suzzane!</span>
       </template>
       <template slot="dropdown">
-        <b-dropdown-item v-on:click="gotoPage('/payment/normal-sign')">
+        <b-dropdown-item v-on:click="gotoPage('/profile')">
           <i class="fa fa-user" /> Profile
         </b-dropdown-item>
         <b-dropdown-item>

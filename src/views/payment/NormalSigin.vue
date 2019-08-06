@@ -38,17 +38,24 @@
             <div class="sign">Suzanne Thompson</div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-6 pr-1">
               <div class="content-card sign-signature">
                 <div class="header">INITIALS</div>
                 <div class="sign initials">ST</div>
+                <div class="text-right">
+                  <b-button variant="link" class="mr-1">Replace</b-button>|
+                  <b-button variant="link" class="ml-1">Remove</b-button>
+                </div>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 pl-1">
               <div class="content-card sign-signature">
                 <div class="header">STAMP</div>
                 <div class="sign">
                   <img src="img/payment/stamp.png" />
+                </div>
+                <div class="text-right">
+                  <b-button variant="link" class="mr-1">Upload</b-button>
                 </div>
               </div>
             </div>

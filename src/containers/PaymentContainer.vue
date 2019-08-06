@@ -6,6 +6,12 @@
         <div class="p-3 side-menu">
           <div class="w-100">
             <b-button block variant="other" v-on:click="gotoStartPage()">Start Now</b-button>
+            <b-button
+              variant="primary"
+              class="d-block d-sm-none"
+              block
+              to="/payment/pricing-plan"
+            >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav">
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>
@@ -18,7 +24,7 @@
         <AppHeader class="pr-3">
           <SidebarToggler class="d-lg-none" display="md" mobile />
           <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
-          <UpgradePlan></UpgradePlan>
+          <UpgradePlan class="d-none d-sm-block"></UpgradePlan>
           <div class="your-cur-plan">
             <span class="comments ml-3 mr-1">Your current plan:</span>
             <span>
@@ -26,8 +32,11 @@
             </span>
           </div>
           <div class="sign-doc-type">
-            <div class="clickable-text" v-on:click="gotoPage('/payment/document-list')">DOCUMENTS</div>
-            <div class="clickable-text">TEMPLATES</div>
+            <div
+              class="clickable-text mx-1 mx-sm-auto"
+              v-on:click="gotoPage('/payment/document-list')"
+            >DOCUMENTS</div>
+            <div class="clickable-text mx-1 mx-sm-auto">TEMPLATES</div>
           </div>
           <DefaultHeaderDropdownAccnt />
           <!--<AsideToggler class="d-lg-none" mobile />-->
@@ -146,7 +155,7 @@ export default {
     },
     gotoStartPage() {
       this.$router.push({
-        path: "/add-document",
+        path: "/docu-sign/add-document",
         query: { withoutModal: true }
       });
     }

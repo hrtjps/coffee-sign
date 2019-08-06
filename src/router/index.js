@@ -33,8 +33,8 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
-      path: "/",
-      redirect: "/add-document",
+      path: "/docu-sign",
+      redirect: "/docu-sign/add-document",
       name: "Documents",
       component: DocumentsContainer,
       children: [
@@ -78,31 +78,38 @@ export default new Router({
         }
       ]
     },
-
     {
       path: "/signature",
-      redirect: "/signature/signature",
-      name: "SigntureStamp",
+      redirect: "/signature/signature-stamp",
+      name: "Signature",
       component: PaymentContainer,
       children: [
         {
-          path: "signature",
-          name: "Signature",
+          path: "signature-stamp",
+          name: "SignatureStamp",
           component: Signature
         }
       ]
     },
     {
-      path: "/payment",
-      redirect: "/payment/normal-sign",
-      name: "Payment",
+      path: "/",
+      redirect: "/landing",
+      name: "LandingPage",
       component: PaymentContainer,
       children: [
         {
-          path: "normal-sign",
+          path: "/landing",
           name: "NormalSign",
           component: NormalSign
-        },
+        }
+      ]
+    },
+    {
+      path: "/payment",
+      redirect: "/payment/document-list",
+      name: "Payment",
+      component: PaymentContainer,
+      children: [
         {
           path: "document-list",
           name: "DocumentList",

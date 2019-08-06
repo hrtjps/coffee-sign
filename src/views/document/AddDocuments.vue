@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     moveNextPage() {
-      this.$router.push("/add-recipients");
+      this.$router.push("/docu-sign/add-recipients");
     }
   }
 };

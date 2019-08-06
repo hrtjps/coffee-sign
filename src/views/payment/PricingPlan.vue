@@ -68,14 +68,14 @@
       <div class="payment-modal">
         <h1>Change payment method</h1>
         <form class="w-100 mt-5">
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="name">Select payment method</label>
             <UserSelect
               :value="payment_method"
               :items="['Credit Card', 'Paypal']"
               @changeValue="payment_method = $event"
             />
-          </div>
+          </div>-->
           <div class="form-group">
             <label for="name">Credit/debit card number</label>
             <b-input-group class="pl-3">
@@ -173,7 +173,7 @@
                 <label for="name">Country/Region</label>
                 <UserSelect
                   :value="country_region"
-                  :items="['Select Country', 'United States']"
+                  :items="countries"
                   @changeValue="country_region = $event"
                 />
               </div>
@@ -193,6 +193,7 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
+import axios from "axios";
 
 export default {
   name: "PricingPlan",
@@ -208,6 +209,20 @@ export default {
       swtich_annual: true,
       plans: [{}]
     };
+  },
+  mounted() {
+    axios({ method: "GET", url: "https://restcountries.eu/rest/v1/all" }).then(
+      result => {
+        this.countries = [];
+        this.countries.push("Select Country");
+        result.data.forEach(country => {
+          this.countries.push(country.name);
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   },
   methods: {
     getFileType(fileName) {

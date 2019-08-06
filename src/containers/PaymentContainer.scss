@@ -70,7 +70,7 @@
   min-width: 180px;
 
   @media (max-width: 530px) {
-    flex-direction: column;
+    // flex-direction: column;
     min-width: 80px;
   }
 }

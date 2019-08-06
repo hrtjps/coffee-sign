@@ -127,7 +127,7 @@ export default {
       this.$refs["send-modal"].show();
     },
     moveBackPage() {
-      this.$router.push("/prepare");
+      this.$router.push("/docu-sign/prepare");
     },
     addRecipient() {
       this.recipients.push({

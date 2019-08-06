@@ -58,6 +58,7 @@
     }
     .store-src {
       margin-top: 10px;
+      min-width: 240px;
       .store-src-item {
         margin: 0 5px;
         opacity: 0.7;
@@ -102,7 +103,7 @@
 
     .none-top-margin {
       @media (min-width: 1320px) {
-        margin-top: 0px;
+        margin-top: 0px !important;
       }
     }
   }

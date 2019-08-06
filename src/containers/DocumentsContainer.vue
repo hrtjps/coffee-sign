@@ -6,9 +6,17 @@
         <div class="p-3 side-menu">
           <div class="w-100">
             <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
+
+            <b-button
+              variant="primary"
+              class="d-block d-sm-none"
+              block
+              to="/payment/pricing-plan"
+            >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav" v-if="show_tool_menu">
               <hr class="seperate-bar" />
-              <SidebarNav :navItems="nav"></SidebarNav>
+              <!-- <SidebarNav :navItems="nav"></SidebarNav> -->
+              <UserSidebar :navItems="nav"></UserSidebar>
             </div>
           </div>
           <Logout></Logout>
@@ -57,7 +65,7 @@
         <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved..</span>
       </div>
     </TheFooter>
-    <b-modal id="modal-1" ref="welcomemodal" @hidden="hideModal" hide-footer hide-header size="lg">
+    <b-modal id="modal-1" ref="welcomemodal" @hide="hideModal" hide-footer hide-header size="lg">
       <div class="welcome-modal">
         <div class="welcome-header">
           <img class="navbar-brand-full" src="img/dark@3xvv.png" alt height="65" width="200" />
@@ -235,10 +243,11 @@ import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
 import UserSelect from "../components/UserSelect";
 import AppLogo from "../components/AppLogo";
-
+import UserSidebar from "../components/UserSidebar";
 export default {
   name: "DocumentsContainer",
   components: {
+    UserSidebar,
     AppLogo,
     UserSelect,
     Logout,
@@ -265,6 +274,7 @@ export default {
   data() {
     return {
       currentStepNo: 0,
+      confirmed: false,
       form_data: {
         error_flag: false,
         first_name: "",
@@ -280,9 +290,7 @@ export default {
           name: "Roger Waters",
           url: "/",
           icon: "fa fa-user",
-          // label: {
-          //   variant: "danger"
-          // },
+          added_class: "User1-style",
           children: [
             {
               name: "Signature",
@@ -314,21 +322,6 @@ export default {
               url: "/base/jumbotrons",
               icon: "fa fa-calendar"
             },
-            // {
-            //   name: 'Check box',
-            //   url: '/base/list-groups',
-            //   icon: 'fa fa-check-square'
-            // },
-            // {
-            //   name: 'Radio Button',
-            //   url: '/base/list-groups',
-            //   icon: 'fa fa-dot-circle-o'
-            // },
-            // {
-            //   name: 'Dropdown',
-            //   url: '/base/list-groups',
-            //   icon: 'fa fa-toggle-down'
-            // },
             {
               name: "Attachments",
               url: "/base/list-groups",
@@ -340,9 +333,7 @@ export default {
           name: "Barrett Nash-Willi",
           url: "/buttons",
           icon: "fa fa-user",
-          // label: {
-          //   variant: "info"
-          // },
+          added_class: "User2-style",
           children: [
             {
               name: "Buttons",
@@ -355,9 +346,7 @@ export default {
           name: "Barrett Nash-Willi",
           url: "/editors",
           icon: "fa fa-user",
-          // label: {
-          //   variant: "warning"
-          // },
+          added_class: "User3-style",
           children: [
             {
               name: "Code Editors",
@@ -381,15 +370,25 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route);
+    this.confirmed = false;
     if (!this.$route.query.withoutModal) {
       this.$refs["welcomemodal"].show();
     }
     this.setOptions();
   },
   methods: {
-    hideModal() {
-      this.gotoPage("/payment/normal-sign");
+    hideModal(e) {
+      if (!this.confirmed) {
+        e.preventDefault();
+        this.gotoPage("/landing");
+      }
+    },
+    getStarted() {
+      this.form_data.error_flag = true;
+      if (this.isError(this.form_data.first_name)) return;
+      if (this.isError(this.form_data.last_name)) return;
+      this.confirmed = true;
+      this.$refs["welcomemodal"].hide();
     },
     changePurposeValue(e) {
       this.form_data.purpose = e;
@@ -408,12 +407,6 @@ export default {
           (typeof value === "object" && Object.keys(value).length === 0) ||
           (typeof value === "string" && value.trim().length === 0))
       );
-    },
-    getStarted() {
-      this.form_data.error_flag = true;
-      if (this.isError(this.form_data.first_name)) return;
-      if (this.isError(this.form_data.last_name)) return;
-      this.$refs["welcomemodal"].hide();
     },
     gotoPage(page) {
       this.$router.push({ path: page });
@@ -435,17 +428,21 @@ export default {
       }
     },
     setOptions() {
-      if (this.$router.history.current.fullPath == "/add-document") {
+      if (this.$router.history.current.fullPath == "/docu-sign/add-document") {
         this.currentStepNo = 0;
-      } else if (this.$router.history.current.fullPath == "/add-recipients") {
+      } else if (
+        this.$router.history.current.fullPath == "/docu-sign/add-recipients"
+      ) {
         this.currentStepNo = 1;
-      } else if (this.$router.history.current.fullPath == "/prepare") {
+      } else if (
+        this.$router.history.current.fullPath == "/docu-sign/prepare"
+      ) {
         this.currentStepNo = 2;
-      } else if (this.$router.history.current.fullPath == "/review") {
+      } else if (this.$router.history.current.fullPath == "/docu-sign/review") {
         this.currentStepNo = 3;
       }
 
-      if (this.$router.history.current.fullPath == "/prepare") {
+      if (this.$router.history.current.fullPath == "/docu-sign/prepare") {
         this.show_tool_menu = true;
       } else {
         this.show_tool_menu = false;

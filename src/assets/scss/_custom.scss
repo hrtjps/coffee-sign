@@ -57,6 +57,9 @@ h1 {
 .app-header {
   height: 56px !important;
 }
+.btn {
+  padding: 0.675rem 0.75rem;
+}
 .btn-primary {
   color: white !important;
   background-color: $col-primary;
@@ -728,4 +731,14 @@ label {
     background: #41302a;
     border-radius: 4px;
   }
+}
+
+.User1-style {
+  color: #ee9964 !important;
+}
+.User2-style {
+  color: #60ccd8 !important;
+}
+.User3-style {
+  color: #d5c45c !important;
 }

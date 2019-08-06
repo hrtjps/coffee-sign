@@ -219,10 +219,10 @@ export default {
       return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
     },
     moveNextPage() {
-      this.$router.push("/prepare");
+      this.$router.push("/docu-sign/prepare");
     },
     moveBackPage() {
-      this.$router.push("/add-document");
+      this.$router.push("/docu-sign/add-document");
     },
     addRecipient() {
       this.recipients.push({

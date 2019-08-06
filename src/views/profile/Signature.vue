@@ -73,7 +73,7 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 export default {
-  name: "Signature",
+  name: "SignatureStamp",
   components: {
     UserIcon
   },

@@ -36,7 +36,7 @@
         <b-button
           variant="outline-primary"
           style="min-width:153px;margin-top: 10px;"
-          :class="{'none-top-margin':files.length==0}"
+          :class="{'none-top-margin':files.length > 0}"
         >Go to My Templates</b-button>
       </form>
     </div>
