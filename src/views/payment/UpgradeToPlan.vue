@@ -216,6 +216,7 @@ var toastrConfigs = {
   timeOut: 5000,
   hideDuration: 500,
   progressBar: true,
+  color: "#00c292"
   // icon: "img/icons/Info@2x.png"
 };
 Vue.use(CxltToastr, toastrConfigs);
