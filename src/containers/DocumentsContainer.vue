@@ -22,9 +22,9 @@
           <Logout></Logout>
         </div>
       </AppSidebar>
-      <main class="main">
+      <main class="main" v-on:click="clickMain">
         <AppHeader class="pr-3">
-          <SidebarToggler class="d-lg-none" display="md" mobile />
+          <SidebarToggler ref="sidebarToggleBtn" class="d-lg-none" display="md" mobile />
           <!-- <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true /> -->
           <UpgradePlan class="d-none d-sm-block"></UpgradePlan>
           <div class="doc-timeline">
@@ -377,6 +377,12 @@ export default {
     this.setOptions();
   },
   methods: {
+    clickMain(e) {
+      if (e.target.className == "main") {
+        console.log(e);
+        this.$refs.sidebarToggleBtn.toggle();
+      }
+    },
     hideModal(e) {
       if (!this.confirmed) {
         e.preventDefault();
