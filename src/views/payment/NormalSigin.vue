@@ -36,6 +36,10 @@
           <div class="content-card sign-signature">
             <div class="header">SIGNATURE</div>
             <div class="sign">Suzanne Thompson</div>
+            <div class="text-right">
+              <b-button variant="link" class="mr-1">Replace</b-button>|
+              <b-button variant="link" class="ml-1">Remove</b-button>
+            </div>
           </div>
           <div class="row">
             <div class="col-6 pr-1">

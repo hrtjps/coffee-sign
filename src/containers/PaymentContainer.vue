@@ -10,6 +10,7 @@
               variant="primary"
               class="d-block d-sm-none"
               block
+              style="padding-top: 0.5rem;"
               to="/payment/pricing-plan"
             >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav">

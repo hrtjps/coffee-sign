@@ -18,7 +18,8 @@
           <div class="plan-card content-card">
             <div class="plan-card-head">
               <div class="plan-title">{{plan.title}}</div>
-              <UserIcon :icon="plan.title + '.png'" />
+              <!-- <UserIcon :icon="plan.title + '.png'" :height="26" :width="26" /> -->
+              <img v-bind:src="'img/icons/'+plan.title+'.png'" width="32" height="32" />
             </div>
             <div class="plan-card-head mt-4">
               <div class="comments">

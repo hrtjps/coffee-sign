@@ -218,12 +218,8 @@
         <div
           class="comments text-center"
           style="margin-bottom:30px"
-        >Thank You for using CoffeeSign! After all recipients finish signing, you will recieve an email with a link to the document.</div>
-        <button
-          type="submit"
-          class="btn btn-primary"
-          v-on:click="upgradeMyPlan()"
-        >Go to the Home page</button>
+        >Your plan is upgraded. Thank You for upgrading to {{plan.title}}! You can always downgrade when you are not in needs any more.</div>
+        <button type="submit" class="btn btn-primary" v-on:click="upgradeMyPlan()">OK</button>
       </div>
     </b-modal>
   </div>
