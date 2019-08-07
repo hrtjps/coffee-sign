@@ -126,7 +126,7 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary min-width-230px mt-4" v-on:click="addRecipient()">
+          <button class="btn btn-primary min-width-230px mt-4 mb-3" v-on:click="addRecipient()">
             <UserIcon icon="add-recipien.svg" class="mr-2" />Add Recipient
           </button>
         </div>
