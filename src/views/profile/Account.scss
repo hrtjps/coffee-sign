@@ -6,6 +6,8 @@
     @media (max-width: 1200px) {
       flex-wrap: wrap;
       justify-content: flex-start;
+      align-items: center;
+      max-height: 248px;
     }
     .user-happy {
       display: flex;
