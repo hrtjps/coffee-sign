@@ -3,8 +3,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 1200px) {
-      flex-wrap: wrap;
+    @media (max-width: 650px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: self-start;
     }
     .user-happy {
       display: flex;
