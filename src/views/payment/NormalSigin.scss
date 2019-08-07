@@ -97,6 +97,9 @@
     }
     .stamp {
       padding: 56px 0;
+      @media (max-width: 500px) {
+        padding: 47px 0;
+      }
       .upload-initials {
         opacity: 0.3;
         font-size: 26px;
@@ -104,6 +107,9 @@
         line-height: 1.31;
         text-align: center;
         color: #2e221e;
+        @media (max-width: 500px) {
+          font-size: 22px;
+        }
       }
     }
   }

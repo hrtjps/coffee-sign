@@ -1,6 +1,6 @@
 <template>
   <div class="app flex-row" ref="fileform">
-    <div class="w-100">
+    <div class="w-100" id="account">
       <h1>Personal Information</h1>
       <hr class="mb-4" />
       <div class="profile-header content-card">

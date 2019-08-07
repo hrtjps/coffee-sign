@@ -1,45 +1,47 @@
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: 1200px) {
-    flex-wrap: wrap;
-  }
-  .user-happy {
+#account{
+  .profile-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    max-width: 700px;
-    .user-name {
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1.31;
-      color: #2e221e;
+    @media (max-width: 1200px) {
+      flex-wrap: wrap;
     }
-  }
-  .user-connection {
-    .connect-social {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 1.56;
-      color: #2e221e;
-    }
-    .socials {
-      margin-top: 30px;
-      @media (max-width: 640px) {
-        margin-top: 10px;
+    .user-happy {
+      display: flex;
+      align-items: center;
+      max-width: 700px;
+      .user-name {
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.31;
+        color: #2e221e;
       }
-      .social-link {
-        width: 40px;
-        height: 40px;
+    }
+    .user-connection {
+      .connect-social {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.56;
+        color: #2e221e;
+      }
+      .socials {
+        margin-top: 30px;
         @media (max-width: 640px) {
-          width: 30px;
-          height: 30px;
+          margin-top: 10px;
+        }
+        .social-link {
+          width: 40px;
+          height: 40px;
+          @media (max-width: 640px) {
+            width: 30px;
+            height: 30px;
+          }
         }
       }
-    }
-    @media (max-width: 640px) {
-      margin-left: 105px;
-      margin-top: 30px;
+      @media (max-width: 640px) {
+        margin-left: 105px;
+        margin-top: 30px;
+      }
     }
   }
 }
