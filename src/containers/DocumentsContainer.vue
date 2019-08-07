@@ -65,10 +65,18 @@
         <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved..</span>
       </div>
     </TheFooter>
-    <b-modal id="modal-1" ref="welcomemodal" @hide="hideModal" hide-footer hide-header size="lg">
+    <b-modal
+      id="modal-1"
+      ref="welcomemodal"
+      @hide="hideModal"
+      hide-footer
+      centered
+      hide-header
+      size="lg"
+    >
       <div class="welcome-modal">
         <div class="welcome-header">
-          <img class="navbar-brand-full" src="img/dark@3xvv.png" alt height="65" width="200" />
+          <img class="navbar-brand-full" src="img/logo_white.svg" alt height="65" width="200" />
         </div>
         <div class="welcome-body">
           <h1>Welcome!</h1>

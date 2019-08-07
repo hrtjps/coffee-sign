@@ -90,7 +90,7 @@
         <button class="btn btn-primary min-width-124px m-1" v-on:click="moveNextPage()">Send</button>
       </div>
     </div>
-    <b-modal id="send-modal" ref="send-modal" hide-footer>
+    <b-modal id="send-modal" ref="send-modal" hide-footer centered>
       <div class="send-modal">
         <img src="img/icons/send.svg" class="mb-4" />
         <div class="you-done">You're Done</div>
