@@ -179,7 +179,12 @@
             <div class="plan-card-head">
               <div class="plan-title">
                 {{plan.title}}
-                <UserIcon :icon="plan.title+'.png'" class="ml-3" />
+                <img
+                  v-bind:src="'img/icons/'+plan.title+'.png'"
+                  width="32"
+                  height="32"
+                  class="ml-3"
+                />
               </div>
               <div>
                 <span class="comments">Per month</span>
