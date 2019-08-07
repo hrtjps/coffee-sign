@@ -9,9 +9,7 @@
           <div class="ml-3">
             <div class="user-name">Suzanne Thompson</div>
             <span class="comments">email_example@mail.com</span>
-            <div>
-              <b-button variant="link" class="p-0 mt-3 h-100">Change Avatar</b-button>
-            </div>
+            <b-button variant="link" class="p-0 mt-3 h-100">Change Avatar</b-button>
           </div>
         </div>
         <div class="user-connection">
