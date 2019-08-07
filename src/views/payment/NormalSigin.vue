@@ -51,11 +51,12 @@
             <div class="col-6 pl-1">
               <div class="content-card sign-signature">
                 <div class="header">STAMP</div>
-                <div class="sign">
-                  <img src="img/payment/stamp.png" />
-                </div>
-                <div class="text-right">
-                  <b-button variant="link" class="mr-1">Upload</b-button>
+                <div class="stamp">
+                  <b-button variant="link" block>
+                    <UserIcon icon="upload.svg" />
+                  </b-button>
+                  <b-button variant="link" block class="upload-initials">Upload Initials</b-button>
+                  <!-- <img src="img/payment/stamp.png" /> -->
                 </div>
               </div>
             </div>
@@ -66,20 +67,20 @@
         </div>
       </div>
     </div>
-    <div class="message">
-      <UserIcon icon="msg-smile.png" />
-    </div>
+    <Message />
   </div>
 </template>
 
 <script>
 import UserIcon from "../../components/UserIcon";
 import FileUpload from "../../components/FileUpload";
+import Message from "../../components/Message";
 export default {
   name: "NormalSign",
   components: {
     FileUpload,
-    UserIcon
+    UserIcon,
+    Message
   },
   methods: {
     upgradePlan() {

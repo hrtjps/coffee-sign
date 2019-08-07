@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,400italic");
 
 $col-primary: #8a6454;
 $col-primary-hover: #775649;
@@ -26,7 +25,7 @@ $font-color-primary: #2e221e;
 
 html,
 body {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   color: #2e221e;
   background-color: #e8e4e2;
   height: 100%;
@@ -515,7 +514,7 @@ h1 {
           &::before {
             left: 6px;
             right: unset;
-            background-image: url(../public/img/icons/play-button.png);
+            background-image: url(../public/img/icons/play-button.svg);
           }
           &:hover {
             background: #775649;
@@ -526,7 +525,7 @@ h1 {
   }
 }
 .sidebar .nav-link .nav-icon {
-  font-size: 1.3rem;
+  font-size: 1.1rem !important;
   margin-right: 10px;
   color: rgb(170, 165, 162);
 }

@@ -9,7 +9,7 @@
             <div class="recipient-head">
               <span class="name">RECIPIENT #{{index+1}}</span>
               <span v-on:click="removeRecipient(index)">
-                <UserIcon icon="delete.png" :button="true" />
+                <UserIcon icon="delete.svg" :button="true" />
               </span>
             </div>
             <div class="row">
@@ -33,20 +33,6 @@
                     </template>
                   </HeaderDropdown>
                 </ul>
-                <!-- <b-form-group>
-                  <b-input-group>
-                    <b-input-group-prepend>
-                      <b-input-group-text>
-                        <i class="fa" :class="getTypeIcon(recipient.sign_type)" />
-                      </b-input-group-text>
-                    </b-input-group-prepend>
-                    <b-form-select
-                      :plain="true"
-                      :options="sign_types"
-                      v-model="recipient.sign_type"
-                    ></b-form-select>
-                  </b-input-group>
-                </b-form-group>-->
               </div>
               <div class="col-md-6">
                 <b-form-group>
@@ -110,7 +96,7 @@
                     <b-input-group-prepend>
                       <b-input-group-text>
                         <!-- <i class="fa fa-lock"></i> -->
-                        <UserIcon icon="pass.png"></UserIcon>
+                        <UserIcon icon="pass.svg"></UserIcon>
                       </b-input-group-text>
                     </b-input-group-prepend>
                     <b-form-input
@@ -127,7 +113,7 @@
                     <b-input-group-prepend>
                       <b-input-group-text>
                         <!-- <i class="fa fa-lock"></i> -->
-                        <UserIcon icon="pass.png"></UserIcon>
+                        <UserIcon icon="pass.svg"></UserIcon>
                       </b-input-group-text>
                     </b-input-group-prepend>
                     <b-form-input
@@ -141,7 +127,7 @@
             </div>
           </div>
           <button class="btn btn-primary min-width-230px mt-4" v-on:click="addRecipient()">
-            <UserIcon icon="add-recipien.png" class="mr-2" />Add Recipient
+            <UserIcon icon="add-recipien.svg" class="mr-2" />Add Recipient
           </button>
         </div>
         <div class="col-md-4">
@@ -216,7 +202,7 @@ export default {
       }
     },
     getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
+      return "img/icons/" + fileName.substr(fileName.length - 3) + ".svg";
     },
     moveNextPage() {
       this.$router.push("/docu-sign/prepare");

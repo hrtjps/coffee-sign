@@ -60,3 +60,38 @@
     color: #ef634c;
   }
 }
+
+
+#done-modal {
+  @media (min-width: 620px) {
+    .modal-dialog {
+      max-width: 605px;
+      margin: 1.75rem auto;
+    }
+    .modal-content {
+      width: 605px;
+    }
+  }
+}
+.done-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 55px;
+  padding-top: 2px;
+  img {
+    margin-bottom: 25px;
+  }
+  .you-done {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    color: #41302a;
+    margin-bottom: 30px;
+  }
+}
+.modal-header {
+  border-bottom: none;
+}

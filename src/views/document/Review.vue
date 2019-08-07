@@ -58,7 +58,7 @@
                   <div class="w-100 d-flex justify-content-between flex-wrap">
                     <span class="subtitle">Barrett Nash-Williams</span>
                     <span class="ml-auto">
-                      <UserIcon icon="CC.png" class="mr-2"></UserIcon>
+                      <UserIcon icon="CC.svg" class="mr-2"></UserIcon>
                       <span>Receives a copy</span>
                     </span>
                   </div>
@@ -71,7 +71,7 @@
                   <div class="w-100 d-flex justify-content-between flex-wrap">
                     <span class="subtitle">William Jacobson</span>
                     <span class="ml-auto">
-                      <UserIcon icon="In personal signer.png" class="mr-2"></UserIcon>
+                      <UserIcon icon="In personal signer.svg" class="mr-2"></UserIcon>
                       <span>In personal signer</span>
                     </span>
                   </div>
@@ -92,7 +92,7 @@
     </div>
     <b-modal id="send-modal" ref="send-modal" hide-footer>
       <div class="send-modal">
-        <img src="img/add_doc/send.png" class="mb-4" />
+        <img src="img/icons/send.svg" class="mb-4" />
         <div class="you-done">You're Done</div>
         <div
           class="comments text-center"
@@ -120,9 +120,6 @@ export default {
     return {};
   },
   methods: {
-    getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
-    },
     moveNextPage() {
       this.$refs["send-modal"].show();
     },

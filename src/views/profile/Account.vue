@@ -18,16 +18,16 @@
           <div class="connect-social">Connect social networks</div>
           <div class="socials">
             <b-button variant="link" class="p-0 h-100">
-              <UserIcon icon="fb.png" class="mr-1 mr-sm-3" />
+              <UserIcon icon="fb.svg" class="mr-1 mr-sm-3 social-link" />
             </b-button>
             <b-button variant="link" class="p-0 h-100">
-              <UserIcon icon="g_plus.png" class="mr-1 mr-sm-3" />
+              <UserIcon icon="g_plus.svg" class="mr-1 mr-sm-3 social-link" />
             </b-button>
             <b-button variant="link" class="p-0 h-100">
-              <UserIcon icon="line_disabled.png" class="mr-1 mr-sm-3" />
+              <UserIcon icon="line_disabled.svg" class="mr-1 mr-sm-3 social-link" />
             </b-button>
             <b-button variant="link" class="p-0 h-100">
-              <UserIcon icon="talk_disabled.png" />
+              <UserIcon icon="talk_disabled.svg" class="social-link" />
             </b-button>
           </div>
         </div>
@@ -118,7 +118,7 @@
                 @changeValue="changePurposeValue"
               />
             </div>
-            <div class="row">
+            <div class="row" v-if="form_data.purpose != 'My Personnel use'">
               <div class="col-sm-6">
                 <div class="form-group">
                   <input
@@ -150,7 +150,7 @@
                 />
               </div>
             </div>
-            <div class="row">
+            <div class="row" v-if="form_data.purpose != 'My Personnel use'">
               <div class="col-sm-6">
                 <div class="form-group">
                   <input
@@ -262,6 +262,12 @@ export default {
           (typeof value === "object" && Object.keys(value).length === 0) ||
           (typeof value === "string" && value.trim().length === 0))
       );
+    },
+    getStarted() {
+      this.form_data.error_flag = true;
+      if (this.isError(this.form_data.first_name)) return;
+      if (this.isError(this.form_data.last_name)) return;
+      this.confirmed = true;
     }
   }
 };

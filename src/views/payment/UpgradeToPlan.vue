@@ -15,17 +15,18 @@
                   <div class="col-12 col-lg-6">
                     <div class="form-group">
                       <label for="name">Credit/debit card number</label>
-                      <b-input-group class="pl-3">
-                        <b-form-input
-                          placeholder="**** **** **** 5432"
-                          autocomplete="current-password"
-                        ></b-form-input>
+                      <b-input-group
+                        class="pl-3"
+                        v-bind:class="{'input-error': isError(card_number)}"
+                      >
+                        <b-form-input placeholder="**** **** **** 5432" v-model="card_number"></b-form-input>
                         <b-input-group-prepend class="mr-0">
                           <b-input-group-text class="h-auto">
-                            <UserIcon icon="mastercard.png" />
+                            <UserIcon icon="mastercard.svg" />
                           </b-input-group-text>
                         </b-input-group-prepend>
                       </b-input-group>
+                      <div v-if="isError(last_name)" class="error-text">Please input card number</div>
                     </div>
                   </div>
                   <div class="col-12 col-lg-6 pl-lg-0">
@@ -62,8 +63,10 @@
                           id="cvv"
                           placeholder="Your CVV"
                           name="cvv"
-                          required
+                          v-bind:class="{'input-error': isError(cvv)}"
+                          v-model="cvv"
                         />
+                        <div v-if="isError(cvv)" class="error-text">Please input CVV</div>
                       </div>
                     </div>
                   </div>
@@ -90,7 +93,6 @@
                     name="first_name"
                     v-bind:class="{'input-error': isError(first_name)}"
                     v-model="first_name"
-                    @focus="error_flag = true"
                   />
                   <div v-if="isError(first_name)" class="error-text">Please input First Name</div>
                 </div>
@@ -105,7 +107,6 @@
                     name="last_name"
                     v-bind:class="{'input-error': isError(last_name)}"
                     v-model="last_name"
-                    @focus="error_flag = true"
                   />
                   <div v-if="isError(last_name)" class="error-text">Please input Last Name</div>
                 </div>
@@ -131,8 +132,10 @@
                     id="state"
                     placeholder="State"
                     name="state"
-                    required
+                    v-bind:class="{'input-error': isError(state)}"
+                    v-model="state"
                   />
+                  <div v-if="isError(state)" class="error-text">Please input state</div>
                 </div>
               </div>
             </div>
@@ -146,8 +149,10 @@
                     id="street_addr"
                     placeholder="Street Address"
                     name="street_addr"
-                    required
+                    v-bind:class="{'input-error': isError(street_addr)}"
+                    v-model="street_addr"
                   />
+                  <div v-if="isError(street_addr)" class="error-text">Please input Street Address</div>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -159,8 +164,10 @@
                     id="zip_code"
                     placeholder="Zip code"
                     name="zip_code"
-                    required
+                    v-bind:class="{'input-error': isError(zip_code)}"
+                    v-model="zip_code"
                   />
+                  <div v-if="isError(zip_code)" class="error-text">Please input Zip code</div>
                 </div>
               </div>
             </div>
@@ -195,7 +202,7 @@
               <div class="limit-times">{{plan.limit}}</div>
             </div>
             <hr />
-            <b-button block variant="other" v-on:click="upgradeMyPlan()">Upgrade my plan!</b-button>
+            <b-button block variant="other" v-on:click="showModal()">Upgrade my plan!</b-button>
             <div class="mt-3">
               By clicking "Upgrade my plan!" you agree to the
               <b-button variant="link" class="p-0">Terms and Conditions</b-button>.
@@ -204,6 +211,21 @@
         </div>
       </div>
     </div>
+    <b-modal id="done-modal" ref="done-modal" hide-footer>
+      <div class="done-modal">
+        <img src="img/icons/send.svg" class="mb-4" />
+        <div class="you-done">You're Done</div>
+        <div
+          class="comments text-center"
+          style="margin-bottom:30px"
+        >Thank You for using CoffeeSign! After all recipients finish signing, you will recieve an email with a link to the document.</div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          v-on:click="upgradeMyPlan()"
+        >Go to the Home page</button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -244,7 +266,12 @@ export default {
 
       error_flag: false,
       first_name: "",
-      last_name: ""
+      last_name: "",
+      card_number: "",
+      cvv: "",
+      state: "",
+      street_addr: "",
+      zip_code: ""
     };
   },
   created() {
@@ -274,6 +301,17 @@ export default {
     );
   },
   methods: {
+    showModal() {
+      this.error_flag = true;
+      if (this.isError(this.first_name)) return;
+      if (this.isError(this.last_name)) return;
+      if (this.isError(this.card_number)) return;
+      if (this.isError(this.cvv)) return;
+      if (this.isError(this.state)) return;
+      if (this.isError(this.street_addr)) return;
+      if (this.isError(this.zip_code)) return;
+      this.$refs["done-modal"].show();
+    },
     isError(value) {
       return (
         this.error_flag &&

@@ -7,7 +7,7 @@
         <div>
           <div class="payment-header">Personal Monthly Plan</div>
           <div class="d-flex align-items-center">
-            <UserIcon icon="mastercard.png" />
+            <UserIcon icon="mastercard.svg" />
             <span class="mastercard ml-2">MasterCard ****5432</span>
             <b-button variant="link" class="ml-2" v-on:click="editPaymentMethod()">Edit Card</b-button>
           </div>
@@ -82,7 +82,7 @@
               <b-form-input placeholder="**** **** **** 5432" autocomplete="current-password"></b-form-input>
               <b-input-group-prepend class="mr-0">
                 <b-input-group-text class="h-auto">
-                  <UserIcon icon="mastercard.png" />
+                  <UserIcon icon="mastercard.svg" />
                 </b-input-group-text>
               </b-input-group-prepend>
             </b-input-group>
@@ -225,9 +225,6 @@ export default {
     );
   },
   methods: {
-    getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
-    },
     clickSwitch() {
       this.swtich_annual = !this.swtich_annual;
     },

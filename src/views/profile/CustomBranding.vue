@@ -50,7 +50,7 @@
             <div class="form-group">
               <label>Logo Image</label>
               <div class="logo-img">
-                <img src="img/profile/logo_axisbits.png" />
+                <img src="img/profile/logo_axisbits.svg" />
               </div>
             </div>
             <b-button variant="link">Change logo</b-button>
@@ -187,7 +187,7 @@
           <div class="content-card">
             <div class="doc-format">
               <div class="doc-header">
-                <img src="img/profile/logo_axisbits_sm.png" />
+                <img src="img/profile/logo_axisbits_sm.svg" />
                 <span>Easy Electronic Contract Signed All</span>
               </div>
               <div class="doc-content">

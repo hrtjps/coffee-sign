@@ -5,10 +5,10 @@
         <h1>Prepare document</h1>
         <div class="d-flex align-items-center control-actions">
           <b-button variant="outline-primary">
-            <UserIcon icon="back.png" />
+            <UserIcon icon="past_changes.svg" :button="true" />
           </b-button>
           <b-button variant="outline-primary">
-            <UserIcon icon="next.png" />
+            <UserIcon icon="next_changes.svg" :button="true" />
           </b-button>
           <UserSelect
             v-bind:value="percent"
@@ -17,13 +17,13 @@
             class="mb-0 mx-2"
           />
           <b-button variant="outline-primary">
-            <UserIcon icon="Fill190.png" />
+            <UserIcon icon="comment.svg" :button="true" />
           </b-button>
         </div>
       </div>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-9 pr-0">
+        <div class="col-md-9 pr-3 pr-sm-0">
           <div class="doc-container">
             <div class="d-flex flex-wrap mb-5">
               <div class="doc-control">
@@ -183,9 +183,8 @@
                 </div>
               </div>
             </div>
-            <div class="doc-content w-100">
+            <div class="doc-content w-100 mb-5">
               <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
-              <!-- <img src="img/contents/content-1.png" class="w-100"> -->
             </div>
           </div>
         </div>
@@ -285,9 +284,6 @@ export default {
     selectPage(src, no) {
       this.viewPage = no;
       this.viewSrc = src;
-    },
-    getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
     },
     moveNextPage() {
       this.$router.push("/docu-sign/review");

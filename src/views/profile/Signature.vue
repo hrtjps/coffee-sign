@@ -7,7 +7,7 @@
         <div class="col-md-6 pr-md-0">
           <div class="content-card">
             <div class="content">
-              <img src="img/icons/contract.png" />
+              <img src="img/icons/contract.svg" />
               <div class="ml-3">
                 <div class="header">Your signature</div>
                 <div class="comments">If you want to add one more signature, click the button</div>
@@ -40,7 +40,7 @@
         <div class="col-md-6">
           <div class="content-card">
             <div class="content">
-              <img src="img/icons/stamp.png" />
+              <img src="img/icons/stamp.svg" />
               <div class="ml-3">
                 <div class="header">Your stamp</div>
                 <div class="comments">If you want to add one more stamp, click the button</div>

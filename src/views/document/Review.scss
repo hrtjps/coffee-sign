@@ -10,9 +10,14 @@
     background-color: #ffffff;
     padding: 25px;
     margin-right: 10px;
+    margin-bottom: 10px;
     width: 100%;
     min-width: 300px;
 
+    @media (max-width: 700px) {
+      
+      margin-right: 0;
+    }
     .email-msg {
       height: 185px;
     }

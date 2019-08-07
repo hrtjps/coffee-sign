@@ -104,9 +104,6 @@ export default {
     }
   },
   methods: {
-    getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
-    },
     clickSwitch() {
       this.switch_annual = !this.switch_annual;
     },

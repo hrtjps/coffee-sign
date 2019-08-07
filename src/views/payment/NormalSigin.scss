@@ -95,29 +95,16 @@
       font-size: 73px;
       margin-left: -30px;
     }
-  }
-}
-.message {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 999;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0 0 7px 0 rgba(239, 99, 76, 0.5);
-  background-color: #ef634c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .smile-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28px;
-    height: 31.4px;
-    background-color: #ffffff;
-    color: #ef634c;
+    .stamp {
+      padding: 56px 0;
+      .upload-initials {
+        opacity: 0.3;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.31;
+        text-align: center;
+        color: #2e221e;
+      }
+    }
   }
 }

@@ -2,12 +2,9 @@
   <div class="w-100">
     <div class="drag-drop-container" v-bind:class="{'drag-has-file':files.length>0}">
       <form ref="fileform" class="drag-drop-div" v-bind:class="{'has-files':files.length>0}">
-        <img
-          src="img/add_doc/folder-2.png"
-          srcset="img/add_doc/folder-2@2x.png 2x, img/add_doc/folder-2@3x.png 3x"
-          class="folder-2"
-          v-on:click="openBrows()"
-        />
+        <span v-on:click="openBrows()">
+          <UserIcon icon="folder.svg" class="folder-2" />
+        </span>
         <input type="file" ref="file" style="display: none" @change="onFileChange" />
         <div v-bind:class="{'has-file-upload-type':files.length>0}">
           <div class="drag-a-file" v-bind:class="{'has-file':files.length>0}">
@@ -24,10 +21,10 @@
           >Or you can use one of the following options:</div>
         </div>
         <div class="store-src" v-bind:class="{'none-top-margin':files.length>0}">
-          <img src="img/add_doc/dropbox.png" class="store-src-item" />
-          <img src="img/add_doc/google-drive.png" class="store-src-item" />
-          <img src="img/add_doc/onedrive.png" class="store-src-item" />
-          <img src="img/add_doc/box.png" class="store-src-item" />
+          <UserIcon icon="dropbox.svg" class="store-src-item" />
+          <UserIcon icon="google-drive.svg" class="store-src-item" />
+          <UserIcon icon="onedrive.svg" class="store-src-item" />
+          <UserIcon icon="box.svg" class="store-src-item" />
         </div>
         <div
           class="you-can-use"
@@ -52,7 +49,7 @@
         <div class="file-control">
           <i class="fa fa-ellipsis-h fa-lg mr-4"></i>
           <!-- <i class="cui-trash icons"></i> -->
-          <UserIcon icon="delete.png" :button="true"></UserIcon>
+          <UserIcon icon="delete.svg" :button="true"></UserIcon>
         </div>
       </div>
       <div v-if="files.length>0">
@@ -88,7 +85,7 @@ export default {
   },
   methods: {
     getFileType(fileName) {
-      return "img/add_doc/" + fileName.substr(fileName.length - 3) + ".png";
+      return "img/icons/" + fileName.substr(fileName.length - 3) + ".svg";
     },
     determineDragAndDropCapable() {
       var div = document.createElement("div");

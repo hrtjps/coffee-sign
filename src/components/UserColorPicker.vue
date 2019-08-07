@@ -11,7 +11,7 @@
       <b-input-group class="w-100">
         <b-input-group-prepend>
           <b-input-group-text>
-            <UserIcon icon="sharp.png"></UserIcon>
+            <UserIcon icon="sharp.svg"></UserIcon>
           </b-input-group-text>
         </b-input-group-prepend>
         <b-form-input
