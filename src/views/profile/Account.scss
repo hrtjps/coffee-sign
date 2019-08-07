@@ -5,6 +5,7 @@
     align-items: center;
     @media (max-width: 1200px) {
       flex-wrap: wrap;
+      justify-content: flex-start;
     }
     .user-happy {
       display: flex;
