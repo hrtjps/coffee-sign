@@ -34,7 +34,7 @@ export default {
     if (this.$route.query.files) {
       this.files = this.$route.query.files;
     } else {
-      this.files = [];
+      this.files = null;
     }
   },
   mounted() {}
