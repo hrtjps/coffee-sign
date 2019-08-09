@@ -3,23 +3,24 @@
     <div class="app-body">
       <AppSidebar fixed>
         <AppLogo></AppLogo>
-        <div class="p-3 w-100">
-          <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
+        <div class="p-3 side-menu">
+          <div class="w-100">
+            <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
 
-          <b-button
-            variant="primary"
-            class="d-block d-sm-none"
-            block
-            style="padding-top: 0.5rem;"
-            to="/payment/pricing-plan"
-          >Upgrade Your Plan</b-button>
-          <div class="prepare-tool-nav" v-if="show_tool_menu">
-            <hr class="seperate-bar" />
-            <!-- <UserSidebar :navItems="nav"></UserSidebar> -->
-            <UserSidebarEx :navItems="nav" @dragTool="dragTool"></UserSidebarEx>
+            <b-button
+              variant="primary"
+              class="d-block d-sm-none"
+              block
+              style="padding-top: 0.5rem;"
+              to="/payment/pricing-plan"
+            >Upgrade Your Plan</b-button>
+            <div class="prepare-tool-nav" v-if="show_tool_menu">
+              <hr class="seperate-bar" />
+              <UserSidebarEx :navItems="nav" @dragTool="dragTool"></UserSidebarEx>
+            </div>
           </div>
+          <Logout></Logout>
         </div>
-        <Logout class="logout"></Logout>
       </AppSidebar>
       <main class="main" v-on:click="clickMain">
         <AppHeader class="pr-3">
