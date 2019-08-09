@@ -109,7 +109,6 @@ export default {
       this.switch_annual = !this.switch_annual;
     },
     chooseThisPlan(toPlan, id) {
-      console.log(toPlan);
       this.$router.push({
         path: "/payment/upgrade-to-plan",
         query: { plan: toPlan, id: id }

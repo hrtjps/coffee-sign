@@ -219,12 +219,12 @@
     <b-modal id="done-modal" ref="done-modal" hide-footer>
       <div class="done-modal">
         <img src="img/icons/send.svg" class="mb-4" />
-        <div class="you-done">You're Done</div>
+        <div class="you-done">Your plan is upgraded</div>
         <div
           class="comments text-center"
           style="margin-bottom:30px"
-        >Your plan is upgraded. Thank You for upgrading to {{plan.title}}! You can always downgrade when you are not in needs any more.</div>
-        <button type="submit" class="btn btn-primary" v-on:click="upgradeMyPlan()">OK</button>
+        >Thank You for upgrading to {{plan.title}}! You can always downgrade when you are not in needs any more.</div>
+        <button type="submit" class="btn btn-primary" v-on:click="upgradeMyPlan()">Get start</button>
       </div>
     </b-modal>
   </div>
@@ -323,12 +323,12 @@ export default {
       );
     },
     upgradeMyPlan() {
-      this.$toast.success({
-        title: "Congratulation!",
-        message: "Selected " + this.plan.title + " plan!"
-      });
+      // this.$toast.success({
+      //   title: "Congratulation!",
+      //   message: "Selected " + this.plan.title + " plan!"
+      // });
       this.$router.push({
-        path: "/payment/upgrade-plan",
+        path: "/landing",
         query: { id: this.id }
       });
     }

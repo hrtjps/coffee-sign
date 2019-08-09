@@ -77,6 +77,9 @@ export default {
   components: {
     UserIcon
   },
+  props: {
+    prop_files: Object
+  },
   data() {
     return {
       dragAndDropCapable: false,
@@ -96,20 +99,29 @@ export default {
       );
     },
     onFileChange(e) {
-      console.log(e);
       var files = e.target.files || e.dataTransfer.files;
 
-      if (!files.length) return;
+      this.addFiles(files);
+    },
+    addFiles(files) {
+      if (!files || !files.length) return;
+      if (this.$route.path.indexOf("landing")) {
+        this.$router.push({
+          path: "/docu-sign/add-document",
+          query: { withoutModal: true, files: files }
+        });
+      }
       for (let i = 0; i < files.length; i++) {
         this.files.push(files[i]);
       }
     },
     openBrows() {
       this.$refs.file.click();
-      console.log;
     }
   },
   mounted() {
+    this.addFiles(this.prop_files);
+
     this.dragAndDropCapable = this.determineDragAndDropCapable();
     if (this.dragAndDropCapable) {
       [
@@ -136,9 +148,7 @@ export default {
       this.$refs.fileform.addEventListener(
         "drop",
         function(e) {
-          for (let i = 0; i < e.dataTransfer.files.length; i++) {
-            this.files.push(e.dataTransfer.files[i]);
-          }
+          this.addFiles(e.dataTransfer.files);
         }.bind(this)
       );
     }

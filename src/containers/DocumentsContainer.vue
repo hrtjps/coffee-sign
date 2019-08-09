@@ -3,25 +3,23 @@
     <div class="app-body">
       <AppSidebar fixed>
         <AppLogo></AppLogo>
-        <div class="p-3 side-menu">
-          <div class="w-100">
-            <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
+        <div class="p-3 w-100">
+          <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
 
-            <b-button
-              variant="primary"
-              class="d-block d-sm-none"
-              block
-              style="padding-top: 0.5rem;"
-              to="/payment/pricing-plan"
-            >Upgrade Your Plan</b-button>
-            <div class="prepare-tool-nav" v-if="show_tool_menu">
-              <hr class="seperate-bar" />
-              <!-- <SidebarNav :navItems="nav"></SidebarNav> -->
-              <UserSidebar :navItems="nav"></UserSidebar>
-            </div>
+          <b-button
+            variant="primary"
+            class="d-block d-sm-none"
+            block
+            style="padding-top: 0.5rem;"
+            to="/payment/pricing-plan"
+          >Upgrade Your Plan</b-button>
+          <div class="prepare-tool-nav" v-if="show_tool_menu">
+            <hr class="seperate-bar" />
+            <!-- <UserSidebar :navItems="nav"></UserSidebar> -->
+            <UserSidebarEx :navItems="nav" @dragTool="dragTool"></UserSidebarEx>
           </div>
-          <Logout></Logout>
         </div>
+        <Logout class="logout"></Logout>
       </AppSidebar>
       <main class="main" v-on:click="clickMain">
         <AppHeader class="pr-3">
@@ -252,11 +250,11 @@ import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
 import UserSelect from "../components/UserSelect";
 import AppLogo from "../components/AppLogo";
-import UserSidebar from "../components/UserSidebar";
+import UserSidebarEx from "../components/UserSidebarEx";
 export default {
   name: "DocumentsContainer",
   components: {
-    UserSidebar,
+    UserSidebarEx,
     AppLogo,
     UserSelect,
     Logout,
@@ -297,72 +295,18 @@ export default {
       nav: [
         {
           name: "Roger Waters",
-          url: "/",
           icon: "fa fa-user",
-          added_class: "User1-style",
-          children: [
-            {
-              name: "Signature",
-              url: "/base/breadcrumbs",
-              icon: "fa fa-pencil"
-            },
-            {
-              name: "Full Name",
-              url: "/base/cards",
-              icon: "fa fa-user"
-            },
-            {
-              name: "Company",
-              url: "/base/cards",
-              icon: "fa fa-building"
-            },
-            {
-              name: "Title",
-              url: "/base/carousels",
-              icon: "fa fa-briefcase"
-            },
-            {
-              name: "Text",
-              url: "/base/collapses",
-              icon: "fa fa-file-text"
-            },
-            {
-              name: "Date Signed",
-              url: "/base/jumbotrons",
-              icon: "fa fa-calendar"
-            },
-            {
-              name: "Attachments",
-              url: "/base/list-groups",
-              icon: "fa fa-paperclip"
-            }
-          ]
+          color: "#ee9964"
         },
         {
           name: "Barrett Nash-Willi",
-          url: "/buttons",
           icon: "fa fa-user",
-          added_class: "User2-style",
-          children: [
-            {
-              name: "Buttons",
-              url: "/buttons/standard-buttons",
-              icon: "fa fa-user"
-            }
-          ]
+          color: "#60ccd8"
         },
         {
           name: "Barrett Nash-Willi",
-          url: "/editors",
           icon: "fa fa-user",
-          added_class: "User3-style",
-          children: [
-            {
-              name: "Code Editors",
-              url: "/editors/code-editors",
-              icon: "fa fa-code"
-            }
-          ]
+          color: "#d5c45c"
         }
       ],
       show_tool_menu: false
@@ -386,9 +330,11 @@ export default {
     this.setOptions();
   },
   methods: {
+    dragTool() {
+      this.$refs.sidebarToggleBtn.toggle();
+    },
     clickMain(e) {
       if (e.target.className == "main") {
-        console.log(e);
         this.$refs.sidebarToggleBtn.toggle();
       }
     },

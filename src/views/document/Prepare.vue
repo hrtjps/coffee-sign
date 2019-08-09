@@ -24,17 +24,21 @@
       <hr class="mb-4" />
       <div class="row">
         <div class="col-md-9 pr-3 pr-sm-0">
-          <div class="doc-container">
-            <div class="d-flex flex-wrap mb-5">
-              <div class="doc-control">
-                <div class="doc-item" id="signature">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-signature">
-                    <i class="fa fa-pencil"></i>
-                    <span class="ml-2">Signature</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
+          <draggable :list="sign_items" class="doc-container" group="people" handle=".move">
+            <div v-for="(item, index) in sign_items" :key="index" class="doc-control">
+              <div class="doc-item">
+                <i class="fa fa-navicon control move"></i>
+                <div
+                  class="doc-item-control color-signature"
+                  v-bind:style="{color: item.color, borderColor: item.color}"
+                  :id="`popover-${index}`"
+                >
+                  <i :class="item.tool_icon"></i>
+                  <span class="ml-2">{{item.tool_name}}</span>
                 </div>
+                <i class="fa fa-times-circle-o control" v-on:click="sign_items.splice(index, 1)"></i>
+              </div>
+              <b-popover :target="`popover-${index}`" placement="bottom">
                 <div class="who-fill">
                   <div class="arrow-popover"></div>
                   <span>Who fills this out?</span>
@@ -45,147 +49,11 @@
                     value="Roger Waters"
                   ></b-form-select>
                 </div>
-              </div>
-
-              <div class="doc-control">
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-full-name">
-                    <i class="fa fa-user"></i>
-                    <span class="ml-2">Full Name</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                </div>
-              </div>
-              <div class="doc-control">
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-company">
-                    <i class="fa fa-building"></i>
-                    <span class="ml-2">Company</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                </div>
-              </div>
-              <div class="doc-control">
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-title">
-                    <i class="fa fa-briefcase"></i>
-                    <span class="ml-2">Title</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-company">
-                    <i class="fa fa-file-text"></i>
-                    <span class="ml-2">Dropdown</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                  <div class="mt-3">Enter value</div>
-                  <b-input class="mt-2"></b-input>
-                  <div class="add-one-more mt-3">
-                    <i class="fa fa-plus-circle"></i>
-                    <span>Add one more</span>
-                  </div>
-                </div>
-              </div>
-              <div class="doc-control">
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-text">
-                    <i class="fa fa-file-text"></i>
-                    <span class="ml-2">Text</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-attachment">
-                    <i class="fa fa-file-text"></i>
-                    <span class="ml-2">Attachments</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                </div>
-              </div>
-              <div class="doc-control">
-                <div class="doc-item">
-                  <i class="fa fa-navicon control"></i>
-                  <div class="doc-item-control color-date-signed">
-                    <i class="fa fa-calendar"></i>
-                    <span class="ml-2">MM/DD/YYYY</span>
-                  </div>
-                  <i class="fa fa-times-circle-o control"></i>
-                </div>
-
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                </div>
-              </div>
-              <div class="doc-control">
-                <div class="doc-item">
-                  <div class="doc-item-control color-signature icon">
-                    <i class="fa fa-square-o"></i>
-                  </div>
-                  <div class="doc-item-control color-text icon">
-                    <i class="fa fa-circle-o"></i>
-                  </div>
-                </div>
-              </div>
+              </b-popover>
             </div>
-            <div class="doc-content w-100 mb-5">
-              <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
-            </div>
+          </draggable>
+          <div class="doc-content w-100 mb-5">
+            <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
           </div>
         </div>
         <div class="col-md-3 pl-3">
@@ -249,16 +117,18 @@
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
 import pdf from "vue-pdf";
-
+import draggable from "vuedraggable";
 export default {
   name: "Prepare",
   components: {
     pdf,
     UserIcon,
-    UserSelect
+    UserSelect,
+    draggable
   },
   data() {
     return {
+      sign_items: [],
       percent: "50%",
       viewSrc: null,
       viewPage: 0,

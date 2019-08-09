@@ -481,7 +481,7 @@ h1 {
   section {
     position: unset !important;
     width: 100% !important;
-    max-height: 520px !important;
+    max-height: 240px !important;
     ul.nav {
       width: 100%;
       .nav-dropdown.open {
@@ -493,6 +493,7 @@ h1 {
         margin-bottom: 10px;
         ul.nav-dropdown-items {
           padding-left: 15px;
+          padding-right: 10px;
           li {
             a {
               i {
@@ -743,4 +744,11 @@ label {
 }
 .cxlt-toastr-container > div {
   opacity: 1 !important;
+}
+
+.logout {
+  position: absolute;
+  padding: 15px;
+  width: 100%;
+  bottom: 0;
 }

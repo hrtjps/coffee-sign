@@ -67,6 +67,7 @@
     "vue-tel-input": "^2.5.0",
     "vue-text-mask": "^6.1.2",
     "vue2-google-maps": "^0.10.2",
+    "vuedraggable": "^2.23.0",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {

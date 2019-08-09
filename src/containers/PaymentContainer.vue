@@ -3,23 +3,21 @@
     <div class="app-body">
       <AppSidebar fixed>
         <AppLogo />
-        <div class="p-3 side-menu">
-          <div class="w-100">
-            <b-button block variant="other" v-on:click="gotoStartPage()">Start Now</b-button>
-            <b-button
-              variant="primary"
-              class="d-block d-sm-none"
-              block
-              style="padding-top: 0.5rem;"
-              to="/payment/pricing-plan"
-            >Upgrade Your Plan</b-button>
-            <div class="prepare-tool-nav">
-              <hr class="seperate-bar" />
-              <SidebarNav :navItems="nav"></SidebarNav>
-            </div>
+        <div class="p-3 w-100">
+          <b-button block variant="other" v-on:click="gotoStartPage()">Start Now</b-button>
+          <b-button
+            variant="primary"
+            class="d-block d-sm-none"
+            block
+            style="padding-top: 0.5rem;"
+            to="/payment/pricing-plan"
+          >Upgrade Your Plan</b-button>
+          <div class="prepare-tool-nav">
+            <hr class="seperate-bar" />
+            <SidebarNav :navItems="nav"></SidebarNav>
           </div>
-          <Logout></Logout>
         </div>
+        <Logout class="logout"></Logout>
       </AppSidebar>
       <main class="main" v-on:click="clickMain">
         <AppHeader class="pr-3">
@@ -153,7 +151,6 @@ export default {
   methods: {
     clickMain(e) {
       if (e.target.className == "main") {
-        console.log(e);
         this.$refs.sidebarToggleBtn.toggle();
       }
     },

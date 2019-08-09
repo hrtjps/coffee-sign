@@ -192,7 +192,6 @@ export default {
   },
   methods: {
     getTypeIcon(_type) {
-      console.log(_type);
       if (_type == "Needs to Sign") {
         return "fa-pencil";
       } else if (_type == "Receives a Copy") {
