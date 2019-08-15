@@ -103,45 +103,45 @@ h1 {
 
 .btn-outline-primary {
   color: black !important;
-  background-color: $col-outline-primary;
-  border: solid 2px $col-outline-primary-border;
+  background-color: $col-outline-primary !important;
+  border: solid 2px $col-outline-primary-border !important;
   &:not(:disabled) {
     &:not(.disabled) {
       &:active {
-        background-color: $col-outline-primary-click;
-        border: solid 2px $col-outline-primary-border;
+        background-color: $col-outline-primary-click !important;
+        border: solid 2px $col-outline-primary-border !important;
         box-shadow: 0 0 3px 0 $col-outline-primary-hover !important;
       }
     }
     &:not(.disabled).active {
-      background-color: $col-outline-primary-click;
-      border: solid 2px $col-outline-primary-border;
+      background-color: $col-outline-primary-click !important;
+      border: solid 2px $col-outline-primary-border !important;
       box-shadow: 0 0 3px 0 $col-outline-primary-hover !important;
     }
   }
   &:disabled {
-    background-color: $col-outline-primary;
-    border: solid 2px $col-outline-primary-border;
+    background-color: $col-outline-primary !important;
+    border: solid 2px $col-outline-primary-border !important;
   }
   &:hover {
-    background-color: $col-outline-primary-hover;
-    border: solid 2px $col-outline-primary-border;
+    background-color: $col-outline-primary-hover !important;
+    border: solid 2px $col-outline-primary-border !important;
   }
   &:focus {
-    background-color: $col-outline-primary-hover;
-    border: solid 2px $col-outline-primary-border;
-    box-shadow: 0 0 3px 0 $col-outline-primary-hover;
+    background-color: $col-outline-primary-hover !important;
+    border: solid 2px $col-outline-primary-border !important;
+    box-shadow: 0 0 3px 0 $col-outline-primary-hover !important;
   }
 }
 .show {
   > .btn-outline-primary.dropdown-toggle {
-    background-color: $col-outline-primary-click;
-    border: solid 2px $col-outline-primary-border;
+    background-color: $col-outline-primary-click !important;
+    border: solid 2px $col-outline-primary-border !important;
   }
 }
 .btn-outline-primary.disabled {
-  background-color: $col-outline-primary;
-  border: solid 2px $col-outline-primary-border;
+  background-color: $col-outline-primary !important;
+  border: solid 2px $col-outline-primary-border !important;
 }
 
 // ----------------------
@@ -751,4 +751,17 @@ label {
   padding: 15px;
   width: 100%;
   bottom: 0;
+}
+.modal-header {
+  border-bottom: none;
+}
+
+.content-dash {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border: dashed 2px #ebebeb;
+  background-color: #fcfafa;
 }
