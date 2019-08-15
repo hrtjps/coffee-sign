@@ -50,7 +50,7 @@
                   <div class="comments max-width-220px">If you want to add one more stamp, click the button</div>
                 </div>
               </div>
-              <b-button variant="primary" class="my-3">Add one more stamp</b-button>
+              <b-button variant="primary" class="my-3" v-on:click="createStamp()">Add one more stamp</b-button>
             </div>
           </div>
 
@@ -105,14 +105,15 @@
         </div>
         <div class="row mb-4" v-if="sign_type==0">
           <div class="col-8">
-            <div class="content-dash draw-signature">
-              <div class="draw-placeholder">
+            <div class="content-dash draw-signature" >
+              <div class="draw-placeholder clickable-icon" v-if="!drawable" v-on:click="drawable=true">
                 <img src="img/icons/pencil-draw.svg">
                 <div class="mt-3">Draw signature</div>
               </div>
+              <drawing-board v-if="drawable" class="draw-pan"></drawing-board>
             </div>
             <div class="reset">
-              <b-button variant="link">
+              <b-button variant="link" v-on:click="drawable=false">
                 <i class="fa fa-undo"/> Reset
               </b-button>
             </div>
@@ -160,22 +161,26 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-4" v-for="(item, index) in signature_types" :key="index">
-                <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
-                  v-on:click="selected_no = index"
-                >
-                  <span class="signature-text">
-                    {{signature}}
-                  </span>
-                  <hr class="hr-bar">
-                  <span class="initials-text">
-                    {{initials}}
-                  </span>
-                  <div class="check-box" v-if="index == selected_no">
-                    <img src="img/icons/check-2.svg"/>
+            <div class="signatures"> 
+              <div class="row">
+                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
+                    v-on:click="selected_no = index"
+                  >
+                    <span class="signature-text">
+                      {{signature}}
+                    </span>
+                    <hr class="hr-bar">
+                    <span class="initials-text">
+                      {{initials}}
+                    </span>
+                    <div class="check-box" v-if="index == selected_no">
+                      <img src="img/icons/check-2.svg"/>
+                    </div>
                   </div>
                 </div>
+                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
+                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
               </div>
             </div>
             
@@ -209,11 +214,149 @@
             By clicking Create, I agree that the signature and initials will be the electronic representation of my signature and initials for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper signature or initial.
           </div>
           <div class="buttons">
-            <b-button variant="link">
+            <b-button variant="link" v-on:click="hideSignatureModal">
               <span><i class="fa fa-close"></i> Cancel</span>
             </b-button>
-            <b-button variant="primary">
+            <b-button variant="primary" v-on:click="hideSignatureModal">
               Create
+            </b-button>
+          </div>
+        </div>
+      </div>
+    </b-modal>
+    
+    <b-modal id="create-stamp-modal" ref="create-stamp-modal"
+       hide-footer centered size="xl">
+      <div class="create-signature-modal">
+        <div class="title">Create Your stamp</div>
+        <div class="row mb-4">
+          <div class="col-4">
+            <b-button 
+              :variant="stamp_type == 0?'primary':'outline-primary'"
+              v-on:click="stamp_type = 0" block
+            >
+              Personnel Seal
+            </b-button>
+          </div>
+          <div class="col-4">
+            <b-button 
+              :variant="stamp_type == 1?'primary':'outline-primary'"
+              v-on:click="stamp_type = 1" block
+            >
+              Corporate Sea
+            </b-button>
+          </div>
+          <div class="col-4">
+            <b-button 
+              :variant="stamp_type == 2?'primary':'outline-primary'"
+              v-on:click="stamp_type = 2" block
+            >
+              Upload
+            </b-button>
+          </div>
+        </div>
+        <div class="row mb-4" v-if="stamp_type==0">
+          <div class="col-12">
+            <hr class="w-100"/>  
+            <div class="row">
+              <div class="col-10">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="stamp_name"
+                    placeholder="Enter your name and press the Create button"
+                    name="stamp_name"
+                    v-model="stamp_name"
+                  />
+                </div>
+              </div>
+              <div class="col-2">
+                <b-button variant="primary" block>Create</b-button>
+              </div>
+            </div>
+            <div class="signatures"> 
+              <div class="row">
+                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
+                    v-on:click="selected_no = index"
+                  >
+                    <img src="img/payment/stamp-2x.png" />
+                    
+                    <div class="check-box" v-if="index == selected_no">
+                      <img src="img/icons/check-2.svg"/>
+                    </div>
+                  </div>
+                </div>
+                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
+                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4" v-if="stamp_type==1">
+          <div class="col-12">
+            <hr class="w-100"/>  
+            <div class="row">
+              <div class="col-10">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="stamp_name"
+                    placeholder="Enter your name and press the Create button"
+                    name="stamp_name"
+                    v-model="stamp_name"
+                  />
+                </div>
+              </div>
+              <div class="col-2">
+                <b-button variant="primary" block>Create</b-button>
+              </div>
+            </div>
+            <div class="signatures"> 
+              <div class="row">
+                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
+                    v-on:click="selected_no = index"
+                  >
+                    <img src="img/payment/stamp-2x.png" />
+                    <div class="check-box" v-if="index == selected_no">
+                      <img src="img/icons/check-2.svg"/>
+                    </div>
+                  </div>
+                </div>
+                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
+                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
+              </div>
+            </div>`
+          </div>
+        </div>
+        <div class="row mb-4" v-if="stamp_type==2">
+          <div class="col-12">
+            <div class="content-dash draw-initials">
+              <input type="file" ref="file" style="display: none" @change="onFileChange" />
+              <div class="draw-placeholder clickable-icon" v-on:click="selectStamp()" v-if="img_file.length<=0">
+                <img src="img/icons/upload.svg">
+                <div class="mt-3">Upload Stamp</div>
+              </div>
+              <div class="selected-stamp" v-if="img_file.length>0">
+                <img v-bind:src="img_file">
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="footer">
+          <div class="summary">
+            By clicking Adding, I agree that the Stamp will be the electronic representation of my Stamp for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper stamp.
+          </div>
+          <div class="buttons">
+            <b-button variant="link" v-on:click="hideStampModal">
+              <span><i class="fa fa-close"></i> Cancel</span>
+            </b-button>
+            <b-button variant="primary" v-on:click="hideStampModal">
+              Adding
             </b-button>
           </div>
         </div>
@@ -224,13 +367,22 @@
 
 <script>
 import UserIcon from "../../components/UserIcon";
+import DrawingBoard from "../../components/DrawingBoard";
 export default {
   name: "SignatureStamp",
   components: {
-    UserIcon
+    UserIcon,
+    DrawingBoard
   },
   data() {
     return {
+      drawable: false,
+      img_file: "",
+      stamp_type: 0,
+      selected_stamp_no: 0,
+      stamp_types: ["", "", ""],
+      stamp_name:"",
+
       selected_no: 0,
       signature_types: ["","",""],
       signature: "Suzanne Thompson",
@@ -241,9 +393,35 @@ export default {
     };
   },
   methods: {
+    
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files || !files.length) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        this.img_file = e.target.result;
+        console.log(this.img_file);
+      }
+      reader.readAsDataURL(files[0]);
+    },
+    selectStamp() {
+      this.$refs.file.click();
+    },
+    
+    hideSignatureModal() {
+      this.$refs['create-signature-modal'].hide();
+    },
     createSignature() {
       this.$refs['create-signature-modal'].show();
+    },
+    
+    hideStampModal() {
+      this.$refs['create-stamp-modal'].hide();
+    },
+    createStamp() {
+      this.$refs['create-stamp-modal'].show();
     }
+
   }
 };
 </script>

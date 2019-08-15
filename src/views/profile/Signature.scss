@@ -111,44 +111,61 @@
         right: 40px;
         bottom: 0px;
       }
-      .sign-result {
-        border-radius: 5px;
-        border: solid 1px #ebebeb;
-        min-height: 235px;
-        color: #202020;
-        font-family: "Mrs Saint Delafield";
-        line-height: 1.51;
-        padding: 12px;
-
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
+      .signatures {
+        padding-left: 40px;
+        padding-right: 40px;
         position: relative;
-        cursor: pointer;
+        .sign-result {
+          border-radius: 5px;
+          border: solid 1px #ebebeb;
+          min-height: 235px;
+          color: #202020;
+          font-family: "Mrs Saint Delafield";
+          line-height: 1.51;
+          padding: 12px;
 
-        .signature-text {
-          font-size: 39px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          position: relative;
+          cursor: pointer;
+
+          .signature-text {
+            font-size: 39px;
+          }
+          .hr-bar {
+            border-top: solid 1px #ebebeb;
+            width: 100%;
+          }
+          .initials-text {
+            font-size: 60px;
+            height: 60px;
+          }
+          .check-box {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
+
         }
-        .hr-bar {
-          border-top: solid 1px #ebebeb;
-          width: 100%;
+        .checked {
+          border-color: #ef634c;
+          border-width: 2px;
         }
-        .initials-text {
-          font-size: 60px;
-          height: 60px;
-        }
-        .check-box {
+        .left-button {
           position: absolute;
-          left: 0;
-          bottom: 0;
+          left: 0px;
+          top: calc(50% - 11px);
+          font-size: 22px;
         }
-
-      }
-      .checked {
-        border-color: #ef634c;
-        border-width: 2px;
+        .right-button {
+          position: absolute;
+          right: 0px;
+          top: calc(50% - 11px);
+          font-size: 22px;
+        }
       }
       .footer {
         display: flex;
@@ -173,4 +190,124 @@
       }
     }
   }
+}
+
+#create-stamp-modal{
+  .modal-dialog {
+    width: 924px;
+    .create-signature-modal {
+      padding: 30px;
+      padding-top: 0;
+      background: white;
+      .title {
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 1.33;
+        text-align: center;
+        color: #2e221e;
+        margin-bottom: 50px;
+      }
+      .draw-signature, .draw-initials {
+        min-height: 316px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.31;
+        text-align: center;
+        color: rgba(#2e221e, 0.3);
+      }
+      .reset {
+        position: absolute;
+        right: 40px;
+        bottom: 0px;
+      }
+      .signatures {
+        padding-left: 40px;
+        padding-right: 40px;
+        position: relative;
+        .sign-result {
+          border-radius: 5px;
+          border: solid 1px #ebebeb;
+          min-height: 235px;
+          color: #202020;
+          font-family: "Mrs Saint Delafield";
+          line-height: 1.51;
+          padding: 12px;
+
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          position: relative;
+          cursor: pointer;
+
+          .signature-text {
+            font-size: 39px;
+          }
+          .hr-bar {
+            border-top: solid 1px #ebebeb;
+            width: 100%;
+          }
+          .initials-text {
+            font-size: 60px;
+            height: 60px;
+          }
+          .check-box {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
+
+        }
+        .checked {
+          border-color: #ef634c;
+          border-width: 2px;
+        }
+        .left-button {
+          position: absolute;
+          left: 0px;
+          top: calc(50% - 11px);
+          font-size: 22px;
+        }
+        .right-button {
+          position: absolute;
+          right: 0px;
+          top: calc(50% - 11px);
+          font-size: 22px;
+        }
+      }
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .summary {
+          max-width: 542px;
+          font-size: 12px;
+          line-height: 1.67;
+          text-align: left;
+          color: #9ea0a5;
+        }
+        .buttons {
+          display: flex;
+          align-items: center;
+          button {
+            padding-left: 45px;
+            padding-right: 45px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.draw-pan {
+  // position: absolute;
+  // top: 5px;
+  // bottom: 5px;
+  // left: 5px;
+  // right: 5px;
 }

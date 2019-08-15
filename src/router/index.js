@@ -19,6 +19,10 @@ const Account = () => import("@/views/profile/Account");
 const CustomBranding = () => import("@/views/profile/CustomBranding");
 const Signature = () => import("@/views/profile/Signature");
 
+// Signing
+const SignContainer = () => import("@/containers/SignContainer");
+const SignCheck = () => import("@/views/sign/SignCheck");
+
 Vue.use(Router);
 
 export default new Router({
@@ -82,6 +86,19 @@ export default new Router({
           path: "signature-stamp",
           name: "SignatureStamp",
           component: Signature
+        }
+      ]
+    },
+    {
+      path: "/sign",
+      redirect: "/sign/check",
+      name: "Sign",
+      component: SignContainer,
+      children: [
+        {
+          path: "check",
+          name: "SignCheck",
+          component: SignCheck
         }
       ]
     },
