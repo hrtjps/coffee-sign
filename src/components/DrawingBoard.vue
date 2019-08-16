@@ -4,8 +4,8 @@
     v-on:mousedown="handleMouseDown"
     v-on:mouseup="handleMouseUp"
     v-on:mousemove="handleMouseMove"
-    width="550"
-    height="300"
+    width="535"
+    height="280"
   ></canvas>
 </template>
 <script>
