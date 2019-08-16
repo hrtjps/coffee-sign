@@ -3,9 +3,9 @@
     <div class="w-100 normal-sign">
       <div class="profile-header">
         <div class="user-happy">
-          <img src="img/avatars/NoPath@3x.png" />
+          <img src="img/avatars/NoPath@2x.png" />
           <div class="ml-3">
-            <h1>We are happy to see you again Suzanne Thompson!</h1>
+            <h1 class="happy">We are happy to see you again <div>Suzanne Thompson!</div></h1>
             <span class="comments">CoffeeSign even takes care reminding our clients!</span>
           </div>
         </div>
@@ -30,9 +30,30 @@
           </div>
         </div>
       </div>
-      <hr class="mb-4" />
+      <hr class="mb-5" />
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-3 pr-md-0">
+          <div class="content-card text-center">
+            <div class="chart">
+              <radial-progress-bar :diameter="160"
+                       :completed-steps="completedSteps"
+                       :total-steps="totalSteps"
+                       stopColor="#e2ccc3"
+                       startColor="#b59a90"
+                       innerStrokeColor="#eeeae8"
+                       strokeWidth="8"
+                       >
+                <div class="completion-rate">{{ completedSteps }}/{{ totalSteps }}</div>
+              </radial-progress-bar>
+            </div>
+            <div class="completion"> Profile completion</div>
+            <div class="comments text-center mb-4">
+              Lorem ipsum dolor sit amet, ea meis fabellas nam, movet contentiones te eum.
+            </div>
+            <b-button variant="primary" class="mb-4" block>Show more</b-button>
+          </div>
+        </div>
+        <div class="col-md-4 pr-md-0">
           <div class="content-card sign-signature">
             <div class="header">SIGNATURE</div>
             <div class="sign">Suzanne Thompson</div>
@@ -66,7 +87,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-5">
           <FileUpload />
         </div>
       </div>
@@ -79,12 +100,23 @@
 import UserIcon from "../../components/UserIcon";
 import FileUpload from "../../components/FileUpload";
 import Message from "../../components/Message";
+import RadialProgressBar from 'vue-radial-progress'
 export default {
   name: "NormalSign",
   components: {
     FileUpload,
     UserIcon,
-    Message
+    Message,
+    RadialProgressBar
+  },
+  data() {
+    return {
+      sections: [
+        { label: 'Red section', value: 45, color: '#d4bcb2' },
+      ],
+      completedSteps: 3,
+      totalSteps: 7
+    }
   },
   methods: {
     upgradePlan() {

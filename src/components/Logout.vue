@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <hr class="seperate-bar" />
+    <hr class="seperate-bar logout-seperate-bar" />
     <b-button block variant="trans" class="text-left">
       <UserIcon icon="logout_header.svg" class="mr-3"></UserIcon>Logout
     </b-button>
@@ -16,3 +16,8 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.logout-seperate-bar {
+  margin-bottom: 5px !important;
+}
+</style>

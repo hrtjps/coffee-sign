@@ -34,10 +34,10 @@
           </div>
           <div class="sign-doc-type">
             <div
-              class="clickable-text mx-1 mx-sm-auto"
+              class="clickable-text mx-1 mx-sm-auto mx-md-5"
               v-on:click="gotoPage('/payment/document-list')"
             >DOCUMENTS</div>
-            <div class="clickable-text mx-1 mx-sm-auto">TEMPLATES</div>
+            <div class="clickable-text mx-1 mx-sm-auto mx-md-5 ">TEMPLATES</div>
           </div>
           <DefaultHeaderDropdownAccnt />
           <!--<AsideToggler class="d-lg-none" mobile />-->

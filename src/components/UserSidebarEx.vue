@@ -66,6 +66,7 @@ export default {
         children: children
       };
     });
+    console.log(items);
     return {
       items: items
     };

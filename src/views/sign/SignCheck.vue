@@ -24,7 +24,7 @@
           <b-button variant="outline-primary">
             <UserIcon icon="question_2.svg" :button="true" />
           </b-button>
-          <b-button variant="outline-primary">
+          <b-button variant="outline-primary" class="mx-2">
             <UserIcon icon="download_3.svg" :button="true" />
           </b-button>
           <b-button variant="outline-primary">
@@ -79,7 +79,7 @@
           </div>
           <div class="text-center">
             <b-button variant="link" class="mr-5" >Sign later</b-button>
-            <b-button variant="other" class="px-5">Start Signing</b-button>
+            <b-button variant="other" class="px-5" v-on:click="moveNextPage()">Start Signing</b-button>
           </div>
         </div>
       </div>
@@ -130,25 +130,8 @@ export default {
       this.viewSrc = src;
     },
     moveNextPage() {
-      this.$router.push("/docu-sign/review");
+      this.$router.push("/sign/signing");
     },
-    moveBackPage() {
-      this.$router.push("/docu-sign/add-recipients");
-    },
-    addRecipient() {
-      this.recipients.push({
-        sign_type: "Need to sign",
-        com_type: false,
-        name: "",
-        email: "",
-        set_password: false,
-        password: "",
-        confirm_password: ""
-      });
-    },
-    removeRecipient(index) {
-      this.recipients.splice(index, 1);
-    }
   }
 };
 </script>

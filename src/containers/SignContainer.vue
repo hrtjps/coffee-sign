@@ -17,11 +17,17 @@
             </div>
             <div class="timeline-item">
               <i :class="getStyle(2)" />
-              <span class="timeline-title" :class="getTextStyle(3)">Complition</span>
+              <span class="timeline-title" :class="getTextStyle(2)">Complition</span>
             </div>
           </div>
-          <b-button variant="link" class="mr-4">Sign Later</b-button>
-          <b-button variant="other" class="px-4">Start Signing</b-button>
+          <template v-if="currentStepNo == 0">
+            <b-button variant="link" class="mr-4">Sign Later</b-button>
+            <b-button variant="other" class="px-4" v-on:click="gotoPage('/sign/signing')">Start Signing</b-button>
+          </template>
+          <template v-if="currentStepNo == 1">
+            <b-button variant="link" class="mr-4">Finish Later</b-button>
+            <b-button variant="other" class="min-width-136px" v-on:click="finishSign()">Finish</b-button>
+          </template>
         </AppHeader>
         <div class="container-fluid main-container">
           <router-view></router-view>
@@ -55,7 +61,14 @@ export default {
       );
     }
   },
+  mounted() {
+    this.setOptions();
+  },
   methods: {
+    finishSign() {
+      this.$root.$emit('finishSign')
+
+    },
     gotoPage(page) {
       this.$router.push({ path: page });
     },
@@ -76,18 +89,14 @@ export default {
       }
     },
     setOptions() {
-      if (this.$router.history.current.fullPath == "/docu-sign/add-document") {
+      if (this.$router.history.current.fullPath == "/sign/check") {
         this.currentStepNo = 0;
-      } else if (
-        this.$router.history.current.fullPath == "/docu-sign/add-recipients"
-      ) {
+      } else if ( this.$router.history.current.fullPath == "/sign/signing") {
         this.currentStepNo = 1;
-      } else if (
-        this.$router.history.current.fullPath == "/docu-sign/prepare"
-      ) {
+      } else if ( this.$router.history.current.fullPath == "/sign/complition" ) {
         this.currentStepNo = 2;
-      } else if (this.$router.history.current.fullPath == "/docu-sign/review") {
-        this.currentStepNo = 3;
+      } else {
+        this.currentStepNo = 0;
       }
     }
   },

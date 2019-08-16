@@ -59,6 +59,7 @@
     "vue-pdf": "^4.0.7",
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-quill-editor": "^3.0.6",
+    "vue-radial-progress": "^0.2.10",
     "vue-resize": "^0.4.4",
     "vue-router": "^3.0.1",
     "vue-select": "2.4.0",

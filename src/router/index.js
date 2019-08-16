@@ -22,7 +22,8 @@ const Signature = () => import("@/views/profile/Signature");
 // Signing
 const SignContainer = () => import("@/containers/SignContainer");
 const SignCheck = () => import("@/views/sign/SignCheck");
-
+const Signing = () => import("@/views/sign/Signing");
+const Complition = () => import("@/views/sign/Complition");
 Vue.use(Router);
 
 export default new Router({
@@ -99,7 +100,17 @@ export default new Router({
           path: "check",
           name: "SignCheck",
           component: SignCheck
-        }
+        },
+        {
+          path: "signing",
+          name: "Signing",
+          component: Signing
+        },
+        {
+          path: "complition",
+          name: "Complition",
+          component: Complition
+        },
       ]
     },
     {

@@ -48,3 +48,38 @@
     }
   }
 }
+
+#change-password-modal{
+  .modal-dialog {
+    width: 400px;
+    .change-password-modal {
+      padding: 30px;
+      padding-top: 0;
+      background: white;
+      .title {  
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.35;
+        text-align: center;
+        color: #41302a;
+        margin-bottom: 25px;
+        margin-top: 25px;
+      }
+      .agree-items {
+        .agree-item {
+          margin-bottom: 30px;
+          display: flex;
+          .agree-text {
+            font-size: 16px;
+            line-height: 1.38;
+            text-align: left;
+            color: #9ea0a5;
+            button {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

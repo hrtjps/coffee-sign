@@ -35,42 +35,7 @@
       <div class="row">
         <div class="col-md-4 pr-md-0">
           <div class="content-card">
-            <div class="content-header">
-              <strong>Change Password</strong>
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="cur_pwd"
-                placeholder="Current Password*"
-                name="cur_pwd"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="new_pwd"
-                placeholder="New Password*"
-                name="new_pwd"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="confirm_pwd"
-                placeholder="Confirm New Password*"
-                name="confirm_pwd"
-                required
-              />
-            </div>
-            <div class="form-group mb-0">
-              <b-button variant="primary" block>Save Changes</b-button>
-            </div>
+            <b-button variant="primary" block v-on:click="changePassword()">Change Password</b-button>
           </div>
         </div>
         <div class="col-md-8">
@@ -218,6 +183,50 @@
         </div>
       </div>
     </div>
+    
+    <b-modal id="change-password-modal" ref="change-password-modal"
+       hide-footer centered size="xl">
+      <div class="change-password-modal">
+        <div class="text-center"><img src="img/icons/agree.svg" /></div>
+        <div class="title">Change Password</div>
+        <div class="content-card">
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="cur_pwd"
+                placeholder="Current Password*"
+                name="cur_pwd"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="new_pwd"
+                placeholder="New Password*"
+                name="new_pwd"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="confirm_pwd"
+                placeholder="Confirm New Password*"
+                name="confirm_pwd"
+                required
+              />
+            </div>
+          </div>
+        <div class="text-center">
+          <b-button variant="outline-primary" class="mr-3" v-on:click="cancelChange()" >Cancel</b-button>
+          <button type="submit" class="btn btn-primary" v-on:click="savePassword()">Save changes</button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -245,6 +254,16 @@ export default {
     };
   },
   methods: {
+    changePassword() {
+      this.$refs['change-password-modal'].show();
+
+    },
+    cancelChange() {
+      this.$refs['change-password-modal'].hide();
+    },
+    savePassword() {
+      this.$refs['change-password-modal'].hide();
+    },
     changePurposeValue(e) {
       this.form_data.purpose = e;
     },
