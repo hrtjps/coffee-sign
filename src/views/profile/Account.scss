@@ -52,10 +52,19 @@
 #change-password-modal{
   .modal-dialog {
     width: 400px;
+    
+    @media (max-width: 600px) {
+      width: unset;
+    }
     .change-password-modal {
       padding: 30px;
       padding-top: 0;
       background: white;
+      
+      @media (max-width: 600px) {
+        padding: 20px;
+        padding-top: 0;
+      }
       .title {  
         font-size: 26px;
         font-weight: 500;
