@@ -5,12 +5,17 @@
   width: 100%;
   .sign-header{
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 50px !important;
+    
+    @media (max-width: 675px) {
+      padding-left: 20px;
+      padding-right: 20px !important;
+    }
    .doc-timeline {
       display: flex;
       margin-left: auto;
       margin-right: auto;
-      @media (max-width: 770px) {
+      @media (max-width: 970px) {
         display: none;
       }
       .timeline-item {
@@ -30,13 +35,8 @@
           align-self: center;
           margin-left: 15px;
           margin-right: 15px;
-          @media (max-width: 1400px) {
+          @media (max-width: 770px) {
             min-width: 30px;
-          }
-          @media (max-width: 1190px) {
-            min-width: 0px;
-            margin-right: 10px;
-            margin-left: 0;
           }
         }
         .ready {

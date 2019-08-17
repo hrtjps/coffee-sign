@@ -21,12 +21,12 @@
             </div>
           </div>
           <template v-if="currentStepNo == 0">
-            <b-button variant="link" class="mr-4">Sign Later</b-button>
-            <b-button variant="other" class="px-4" v-on:click="gotoPage('/sign/signing')">Start Signing</b-button>
+            <b-button variant="link" class="mr-1 mr-sm-4">Sign Later</b-button>
+            <b-button variant="other" class="px-2 px-sm-4" v-on:click="gotoPage('/sign/signing')">Start Signing</b-button>
           </template>
           <template v-if="currentStepNo == 1">
-            <b-button variant="link" class="mr-4">Finish Later</b-button>
-            <b-button variant="other" class="min-width-136px" v-on:click="finishSign()">Finish</b-button>
+            <b-button variant="link" class="mr-1 mr-sm-4">Finish Later</b-button>
+            <b-button variant="other" class="px-4 px-sm-4" v-on:click="finishSign()">Finish</b-button>
           </template>
         </AppHeader>
         <div class="container-fluid main-container">

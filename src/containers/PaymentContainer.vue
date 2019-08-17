@@ -34,10 +34,15 @@
           </div>
           <div class="sign-doc-type">
             <div
-              class="clickable-text mx-1 mx-sm-auto mx-md-5"
+              class="clickable-icon mx-1 mx-1 mx-sm-2 mx-md-2 mx-lg-4"
               v-on:click="gotoPage('/payment/document-list')"
+              v-bind:class="getSelected('doc')"
             >DOCUMENTS</div>
-            <div class="clickable-text mx-1 mx-sm-auto mx-md-5 ">TEMPLATES</div>
+            <div
+              class="clickable-icon mx-1 mx-sm-2 mx-md-2 mx-lg-4 "
+              v-on:click="gotoPage('/payment/template-list')"
+              v-bind:class="getSelected('temp')"
+            >TEMPLATES</div>
           </div>
           <DefaultHeaderDropdownAccnt />
           <!--<AsideToggler class="d-lg-none" mobile />-->
@@ -46,10 +51,6 @@
           <router-view></router-view>
         </div>
       </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside />
-      </AppAside>
     </div>
     <TheFooter>
       <!--footer-->
@@ -73,14 +74,8 @@ import {
   Aside as AppAside,
   AsideToggler,
   Footer as TheFooter,
-  Breadcrumb
 } from "@coreui/vue";
-import DefaultAside from "./DefaultAside";
-import DefaultHeaderDropdown from "./DefaultHeaderDropdown";
-import DefaultHeaderDropdownNotif from "./DefaultHeaderDropdownNotif";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
-import DefaultHeaderDropdownMssgs from "./DefaultHeaderDropdownMssgs";
-import DefaultHeaderDropdownTasks from "./DefaultHeaderDropdownTasks";
 import UserIcon from "../components/UserIcon";
 import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
@@ -98,12 +93,6 @@ export default {
     AppSidebar,
     AppAside,
     TheFooter,
-    Breadcrumb,
-    DefaultAside,
-    DefaultHeaderDropdown,
-    DefaultHeaderDropdownMssgs,
-    DefaultHeaderDropdownNotif,
-    DefaultHeaderDropdownTasks,
     DefaultHeaderDropdownAccnt,
     SidebarForm,
     SidebarFooter,
@@ -151,6 +140,14 @@ export default {
   },
   mounted() {},
   methods: {
+    getSelected(doc_type) {
+      if(doc_type == 'doc' && this.$router.history.current.fullPath == "/payment/document-list") {
+        return "selected"
+      } else if(doc_type == 'temp' && this.$router.history.current.fullPath == "/payment/template-list") {
+        return "selected"
+      }
+      return "";
+    },
     clickMain(e) {
       if (e.target.className == "main") {
         this.$refs.sidebarToggleBtn.toggle();
@@ -164,7 +161,7 @@ export default {
         path: "/docu-sign/add-document",
         query: { withoutModal: true }
       });
-    }
+    },
   },
   watch: {
     $route(to) {

@@ -12,6 +12,7 @@ const Review = () => import("@/views/document/Review");
 const PaymentContainer = () => import("@/containers/PaymentContainer");
 const NormalSign = () => import("@/views/payment/NormalSigin");
 const DocumentList = () => import("@/views/payment/DocumentList");
+const TemplateList = () => import("@/views/payment/TemplateList");
 const UpgradeYourPlan = () => import("@/views/payment/UpgradeYourPlan");
 const PricingPlan = () => import("@/views/payment/PricingPlan");
 const UpgradeToPlan = () => import("@/views/payment/UpgradeToPlan");
@@ -136,6 +137,11 @@ export default new Router({
           path: "document-list",
           name: "DocumentList",
           component: DocumentList
+        },
+        {
+          path: "template-list",
+          name: "TemplateList",
+          component: TemplateList
         },
         {
           path: "upgrade-plan",

@@ -15,3 +15,10 @@ export default {
   name: "AppLogoDark"
 };
 </script>
+<style lang="scss">
+.app-header .navbar-brand, .app-header .navbar-brand img {
+  @media (max-width: 500px) {
+    width: 100px;
+  }
+}
+</style>

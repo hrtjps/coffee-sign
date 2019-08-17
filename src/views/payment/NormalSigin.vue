@@ -41,7 +41,7 @@
                        stopColor="#e2ccc3"
                        startColor="#b59a90"
                        innerStrokeColor="#eeeae8"
-                       strokeWidth="8"
+                       :strokeWidth="8"
                        >
                 <div class="completion-rate">{{ completedSteps }}/{{ totalSteps }}</div>
               </radial-progress-bar>

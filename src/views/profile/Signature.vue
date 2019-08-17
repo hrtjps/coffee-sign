@@ -78,7 +78,7 @@
       <div class="create-signature-modal">
         <div class="title">Create Your Signature</div>
         <div class="row mb-4">
-          <div class="col-4">
+          <div class="col-4 ">
             <b-button 
               :variant="sign_type == 0?'primary':'outline-primary'"
               v-on:click="sign_type = 0" block
@@ -104,7 +104,7 @@
           </div>
         </div>
         <div class="row mb-4" v-if="sign_type==0">
-          <div class="col-8">
+          <div class="col-12 col-md-8 mb-3 mb-md-0">
             <div class="content-dash draw-signature" >
               <div class="draw-placeholder clickable-icon" v-if="!drawable" v-on:click="drawable=true">
                 <img src="img/icons/pencil-draw.svg">
@@ -118,7 +118,7 @@
               </b-button>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-12 col-md-4">
             <div class="content-dash draw-initials">
               <div class="draw-placeholder">
                 <img src="img/icons/pencil-draw.svg">
@@ -163,7 +163,7 @@
             </div>
             <div class="signatures"> 
               <div class="row">
-                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                <div class="col-12 col-md-4 mb-4 mb-md-0" v-for="(item, index) in signature_types" :key="index">
                   <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
                     v-on:click="selected_no = index"
                   >
@@ -187,10 +187,10 @@
           </div>
         </div>
         <div class="row mb-4" v-if="sign_type==2">
-          <div class="col-8">
+          <div class="col-12 col-md-8 mb-4 mb-md-0">
             <div class="content-dash draw-signature">
               <div class="draw-placeholder">
-                <img src="img/sign/sign1.png">
+                <img src="img/sign/sign1.png" class="sign-img">
               </div>
             </div>
             <div class="reset">
@@ -199,7 +199,7 @@
               <b-button variant="link">Remove</b-button>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-12 col-md-4">
             <div class="content-dash draw-initials">
               <div class="draw-placeholder">
                 <img src="img/icons/upload.svg">
@@ -230,7 +230,7 @@
       <div class="create-signature-modal">
         <div class="title">Create Your stamp</div>
         <div class="row mb-4">
-          <div class="col-4">
+          <div class="col-4 px-1 px-lg-4">
             <b-button 
               :variant="stamp_type == 0?'primary':'outline-primary'"
               v-on:click="stamp_type = 0" block
@@ -238,7 +238,7 @@
               Personnel Seal
             </b-button>
           </div>
-          <div class="col-4">
+          <div class="col-4 px-1 px-lg-4">
             <b-button 
               :variant="stamp_type == 1?'primary':'outline-primary'"
               v-on:click="stamp_type = 1" block
@@ -246,7 +246,7 @@
               Corporate Sea
             </b-button>
           </div>
-          <div class="col-4">
+          <div class="col-4 px-1 px-lg-4">
             <b-button 
               :variant="stamp_type == 2?'primary':'outline-primary'"
               v-on:click="stamp_type = 2" block
@@ -259,7 +259,7 @@
           <div class="col-12">
             <hr class="w-100"/>  
             <div class="row">
-              <div class="col-10">
+              <div class="col-8 pr-0 pr-lg-4 col-lg-10">
                 <div class="form-group">
                   <input
                     type="text"
@@ -271,13 +271,13 @@
                   />
                 </div>
               </div>
-              <div class="col-2">
+              <div class="col-4 col-lg-2">
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>
             <div class="signatures"> 
               <div class="row">
-                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in signature_types" :key="index">
                   <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
                     v-on:click="selected_no = index"
                   >
@@ -298,7 +298,7 @@
           <div class="col-12">
             <hr class="w-100"/>  
             <div class="row">
-              <div class="col-10">
+              <div class="col-8 pr-0 pr-lg-4 col-lg-10">
                 <div class="form-group">
                   <input
                     type="text"
@@ -310,17 +310,18 @@
                   />
                 </div>
               </div>
-              <div class="col-2">
+              <div class="col-4 col-lg-2">
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>
             <div class="signatures"> 
               <div class="row">
-                <div class="col-4" v-for="(item, index) in signature_types" :key="index">
+                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in signature_types" :key="index">
                   <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
                     v-on:click="selected_no = index"
                   >
                     <img src="img/payment/stamp-2x.png" />
+                    
                     <div class="check-box" v-if="index == selected_no">
                       <img src="img/icons/check-2.svg"/>
                     </div>
@@ -329,7 +330,7 @@
                 <i class="fa fa-long-arrow-left left-button clickable-icon"/>
                 <i class="fa fa-long-arrow-right right-button clickable-icon"/>
               </div>
-            </div>`
+            </div>
           </div>
         </div>
         <div class="row mb-4" v-if="stamp_type==2">

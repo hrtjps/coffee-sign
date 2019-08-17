@@ -136,8 +136,17 @@
 #sign-agree-modal{
   .modal-dialog {
     width: 688px;
+    
+    @media (max-width: 600px) {
+      width: unset;
+    }
     .sign-agree-modal {
       padding: 60px;
+      
+      @media (max-width: 600px) {
+        padding: 20px;
+        padding-top: 0;
+      }
       padding-top: 0;
       background: white;
       .title {  
@@ -171,11 +180,21 @@
 #sign-waiting-modal{
   .modal-dialog {
     width: 688px;
+    
+    @media (max-width: 600px) {
+      width: unset;
+    }
     .sign-waiting-modal {
       padding: 60px 100px;
+      
       background: white;
       display: flex;
       border-radius: 5px;
+      
+      @media (max-width: 600px) {
+        padding: 20px;
+        flex-direction: column;
+      }
       .title {    
         font-size: 26px;
         font-weight: 500;
@@ -183,6 +202,9 @@
         text-align: left;
         color: #41302a;
         margin-left: 50px;
+        @media (max-width: 600px) {
+          margin-left: 0;
+        }
       }
     }
   }

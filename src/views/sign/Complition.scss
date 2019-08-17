@@ -8,6 +8,10 @@
   box-shadow: 0 5px 10px 0 rgba(32, 20, 4, 0.1);
   border: solid 1px #e6e8ec;
   padding: 120px 178px;
+  
+  @media (max-width: 700px) {
+    padding: 30px;
+  }
   text-align: center;
   .title {
     font-size: 26px;

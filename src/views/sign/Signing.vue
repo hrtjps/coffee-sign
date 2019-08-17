@@ -14,7 +14,7 @@
             v-bind:value="percent"
             v-bind:items="['10%','20%', '30%', '50%', '75%','100%', '200%']"
             @changeValue="changePercent"
-            class="mb-0 mx-2"
+            class="mb-0 mx-1 mx-md-2"
           />
           <b-button variant="outline-primary">
             <UserIcon icon="minus.svg" :button="true" />
@@ -24,7 +24,7 @@
           <b-button variant="outline-primary">
             <UserIcon icon="question_2.svg" :button="true" />
           </b-button>
-          <b-button variant="outline-primary" class="mx-2">
+          <b-button variant="outline-primary" class="mx-1 mx-md-2">
             <UserIcon icon="download_3.svg" :button="true" />
           </b-button>
           <b-button variant="outline-primary">

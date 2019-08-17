@@ -12,9 +12,22 @@
   justify-content: space-between;
   align-items: center;
   min-width: 180px;
+  color: #9ea0a5;
 
   @media (max-width: 530px) {
     // flex-direction: column;
     min-width: 80px;
+  }
+
+  .selected {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.36;
+    color: #775649;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    border-bottom: solid 3px #775649;
   }
 }

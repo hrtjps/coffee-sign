@@ -82,7 +82,10 @@
 }
 #create-signature-modal{
   .modal-dialog {
-    width: 924px;
+    width: 924px;    
+    @media (max-width: 600px) {
+      width: unset;
+    }
     .create-signature-modal {
       padding: 30px;
       padding-top: 0;
@@ -94,6 +97,9 @@
         text-align: center;
         color: #2e221e;
         margin-bottom: 50px;
+        @media (max-width: 600px) {
+          margin-bottom: 20px;
+        }
       }
       .draw-signature, .draw-initials {
         min-height: 316px;
@@ -105,6 +111,9 @@
         line-height: 1.31;
         text-align: center;
         color: rgba(#2e221e, 0.3);
+      }
+      .draw-placeholder .sign-img{
+        width: 100%;
       }
       .reset {
         position: absolute;
@@ -171,6 +180,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @media (max-width:600px) {
+          flex-direction: column;
+        }
         .summary {
           max-width: 542px;
           font-size: 12px;
@@ -195,6 +207,9 @@
 #create-stamp-modal{
   .modal-dialog {
     width: 924px;
+    @media (max-width: 600px) {
+      width: unset;
+    }
     .create-signature-modal {
       padding: 30px;
       padding-top: 0;
@@ -206,6 +221,10 @@
         text-align: center;
         color: #2e221e;
         margin-bottom: 50px;
+        
+        @media (max-width: 600px) {
+          margin-bottom: 20px;
+        }
       }
       .draw-signature, .draw-initials {
         min-height: 316px;
@@ -283,6 +302,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @media (max-width:600px) {
+          flex-direction: column;
+        }
         .summary {
           max-width: 542px;
           font-size: 12px;

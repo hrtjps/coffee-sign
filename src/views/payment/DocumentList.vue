@@ -65,14 +65,17 @@
                   <div class="comments">11:03:53 am</div>
                 </div>
                 <div class="col-action comments">
-                  <i class="fa fa-ellipsis-h mr-3" v-b-toggle.collapse1></i>
-                  <b-dropdown variant="link">
+                  <b-dropdown variant="link" toggle-class="text-decoration-none mr-3" no-caret>
+                    <template slot="button-content">
+                      <i class="fa fa-ellipsis-h clickable-icon" />
+                    </template>
                     <b-dropdown-item>Create a copy</b-dropdown-item>
                     <b-dropdown-item>Save as template</b-dropdown-item>
                     <b-dropdown-item>History</b-dropdown-item>
                     <b-dropdown-item>Export as CSV</b-dropdown-item>
                     <b-dropdown-item>Delete</b-dropdown-item>
                   </b-dropdown>
+                  <i class="fa fa-caret-down" v-b-toggle.collapse1></i>
                 </div>
               </div>
             </div>
@@ -174,14 +177,17 @@
                   <div class="comments">11:03:53 am</div>
                 </div>
                 <div class="col-action comments">
-                  <i class="fa fa-ellipsis-h mr-3" v-b-toggle.collapse2></i>
-                  <b-dropdown variant="link">
+                  <b-dropdown variant="link" toggle-class="text-decoration-none mr-3" no-caret>
+                    <template slot="button-content">
+                      <i class="fa fa-ellipsis-h clickable-icon" />
+                    </template>
                     <b-dropdown-item>Create a copy</b-dropdown-item>
                     <b-dropdown-item>Save as template</b-dropdown-item>
                     <b-dropdown-item>History</b-dropdown-item>
                     <b-dropdown-item>Export as CSV</b-dropdown-item>
                     <b-dropdown-item>Delete</b-dropdown-item>
                   </b-dropdown>
+                  <i class="fa fa-caret-down" v-b-toggle.collapse2></i>
                 </div>
               </div>
             </div>
