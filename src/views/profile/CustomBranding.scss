@@ -80,3 +80,20 @@
 .doc-footer {
   text-align: center;
 }
+#edit-style-modal{
+  .modal-dialog {
+    .edit-style-modal {
+      padding: 30px;
+      padding-top: 0;
+      background: white;
+      .title {  
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.35;
+        text-align: center;
+        color: #41302a;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

@@ -34,6 +34,13 @@
     .table-body {
       .table-row {
         padding: 0 0;
+        &:hover {
+          cursor: pointer;
+          background: rgba(119, 86, 73, 0.035);
+        }
+        .btn {
+          height: unset !important;
+        }
         .row-content {
           display: flex;
           justify-content: space-between;

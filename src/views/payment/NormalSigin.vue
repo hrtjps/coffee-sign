@@ -32,7 +32,7 @@
       </div>
       <hr class="mb-5" />
       <div class="row">
-        <div class="col-md-3 pr-md-0">
+        <div class="col-md-3 pr-md-0" v-if ="false">
           <div class="content-card text-center">
             <div class="chart">
               <radial-progress-bar :diameter="160"
@@ -53,7 +53,7 @@
             <b-button variant="primary" class="mb-4" block>Show more</b-button>
           </div>
         </div>
-        <div class="col-md-4 pr-md-0">
+        <div class="col-md-5 pr-md-0">
           <div class="content-card sign-signature">
             <div class="header">SIGNATURE</div>
             <div class="sign">Suzanne Thompson</div>
@@ -87,7 +87,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-7">
           <FileUpload />
         </div>
       </div>

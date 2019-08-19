@@ -52,6 +52,7 @@
     "vue": "^2.5.17",
     "vue-chartjs": "^3.4.0",
     "vue-codemirror": "^4.0.5",
+    "vue-cropperjs": "^4.0.0",
     "vue-grid-layout": "^2.3.1",
     "vue-mq": "^0.2.1",
     "vue-multiselect": "^2.1.3",

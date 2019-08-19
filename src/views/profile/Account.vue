@@ -5,12 +5,12 @@
       <hr class="mb-4" />
       <div class="profile-header content-card">
         <div class="user-happy">
-          <img src="img/avatars/NoPath@2x.png" />
+          <img :src="selected_avatar" class="clickable-icon" v-on:click="changeAvatar()"/>
           <div class="ml-3">
             <div class="user-name">Suzanne Thompson</div>
             <span class="comments">email_example@mail.com</span>
             <div>
-              <b-button variant="link" class="p-0 mt-3">Change Avatar</b-button>
+              <b-button variant="link" class="p-0 mt-3" v-on:click="changePassword()">Change Password</b-button>
             </div>
           </div>
         </div>
@@ -32,13 +32,9 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
-        <div class="col-md-4 pr-md-0">
-          <div class="content-card">
-            <b-button variant="primary" block v-on:click="changePassword()">Change Password</b-button>
-          </div>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="content-card">
             <div class="content-header">
               <strong>Company & Job Title</strong>
@@ -191,39 +187,77 @@
         <div class="title">Change Password</div>
         <div class="content-card">
             <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="cur_pwd"
-                placeholder="Current Password*"
-                name="cur_pwd"
-                required
-              />
+              <div class="d-flex-align-center">
+                <input
+                  class="form-control"
+                  id="cur_pwd"
+                  placeholder="Current Password*"
+                  name="cur_pwd"
+                  required
+                  :type="showOldPwd ? 'text' : 'password'"
+                />
+                <i class="fa fa-eye clickable-icon ml-3" v-on:click="showOldPwd = !showOldPwd"/>
+              </div>
             </div>
             <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="new_pwd"
-                placeholder="New Password*"
-                name="new_pwd"
-                required
-              />
+              <div class="d-flex-align-center">
+                <input
+                  class="form-control"
+                  id="new_pwd"
+                  placeholder="New Password*"
+                  name="new_pwd"
+                  required
+                  :type="showNewPwd ? 'text' : 'password'"
+                  />
+                  <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewPwd = !showNewPwd"/>
+              </div>
             </div>
             <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="confirm_pwd"
-                placeholder="Confirm New Password*"
-                name="confirm_pwd"
-                required
-              />
+              <div class="d-flex-align-center">
+                <input
+                  class="form-control"
+                  id="confirm_pwd"
+                  placeholder="Confirm New Password*"
+                  name="confirm_pwd"
+                  required
+                  :type="showNewConfirm ? 'text' : 'password'"
+                />
+                <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewConfirm = !showNewConfirm"/>
+              </div>
             </div>
           </div>
         <div class="text-center">
           <b-button variant="outline-primary" class="mr-3" v-on:click="cancelChange()" >Cancel</b-button>
           <button type="submit" class="btn btn-primary" v-on:click="savePassword()">Save changes</button>
+        </div>
+      </div>
+    </b-modal>
+    
+    <b-modal id="change-avatar-modal" ref="change-avatar-modal"
+       hide-footer centered size="xl">
+      <div class="change-avatar-modal">
+        <div class="title">Change Avatar</div>
+
+        <div class="img-control-btns">
+          <b-button variant="outline-primary">Change Photo</b-button>
+          <div>
+            <i class="fa fa-rotate-left clickable-icon" v-on:click="rotate(-90)"/>
+            <i class="fa fa-rotate-right clickable-icon mx-3" v-on:click="rotate(90)"/>
+          </div>
+        </div>
+        
+        <vue-cropper
+          ref="cropper"
+          :src="avatar"
+          alt="Source Image"
+          :cropmove="cropped"
+          class="my-4"
+          :minContainerHeight="300"
+        >
+        </vue-cropper>
+        <div class="text-center">
+          <b-button variant="outline-primary" class="mr-3" v-on:click="cancelAvatar()" >Cancel</b-button>
+          <button type="submit" class="btn btn-primary" v-on:click="saveAvatar()">Save changes</button>
         </div>
       </div>
     </b-modal>
@@ -233,14 +267,29 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
+
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 export default {
   name: "Account",
   components: {
     UserIcon,
-    UserSelect
+    UserSelect,
+    VueCropper
   },
   data() {
     return {
+      cropped: null,
+      avatars: [
+        "img/avatars/scott@3x.png",
+        "img/avatars/hannah@3x.png",
+        "img/avatars/suzanne@3x.png",
+      ],
+      avatar: "img/avatars/suzanne@3x.png",
+      selected_avatar: "img/avatars/suzanne@3x.png",
+      showOldPwd: false,
+      showNewPwd: false,
+      showNewConfirm: false,
       form_data: {
         error_flag: false,
         first_name: "",
@@ -254,9 +303,19 @@ export default {
     };
   },
   methods: {
-    changePassword() {
-      this.$refs['change-password-modal'].show();
-
+    rotate(rotationAngle) {
+      this.$refs['cropper'].rotate(rotationAngle);
+    },
+    saveAvatar() {
+      this.selected_avatar = this.avatar;
+      this.$refs['change-avatar-modal'].hide();
+    },
+    changeAvatar() {
+      this.avatar = this.selected_avatar;
+      this.$refs['change-avatar-modal'].show();
+    },
+    cancelAvatar() {
+      this.$refs['change-password-modal'].hide();
     },
     cancelChange() {
       this.$refs['change-password-modal'].hide();

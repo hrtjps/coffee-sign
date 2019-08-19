@@ -10,11 +10,17 @@
               <div class="d-flex align-items-center">
                 <img src="img/icons/contract.svg" />
                 <div class="ml-3">
-                  <div class="header">Your signature</div>
-                  <div class="comments max-width-220px">If you want to add one more signature, click the button</div>
+                  <div class="header">Your signature & Initials</div>
+                  <div
+                    class="comments max-width-220px"
+                  >If you want to add one more signature, click the button</div>
                 </div>
               </div>
-              <b-button variant="primary" class="my-3" v-on:click="createSignature()">Add one more signature</b-button>
+              <b-button
+                variant="primary"
+                class="my-3"
+                v-on:click="createSignature()"
+              >Add more Singiture/Initials</b-button>
             </div>
           </div>
 
@@ -28,14 +34,14 @@
               <span class="initials ml-3">ST</span>
             </div>
             <div class="actions">
-              <div class="action">
-                <i class="fa fa-pencil pr-2 clickable-icon"></i> Edit
+              <div class="action clickable-icon">
+                <i class="fa fa-pencil pr-2"></i> Edit
               </div>
-              <div class="action">
-                <i class="fa fa-download pr-2 clickable-icon"></i> Download
+              <div class="action clickable-icon">
+                <i class="fa fa-download pr-2"></i> Download
               </div>
-              <div class="action">
-                <i class="fa fa-trash pr-2 clickable-icon"></i> Delete
+              <div class="action clickable-icon">
+                <i class="fa fa-trash pr-2"></i> Delete
               </div>
             </div>
           </div>
@@ -47,10 +53,12 @@
                 <img src="img/icons/stamp.svg" />
                 <div class="ml-3">
                   <div class="header">Your stamp</div>
-                  <div class="comments max-width-220px">If you want to add one more stamp, click the button</div>
+                  <div
+                    class="comments max-width-220px"
+                  >If you want to add one more stamp, click the button</div>
                 </div>
               </div>
-              <b-button variant="primary" class="my-3" v-on:click="createStamp()">Add one more stamp</b-button>
+              <b-button variant="primary" class="my-3" v-on:click="createStamp()">Add stamp</b-button>
             </div>
           </div>
 
@@ -58,14 +66,14 @@
             <div class="content-card d-flex stamp" v-for="(item, index) in signatures" :key="index">
               <img src="img/payment/stamp.png" />
               <div class="stamp-action">
-                <div class="action">
-                  <i class="fa fa-pencil pr-2 clickable-icon"></i> Edit
+                <div class="action clickable-icon">
+                  <i class="fa fa-pencil pr-2"></i> Edit
                 </div>
-                <div class="action">
-                  <i class="fa fa-download pr-2 clickable-icon"></i> Download
+                <div class="action clickable-icon">
+                  <i class="fa fa-download pr-2"></i> Download
                 </div>
-                <div class="action">
-                  <i class="fa fa-trash pr-2 clickable-icon"></i> Delete
+                <div class="action clickable-icon">
+                  <i class="fa fa-trash pr-2"></i> Delete
                 </div>
               </div>
             </div>
@@ -73,68 +81,74 @@
         </div>
       </div>
     </div>
-    <b-modal id="create-signature-modal" ref="create-signature-modal"
-       hide-footer centered size="xl">
+    <b-modal
+      id="create-signature-modal"
+      ref="create-signature-modal"
+      hide-footer
+      centered
+      size="xl"
+    >
       <div class="create-signature-modal">
         <div class="title">Create Your Signature</div>
         <div class="row mb-4">
-          <div class="col-4 ">
-            <b-button 
+          <div class="col-4">
+            <b-button
               :variant="sign_type == 0?'primary':'outline-primary'"
-              v-on:click="sign_type = 0" block
-            >
-              Draw
-            </b-button>
+              v-on:click="sign_type = 0"
+              block
+            >Draw</b-button>
           </div>
           <div class="col-4">
-            <b-button 
+            <b-button
               :variant="sign_type == 1?'primary':'outline-primary'"
-              v-on:click="sign_type = 1" block
-            >
-              Type
-            </b-button>
+              v-on:click="sign_type = 1"
+              block
+            >Type</b-button>
           </div>
           <div class="col-4">
-            <b-button 
+            <b-button
               :variant="sign_type == 2?'primary':'outline-primary'"
-              v-on:click="sign_type = 2" block
-            >
-              Upload
-            </b-button>
+              v-on:click="sign_type = 2"
+              block
+            >Upload</b-button>
           </div>
         </div>
         <div class="row mb-4" v-if="sign_type==0">
           <div class="col-12 col-md-8 mb-3 mb-md-0">
-            <div class="content-dash draw-signature" >
-              <div class="draw-placeholder clickable-icon" v-if="!drawable" v-on:click="drawable=true">
-                <img src="img/icons/pencil-draw.svg">
+            <div class="content-dash draw-signature">
+              <div
+                class="draw-placeholder clickable-icon"
+                v-if="!drawable"
+                v-on:click="drawable=true"
+              >
+                <img src="img/icons/pencil-draw.svg" />
                 <div class="mt-3">Draw signature</div>
               </div>
               <drawing-board v-if="drawable" class="draw-pan"></drawing-board>
             </div>
             <div class="reset">
               <b-button variant="link" v-on:click="drawable=false">
-                <i class="fa fa-undo"/> Reset
+                <i class="fa fa-undo" /> Reset
               </b-button>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="content-dash draw-initials">
               <div class="draw-placeholder">
-                <img src="img/icons/pencil-draw.svg">
+                <img src="img/icons/pencil-draw.svg" />
                 <div class="mt-3">Draw Initials</div>
               </div>
             </div>
             <div class="reset">
               <b-button variant="link">
-                <i class="fa fa-undo"/> Reset
+                <i class="fa fa-undo" /> Reset
               </b-button>
             </div>
           </div>
         </div>
         <div class="row mb-4" v-if="sign_type==1">
           <div class="col-12">
-            <hr class="w-100"/>  
+            <hr class="w-100" />
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
@@ -161,36 +175,48 @@
                 </div>
               </div>
             </div>
-            <div class="signatures"> 
-              <div class="row">
-                <div class="col-12 col-md-4 mb-4 mb-md-0" v-for="(item, index) in signature_types" :key="index">
-                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
-                    v-on:click="selected_no = index"
-                  >
-                    <span class="signature-text">
-                      {{signature}}
-                    </span>
-                    <hr class="hr-bar">
-                    <span class="initials-text">
-                      {{initials}}
-                    </span>
-                    <div class="check-box" v-if="index == selected_no">
-                      <img src="img/icons/check-2.svg"/>
+            <div class="signatures">
+              <b-carousel              
+                id="carousel-1"
+                :interval="0"
+                controls
+                background="white"
+                img-width="1024"
+                img-height="325"
+              >
+                <template v-for="(row_item, chunk_no) in signature_types" >
+                  <b-carousel-slide :key="chunk_no" img-blank img-alt="Blank image">
+                    <div class="row signature-group">
+                      <div
+                        class="col-12 col-md-4 mb-4 mb-md-0"
+                        v-for="(item, index) in row_item"
+                        :key="index"
+                      >
+                        <div
+                          class="sign-result" 
+                          v-bind:class="(index.toString() + ' ' + chunk_no.toString())==selected_no?'checked':''"
+                          v-on:click="selected_no = (index.toString() + ' ' + chunk_no.toString())"
+                        >
+                          <span class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</span>
+                          <hr class="hr-bar" />
+                          <span class="initials-text"  v-bind:style="{fontFamily: item}">{{initials}}</span>
+                          <div class="check-box" v-if="selected_no == (index.toString() + ' ' + chunk_no.toString())">
+                            <img src="img/icons/check-2.svg" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
-                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
-              </div>
+                  </b-carousel-slide>  
+                </template>
+              </b-carousel>              
             </div>
-            
           </div>
         </div>
         <div class="row mb-4" v-if="sign_type==2">
           <div class="col-12 col-md-8 mb-4 mb-md-0">
             <div class="content-dash draw-signature">
               <div class="draw-placeholder">
-                <img src="img/sign/sign1.png" class="sign-img">
+                <img src="img/sign/sign1.png" class="sign-img" />
               </div>
             </div>
             <div class="reset">
@@ -201,63 +227,69 @@
           </div>
           <div class="col-12 col-md-4">
             <div class="content-dash draw-initials">
-              <div class="draw-placeholder">
-                <img src="img/icons/upload.svg">
+              <input
+                type="file"
+                ref="upload_initials_file"
+                style="display: none"
+                @change="onInitialsFileChange"
+              />
+              <div
+                class="draw-placeholder clickable-icon"
+                v-on:click="selectInitials()"
+                v-if="initials_file.length<=0"
+              >
+                <img src="img/icons/upload.svg" />
                 <div class="mt-3">Upload Initials</div>
               </div>
             </div>
           </div>
         </div>
-        <hr>
+        <hr />
         <div class="footer">
-          <div class="summary">
-            By clicking Create, I agree that the signature and initials will be the electronic representation of my signature and initials for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper signature or initial.
-          </div>
+          <div
+            class="summary"
+          >By clicking Create, I agree that the signature and initials will be the electronic representation of my signature and initials for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper signature or initial.</div>
           <div class="buttons">
             <b-button variant="link" v-on:click="hideSignatureModal">
-              <span><i class="fa fa-close"></i> Cancel</span>
+              <span>
+                <i class="fa fa-close"></i> Cancel
+              </span>
             </b-button>
-            <b-button variant="primary" v-on:click="hideSignatureModal">
-              Create
-            </b-button>
+            <b-button variant="primary" v-on:click="hideSignatureModal">Create</b-button>
           </div>
         </div>
       </div>
     </b-modal>
-    
-    <b-modal id="create-stamp-modal" ref="create-stamp-modal"
-       hide-footer centered size="xl">
+
+    <b-modal id="create-stamp-modal" ref="create-stamp-modal" hide-footer centered size="xl">
       <div class="create-signature-modal">
         <div class="title">Create Your stamp</div>
         <div class="row mb-4">
           <div class="col-4 px-1 px-lg-4">
-            <b-button 
+            <b-button
               :variant="stamp_type == 0?'primary':'outline-primary'"
-              v-on:click="stamp_type = 0" block
-            >
-              Personnel Seal
-            </b-button>
+              v-on:click="stamp_type = 0"
+              block
+            >Personnel Seal</b-button>
           </div>
           <div class="col-4 px-1 px-lg-4">
-            <b-button 
+            <b-button
               :variant="stamp_type == 1?'primary':'outline-primary'"
-              v-on:click="stamp_type = 1" block
-            >
-              Corporate Sea
-            </b-button>
+              v-on:click="stamp_type = 1"
+              block
+            >Corporate Sea</b-button>
           </div>
           <div class="col-4 px-1 px-lg-4">
-            <b-button 
+            <b-button
               :variant="stamp_type == 2?'primary':'outline-primary'"
-              v-on:click="stamp_type = 2" block
-            >
-              Upload
-            </b-button>
+              v-on:click="stamp_type = 2"
+              block
+            >Upload</b-button>
           </div>
         </div>
         <div class="row mb-4" v-if="stamp_type==0">
           <div class="col-12">
-            <hr class="w-100"/>  
+            <hr class="w-100" />
             <div class="row">
               <div class="col-8 pr-0 pr-lg-4 col-lg-10">
                 <div class="form-group">
@@ -275,28 +307,34 @@
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>
-            <div class="signatures"> 
+            <div class="signatures">
               <div class="row">
-                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in signature_types" :key="index">
-                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
+                <div
+                  class="col-12 mb-4 mb-lg-0 col-lg-4"
+                  v-for="(item, index) in signature_types"
+                  :key="index"
+                >
+                  <div
+                    class="sign-result"
+                    v-bind:class="index==selected_no?'checked':''"
                     v-on:click="selected_no = index"
                   >
                     <img src="img/payment/stamp-2x.png" />
-                    
+
                     <div class="check-box" v-if="index == selected_no">
-                      <img src="img/icons/check-2.svg"/>
+                      <img src="img/icons/check-2.svg" />
                     </div>
                   </div>
                 </div>
-                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
-                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
+                <i class="fa fa-long-arrow-left left-button clickable-icon" />
+                <i class="fa fa-long-arrow-right right-button clickable-icon" />
               </div>
             </div>
           </div>
         </div>
         <div class="row mb-4" v-if="stamp_type==1">
           <div class="col-12">
-            <hr class="w-100"/>  
+            <hr class="w-100" />
             <div class="row">
               <div class="col-8 pr-0 pr-lg-4 col-lg-10">
                 <div class="form-group">
@@ -314,21 +352,27 @@
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>
-            <div class="signatures"> 
+            <div class="signatures">
               <div class="row">
-                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in signature_types" :key="index">
-                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''"
+                <div
+                  class="col-12 mb-4 mb-lg-0 col-lg-4"
+                  v-for="(item, index) in signature_types"
+                  :key="index"
+                >
+                  <div
+                    class="sign-result"
+                    v-bind:class="index==selected_no?'checked':''"
                     v-on:click="selected_no = index"
                   >
                     <img src="img/payment/stamp-2x.png" />
-                    
+
                     <div class="check-box" v-if="index == selected_no">
-                      <img src="img/icons/check-2.svg"/>
+                      <img src="img/icons/check-2.svg" />
                     </div>
                   </div>
                 </div>
-                <i class="fa fa-long-arrow-left left-button clickable-icon"/>
-                <i class="fa fa-long-arrow-right right-button clickable-icon"/>
+                <i class="fa fa-long-arrow-left left-button clickable-icon" />
+                <i class="fa fa-long-arrow-right right-button clickable-icon" />
               </div>
             </div>
           </div>
@@ -337,28 +381,32 @@
           <div class="col-12">
             <div class="content-dash draw-initials">
               <input type="file" ref="file" style="display: none" @change="onFileChange" />
-              <div class="draw-placeholder clickable-icon" v-on:click="selectStamp()" v-if="img_file.length<=0">
-                <img src="img/icons/upload.svg">
+              <div
+                class="draw-placeholder clickable-icon"
+                v-on:click="selectStamp()"
+                v-if="img_file.length<=0"
+              >
+                <img src="img/icons/upload.svg" />
                 <div class="mt-3">Upload Stamp</div>
               </div>
               <div class="selected-stamp" v-if="img_file.length>0">
-                <img v-bind:src="img_file">
+                <img v-bind:src="img_file" />
               </div>
             </div>
           </div>
         </div>
-        <hr>
+        <hr />
         <div class="footer">
-          <div class="summary">
-            By clicking Adding, I agree that the Stamp will be the electronic representation of my Stamp for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper stamp.
-          </div>
+          <div
+            class="summary"
+          >By clicking Adding, I agree that the Stamp will be the electronic representation of my Stamp for all purposes when I (or my agent) use them on envelopes, including legally binding contracts - just the same as a pen-and-paper stamp.</div>
           <div class="buttons">
             <b-button variant="link" v-on:click="hideStampModal">
-              <span><i class="fa fa-close"></i> Cancel</span>
+              <span>
+                <i class="fa fa-close"></i> Cancel
+              </span>
             </b-button>
-            <b-button variant="primary" v-on:click="hideStampModal">
-              Adding
-            </b-button>
+            <b-button variant="primary" v-on:click="hideStampModal">Create</b-button>
           </div>
         </div>
       </div>
@@ -376,16 +424,21 @@ export default {
     DrawingBoard
   },
   data() {
+
     return {
       drawable: false,
       img_file: "",
+      initials_file: "",
       stamp_type: 0,
       selected_stamp_no: 0,
       stamp_types: ["", "", ""],
-      stamp_name:"",
+      stamp_name: "",
 
       selected_no: 0,
-      signature_types: ["","",""],
+      signature_types: this.chunk([
+        "Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular",
+        "AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiMonakaBLt", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont",
+        "KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"], 3),
       signature: "Suzanne Thompson",
       initials: "ST",
       sign_type: 0,
@@ -395,6 +448,17 @@ export default {
   },
   methods: {
     
+    chunk(myArray, chunk_size){
+      var index = 0;
+      var arrayLength = myArray.length;
+      var tempArray = [];
+      
+      for (index = 0; index < arrayLength; index += chunk_size) {
+        var myChunk = myArray.slice(index, index+chunk_size);
+        tempArray.push(myChunk);
+      }
+      return tempArray;
+    },
     onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files || !files.length) return;
@@ -402,27 +466,39 @@ export default {
       reader.onload = function(e) {
         this.img_file = e.target.result;
         console.log(this.img_file);
-      }
+      };
       reader.readAsDataURL(files[0]);
     },
     selectStamp() {
       this.$refs.file.click();
     },
-    
+
+    onInitialsFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files || !files.length) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        this.initials_file = e.target.result;
+      };
+      reader.readAsDataURL(files[0]);
+    },
+    selectInitials() {
+      this.$refs.upload_initials_file.click();
+    },
+
     hideSignatureModal() {
-      this.$refs['create-signature-modal'].hide();
+      this.$refs["create-signature-modal"].hide();
     },
     createSignature() {
-      this.$refs['create-signature-modal'].show();
+      this.$refs["create-signature-modal"].show();
     },
-    
+
     hideStampModal() {
-      this.$refs['create-stamp-modal'].hide();
+      this.$refs["create-stamp-modal"].hide();
     },
     createStamp() {
-      this.$refs['create-stamp-modal'].show();
+      this.$refs["create-stamp-modal"].show();
     }
-
   }
 };
 </script>

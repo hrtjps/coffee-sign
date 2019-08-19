@@ -40,53 +40,21 @@
           </div>
         </div>
         <div class="table-body">
-          <div class="table-row content-card">
-            <div class="row-content">
-              <div class="d-flex align-items-center">
-                <b-check></b-check>
-                <div class="col-basic-info">
-                  <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
-                  <div class="ml-3">
-                    <div class="doc-name">Continuous Improvement</div>
-                    <div class="senders comments">
-                      to me
-                      <span>, Scott Wilkerson</span>
-                      <span>, Hannah Harmon</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center">
-                <div class="col-status">
-                  <div class="status completed">Completed</div>
-                </div>
-                <div class="col-last-change comments">
-                  <div class="date">01.04.2019</div>
-                  <div class="comments">11:03:53 am</div>
-                </div>
-                <div class="col-action comments">
-                  <b-dropdown variant="link" toggle-class="text-decoration-none mr-3" no-caret>
-                    <template slot="button-content">
-                      <i class="fa fa-ellipsis-h clickable-icon" />
-                    </template>
-                    <b-dropdown-item>Create a copy</b-dropdown-item>
-                    <b-dropdown-item>Save as template</b-dropdown-item>
-                    <b-dropdown-item>History</b-dropdown-item>
-                    <b-dropdown-item>Export as CSV</b-dropdown-item>
-                    <b-dropdown-item>Delete</b-dropdown-item>
-                  </b-dropdown>
-                  <i class="fa fa-caret-down" v-b-toggle.collapse1></i>
-                </div>
-              </div>
-            </div>
-            <b-collapse id="collapse1" class="row-body">
-              <div class="row-detail add-margin-left">
+          <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret 
+            class="table-row content-card" v-for="(item, index) in doc_list" :key="index">
+            <template slot="button-content">
+              <div class="row-content">
                 <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/suzanne.png" />
+                  <b-check></b-check>
+                  <div class="col-basic-info">
+                    <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
                     <div class="ml-3">
-                      <div class="user-name">Suzanne Martin</div>
-                      <div class="comments">Sign status:</div>
+                      <div class="doc-name">Continuous Improvement</div>
+                      <div class="senders comments">
+                        to me
+                        <span>, Scott Wilkerson</span>
+                        <span>, Hannah Harmon</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -94,176 +62,94 @@
                   <div class="col-status">
                     <div class="status completed">Completed</div>
                   </div>
-                  <div class="col-last-change">
+                  <div class="col-last-change comments">
                     <div class="date">01.04.2019</div>
                     <div class="comments">11:03:53 am</div>
                   </div>
-                  <div class="col-action comments"></div>
+                  <div class="col-action comments">
+                    <i class="fa fa-caret-down" v-b-toggle="'collapse'+index.toString()"></i>
+                  </div>
                 </div>
               </div>
-              <div class="row-detail add-margin-left">
-                <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/scott.png" />
-                    <div class="ml-3">
-                      <div class="user-name">Scott Wilkerson</div>
-                      <div class="comments">Sign status:</div>
+              <b-collapse :id="'collapse'+index.toString()" class="row-body">
+                <div class="row-detail add-margin-left">
+                  <div class="d-flex align-items-center">
+                    <div class="col-basic-info remove-margin-left">
+                      <img src="img/avatars/suzanne.png" />
+                      <div class="ml-3">
+                        <div class="user-name">Suzanne Martin</div>
+                        <div class="comments">Sign status:</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="col-status">
-                    <div class="status waiting">Waiting to sign</div>
+                  <div class="d-flex align-items-center">
+                    <div class="col-status">
+                      <div class="status completed">Completed</div>
+                    </div>
+                    <div class="col-last-change">
+                      <div class="date">01.04.2019</div>
+                      <div class="comments">11:03:53 am</div>
+                    </div>
+                    <div class="col-action comments"></div>
                   </div>
-                  <div class="col-last-change">
-                    <div class="date">01.04.2019</div>
-                    <div class="comments">11:03:53 am</div>
-                  </div>
-                  <div class="col-action comments"></div>
                 </div>
-              </div>
-              <div class="row-detail add-margin-left border-bottom-0">
-                <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/suzanne.png" />
-                    <div class="ml-3">
-                      <div class="user-name">Suzanne Martin</div>
-                      <div class="comments">Sign status:</div>
+                <div class="row-detail add-margin-left">
+                  <div class="d-flex align-items-center">
+                    <div class="col-basic-info remove-margin-left">
+                      <img src="img/avatars/scott.png" />
+                      <div class="ml-3">
+                        <div class="user-name">Scott Wilkerson</div>
+                        <div class="comments">Sign status:</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="col-status">
-                    <div class="status completed">Completed</div>
+                  <div class="d-flex align-items-center">
+                    <div class="col-status">
+                      <div class="status waiting">Waiting to sign</div>
+                    </div>
+                    <div class="col-last-change">
+                      <div class="date">01.04.2019</div>
+                      <div class="comments">11:03:53 am</div>
+                    </div>
+                    <div class="col-action comments"></div>
                   </div>
-                  <div class="col-last-change">
-                    <div class="date">01.04.2019</div>
-                    <div class="comments">11:03:53 am</div>
-                  </div>
-                  <div class="col-action comments"></div>
                 </div>
-              </div>
-              <div class="user-document">
-                <div class="doc-div">
-                  <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
-                  <div class="doc-name mt-2">Continuous Improvement</div>
-                  <div class="senders comments">5 pages</div>
-                </div>
-              </div>
-            </b-collapse>
-          </div>
-          <div class="table-row content-card">
-            <div class="row-content">
-              <div class="d-flex align-items-center">
-                <b-check></b-check>
-                <div class="col-basic-info">
-                  <img :src="getFileType('Continuous Improvement.pdf')" class="doc-icon" />
-                  <div class="ml-3">
-                    <div class="doc-name">Continuous Improvement</div>
-                    <div class="senders comments">
-                      to me
-                      <span>, Scott Wilkerson</span>
-                      <span>, Hannah Harmon</span>
+                <div class="row-detail add-margin-left border-bottom-0">
+                  <div class="d-flex align-items-center">
+                    <div class="col-basic-info remove-margin-left">
+                      <img src="img/avatars/suzanne.png" />
+                      <div class="ml-3">
+                        <div class="user-name">Suzanne Martin</div>
+                        <div class="comments">Sign status:</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center">
-                <div class="col-status">
-                  <div class="status completed">Completed</div>
-                </div>
-                <div class="col-last-change comments">
-                  <div class="date">01.04.2019</div>
-                  <div class="comments">11:03:53 am</div>
-                </div>
-                <div class="col-action comments">
-                  <b-dropdown variant="link" toggle-class="text-decoration-none mr-3" no-caret>
-                    <template slot="button-content">
-                      <i class="fa fa-ellipsis-h clickable-icon" />
-                    </template>
-                    <b-dropdown-item>Create a copy</b-dropdown-item>
-                    <b-dropdown-item>Save as template</b-dropdown-item>
-                    <b-dropdown-item>History</b-dropdown-item>
-                    <b-dropdown-item>Export as CSV</b-dropdown-item>
-                    <b-dropdown-item>Delete</b-dropdown-item>
-                  </b-dropdown>
-                  <i class="fa fa-caret-down" v-b-toggle.collapse2></i>
-                </div>
-              </div>
-            </div>
-            <b-collapse id="collapse2" class="row-body" visible>
-              <div class="row-detail add-margin-left">
-                <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/suzanne.png" />
-                    <div class="ml-3">
-                      <div class="user-name">Suzanne Martin</div>
-                      <div class="comments">Sign status:</div>
+                  <div class="d-flex align-items-center">
+                    <div class="col-status">
+                      <div class="status completed">Completed</div>
                     </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="col-status">
-                    <div class="status completed">Completed</div>
-                  </div>
-                  <div class="col-last-change">
-                    <div class="date">01.04.2019</div>
-                    <div class="comments">11:03:53 am</div>
-                  </div>
-                  <div class="col-action comments"></div>
-                </div>
-              </div>
-              <div class="row-detail add-margin-left">
-                <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/scott.png" />
-                    <div class="ml-3">
-                      <div class="user-name">Scott Wilkerson</div>
-                      <div class="comments">Sign status:</div>
+                    <div class="col-last-change">
+                      <div class="date">01.04.2019</div>
+                      <div class="comments">11:03:53 am</div>
                     </div>
+                    <div class="col-action comments"></div>
                   </div>
                 </div>
-                <div class="d-flex align-items-center">
-                  <div class="col-status">
-                    <div class="status waiting">Waiting to sign</div>
-                  </div>
-                  <div class="col-last-change">
-                    <div class="date">01.04.2019</div>
-                    <div class="comments">11:03:53 am</div>
-                  </div>
-                  <div class="col-action comments"></div>
-                </div>
-              </div>
-              <div class="row-detail add-margin-left border-bottom-0">
-                <div class="d-flex align-items-center">
-                  <div class="col-basic-info remove-margin-left">
-                    <img src="img/avatars/suzanne.png" />
-                    <div class="ml-3">
-                      <div class="user-name">Suzanne Martin</div>
-                      <div class="comments">Sign status:</div>
-                    </div>
+                <div class="user-document">
+                  <div class="doc-div">
+                    <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
+                    <div class="doc-name mt-2">Continuous Improvement</div>
+                    <div class="senders comments">5 pages</div>
                   </div>
                 </div>
-                <div class="d-flex align-items-center">
-                  <div class="col-status">
-                    <div class="status completed">Completed</div>
-                  </div>
-                  <div class="col-last-change">
-                    <div class="date">01.04.2019</div>
-                    <div class="comments">11:03:53 am</div>
-                  </div>
-                  <div class="col-action comments"></div>
-                </div>
-              </div>
-              <div class="user-document">
-                <div class="doc-div">
-                  <img :src="getFileType('Continuous Improvement.pdf')" class="doc-icon" />
-                  <div class="doc-name mt-2">Continuous Improvement</div>
-                  <div class="senders comments">5 pages</div>
-                </div>
-              </div>
-            </b-collapse>
-          </div>
+              </b-collapse>
+            </template>
+            <b-dropdown-item>Create a copy</b-dropdown-item>
+            <b-dropdown-item>Save as template</b-dropdown-item>
+            <b-dropdown-item>History</b-dropdown-item>
+            <b-dropdown-item>Export as CSV</b-dropdown-item>
+            <b-dropdown-item>Delete</b-dropdown-item>
+          </b-dropdown>
         </div>
       </div>
       <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -297,6 +183,7 @@ export default {
   },
   data() {
     return {
+      doc_list: ["", ""],
       currentPage: 1,
       period: "Date",
       progress_status: "Status",

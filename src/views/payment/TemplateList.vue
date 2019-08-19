@@ -38,62 +38,57 @@
             <div class="column comments">LAST CHANGE</div>
             <div class="column comments">№ OF USED</div>
             <div class="column comments">TYPE</div>
-            <div class="column comments">AUTHOR</div>
-            <div class="column comments col-action">ACTION</div>
+            <div class="column comments col-action">AUTHOR</div>
           </div>
         </div>
         <div class="table-body">
-          <div class="table-row content-card" v-for="(item, index) in templates" :key="index">
-            <div class="row-content">
-              <div class="d-flex align-items-center">
-                <b-check></b-check>
-                <div class="col-basic-info">
-                  <img :src="getFileType(item.fileName)" class="doc-icon" />
-                  <div class="ml-3">
-                    <div class="doc-name">{{item.fileName}}</div>
+          <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret 
+            class="table-row content-card" v-for="(item, index) in templates" :key="index">
+            <template slot="button-content">
+              <div class="row-content">
+                <div class="d-flex align-items-center">
+                  <b-check></b-check>
+                  <div class="col-basic-info">
+                    <img :src="getFileType(item.fileName)" class="doc-icon" />
+                    <div class="ml-3">
+                      <div class="doc-name">{{item.fileName}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center flex-wrap">
+                  <div class="column">
+                    <div >{{getDate(item.created)}}</div>
+                    <div class="comments">{{getTime(item.created)}}</div>
+                  </div>
+                  <div class="column">
+                    <div >{{getDate(item.updated)}}</div>
+                    <div class="comments">{{getTime(item.updated)}}</div>
+                  </div>
+                  <div class="column">
+                    {{item.used}}
+                  </div>
+                  <div class="column ">
+                    <span><i class="mr-1" v-bind:class="getIcon(item.type)" /> {{item.type}} </span>
+                  </div>
+                  <div class="column col-action">
+                    {{item.author}}
                   </div>
                 </div>
               </div>
-              <div class="d-flex align-items-center flex-wrap">
-                <div class="column">
-                  <div >{{getDate(item.created)}}</div>
-                  <div class="comments">{{getTime(item.created)}}</div>
-                </div>
-                <div class="column">
-                  <div >{{getDate(item.updated)}}</div>
-                  <div class="comments">{{getTime(item.updated)}}</div>
-                </div>
-                <div class="column">
-                  {{item.used}}
-                </div>
-                <div class="column ">
-                  <span><i class="mr-1" v-bind:class="getIcon(item.type)" /> {{item.type}} </span>
-                </div>
-                <div class="column">
-                  {{item.author}}
-                </div>
-                <div class="column col-action">
-                  <b-dropdown variant="link" toggle-class="text-decoration-none" no-caret>
-                    <template slot="button-content">
-                      <i class="fa fa-ellipsis-h clickable-icon" />
-                    </template>
-                    <b-dropdown-item>
-                      <i class="fa fa-eye" /> Preview
-                    </b-dropdown-item>
-                    <b-dropdown-item>
-                      <i class="fa fa-paper-plane" /> Send for signature
-                    </b-dropdown-item>
-                    <b-dropdown-item>
-                      <i class="fa fa-pencil" /> Edit Template
-                    </b-dropdown-item>
-                    <b-dropdown-item v-on:click="openShareModal(item)">
-                      <i class="fa fa-share-alt" /> Share your template with other users
-                    </b-dropdown-item>
-                  </b-dropdown>
-                </div>
-              </div>
-            </div>
-          </div>
+            </template>
+            <b-dropdown-item>
+              <i class="fa fa-eye" /> Preview
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <i class="fa fa-paper-plane" /> Send for signature
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <i class="fa fa-pencil" /> Edit Template
+            </b-dropdown-item>
+            <b-dropdown-item v-on:click="openShareModal(item)">
+              <i class="fa fa-share-alt" /> Share your template with other users
+            </b-dropdown-item>
+          </b-dropdown>
         </div>
       </div>
       <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -117,15 +112,42 @@
        hide-footer centered size="lg">
       <div class="share-modal" v-if="selected_template">
         <div class="title">Do you want to share the XXX template with other users?</div>
-        <div class="doc-container mb-4">
-          <UserIcon icon="file_name.svg" class="mr-2"/>
-          <span> {{selected_template.fileName}}</span>
-        </div>
+        <b-form-group>
+          <b-input-group>
+            <b-input-group-prepend>
+              <b-input-group-text>
+                <!-- <i class="fa fa-lock"></i> -->
+                <UserIcon icon="file_name.svg" class="mr-2"/>
+              </b-input-group-text>
+            </b-input-group-prepend>
+            <b-form-input
+              type="text"
+              placeholder="Input file name"
+              v-model="selected_template.fileName"
+            ></b-form-input>
+          </b-input-group>
+        </b-form-group>
         <div class="doc-container mb-2">
           <div class="doc-tag" v-for="(item, index) in tags" :key="index">
-            {{item}} <i class="fa fa-close ml-1"/>
+            {{item}} <i class="fa fa-close ml-1 clickable-icon" v-on:click="tags.splice(index,1);"/>
           </div>
         </div>
+        
+        <b-form-group>
+          <b-input-group>
+            <b-input-group-prepend>
+              <b-input-group-text>
+                <i class="fa fa-tag"/>
+              </b-input-group-text>
+            </b-input-group-prepend>
+            <b-form-input
+              type="text"
+              placeholder="Input Tag name and click 'Enter'"
+              v-model="tag_name"
+              v-on:keyup.enter="tags.push(tag_name); tag_name='';"
+            ></b-form-input>
+          </b-input-group>
+        </b-form-group>
         <div class="d-flex flex-wrap mb-4">
           <div class="proposed-tag" v-for="(item, index) in proposed_tag" :key="index">
             {{item}}
@@ -153,6 +175,7 @@ export default {
     return {
       currentPage: 1,
       period: "Date",
+      tag_name: "",
       progress_status: "Type",
       selected_template: null,
       tags: ["Inquiry", "Report", "Tag #3", "Tag #4", "Tag #5", "Tag 6", "Report", "Tag #3", "Tag #4"],
