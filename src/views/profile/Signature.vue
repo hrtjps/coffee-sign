@@ -311,7 +311,7 @@
               <div class="row">
                 <div
                   class="col-12 mb-4 mb-lg-0 col-lg-4"
-                  v-for="(item, index) in signature_types"
+                  v-for="(item, index) in stamp_types"
                   :key="index"
                 >
                   <div
@@ -356,7 +356,7 @@
               <div class="row">
                 <div
                   class="col-12 mb-4 mb-lg-0 col-lg-4"
-                  v-for="(item, index) in signature_types"
+                  v-for="(item, index) in stamp_types"
                   :key="index"
                 >
                   <div
