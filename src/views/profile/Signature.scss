@@ -241,6 +241,7 @@
         z-index: 30;
         top: calc(50% - 13px);
         width: unset;
+        bottom: unset;
 
         .carousel-control-next-icon {
           background-image: unset;
@@ -277,12 +278,12 @@
         .sign-result {
           border-radius: 5px;
           border: solid 1px #ebebeb;
-          min-height: 235px;
+          min-height: 270px;
           color: #202020;
           font-family: "Mrs Saint Delafield";
           line-height: 1.51;
           padding: 12px;
-          max-height: 235px;
+          max-height: 270px;
 
           display: flex;
           justify-content: center;
