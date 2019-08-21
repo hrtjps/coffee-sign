@@ -153,7 +153,7 @@
               <div class="col-2">
                 <UserSelect
                   v-bind:value="language"
-                  v-bind:items="['Englsh', 'Korean', 'Japanese']"
+                  v-bind:items="['English', 'Korean', 'Japanese']"
                   @changeValue="language = $event"
                 />
               </div>
@@ -183,39 +183,28 @@
               </div>
             </div>
             <div class="signatures">
-              <b-carousel              
-                id="carousel-1"
-                :interval="0"
-                controls
-                background="white"
-                img-width="1024"
-                img-height="325"
+              <div v-for="(item, index) in signature_types[language=='English'?0:(language=='Korean'?2:1)]" :key="index"
+                class="sign-result" 
+                v-bind:class="index==selected_no?'checked':''"
+                v-on:click="selected_no = index"
               >
-                <template v-for="(row_item, chunk_no) in signature_types" >
-                  <b-carousel-slide :key="chunk_no" img-blank img-alt="Blank image">
-                    <div class="row signature-group">
-                      <div
-                        class="col-12 col-md-4 mb-4 mb-md-0"
-                        v-for="(item, index) in row_item"
-                        :key="index"
-                      >
-                        <div
-                          class="sign-result" 
-                          v-bind:class="(index.toString() + ' ' + chunk_no.toString())==selected_no?'checked':''"
-                          v-on:click="selected_no = (index.toString() + ' ' + chunk_no.toString())"
-                        >
-                          <span class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</span>
-                          <hr class="hr-bar" />
-                          <span class="initials-text"  v-bind:style="{fontFamily: item}">{{initials}}</span>
-                          <div class="check-box" v-if="selected_no == (index.toString() + ' ' + chunk_no.toString())">
-                            <img src="img/icons/check-2.svg" />
-                          </div>
-                        </div>
-                      </div>
+                <div class="row">
+                  <div class="col-7 d-flex-align-center pl-40px">
+                    <div class="left-border"></div>
+                    <div class="d-flex flex-column justify-content-between">
+                      <div class="signed-by">DocuSigned by:</div>
+                      <div class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</div>
+                      <div class="signed-id">C55F18C25</div>
                     </div>
-                  </b-carousel-slide>  
-                </template>
-              </b-carousel>              
+                  </div>
+                  <div class="col-5 d-flex-align-center">
+                    <div class="initials-text"  v-bind:style="{fontFamily: item}">{{initials}}</div>
+                  </div>
+                </div>
+                <div class="check-box" v-if="selected_no == index">
+                  <img src="img/icons/check-2.svg" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -445,10 +434,10 @@ export default {
       stamp_name: "",
 
       selected_no: 0,
-      signature_types: this.chunk([
-        "Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular",
-        "AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiMonakaBLt", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont",
-        "KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"], 3),
+      signature_types: [
+        ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
+        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiMonakaBLt", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
+        ["KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"]],
       signature: "Suzanne Thompson",
       initials: "ST",
       sign_type: 1,

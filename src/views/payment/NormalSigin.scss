@@ -17,6 +17,34 @@
         line-height: 1.32;
         color: #2e221e;
       }
+      .avatar-tag {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        border-radius: 50%;
+        background: #8a6454;
+        color: white;
+        font-size: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        .change-avatar {
+          position: absolute;
+          bottom: 0;
+          text-align: center;
+          font-size: 0.8rem;
+          height: 1.5rem;
+          background: rgba(0,0,0,.54);
+          width: 100%;
+          &:hover {
+            cursor: pointer;
+
+          }
+        }
+
+      }
     }
     .user-actions {
       display: flex;

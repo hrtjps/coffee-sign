@@ -3,7 +3,11 @@
     <div class="w-100 normal-sign">
       <div class="profile-header">
         <div class="user-happy">
-          <img src="img/avatars/NoPath@2x.png" />
+          <!-- <img src="img/avatars/NoPath@2x.png" /> -->
+          <div class="avatar-tag">
+            <span>ST</span>
+            <div class="change-avatar">Change</div>
+          </div>
           <div class="ml-3">
             <h1 class="happy">We are happy to see you again <div>Suzanne Thompson!</div></h1>
             <span class="comments">CoffeeSign even takes care reminding our clients!</span>
