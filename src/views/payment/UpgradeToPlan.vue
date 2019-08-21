@@ -201,6 +201,29 @@
               class="mb-0 mt-3"
               style="min-width:105px"
             />
+            <div class="d-flex-align-center justify-content-between mt-2" v-if="!edit_promo_code">
+              <span>Promo Code: <strong>{{promo_code}}</strong></span>
+              <b-button variant="link" v-on:click="edit_promo_code=true">{{promo_code.length==0?'Add Code': 'Edit Code'}}</b-button>
+            </div>
+            <div class="mt-2" v-if="edit_promo_code">
+              <div class="form-group">
+                <label for="name">Promo code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="promo_code"
+                  placeholder="Promo Code"
+                  name="promo_code"
+                  v-model="promo_code"
+                />
+              </div>
+              <div class="text-center">
+                <b-button variant="primary" v-on:click="edit_promo_code=false" class="mr-3">Add Code</b-button>
+                <b-button variant="link" v-on:click="edit_promo_code=false">Cancel</b-button>
+              </div>
+            </div>
+            
+
             <hr />
             <div class="text-center">
               <div class="limit-for-sending">Limit for Sending for Signature</div>
@@ -256,6 +279,8 @@ export default {
   },
   data() {
     return {
+      promo_code: "",
+      edit_promo_code: false,
       plan: null,
       subscription: "Monthly subscription",
       country: "Select Country",
