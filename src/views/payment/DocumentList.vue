@@ -36,7 +36,7 @@
           <div class="d-flex align-items-center">
             <div class="col-status comments">STATUS</div>
             <div class="col-last-change comments">LAST CHANGE</div>
-            <div class="col-action comments">ACTION</div>
+            <div class="col-action comments">HISTORY</div>
           </div>
         </div>
         <div class="table-body">

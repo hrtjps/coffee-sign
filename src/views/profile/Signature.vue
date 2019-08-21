@@ -31,7 +31,7 @@
           >
             <div class="sign">
               <span>Suzanne Thompson</span>
-              <span class="initials ml-3">ST</span>
+              <span class="initials ml-4">ST</span>
             </div>
             <div class="actions">
               <div class="action clickable-icon">
@@ -93,17 +93,17 @@
         <div class="row mb-4">
           <div class="col-4">
             <b-button
+              :variant="sign_type == 1?'primary':'outline-primary'"
+              v-on:click="sign_type = 1"
+              block
+            >Choose</b-button>
+          </div>
+          <div class="col-4">
+            <b-button
               :variant="sign_type == 0?'primary':'outline-primary'"
               v-on:click="sign_type = 0"
               block
             >Draw</b-button>
-          </div>
-          <div class="col-4">
-            <b-button
-              :variant="sign_type == 1?'primary':'outline-primary'"
-              v-on:click="sign_type = 1"
-              block
-            >Type</b-button>
           </div>
           <div class="col-4">
             <b-button
@@ -150,6 +150,13 @@
           <div class="col-12">
             <hr class="w-100" />
             <div class="row">
+              <div class="col-2">
+                <UserSelect
+                  v-bind:value="language"
+                  v-bind:items="['Englsh', 'Korean', 'Japanese']"
+                  @changeValue="language = $event"
+                />
+              </div>
               <div class="col-6">
                 <div class="form-group">
                   <input
@@ -162,7 +169,7 @@
                   />
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-4">
                 <div class="form-group">
                   <input
                     type="text"
@@ -416,16 +423,19 @@
 
 <script>
 import UserIcon from "../../components/UserIcon";
+import UserSelect from "../../components/UserSelect";
 import DrawingBoard from "../../components/DrawingBoard";
 export default {
   name: "SignatureStamp",
   components: {
+    UserSelect,
     UserIcon,
     DrawingBoard
   },
   data() {
 
     return {
+      language: "English",
       drawable: false,
       img_file: "",
       initials_file: "",
@@ -441,7 +451,7 @@ export default {
         "KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"], 3),
       signature: "Suzanne Thompson",
       initials: "ST",
-      sign_type: 0,
+      sign_type: 1,
       signatures: ["", "", "", ""],
       stams: ["", "", "", ""]
     };

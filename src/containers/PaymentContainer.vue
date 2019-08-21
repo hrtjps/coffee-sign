@@ -17,6 +17,12 @@
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>
             </div>
+            <template  v-if="show_add_folder">
+              <hr class="seperate-bar" />
+              <div class="user-sidebar-folders">
+                <SideFolders :folders="folders" :layer_id="''"/>
+              </div>
+            </template>
           </div>
           <Logout></Logout>
         </div>
@@ -58,6 +64,23 @@
         <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved..</span>
       </div>
     </TheFooter>
+    <b-modal id="rename-folder-modal" ref="rename-folder-modal" hide-footer centered size="md">
+      <div class="rename-folder-modal">
+        <div class="title">{{folder_op_type=="new"?"Create":"Rename"}} Folder</div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="folder_rename"
+            placeholder="Folder Name"
+            name="folder_rename"
+            v-model="folder_rename"
+          />
+        </div>
+        <hr>
+        <b-button v-on:click="enterName()" variant="primary" class="min-width-136px">{{folder_op_type=="new"?"Create":"Rename"}}</b-button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -80,10 +103,12 @@ import UserIcon from "../components/UserIcon";
 import UpgradePlan from "./UpgradePlan";
 import Logout from "../components/Logout";
 import AppLogo from "../components/AppLogo";
+import SideFolders from "../components/SideFolders";
 
 export default {
   name: "DocumentsContainer",
   components: {
+    SideFolders,
     AppLogo,
     Logout,
     UserIcon,
@@ -103,6 +128,11 @@ export default {
   },
   data() {
     return {
+      show_add_folder: false,
+      current_item: '',
+      folder_rename: '',
+      folder_remove_id: 0,
+      folder_op_type: 'new',
       nav: [
         {
           name: "Account",
@@ -125,6 +155,24 @@ export default {
           icon: "fa fa-id-card"
         }
       ],
+      folders: [{
+        name: "Folders",
+        children: [
+          {
+            name: "Folders",
+            children: [
+              {
+                name: "Folders",
+                children:[]
+              }
+            ]
+          },
+          {
+            name: "Folders",
+            children:[]
+          }
+        ]
+      }],
       show_tool_menu: true
     };
   },
@@ -138,8 +186,62 @@ export default {
       );
     }
   },
-  mounted() {},
+  mounted() {
+    if (this.$router.history.current.fullPath == "/payment/document-list") {
+      this.show_add_folder = true;
+    } else {
+      this.show_add_folder = false;
+    }
+    this.$root.$on('renameFolder', (layer_id, name) => {
+      this.folder_rename = name;
+      this.folder_op_type = "rename";
+      this.openRenameDialog(layer_id);
+    });
+    this.$root.$on('newFolder', (layer_id) => {
+      this.folder_rename = "New Folder";
+      this.folder_op_type = "new";
+      this.openRenameDialog(layer_id);
+    });
+    this.$root.$on('removeFolder', (layer_id, index) => {
+      if(layer_id==""){
+        alert("Could not delete root Folder!");
+        return;
+      }
+      this.folder_op_type = "remove";
+      this.folder_remove_id = index;
+      this.renameFolder(this.folders, layer_id);
+    });
+  },
   methods: {
+    renameFolder(folders, layer_id) {
+      const pos = layer_id.indexOf('/', 1);
+      
+      const no = parseInt(layer_id.substr(1, pos));
+    
+      if(pos<0){
+        const no1 = parseInt(layer_id.substr(1));
+        if(this.folder_op_type == "rename") {
+          folders[no1].name = this.folder_rename;
+        } else if(this.folder_op_type == "new") {
+          folders[no1].children.push({name: this.folder_rename, children: []})
+          console.log(folders[no1]);
+        } else if(this.folder_op_type == "remove") {
+          folders[no1].children.splice(parseInt(this.folder_remove_id), 1);
+        }
+        this.folder_rename = "";
+      } else {
+        layer_id = layer_id.substr(pos);
+        this.renameFolder(folders[no].children, layer_id);
+      }
+    },
+    enterName() {
+      this.renameFolder(this.folders, this.current_item);
+      this.$refs['rename-folder-modal'].hide();
+    },
+    openRenameDialog(layer_id) {
+      this.current_item = layer_id;
+      this.$refs['rename-folder-modal'].show();
+    },
     getSelected(doc_type) {
       if(doc_type == 'doc' && this.$router.history.current.fullPath == "/payment/document-list") {
         return "selected"
@@ -169,6 +271,12 @@ export default {
         this.show_tool_menu = true;
       } else {
         this.show_tool_menu = false;
+      }
+      
+      if (this.$router.history.current.fullPath == "/payment/document-list") {
+        this.show_add_folder = true;
+      } else {
+        this.show_add_folder = false;
       }
     }
   }

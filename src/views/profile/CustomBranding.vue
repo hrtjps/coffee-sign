@@ -8,28 +8,16 @@
           <div class="content-card">
             <div class="content-header">
               <strong>Email Style - Custom Branding</strong>
+              <b-button variant="primary" class="mx-3" v-on:click="editStyle()">Edit email Style</b-button>
             </div>
             <div
-              class="comments"
-            >The email style is a feature that allows you to change the logo image, style, and intro text of your electronic contract email. (KakaoTalk message is not supported)</div>
-            <b-button variant="primary" class="my-3" v-on:click="editStyle()">Edit email Style</b-button>
+              class="comments mb-3"
+            >This feature allows you to change the logo, style, and intro of your signiture request.</div>
             <div class="form-group d-flex align-items-center">
               <label class="mr-3">Logo Image</label>
               <div class="logo-img">
                 <img src="img/icons/logo_axisbits.svg" />
               </div>
-            </div>
-            <hr class="mb-4" />
-            <div class="form-group d-flex">
-              <label class="mr-3">
-                Logo Link
-                <i class="fa fa-question-circle clickable-icon" id="logo-link-tooltip"></i>
-                <b-tooltip
-                  target="logo-link-tooltip"
-                  placement="topright"
-                >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-              </label>
-              <span>https://www.axisbits.com</span>
             </div>
             <div class="form-group d-flex align-items-center">
               <label class="mr-3">
@@ -42,55 +30,57 @@
               </label>
               <span>Easy Electronic Contract Signed All</span>
             </div>
-            <div class="form-group d-flex align-items-center">
-              <label class="mr-3">
-                Top/Button Color
-                <i
-                  class="fa fa-question-circle clickable-icon"
-                  id="top-color-tooltip"
-                ></i>
-                <b-tooltip
-                  target="top-color-tooltip"
-                  placement="topright"
-                >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-              </label>
-              <div class="select-color bg-white border-0">
-                <div class="color-pan" v-bind:style="{backgroundColor: top_color}"></div>
-                <div class="color-text">{{top_color}}</div>
+            <div class="d-flex-align-center justify-content-between flex-wrap">
+              <div class="form-group d-flex align-items-center">
+                <label class="mr-3 mb-0">
+                  Top/Button Color
+                  <i
+                    class="fa fa-question-circle clickable-icon"
+                    id="top-color-tooltip"
+                  ></i>
+                  <b-tooltip
+                    target="top-color-tooltip"
+                    placement="topright"
+                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
+                </label>
+                <div class="select-color bg-white border-0">
+                  <div class="color-pan" v-bind:style="{backgroundColor: top_color}"></div>
+                  <div class="color-text">{{top_color}}</div>
+                </div>
               </div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-              <label class="mr-3">
-                Button Color
-                <i
-                  class="fa fa-question-circle clickable-icon"
-                  id="button-color-tooltip"
-                ></i>
-                <b-tooltip
-                  target="button-color-tooltip"
-                  placement="topright"
-                >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-              </label>
-              <div class="select-color bg-white border-0">
-                <div class="color-pan" v-bind:style="{backgroundColor: button_color}"></div>
-                <div class="color-text">{{button_color}}</div>
+              <div class="form-group d-flex align-items-center">
+                <label class="mr-3 mb-0">
+                  Button Color
+                  <i
+                    class="fa fa-question-circle clickable-icon"
+                    id="button-color-tooltip"
+                  ></i>
+                  <b-tooltip
+                    target="button-color-tooltip"
+                    placement="topright"
+                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
+                </label>
+                <div class="select-color bg-white border-0">
+                  <div class="color-pan" v-bind:style="{backgroundColor: button_color}"></div>
+                  <div class="color-text">{{button_color}}</div>
+                </div>
               </div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-              <label class="mr-3">
-                Button Text Color
-                <i
-                  class="fa fa-question-circle clickable-icon"
-                  id="button-text-color-tooltip"
-                ></i>
-                <b-tooltip
-                  target="button-text-color-tooltip"
-                  placement="topright"
-                >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-              </label>
-              <div class="select-color bg-white border-0">
-                <div class="color-pan" v-bind:style="{backgroundColor: button_text_color}"></div>
-                <div class="color-text">{{button_text_color}}</div>
+              <div class="form-group d-flex align-items-center">
+                <label class="mr-3 mb-0">
+                  Button Text Color
+                  <i
+                    class="fa fa-question-circle clickable-icon"
+                    id="button-text-color-tooltip"
+                  ></i>
+                  <b-tooltip
+                    target="button-text-color-tooltip"
+                    placement="topright"
+                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
+                </label>
+                <div class="select-color bg-white border-0">
+                  <div class="color-pan" v-bind:style="{backgroundColor: button_text_color}"></div>
+                  <div class="color-text">{{button_text_color}}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -107,24 +97,11 @@
                 name="name"
                 value="Axisbits"
                 required
-                :readonly="!edit_name"
               />
             </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <b-button variant="link" :disabled="edit_name" v-on:click="editName()">Edit Name</b-button>
-              <div class="d-flex align-items-center">
-                <b-button
-                  class="mr-2"
-                  variant="link"
-                  v-if="edit_name"
-                  v-on:click="cancelName()"
-                >Cancel</b-button>
-                <b-button
-                  variant="primary"
-                  :disabled="!edit_name"
-                  v-on:click="saveName()"
-                >Save Changes</b-button>
-              </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <b-button class="mr-4" variant="link" v-on:click="cancelName()">Cancel</b-button>
+              <b-button variant="primary" v-on:click="saveName()">Save Changes</b-button>
             </div>
           </div>
         </div>
@@ -141,31 +118,11 @@
               </div>
               <div class="form-group">
                 <label>Logo Image</label>
-                <div class="logo-img">
+                <div class="logo-img clickable-icon" v-on:click="changeLogo()">
                   <img src="img/icons/logo_axisbits.svg" />
                 </div>
               </div>
-              <b-button variant="link">Change logo</b-button>
               <hr class="mb-4" />
-              <div class="form-group">
-                <label>
-                  Logo Link
-                  <i class="fa fa-question-circle clickable-icon" id="logo-link-tooltip"></i>
-                  <b-tooltip
-                    target="logo-link-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="logo_link"
-                  placeholder="Logo Link"
-                  name="logo_link"
-                  value="https://www.axisbits.com"
-                  :disabled="!edit_field"
-                />
-              </div>
               <div class="form-group">
                 <label>
                   Explanation
@@ -181,8 +138,7 @@
                   id="logo_link"
                   placeholder="Explanation"
                   name="logo_link"
-                  value="Easy Electronic Contract Signed All"
-                  :disabled="!edit_field"
+                  v-model="explanation"
                 />
               </div>
               <div class="form-group">
@@ -198,14 +154,13 @@
                   >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
                 </label>
                 <div
-                  class="select-color"
-                  v-bind:class="edit_field?'enable':''"
-                  v-b-toggle="edit_field?'top-color-collapse':''"
+                  class="select-color enable"
+                  v-b-toggle="'top-color-collapse'"
                 >
                   <div class="color-pan" v-bind:style="{backgroundColor: top_color}"></div>
                   <div class="color-text">{{top_color}}</div>
                 </div>
-                <b-collapse id="top-color-collapse" v-if="edit_field" class="color-collapse">
+                <b-collapse id="top-color-collapse" class="color-collapse">
                   <UserColorPicker @changeValue="top_color = $event"></UserColorPicker>
                 </b-collapse>
               </div>
@@ -222,14 +177,13 @@
                   >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
                 </label>
                 <div
-                  class="select-color"
-                  v-bind:class="edit_field?'enable':''"
-                  v-b-toggle="edit_field?'button-color-collapse':''"
+                  class="select-color enable"
+                  v-b-toggle="'button-color-collapse'"
                 >
                   <div class="color-pan" v-bind:style="{backgroundColor: button_color}"></div>
                   <div class="color-text">{{button_color}}</div>
                 </div>
-                <b-collapse id="button-color-collapse" v-if="edit_field" class="color-collapse">
+                <b-collapse id="button-color-collapse" class="color-collapse">
                   <UserColorPicker @changeValue="button_color = $event"></UserColorPicker>
                 </b-collapse>
               </div>
@@ -246,36 +200,19 @@
                   >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
                 </label>
                 <div
-                  class="select-color"
-                  v-bind:class="edit_field?'enable':''"
-                  v-b-toggle="edit_field?'button-text-color-collapse':''"
+                  class="select-color enable"
+                  v-b-toggle="'button-text-color-collapse'"
                 >
                   <div class="color-pan" v-bind:style="{backgroundColor: button_text_color}"></div>
                   <div class="color-text">{{button_text_color}}</div>
                 </div>
-                <b-collapse
-                  id="button-text-color-collapse"
-                  v-if="edit_field"
-                  class="color-collapse"
-                >
+                <b-collapse id="button-text-color-collapse" class="color-collapse">
                   <UserColorPicker @changeValue="button_text_color = $event"></UserColorPicker>
                 </b-collapse>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <b-button variant="link" :disabled="edit_field" v-on:click="editField()">Edit fields</b-button>
-                <div class="d-flex align-items-center">
-                  <b-button
-                    class="mr-2"
-                    variant="link"
-                    v-if="edit_field"
-                    v-on:click="cancelField()"
-                  >Cancel</b-button>
-                  <b-button
-                    variant="primary"
-                    :disabled="!edit_field"
-                    v-on:click="saveField()"
-                  >Save Changes</b-button>
-                </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <b-button class="mr-4" variant="link" v-on:click="cancelField()">Cancel</b-button>
+                <b-button variant="primary" v-on:click="saveField()">Save Changes</b-button>
               </div>
             </div>
           </div>
@@ -283,26 +220,25 @@
             <div class="content-card">
               <div class="doc-format">
                 <div class="doc-header">
-                  <img src="img/icons/logo_axisbits_sm.svg" />
-                  <span>Easy Electronic Contract Signed All</span>
+                  <img src="img/logo_dark.svg" width="125" />
+                  <img src="img/icons/logo_axisbits_sm.svg"/>
                 </div>
                 <div class="doc-content">
-                  <div class="doc-title">Its time to sign</div>
+                  <div class="doc-title">{{explanation}}</div>
                   <div class="text-center mt-3 mb-4">
-                    Please verify the signature information.
-                    <br />Press the button below to go to the page that can be signed.
+                    Press button below to go to the signing page.
                   </div>
                   <div class="doc-item doc-top-border">
-                    <span class="comments">Document name:</span>
-                    <span class="ml-3">Hong Gil-dong salary contract</span>
+                    <span class="min-width-230px">Document name</span>
+                    <span class="ml-3">Signer</span>
                   </div>
-                  <div class="doc-item">
-                    <span class="comments">Document name:</span>
-                    <span class="ml-3">Continuous Improvement lorem ipsum sit dollor amet</span>
+                  <div class="doc-item doc-top-border d-flex">
+                    <div class="comments min-width-124px">Signer 1:</div>
+                    <span>Hong Gil-dong (kim@modusign.co.kr)</span>
                   </div>
-                  <div class="doc-item">
-                    <span class="comments">Document name:</span>
-                    <span class="ml-3">Hong Gil-dong salary contract</span>
+                  <div class="doc-item d-flex">
+                    <div class="comments min-width-124px">Signer 2:</div>
+                    <span>Continuous Improvement lorem ipsum sit dollor amet (hong@modusign.co.kr)</span>
                   </div>
                   <b-button
                     block
@@ -317,22 +253,41 @@
                   <div
                     class="doc-text mb-4"
                   >If you share a link with this message, unauthorized third parties can verify and sign the content. Signing is not responsible for any problems that occur at this time.</div>
-                  <div class="doc-subtitle">Do not share links with email.</div>
-                  <div
-                    class="doc-text"
-                  >If you share a link with this message, unauthorized third parties can verify and sign the content. Signing is not responsible for any problems that occur at this time.</div>
                 </div>
               </div>
               <div class="doc-footer doc-text">
-                This message is sent only and can not be replying.
-                <br />For inquiries, please use the customer center . © 2016-2019. Modusign Inc. All rights reserved. Terms of Use | Privacy Policy | Service center
+                This is send-only. Please do not reply. <br/>© 2019. Coffeesign Inc. All rights reserved. 
+                
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </b-modal>
+    
+    <b-modal id="change-logo-modal" ref="change-logo-modal"
+       hide-footer centered size="xl">
+      <div class="change-logo-modal">
+        <div class="title">Change Avatar</div>
+        <div class="img-control-btns">
+          <b-button variant="outline-primary">Change Photo</b-button>
+          <div>
+            <i class="fa fa-rotate-left clickable-icon" v-on:click="rotate(-90)"/>
+            <i class="fa fa-rotate-right clickable-icon mx-3" v-on:click="rotate(90)"/>
+          </div>
+        </div>        
+        <vue-cropper
+          ref="cropper"
+          :src="'img/icons/logo_axisbits.svg'"
+          alt="Source Image"
+          :cropmove="cropped"
+          class="my-4"
+          :minContainerHeight="300"
+        >
+        </vue-cropper>
         <div class="text-center">
-          <b-button variant="outline-primary" class="mr-3" v-on:click="cancelAgree()">Cancel</b-button>
-          <button type="submit" class="btn btn-primary" v-on:click="agreeAll()">I agree and sign it</button>
+          <b-button variant="outline-primary" class="mr-3" v-on:click="cancelLogo()" >Cancel</b-button>
+          <button type="submit" class="btn btn-primary" v-on:click="saveLogo()">Save changes</button>
         </div>
       </div>
     </b-modal>
@@ -343,15 +298,20 @@
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
 import UserColorPicker from "../../components/UserColorPicker";
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 export default {
   name: "CustomBranding",
   components: {
     UserIcon,
     UserSelect,
-    UserColorPicker
+    UserColorPicker,
+    VueCropper
   },
   data() {
     return {
+      explanation: "You got the Signing request",
+      cropped: null,
       edit_name: false,
       edit_field: false,
       top_color: "#F0F0F5",
@@ -360,6 +320,15 @@ export default {
     };
   },
   methods: {
+    rotate(rotationAngle) {
+      this.$refs['cropper'].rotate(rotationAngle);
+    },
+    saveLogo() {
+      this.$refs['change-logo-modal'].hide();
+    },
+    changeLogo() {
+      this.$refs['change-logo-modal'].show();
+    },
     cancelAgree() {
       this.$refs["edit-style-modal"].hide();
     },

@@ -186,46 +186,46 @@
         <div class="text-center"><img src="img/icons/agree.svg" /></div>
         <div class="title">Change Password</div>
         <div class="content-card">
-            <div class="form-group">
-              <div class="d-flex-align-center">
-                <input
-                  class="form-control"
-                  id="cur_pwd"
-                  placeholder="Current Password*"
-                  name="cur_pwd"
-                  required
-                  :type="showOldPwd ? 'text' : 'password'"
-                />
-                <i class="fa fa-eye clickable-icon ml-3" v-on:click="showOldPwd = !showOldPwd"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="d-flex-align-center">
-                <input
-                  class="form-control"
-                  id="new_pwd"
-                  placeholder="New Password*"
-                  name="new_pwd"
-                  required
-                  :type="showNewPwd ? 'text' : 'password'"
-                  />
-                  <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewPwd = !showNewPwd"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="d-flex-align-center">
-                <input
-                  class="form-control"
-                  id="confirm_pwd"
-                  placeholder="Confirm New Password*"
-                  name="confirm_pwd"
-                  required
-                  :type="showNewConfirm ? 'text' : 'password'"
-                />
-                <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewConfirm = !showNewConfirm"/>
-              </div>
+          <div class="form-group">
+            <div class="d-flex-align-center">
+              <input
+                class="form-control"
+                id="cur_pwd"
+                placeholder="Current Password*"
+                name="cur_pwd"
+                required
+                :type="showOldPwd ? 'text' : 'password'"
+              />
+              <i class="fa fa-eye clickable-icon ml-3" v-on:click="showOldPwd = !showOldPwd"/>
             </div>
           </div>
+          <div class="form-group">
+            <div class="d-flex-align-center">
+              <input
+                class="form-control"
+                id="new_pwd"
+                placeholder="New Password*"
+                name="new_pwd"
+                required
+                :type="showNewPwd ? 'text' : 'password'"
+                />
+                <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewPwd = !showNewPwd"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="d-flex-align-center">
+              <input
+                class="form-control"
+                id="confirm_pwd"
+                placeholder="Confirm New Password*"
+                name="confirm_pwd"
+                required
+                :type="showNewConfirm ? 'text' : 'password'"
+              />
+              <i class="fa fa-eye clickable-icon ml-3" v-on:click="showNewConfirm = !showNewConfirm"/>
+            </div>
+          </div>
+        </div>
         <div class="text-center">
           <b-button variant="outline-primary" class="mr-3" v-on:click="cancelChange()" >Cancel</b-button>
           <button type="submit" class="btn btn-primary" v-on:click="savePassword()">Save changes</button>
@@ -313,6 +313,9 @@ export default {
     changeAvatar() {
       this.avatar = this.selected_avatar;
       this.$refs['change-avatar-modal'].show();
+    },
+    changePassword() {
+      this.$refs['change-password-modal'].show();
     },
     cancelAvatar() {
       this.$refs['change-password-modal'].hide();

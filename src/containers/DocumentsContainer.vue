@@ -329,6 +329,7 @@ export default {
       this.$refs["welcomemodal"].show();
     }
     this.setOptions();
+
   },
   methods: {
     dragTool() {
