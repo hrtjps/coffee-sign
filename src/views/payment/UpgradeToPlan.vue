@@ -257,19 +257,6 @@
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
 import axios from "axios";
-import Vue from "vue";
-import CxltToastr from "cxlt-vue2-toastr";
-var toastrConfigs = {
-  position: "top right",
-  showDuration: 500,
-  delay: 0,
-  timeOut: 5000,
-  hideDuration: 500,
-  progressBar: true,
-  color: "#00c292"
-  // icon: "img/icons/Info@2x.png"
-};
-Vue.use(CxltToastr, toastrConfigs);
 
 export default {
   name: "UpgradeToPlan",
@@ -348,10 +335,6 @@ export default {
       );
     },
     upgradeMyPlan() {
-      // this.$toast.success({
-      //   title: "Congratulation!",
-      //   message: "Selected " + this.plan.title + " plan!"
-      // });
       this.$router.push({
         path: "/landing",
         query: { id: this.id }

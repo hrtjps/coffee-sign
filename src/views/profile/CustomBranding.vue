@@ -4,7 +4,7 @@
       <h1>Custom Branding</h1>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-8">
           <div class="content-card">
             <div class="content-header">
               <strong>Email Style - Custom Branding</strong>
@@ -20,45 +20,24 @@
               </div>
             </div>
             <div class="form-group d-flex align-items-center">
-              <label class="mr-3">
-                Explanation
-                <i class="fa fa-question-circle clickable-icon" id="exp-tooltip"></i>
-                <b-tooltip
-                  target="exp-tooltip"
-                  placement="topright"
-                >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
+              <label class="mr-3 mb-0">
+                Siging request Message
               </label>
-              <span>Easy Electronic Contract Signed All</span>
+              <span>{{explanation}}</span>
             </div>
-            <div class="d-flex-align-center justify-content-between flex-wrap">
-              <div class="form-group d-flex align-items-center">
+            <div class="d-flex-align-center flex-wrap">
+              <div class="form-group d-flex align-items-center mr-5">
                 <label class="mr-3 mb-0">
-                  Top/Button Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="top-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="top-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
+                  Edge Color
                 </label>
                 <div class="select-color bg-white border-0">
                   <div class="color-pan" v-bind:style="{backgroundColor: top_color}"></div>
                   <div class="color-text">{{top_color}}</div>
                 </div>
               </div>
-              <div class="form-group d-flex align-items-center">
+              <div class="form-group d-flex align-items-center mr-5">
                 <label class="mr-3 mb-0">
                   Button Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="button-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="button-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
                 </label>
                 <div class="select-color bg-white border-0">
                   <div class="color-pan" v-bind:style="{backgroundColor: button_color}"></div>
@@ -68,14 +47,6 @@
               <div class="form-group d-flex align-items-center">
                 <label class="mr-3 mb-0">
                   Button Text Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="button-text-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="button-text-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
                 </label>
                 <div class="select-color bg-white border-0">
                   <div class="color-pan" v-bind:style="{backgroundColor: button_text_color}"></div>
@@ -125,7 +96,7 @@
               <hr class="mb-4" />
               <div class="form-group">
                 <label>
-                  Explanation
+                  Siging request Message
                   <i class="fa fa-question-circle clickable-icon" id="exp-tooltip"></i>
                   <b-tooltip
                     target="exp-tooltip"
@@ -143,7 +114,7 @@
               </div>
               <div class="form-group">
                 <label>
-                  Top/Button Color
+                  Edge Color
                   <i
                     class="fa fa-question-circle clickable-icon"
                     id="top-color-tooltip"
@@ -218,8 +189,8 @@
           </div>
           <div class="col-md-8">
             <div class="content-card">
-              <div class="doc-format">
-                <div class="doc-header">
+              <div class="doc-format"  v-bind:style="{borderColor: top_color}">
+                <div class="doc-header" v-bind:style="{borderColor: top_color}">
                   <img src="img/logo_dark.svg" width="125" />
                   <img src="img/icons/logo_axisbits_sm.svg"/>
                 </div>
@@ -232,7 +203,7 @@
                     <span class="min-width-230px">Document name</span>
                     <span class="ml-3">Signer</span>
                   </div>
-                  <div class="doc-item doc-top-border d-flex">
+                  <div class="doc-item doc-top-border d-flex border-bottom-0">
                     <div class="comments min-width-124px">Signer 1:</div>
                     <span>Hong Gil-dong (kim@modusign.co.kr)</span>
                   </div>
@@ -247,12 +218,10 @@
                   >Checking and Signing Content</b-button>
                 </div>
               </div>
-              <div class="doc-format">
-                <div class="doc-content">
-                  <div class="doc-subtitle">Do not share links with email.</div>
-                  <div
-                    class="doc-text mb-4"
-                  >If you share a link with this message, unauthorized third parties can verify and sign the content. Signing is not responsible for any problems that occur at this time.</div>
+              <div class="doc-content">
+                <div class="doc-subtitle">Do not share links with email.</div>
+                <div class="doc-text mb-4">
+                  If you share a link with this message, unauthorized third parties can verify and sign the content. Signing is not responsible for any problems that occur at this time.
                 </div>
               </div>
               <div class="doc-footer doc-text">
@@ -300,6 +269,19 @@ import UserSelect from "../../components/UserSelect";
 import UserColorPicker from "../../components/UserColorPicker";
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
+import Vue from "vue";
+import CxltToastr from "cxlt-vue2-toastr";
+var toastrConfigs = {
+  position: "top right",
+  showDuration: 500,
+  delay: 0,
+  timeOut: 5000,
+  hideDuration: 500,
+  progressBar: true,
+  color: "#00c292"
+  // icon: "img/icons/Info@2x.png"
+};
+Vue.use(CxltToastr, toastrConfigs);
 export default {
   name: "CustomBranding",
   components: {
@@ -343,6 +325,11 @@ export default {
     },
     saveName() {
       this.edit_name = false;
+      console.log("ls");
+      this.$toast.success({
+        title: "Congratulation!",
+        message: "Sender's info has changed!"
+      });
     },
     cancelName() {
       this.edit_name = false;
@@ -352,9 +339,11 @@ export default {
     },
     saveField() {
       this.edit_field = false;
+      this.$refs["edit-style-modal"].hide();
     },
     cancelField() {
       this.edit_field = false;
+      this.$refs["edit-style-modal"].hide();
     }
   }
 };

@@ -215,12 +215,12 @@
       padding-top: 0;
       background: white;
       .title {
-        font-size: 30px;
+        font-size: 26px;
         font-weight: bold;
         line-height: 1.33;
         text-align: center;
         color: #2e221e;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         @media (max-width: 600px) {
           margin-bottom: 20px;
         }
@@ -319,6 +319,15 @@
             min-width: 20px;
             margin-right: 10px;
           }
+          .right-border {
+            border: solid 3px darkblue;
+            border-left: none;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            height: 72px;
+            min-width: 20px;
+            margin-left: 10px;
+          }
           .signed-by {
             font-size: 1rem;
             font-family: Roboto;
@@ -402,12 +411,12 @@
       padding-top: 0;
       background: white;
       .title {
-        font-size: 30px;
+        font-size: 26px;
         font-weight: bold;
         line-height: 1.33;
         text-align: center;
         color: #2e221e;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         
         @media (max-width: 600px) {
           margin-bottom: 20px;

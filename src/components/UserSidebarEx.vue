@@ -55,7 +55,9 @@ export default {
       { name: "Title", icon: "fa fa-briefcase" },
       { name: "Text", icon: "fa fa-file-text" },
       { name: "Date Signed", icon: "fa fa-calendar" },
-      { name: "Attachments", icon: "fa fa-paperclip" }
+      { name: "Attachments", icon: "fa fa-paperclip" },
+      { name: "Initials", icon: "fa fa-pause-circle-o" },
+      { name: "Stamp", icon: "fa fa-shopping-bag"},
     ];
     const items = this.navItems.map(item => {
       const children = tools.map(tool => {

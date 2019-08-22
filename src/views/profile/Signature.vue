@@ -31,7 +31,7 @@
           >
             <div class="sign">
               <span>Suzanne Thompson</span>
-              <span class="initials ml-4">ST</span>
+              <span class="ml-4">ST</span>
             </div>
             <div class="actions">
               <div class="action clickable-icon">
@@ -192,13 +192,14 @@
                   <div class="col-7 d-flex-align-center pl-40px">
                     <div class="left-border"></div>
                     <div class="d-flex flex-column justify-content-between">
-                      <div class="signed-by">DocuSigned by:</div>
+                      <div class="signed-by">CoffeSigned by:</div>
                       <div class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</div>
                       <div class="signed-id">C55F18C25</div>
                     </div>
+                    <div class="right-border"></div>
                   </div>
                   <div class="col-5 d-flex-align-center">
-                    <div class="initials-text"  v-bind:style="{fontFamily: item}">{{initials}}</div>
+                    <div class="signature-text"  v-bind:style="{fontFamily: item}">{{initials}}</div>
                   </div>
                 </div>
                 <div class="check-box" v-if="selected_no == index">
@@ -212,7 +213,7 @@
           <div class="col-12 col-md-8 mb-4 mb-md-0">
             <div class="content-dash draw-signature">
               <div class="draw-placeholder">
-                <img src="img/sign/sign1.png" class="sign-img" />
+                <img src="img/sign/sign.png" class="sign-img" />
               </div>
             </div>
             <div class="reset">
@@ -436,7 +437,7 @@ export default {
       selected_no: 0,
       signature_types: [
         ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
-        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiMonakaBLt", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
+        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
         ["KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"]],
       signature: "Suzanne Thompson",
       initials: "ST",

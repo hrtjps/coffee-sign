@@ -6,7 +6,7 @@
           <!-- <img src="img/avatars/NoPath@2x.png" /> -->
           <div class="avatar-tag">
             <span>ST</span>
-            <div class="change-avatar">Change</div>
+            <div class="change-avatar" v-on:click="changeAvatar()">Change</div>
           </div>
           <div class="ml-3">
             <h1 class="happy">We are happy to see you again <div>Suzanne Thompson!</div></h1>
@@ -97,6 +97,35 @@
       </div>
     </div>
     <Message />
+    
+    <b-modal id="change-avatar-modal" ref="change-avatar-modal"
+       hide-footer centered size="xl">
+      <div class="change-avatar-modal">
+        <div class="title">Change Avatar</div>
+
+        <div class="img-control-btns">
+          <b-button variant="outline-primary">Change Photo</b-button>
+          <div>
+            <i class="fa fa-rotate-left clickable-icon" v-on:click="rotate(-90)"/>
+            <i class="fa fa-rotate-right clickable-icon mx-3" v-on:click="rotate(90)"/>
+          </div>
+        </div>
+        
+        <vue-cropper
+          ref="cropper"
+          :src="avatar"
+          alt="Source Image"
+          :cropmove="cropped"
+          class="my-4"
+          :minContainerHeight="300"
+        >
+        </vue-cropper>
+        <div class="text-center">
+          <b-button variant="outline-primary" class="mr-3" v-on:click="cancelAvatar()" >Cancel</b-button>
+          <button type="submit" class="btn btn-primary" v-on:click="saveAvatar()">Save changes</button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -104,17 +133,22 @@
 import UserIcon from "../../components/UserIcon";
 import FileUpload from "../../components/FileUpload";
 import Message from "../../components/Message";
-import RadialProgressBar from 'vue-radial-progress'
+import RadialProgressBar from 'vue-radial-progress';
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 export default {
   name: "NormalSign",
   components: {
     FileUpload,
     UserIcon,
     Message,
-    RadialProgressBar
+    RadialProgressBar,
+    VueCropper
   },
   data() {
     return {
+      cropped: null,
+      avatar: "img/avatars/suzanne@3x.png",
       sections: [
         { label: 'Red section', value: 45, color: '#d4bcb2' },
       ],
@@ -123,6 +157,19 @@ export default {
     }
   },
   methods: {
+    rotate(rotationAngle) {
+      this.$refs['cropper'].rotate(rotationAngle);
+    },
+    saveAvatar() {
+      this.selected_avatar = this.avatar;
+      this.$refs['change-avatar-modal'].hide();
+    },
+    changeAvatar() {
+      this.$refs['change-avatar-modal'].show();
+    },
+    cancelAvatar() {
+      this.$refs['change-avatar-modal'].hide();
+    },
     upgradePlan() {
       this.$router.push({ path: "/payment/upgrade-plan" });
     }

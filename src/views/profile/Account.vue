@@ -183,7 +183,7 @@
     <b-modal id="change-password-modal" ref="change-password-modal"
        hide-footer centered size="xl">
       <div class="change-password-modal">
-        <div class="text-center"><img src="img/icons/agree.svg" /></div>
+        <div class="text-center"><img src="img/icons/mail password.svg" /></div>
         <div class="title">Change Password</div>
         <div class="content-card">
           <div class="form-group">
@@ -318,7 +318,7 @@ export default {
       this.$refs['change-password-modal'].show();
     },
     cancelAvatar() {
-      this.$refs['change-password-modal'].hide();
+      this.$refs['change-avatar-modal'].hide();
     },
     cancelChange() {
       this.$refs['change-password-modal'].hide();
