@@ -437,7 +437,7 @@ export default {
       selected_no: 0,
       signature_types: [
         ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
-        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
+        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular", "hkkoukotu", "hkkakuh", "hkkaing", "hkkaiiw"],
         ["KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"]],
       signature: "Suzanne Thompson",
       initials: "ST",
