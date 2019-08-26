@@ -13,13 +13,13 @@
                   <i :class="item.tool_icon"></i>
                   <span class="ml-2">{{item.tool_name}}</span>
                 </div>
-                <div class="doc-item-no">
-                  {{ item_index}}
+                <div class="doc-item-no" v-if="item_index <= signStep">
+                  {{ item_index + 1 }}
                 </div>
               </div>
               <b-popover :ref="`popover-${item_index}`"  :target="`popover-${item_index}`" placement="bottom">
                 <div class="arrow-popover"></div>
-                <b-button variant="link" class="mr-3">Edit</b-button>
+                <b-button variant="link" class="mr-3" v-on:click="editItem(item_index)">Edit</b-button>
                 <b-button variant="link" v-on:click="removeItem(item_index)">Clear</b-button>
               </b-popover>
             </div>              
@@ -137,6 +137,7 @@ export default {
           tool_name: "Attachments",
         },
       ],
+      signStep: -1,
       percent: "50%",
       viewSrc: null,
       viewPage: 0,
@@ -158,12 +159,22 @@ export default {
     this.$root.$on('finishSign', () => {
       this.openAgreeModal();
     })
+    this.$root.$on('nextSignEdit', () => {
+      this.editItem(this.signStep+1);
+    })
   },
   methods: {
     removeItem(item_index) {
       console.log(item_index);
       // this.$refs[`popover-${item_index}`].$emit('close');
       // this.sign_items.splice(item_index,1); 
+    },
+    editItem(item_index) {
+      console.log(item_index);
+      if(this.signStep+1 != item_index) return;
+      if(this.signStep >= this.sign_items.length-1) return;
+      this.signStep = item_index;
+      this.$root.$emit('nextStep', item_index+1, this.sign_items.length -1 == item_index);
     },
     closeWaitingModal() {
       this.$router.push({ path: '/sign/complition' });

@@ -26,7 +26,14 @@
           </template>
           <template v-if="currentStepNo == 1">
             <b-button variant="link" class="mr-1 mr-sm-4">Finish Later</b-button>
-            <b-button variant="other" class="px-4 px-sm-4" v-on:click="finishSign()">Finish</b-button>
+            <div class="d-inline-block position-relative">
+              <b-button variant="other" class="px-4 px-sm-4" v-on:click="finishSign()">
+                {{ endFlag? 'Finish': 'Next' }}
+              </b-button>
+              <div class="doc-item-no" v-if="signStep > 0">
+                {{ signStep }}
+              </div>
+            </div>
           </template>
         </AppHeader>
         <div class="container-fluid main-container">
@@ -48,6 +55,8 @@ export default {
   },
   data() {
     return {
+      signStep: 0,
+      endFlag: false,
       currentStepNo: 0,
     };
   },
@@ -63,10 +72,18 @@ export default {
   },
   mounted() {
     this.setOptions();
+    this.$root.$on('nextStep', (no, endFlag) => {
+      this.signStep = no;
+      this.endFlag = endFlag;
+    })
   },
   methods: {
     finishSign() {
-      this.$root.$emit('finishSign')
+      if(this.endFlag){
+        this.$root.$emit('finishSign')
+      } else {
+        this.$root.$emit('nextSignEdit')
+      }
 
     },
     gotoPage(page) {
