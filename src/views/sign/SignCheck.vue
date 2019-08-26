@@ -2,40 +2,40 @@
   <div class="app flex-row">
     <div class="w-100">
       <div class="d-flex justify-content-between align-items-center">
-        <b-button variant="outline-primary">
+        <b-button variant="outline-primary" v-on:click="toggleDoc = !toggleDoc">
           <UserIcon icon="doc_2.svg" :button="true" />
         </b-button>
         
         <div class="d-flex align-items-center control-actions">
-          <b-button variant="outline-primary">
-            <UserIcon icon="plus.svg" :button="true" />
+          <b-button variant="outline-primary"  v-on:click="zoom_out()">
+            <UserIcon icon="plus.svg" :button="true"/>
           </b-button>
           <UserSelect
             v-bind:value="percent"
-            v-bind:items="['10%','20%', '30%', '50%', '75%','100%', '200%']"
+            v-bind:items="zoom_list"
             @changeValue="changePercent"
             class="mb-0 mx-1 mx-md-2"
           />
-          <b-button variant="outline-primary">
+          <b-button variant="outline-primary"  v-on:click="zoom_in()">
             <UserIcon icon="minus.svg" :button="true" />
           </b-button>
         </div>
         <div class="d-flex align-items-center control-actions">
           <b-button variant="outline-primary">
-            <UserIcon icon="question_2.svg" :button="true" />
+            <UserIcon icon="delete.svg" :button="true" />
           </b-button>
           <b-button variant="outline-primary" class="mx-1 mx-md-2">
             <UserIcon icon="download_3.svg" :button="true" />
           </b-button>
           <b-button variant="outline-primary">
-            <UserIcon icon="other.svg" :button="true" />
+            <i class="fa fa-print clickable-icon top-menu-icon" />
           </b-button>
         </div>
       </div>
       <hr class="mb-0"/>
-      <div class="row">
-        <div class="col-md-3 pr-3 ">
-          <div class="content-container">
+      <div class="d-flex">
+        <div class="doc-list" v-bind:class="toggleDoc?'': 'closed'">
+          <div class="content-container" v-bind:class="toggleDoc?'': 'd-none'">
             <div class="documents">
               <div class="title">
                 <span>DOCUMENTS</span>
@@ -71,9 +71,10 @@
             </div>
           </div>
         </div>
-        <div class="col-md-9 pl-3 pl-sm-0">
-          <div class="p-4">
-            <div class="content-card mb-4">
+        <div class="preview-doc" v-bind:class="toggleDoc?'': 'closed'">
+          <div class="d-flex justify-content-center p-4">
+            <div class="content-card mb-4" :style="{width: zoom_list[percent_no]}">
+              <span >CoffeeSign Envoloped ID: 64343EAB33-C3234-43</span>
               <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
             </div>
           </div>
@@ -102,8 +103,11 @@ export default {
   },
   data() {
     return {
+      toggleDoc: true,
+      zoom_list: ['10%','20%', '30%', '50%', '75%','100%'],
       sign_items: [],
-      percent: "50%",
+      percent: '100%',
+      percent_no: 4,
       viewSrc: null,
       viewPage: 0,
       currentPage: 0,
@@ -122,6 +126,18 @@ export default {
     });
   },
   methods: {
+    zoom_out() {
+      if(this.percent_no<5){
+        this.percent_no++;
+      }
+      this.percent = this.zoom_list[this.percent_no];
+    },
+    zoom_in() {
+      if(this.percent_no>0){
+        this.percent_no--;
+      }
+      this.percent = this.zoom_list[this.percent_no];
+    },
     changePercent(e) {
       this.percent = e;
     },

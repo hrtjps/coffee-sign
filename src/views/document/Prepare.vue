@@ -33,7 +33,8 @@
                   v-bind:style="{color: item.color, borderColor: item.color}"
                   :id="`popover-${index}`"
                 >
-                  <i :class="item.tool_icon"></i>
+                  <i :class="item.tool_icon" v-if="!item.img_mode" ></i>
+                  <UserIcon :icon="item.tool_icon" v-if="item.img_mode" class="mr-2" />
                   <span class="ml-2">{{item.tool_name}}</span>
                 </div>
                 <i class="fa fa-times-circle-o control" v-on:click="sign_items.splice(index, 1)"></i>

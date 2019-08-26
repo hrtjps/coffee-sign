@@ -80,7 +80,6 @@
     </div>
     <b-modal id="edit-style-modal" ref="edit-style-modal" hide-footer centered size="xl">
       <div class="edit-style-modal">
-        <div class="title">Edit email style</div>
         <div class="row">
           <div class="col-md-4 pr-md-0">
             <div class="content-card">
@@ -203,11 +202,11 @@
                     <span class="min-width-230px">Document name</span>
                     <span class="ml-3">Signer</span>
                   </div>
-                  <div class="doc-item doc-top-border d-flex border-bottom-0">
+                  <div class="doc-item doc-top-border d-flex border-bottom-0 signer">
                     <div class="comments min-width-124px">Signer 1:</div>
                     <span>Hong Gil-dong (kim@modusign.co.kr)</span>
                   </div>
-                  <div class="doc-item d-flex">
+                  <div class="doc-item d-flex signer">
                     <div class="comments min-width-124px">Signer 2:</div>
                     <span>Continuous Improvement lorem ipsum sit dollor amet (hong@modusign.co.kr)</span>
                   </div>
@@ -296,7 +295,7 @@ export default {
       cropped: null,
       edit_name: false,
       edit_field: false,
-      top_color: "#F0F0F5",
+      top_color: "#2e3949",
       button_color: "#6299F8",
       button_text_color: "#FFFFFF"
     };

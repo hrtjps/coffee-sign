@@ -101,10 +101,10 @@
     <b-modal id="change-avatar-modal" ref="change-avatar-modal"
        hide-footer centered size="xl">
       <div class="change-avatar-modal">
-        <div class="title">Change Avatar</div>
+        <div class="title">Change Profile Image</div>
 
         <div class="img-control-btns">
-          <b-button variant="outline-primary">Change Photo</b-button>
+          <b-button variant="outline-primary">Other Image</b-button>
           <div>
             <i class="fa fa-rotate-left clickable-icon" v-on:click="rotate(-90)"/>
             <i class="fa fa-rotate-right clickable-icon mx-3" v-on:click="rotate(90)"/>

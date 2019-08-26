@@ -189,8 +189,7 @@
                 v-on:click="selected_no = index"
               >
                 <div class="row">
-                  <div class="col-7 d-flex-align-center pl-40px">
-                    <div class="left-border"></div>
+                  <div class="col-7 d-flex-align-center pl-40px">>
                     <div class="d-flex flex-column justify-content-between">
                       <div class="signed-by">CoffeSigned by:</div>
                       <div class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</div>
@@ -274,7 +273,7 @@
               :variant="stamp_type == 1?'primary':'outline-primary'"
               v-on:click="stamp_type = 1"
               block
-            >Corporate Sea</b-button>
+            >Corporate Seal</b-button>
           </div>
           <div class="col-4 px-1 px-lg-4">
             <b-button
@@ -437,7 +436,7 @@ export default {
       selected_no: 0,
       signature_types: [
         ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
-        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular", "hkkoukotu", "hkkakuh", "hkkaing", "hkkaiiw"],
+        ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "ShigotoMemogaki-Regular-1-01", "ShigotoMemogaki-Regular-1-01", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
         ["KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"]],
       signature: "Suzanne Thompson",
       initials: "ST",

@@ -7,7 +7,8 @@
         v-bind:style="{color: item.color}"
       >
         <i class="fa fa-caret-down toggle-icon" />
-        <i v-bind:class="item.icon" />
+        <i v-bind:class="item.icon"/>
+        
         {{item.name}}
       </div>
       <b-collapse
@@ -23,7 +24,8 @@
           :group="{ name: 'people', pull: 'clone', put: false }"
         >
           <div v-for="(tool, index1) in item.children" :key="index1" class="tool">
-            <i v-bind:class="tool.tool_icon" />
+            <i v-bind:class="tool.tool_icon" v-if="!tool.img_mode"/>
+            <UserIcon :icon="tool.tool_icon" v-if="tool.img_mode" class="mr-2" />
             {{tool.tool_name}}
           </div>
         </draggable>
@@ -34,11 +36,13 @@
 
 <script>
 import draggable from "vuedraggable";
+import UserIcon from "./UserIcon";
 
 export default {
   name: "UserSidebarEx",
   components: {
-    draggable
+    draggable,
+    UserIcon
   },
   props: {
     navItems: {
@@ -55,13 +59,13 @@ export default {
       { name: "Title", icon: "fa fa-briefcase" },
       { name: "Text", icon: "fa fa-file-text" },
       { name: "Date Signed", icon: "fa fa-calendar" },
+      { name: "Initials", icon: "initial.png", img_mode: true},
+      { name: "Stamp", icon: "stamp.png", img_mode: true},
       { name: "Attachments", icon: "fa fa-paperclip" },
-      { name: "Initials", icon: "fa fa-pause-circle-o" },
-      { name: "Stamp", icon: "fa fa-shopping-bag"},
     ];
     const items = this.navItems.map(item => {
       const children = tools.map(tool => {
-        return { ...item, tool_name: tool.name, tool_icon: tool.icon };
+        return { ...item, tool_name: tool.name, tool_icon: tool.icon, img_mode: tool.img_mode };
       });
       return {
         ...item,

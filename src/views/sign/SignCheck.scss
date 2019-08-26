@@ -5,6 +5,9 @@
   select {
     height: 43px !important;
   }
+  .top-menu-icon {
+    font-size: 20px;
+  }
 }
 .sign-items {
   width: 100%;
@@ -82,4 +85,18 @@
     border: solid 1px #ebebeb;
     background-color: #fcfafa;
   }
+}
+.doc-list {
+  width: 15%;
+  transition: width 0.8s linear;
+}
+.preview-doc {
+  width: 85%;
+}
+.doc-list.closed {
+  // display: none;
+  width: 0%;
+}
+.preview-doc.closed {
+  width: 100%;
 }

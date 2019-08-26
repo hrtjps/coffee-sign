@@ -1,73 +1,30 @@
 <template>
   <div class="app flex-row">
     <div class="w-100">
-      <div class="d-flex justify-content-between align-items-center">
-        <b-button variant="outline-primary">
-          <UserIcon icon="doc_2.svg" :button="true" />
-        </b-button>
-        
-        <div class="d-flex align-items-center control-actions">
-          <b-button variant="outline-primary">
-            <UserIcon icon="plus.svg" :button="true" />
-          </b-button>
-          <UserSelect
-            v-bind:value="percent"
-            v-bind:items="['10%','20%', '30%', '50%', '75%','100%', '200%']"
-            @changeValue="changePercent"
-            class="mb-0 mx-1 mx-md-2"
-          />
-          <b-button variant="outline-primary">
-            <UserIcon icon="minus.svg" :button="true" />
-          </b-button>
-        </div>
-        <div class="d-flex align-items-center control-actions">
-          <b-button variant="outline-primary">
-            <UserIcon icon="question_2.svg" :button="true" />
-          </b-button>
-          <b-button variant="outline-primary" class="mx-1 mx-md-2">
-            <UserIcon icon="download_3.svg" :button="true" />
-          </b-button>
-          <b-button variant="outline-primary">
-            <UserIcon icon="other.svg" :button="true" />
-          </b-button>
-        </div>
-      </div>
-      <hr />
       <div class="row">
         <div class="col-12">
           <div class="sign-history content-card p-5">
-            <div v-for="(row_item, index) in sign_items" :key="index" class="doc-control-row">
-              <div v-for="(item, index) in row_item" :key="index" class="doc-control">
-                <div class="doc-item">
-                  <div
-                    class="doc-item-control color-signature"
-                    v-bind:style="{color: item.color, borderColor: item.color}"
-                    :id="`popover-${index}`"
-                  >
-                    <i :class="item.tool_icon"></i>
-                    <span class="ml-2">{{item.tool_name}}</span>
-                  </div>
+            <div v-for="(item, item_index) in sign_items" :key="item_index" class="doc-control">
+              <div class="doc-item" :id="`popover-${item_index}`">
+                <div
+                  class="doc-item-control color-signature"
+                  v-bind:style="{color: item.color, borderColor: item.color}"
+                >
+                  <i :class="item.tool_icon"></i>
+                  <span class="ml-2">{{item.tool_name}}</span>
                 </div>
-                <b-popover :target="`popover-${index}`" placement="bottom">
-                  <div class="who-fill">
-                    <div class="arrow-popover"></div>
-                    <span>Who fills this out?</span>
-                    <b-form-select
-                      :plain="true"
-                      class="mt-2"
-                      :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                      value="Roger Waters"
-                    ></b-form-select>
-                  </div>
-                </b-popover>
+                <div class="doc-item-no">
+                  {{ item_index}}
+                </div>
               </div>
-            </div>
+              <b-popover :ref="`popover-${item_index}`"  :target="`popover-${item_index}`" placement="bottom">
+                <div class="arrow-popover"></div>
+                <b-button variant="link" class="mr-3">Edit</b-button>
+                <b-button variant="link" v-on:click="removeItem(item_index)">Clear</b-button>
+              </b-popover>
+            </div>              
           </div>
         </div>
-      </div>
-      <div class="text-center">
-        <b-button variant="link" class="mr-4" >Finish later</b-button>
-        <b-button variant="other" class="min-width-136px" v-on:click="openAgreeModal()">Finish</b-button>
       </div>
     </div>
     <b-modal id="sign-agree-modal" ref="sign-agree-modal"
@@ -137,138 +94,48 @@ export default {
   data() {
     return {
       sign_items: [
-        [
-          {
-            color: "#ee9964",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-pencil",
-            tool_name: "Signature",
-          },
-          {
-            color: "#ee9964",
-            icon: "fa fa-building",
-            name: "Roger Waters",
-            tool_icon: "fa fa-building",
-            tool_name: "Company",
-          },
-          {
-            color: "#ee9964",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-user",
-            tool_name: "Full Name",
-          },
-          {
-            color: "#ee9964",
-            icon: "fa fa-briefcase",
-            name: "Roger Waters",
-            tool_icon: "fa fa-briefcase",
-            tool_name: "Signature",
-          },
-          {
-            color: "#ee9964",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-file-text",
-            tool_name: "Text",
-          },
-          {
-            color: "#ee9964",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-calendar",
-            tool_name: "Attachments",
-          },
-        ],
-        [
-          {
-            color: "#ee9964",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-pencil",
-            tool_name: "Signature",
-          },
-          {
-            color: " #ef634c",
-            icon: "fa fa-building",
-            name: "Roger Waters",
-            tool_icon: "fa fa-building",
-            tool_name: "Company",
-          },
-          {
-            color: " #ef634c",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-user",
-            tool_name: "Full Name",
-          },
-          {
-            color: " #ef634c",
-            icon: "fa fa-briefcase",
-            name: "Roger Waters",
-            tool_icon: "fa fa-briefcase",
-            tool_name: "Signature",
-          },
-          {
-            color: " #ef634c",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-file-text",
-            tool_name: "Text",
-          },
-          {
-            color: " #ef634c",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-calendar",
-            tool_name: "Attachments",
-          },
-        ],
-        [
-          {
-            color: " #775649",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-pencil",
-            tool_name: "Signature",
-          },
-          {
-            color: " #775649",
-            icon: "fa fa-building",
-            name: "Roger Waters",
-            tool_icon: "fa fa-building",
-            tool_name: "Company",
-          },
-          {
-            color: " #775649",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-user",
-            tool_name: "Full Name",
-          },
-          {
-            color: " #775649",
-            icon: "fa fa-briefcase",
-            name: "Roger Waters",
-            tool_icon: "fa fa-briefcase",
-            tool_name: "Signature",
-          },
-          {
-            color: " #775649",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-file-text",
-            tool_name: "Text",
-          },
-          {
-            color: " #775649",
-            icon: "fa fa-user",
-            name: "Roger Waters",
-            tool_icon: "fa fa-calendar",
-            tool_name: "Attachments",
-          },
-        ],
+        {
+          color: "#775649",
+          icon: "fa fa-user",
+          name: "Roger Waters",
+          tool_icon: "fa fa-pencil",
+          tool_name: "Signature",
+        },
+        {
+          color: "#ee9964",
+          icon: "fa fa-building",
+          name: "Roger Waters",
+          tool_icon: "fa fa-building",
+          tool_name: "Company",
+        },
+        {
+          color: "#775649",
+          icon: "fa fa-user",
+          name: "Roger Waters",
+          tool_icon: "fa fa-user",
+          tool_name: "Full Name",
+        },
+        {
+          color: "#ee9964",
+          icon: "fa fa-briefcase",
+          name: "Roger Waters",
+          tool_icon: "fa fa-briefcase",
+          tool_name: "Signature",
+        },
+        {
+          color: "#775649",
+          icon: "fa fa-user",
+          name: "Roger Waters",
+          tool_icon: "fa fa-file-text",
+          tool_name: "Text",
+        },
+        {
+          color: "#ef634c",
+          icon: "fa fa-user",
+          name: "Roger Waters",
+          tool_icon: "fa fa-calendar",
+          tool_name: "Attachments",
+        },
       ],
       percent: "50%",
       viewSrc: null,
@@ -293,6 +160,11 @@ export default {
     })
   },
   methods: {
+    removeItem(item_index) {
+      console.log(item_index);
+      // this.$refs[`popover-${item_index}`].$emit('close');
+      // this.sign_items.splice(item_index,1); 
+    },
     closeWaitingModal() {
       this.$router.push({ path: '/sign/complition' });
     },
