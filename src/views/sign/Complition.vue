@@ -9,8 +9,8 @@
         <div class="content">
           An audit trail certificate with completed documents and signature progress history has been emailed. Please check the attached file or all of the emails in the signature.
         </div>
-        <b-button variant="primary" class="min-width-136px mr-4">Login</b-button>
-        <b-button variant="outline-primary" class="min-width-136px">No Thanks</b-button>
+        <b-button variant="primary" class="min-width-136px m-2">Login</b-button>
+        <b-button variant="outline-primary" class=" m-2 min-width-136px">No Thanks</b-button>
       </div>
     </div>
   </div>

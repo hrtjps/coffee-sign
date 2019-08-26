@@ -7,7 +7,7 @@
         </b-button>
         
         <div class="d-flex align-items-center control-actions">
-          <b-button variant="outline-primary"  v-on:click="zoom_out()">
+          <b-button variant="outline-primary"  v-on:click="zoom_out()" class="d-none d-sm-inline">
             <UserIcon icon="plus.svg" :button="true"/>
           </b-button>
           <UserSelect
@@ -16,7 +16,7 @@
             @changeValue="changePercent"
             class="mb-0 mx-1 mx-md-2"
           />
-          <b-button variant="outline-primary"  v-on:click="zoom_in()">
+          <b-button variant="outline-primary"  v-on:click="zoom_in()" class="d-none d-sm-inline">
             <UserIcon icon="minus.svg" :button="true" />
           </b-button>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <hr class="mb-0"/>
-      <div class="d-flex">
+      <div class="d-flex flex-wrap">
         <div class="doc-list" v-bind:class="toggleDoc?'': 'closed'">
           <div class="content-container" v-bind:class="toggleDoc?'': 'd-none'">
             <div class="documents">
@@ -79,8 +79,8 @@
             </div>
           </div>
           <div class="text-center">
-            <b-button variant="link" class="mr-5" >Sign later</b-button>
-            <b-button variant="other" class="px-5" v-on:click="moveNextPage()">Start Signing</b-button>
+            <b-button variant="link" class="mr-0 mr-sm-5" >Sign later</b-button>
+            <b-button variant="other" class="px-2 px-sm-5" v-on:click="moveNextPage()">Start Signing</b-button>
           </div>
         </div>
       </div>

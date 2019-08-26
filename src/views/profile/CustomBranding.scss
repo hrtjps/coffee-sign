@@ -41,6 +41,7 @@
   .doc-header {
     padding: 15px 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border-top: solid 2px #ebebeb;

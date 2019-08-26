@@ -16,6 +16,7 @@
 }
 .sign-history {
   display: flex;
+  flex-wrap: wrap;
   .doc-control {
     display: flex;
     justify-content: flex-start;

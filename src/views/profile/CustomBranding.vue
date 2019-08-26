@@ -81,7 +81,7 @@
     <b-modal id="edit-style-modal" ref="edit-style-modal" hide-footer centered size="xl">
       <div class="edit-style-modal">
         <div class="row">
-          <div class="col-md-4 pr-md-0">
+          <div class="col-12 col-lg-4 pr-lg-0">
             <div class="content-card">
               <div class="content-header">
                 <strong>Email Style - Custom Branding</strong>
@@ -186,12 +186,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-12 col-lg-8">
             <div class="content-card">
               <div class="doc-format"  v-bind:style="{borderColor: top_color}">
                 <div class="doc-header" v-bind:style="{borderColor: top_color}">
-                  <img src="img/logo_dark.svg" width="125" />
-                  <img src="img/icons/logo_axisbits_sm.svg"/>
+                  <img src="img/logo_dark.svg" width="125" class="my-1"/>
+                  <img src="img/icons/logo_axisbits_sm.svg" class="my-1"/>
                 </div>
                 <div class="doc-content">
                   <div class="doc-title">{{explanation}}</div>
