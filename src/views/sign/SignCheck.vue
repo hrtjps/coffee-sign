@@ -73,7 +73,7 @@
         </div>
         <div class="preview-doc" v-bind:class="toggleDoc?'': 'closed'">
           <div class="d-flex justify-content-center p-4">
-            <div class="content-card mb-4" :style="{width: zoom_list[percent_no]}">
+            <div class="content-card mb-4" :style="{width: percent}">
               <span >CoffeeSign Envoloped ID: 64343EAB33-C3234-43</span>
               <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
             </div>
