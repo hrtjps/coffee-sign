@@ -16,7 +16,7 @@
         <div>
           <div>
             <span class="comments mr-2">Available:</span>
-            <strong>2/3</strong>
+            <strong>2/3 Signitures</strong>
           </div>
           <b-progress :value="30" :max="100" class="mb-3"></b-progress>
           <b-button variant="other" style="width: 186px" v-on:click="upgradePlan()">Upgrade Plan</b-button>

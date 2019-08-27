@@ -12,7 +12,7 @@
                 <div class="ml-3">
                   <div class="header">Your signature & Initials</div>
                   <div
-                    class="comments max-width-220px"
+                    class="comments max-width-260px"
                   >Add cool signiture and initials from here.</div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
                 <div class="ml-3">
                   <div class="header">Your stamp</div>
                   <div
-                    class="comments max-width-220px"
+                    class="comments max-width-260px"
                   >Add personnel / Corporate seal from here.</div>
                 </div>
               </div>

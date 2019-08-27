@@ -150,7 +150,7 @@ export default {
   data() {
     return {
       cropped: null,
-      avatar: "img/avatars/suzanne@3x.png",
+      avatar: "img/avatars/510-510.png",
       sections: [
         { label: 'Red section', value: 45, color: '#d4bcb2' },
       ],
