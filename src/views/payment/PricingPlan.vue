@@ -15,7 +15,7 @@
         </div>
         <div>
           <div>
-            <span class="comments">Available:</span>
+            <span class="comments mr-2">Available:</span>
             <strong>2/3</strong>
           </div>
           <b-progress :value="30" :max="100" class="mb-3"></b-progress>

@@ -13,14 +13,14 @@
                   <div class="header">Your signature & Initials</div>
                   <div
                     class="comments max-width-220px"
-                  >If you want to add one more signature, click the button</div>
+                  >Add cool signiture and initials from here.</div>
                 </div>
               </div>
               <b-button
                 variant="primary"
                 class="my-3"
                 v-on:click="createSignature()"
-              >Add more Singiture/Initials</b-button>
+              >Add Singiture/Initials</b-button>
             </div>
           </div>
 
@@ -55,7 +55,7 @@
                   <div class="header">Your stamp</div>
                   <div
                     class="comments max-width-220px"
-                  >If you want to add one more stamp, click the button</div>
+                  >Add personnel / Corporate seal from here.</div>
                 </div>
               </div>
               <b-button variant="primary" class="my-3" v-on:click="createStamp()">Add stamp</b-button>
@@ -278,7 +278,7 @@
             >Upload</b-button>
           </div>
         </div>
-        <div class="row mb-4" v-if="stamp_type==0">
+        <div class="row mb-4" v-if="stamp_type==0 || stamp_type==1">
           <div class="col-12">
             <hr class="w-100" />
             <div class="row mb-1">
@@ -302,51 +302,6 @@
                 </div>
               </div>
               <div class="col-12 col-sm-4 col-lg-2">
-                <b-button variant="primary" block>Create</b-button>
-              </div>
-            </div>
-            <div class="signatures">
-              <div class="row">
-                <div
-                  class="col-12 mb-4 mb-lg-0 col-lg-4"
-                  v-for="(item, index) in stamp_types"
-                  :key="index"
-                >
-                  <div
-                    class="sign-result"
-                    v-bind:class="index==selected_no?'checked':''"
-                    v-on:click="selected_no = index"
-                  >
-                    <img src="img/payment/stamp-2x.png" />
-
-                    <div class="check-box" v-if="index == selected_no">
-                      <img src="img/icons/check-2.svg" />
-                    </div>
-                  </div>
-                </div>
-                <i class="fa fa-long-arrow-left left-button clickable-icon" />
-                <i class="fa fa-long-arrow-right right-button clickable-icon" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-4" v-if="stamp_type==1">
-          <div class="col-12">
-            <hr class="w-100" />
-            <div class="row">
-              <div class="col-8 pr-0 pr-lg-4 col-lg-10">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="stamp_name"
-                    placeholder="Enter your name and press the Create button"
-                    name="stamp_name"
-                    v-model="stamp_name"
-                  />
-                </div>
-              </div>
-              <div class="col-4 col-lg-2">
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>

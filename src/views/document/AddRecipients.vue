@@ -4,7 +4,7 @@
       <h1>Add Recipients</h1>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
           <div class="recipient" v-for="(recipient, index) in recipients" :key="index">
             <div class="recipient-head">
               <span class="name">RECIPIENT #{{index+1}}</span>
@@ -130,12 +130,12 @@
             <UserIcon icon="add-recipien.svg" class="mr-2" />Add Recipient
           </button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="document" v-for="(doc, index) in documents" :key="index">
             <div class="document-div">
               <img v-bind:src="getFileType(doc.doc_name)" class="folder-2" />
-              <div class="docu-title">Continuous Improvement lorem ipsum sit dollor amet.doc</div>
-              <div class="docu-pages">{{doc.pages}} {{doc.pages>1?"pages":"page"}}</div>
+              <div class="docu-title">{{doc.doc_name}}</div>
+              <div class="docu-pages">{{doc.doc_pages}} {{doc.doc_pages>1?"pages":"page"}}</div>
             </div>
           </div>
           <div class="d-flex justify-content-end mt-4 flex-wrap">
@@ -180,12 +180,16 @@ export default {
       ],
       documents: [
         {
-          doc_name: "Continuous Improvement lorem ipsum sit dollor amet.doc",
+          doc_name: "Filename Jikhan Jung.doc",
           doc_pages: 5
         },
         {
           doc_name: "Ad cum numquam efficiantur.pdf",
           doc_pages: 1
+        },
+        {
+          doc_name: "Ad cum numquam efficiantur.pdf",
+          doc_pages: 3
         }
       ]
     };

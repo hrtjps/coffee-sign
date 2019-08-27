@@ -138,7 +138,7 @@
                 <UserSelect
                   v-bind:value="form_data.employee"
                   v-bind:items="[
-                  'Employee',
+                  'Number of Employees',
                   '0-5',
                   '6-10',
                   '11-20',
@@ -285,7 +285,7 @@ export default {
         last_name: "",
         purpose: "Purpose of using",
         company: "",
-        employee: "Employee",
+        employee: "Number of Employees",
         title: "",
         industry: "Select Industry"
       },

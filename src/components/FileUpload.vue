@@ -8,12 +8,12 @@
         <input type="file" ref="file" style="display: none" @change="onFileChange" />
         <div v-bind:class="{'has-file-upload-type':files.length>0}">
           <div class="drag-a-file" v-bind:class="{'has-file':files.length>0}">
-            Drag a file here or
+            Drag or
             <span
               class="text-style-1 clickable-text"
               v-on:click="openBrows()"
             >browse</span>
-            for a file to upload
+            a file to upload
           </div>
           <div
             class="you-can-use"
