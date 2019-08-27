@@ -274,7 +274,7 @@ export default {
   watch: {
     $route(to) {
       
-      this.$refs.sidebarToggleBtn.toggle();
+      // this.$refs.sidebarToggleBtn.toggle();
       if (to.fullPath == "/prepare") {
         this.show_tool_menu = true;
       } else {

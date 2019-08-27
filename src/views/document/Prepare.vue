@@ -94,10 +94,10 @@
           </div>
           <div class="d-flex justify-content-end flex-wrap pt-4">
             <button
-              class="btn btn-outline-primary min-width-124px m-1"
+              class="btn btn-outline-primary min-width-75px m-1"
               v-on:click="moveBackPage()"
             >Back</button>
-            <button class="btn btn-primary min-width-124px m-1" v-on:click="moveNextPage()">Next</button>
+            <button class="btn btn-primary min-width-75px m-1" v-on:click="moveNextPage()">Next</button>
           </div>
         </div>
       </div>

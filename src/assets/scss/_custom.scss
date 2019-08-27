@@ -103,6 +103,9 @@ h1 {
 .navbar-brand {
   border-bottom: none !important;
 }
+.ps__scrollbar-y-rail {
+  display: none !important;
+}
 .btn-outline-primary {
   color: black !important;
   background-color: $col-outline-primary !important;
@@ -342,6 +345,9 @@ h1 {
   color: #9ea0a5;
 }
 
+.min-width-75px {
+  min-width: 75px;
+}
 .min-width-124px {
   min-width: 120px;
 }

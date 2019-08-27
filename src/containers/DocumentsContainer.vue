@@ -414,7 +414,7 @@ export default {
   },
   watch: {
     $route() {
-      this.$refs.sidebarToggleBtn.toggle();
+      // this.$refs.sidebarToggleBtn.toggle();
       this.setOptions();
     }
   }
