@@ -30,7 +30,11 @@
       <div class="actions-table">
         <div class="table-header">
           <div class="d-flex align-items-center">
-            <b-check></b-check>
+            <b-check v-on:change="clickHeaderCheckbox($event)" v-model="header_checkbox" :indeterminate.sync="indeterminate"></b-check>
+            <template v-if="selected_items.length>0">
+              <span>{{selected_items.length}} Selected</span>
+              <b-button variant="outline-primary" class="mx-3">Delete</b-button>
+            </template>
             <div class="col-basic-info comments">SUBJECT</div>
           </div>
           <div class="d-flex align-items-center">
@@ -42,72 +46,58 @@
           </div>
         </div>
         <div class="table-body">
-          <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret 
-            class="table-row content-card" v-for="(item, index) in templates" :key="index">
-            <template slot="button-content">
-              <div class="row-content">
-                <div class="d-flex align-items-center">
-                  <b-check></b-check>
-                  <div class="col-basic-info">
-                    <img :src="getFileType(item.fileName)" class="doc-icon" />
-                    <div class="ml-3">
-                      <div class="doc-name">{{item.fileName}}</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center flex-wrap">
-                  <div class="column">
-                    <div >{{getDate(item.created)}}</div>
-                    <div class="comments">{{getTime(item.created)}}</div>
-                  </div>
-                  <div class="column">
-                    <div >{{getDate(item.updated)}}</div>
-                    <div class="comments">{{getTime(item.updated)}}</div>
-                  </div>
-                  <div class="column">
-                    {{item.used}}
-                  </div>
-                  <div class="column ">
-                    <span><i class="mr-1" v-bind:class="getIcon(item.type)" /> {{item.type}} </span>
-                  </div>
-                  <div class="column col-action">
-                    {{item.author}}
+          <div class="table-row content-card" v-for="(item, index) in templates" :key="index"
+            @contextmenu.prevent="$refs.menu.open($event, {item: item})"
+          >
+            <div class="row-content">
+              <div class="d-flex align-items-center">
+                <b-form-checkbox v-on:change="clickCheckBox($event, index)" v-model="item.selected"></b-form-checkbox>
+                <div class="col-basic-info">
+                  <img :src="getFileType(item.fileName)" class="doc-icon" />
+                  <div class="ml-3">
+                    <div class="doc-name">{{item.fileName}}</div>
                   </div>
                 </div>
               </div>
-            </template>
-            <b-dropdown-item>
-              <i class="fa fa-eye" /> Preview
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <i class="fa fa-paper-plane" /> Send for signature
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <i class="fa fa-pencil" /> Edit Template
-            </b-dropdown-item>
-            <b-dropdown-item v-on:click="openShareModal(item)">
-              <i class="fa fa-share-alt" /> Share your template with other users
-            </b-dropdown-item>
-          </b-dropdown>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="column">
+                  <div >{{getDate(item.created)}}</div>
+                  <div class="comments">{{getTime(item.created)}}</div>
+                </div>
+                <div class="column">
+                  <div >{{getDate(item.updated)}}</div>
+                  <div class="comments">{{getTime(item.updated)}}</div>
+                </div>
+                <div class="column">
+                  {{item.used}}
+                </div>
+                <div class="column ">
+                  <span><i class="mr-1" v-bind:class="getIcon(item.type)" /> {{item.type}} </span>
+                </div>
+                <div class="column col-action">
+                  {{item.author}}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="d-flex justify-content-between align-items-center flex-wrap">
         <div class="d-flex justify-content-between align-items-center flex-wrap">
           <span class="comments mr-3">Per page</span>
           <div>
-            <span class="mr-3">
-              <strong>10</strong>
+            <span class="mr-3 clickable-icon" v-for="(item, index) in pages" :key="index" 
+              v-bind:class="item == items_per_page?'selected':'comments'"
+              v-on:click ="items_per_page = item"
+            >
+              {{item}}
             </span>
-            <span class="mr-3 comments">25</span>
-            <span class="mr-3 comments">50</span>
-            <span class="mr-3 comments">100</span>
           </div>
         </div>
 
         <b-pagination align="right" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
       </div>
     </div>
-    
     <b-modal id="share-modal" ref="share-modal"
        hide-footer centered size="lg">
       <div class="share-modal" v-if="selected_template">
@@ -158,21 +148,35 @@
         </div>
       </div>
     </b-modal>
+    <vue-context ref="menu">
+      <template slot-scope="child">
+        <li><a href="#" @click.prevent="onClick($event, child.data)">Preview</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)">Send for signature</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)">Edit Template</a></li>
+        <li><a href="#" @click.prevent="openShareModal(child.data)">Share your template with other users</a></li>
+      </template>
+    </vue-context>
   </div>
 </template>
 
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
-
+import { VueContext } from 'vue-context';
 export default {
   name: "TemplateList",
   components: {
     UserIcon,
-    UserSelect
+    UserSelect,
+    VueContext
   },
   data() {
     return {
+      header_checkbox: false,
+      indeterminate: false,
+      selected_items: [],
+      items_per_page: 10,
+      pages: [10, 25, 50, 100],
       currentPage: 1,
       period: "Date",
       tag_name: "",
@@ -182,7 +186,7 @@ export default {
       proposed_tag: ["Proposed tag", "Example proposed tag", "Proposed tag"],
       templates: [
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.pdf",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -191,7 +195,7 @@ export default {
           author: "Suzanne"
         },
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.doc",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -200,7 +204,7 @@ export default {
           author: "Suzanne"
         },
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.hwp",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -209,7 +213,7 @@ export default {
           author: "Suzanne"
         },
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.png",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -218,7 +222,7 @@ export default {
           author: "Suzanne"
         },
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.ppt",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -227,7 +231,7 @@ export default {
           author: "Suzanne"
         },
         {
-          setted: false,
+          selected: false,
           fileName: "Continuous Improvement.xls",
           created: "04.01.2019 10:12:39 am",
           updated: "21.02.2019 09:24:37 pm",
@@ -239,6 +243,35 @@ export default {
     };
   },
   methods: {
+    
+    clickHeaderCheckbox($event) {
+      this.selected_items = [];
+      this.templates.forEach((item, index) => {
+        item.selected = $event;
+        if($event) this.selected_items.push(index);
+      });
+    },
+    clickCheckBox($event, index) {
+      console.log($event, index);
+      const pos = this.selected_items.indexOf(index);
+      if($event) {
+        if(pos<0) this.selected_items.push(index);
+      } else {
+        if(pos>=0) this.selected_items.splice(pos, 1);
+      }
+      if(this.selected_items.length>0) {
+        
+        if(this.selected_items.length == this.templates.length){
+          this.header_checkbox = true;
+          this.indeterminate = false;
+        } else {
+          this.indeterminate = true;
+        }
+      } else {
+        this.indeterminate = false;
+        this.header_checkbox = false;
+      }
+    },
     openShareModal(item) {
       this.selected_template = item;
       this.$refs['share-modal'].show();

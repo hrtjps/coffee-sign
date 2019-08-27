@@ -5,7 +5,9 @@
         <AppLogo />
         <div class="p-3 side-menu">
           <div class="w-100">
-            <b-button block variant="other" v-on:click="gotoStartPage()">Start Now</b-button>
+            <b-button block variant="other" v-on:click="gotoStartPage()">
+              {{ getSelected('doc')=="selected" ? "Start Now" : "Create Template" }}
+            </b-button>
             <b-button
               variant="primary"
               class="d-block d-sm-none"
@@ -211,6 +213,10 @@ export default {
       this.folder_remove_id = index;
       this.renameFolder(this.folders, layer_id);
     });
+    this.$refs.sidebarToggleBtn.toggle();
+    // this.$root.on('toggleSidebar', () => {
+    //   this.$refs.sidebarToggleBtn.toggle();
+    // });
   },
   methods: {
     renameFolder(folders, layer_id) {
@@ -267,6 +273,8 @@ export default {
   },
   watch: {
     $route(to) {
+      
+      this.$refs.sidebarToggleBtn.toggle();
       if (to.fullPath == "/prepare") {
         this.show_tool_menu = true;
       } else {

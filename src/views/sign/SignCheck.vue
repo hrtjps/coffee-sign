@@ -33,7 +33,7 @@
         </div>
       </div>
       <hr class="mb-0"/>
-      <div class="d-flex flex-wrap">
+      <div class="doc-pan">
         <div class="doc-list" v-bind:class="toggleDoc?'': 'closed'">
           <div class="content-container" v-bind:class="toggleDoc?'': 'd-none'">
             <div class="documents">
@@ -72,8 +72,8 @@
           </div>
         </div>
         <div class="preview-doc" v-bind:class="toggleDoc?'': 'closed'">
-          <div class="d-flex justify-content-center p-4">
-            <div class="content-card mb-4" :style="{width: percent}">
+          <div class="sign-pan p-4">
+            <div class="content-card mb-4 mx-auto" :style="{width: percent}">
               <span >CoffeeSign Envoloped ID: 64343EAB33-C3234-43</span>
               <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
             </div>
@@ -104,7 +104,7 @@ export default {
   data() {
     return {
       toggleDoc: true,
-      zoom_list: ['10%','20%', '30%', '50%', '75%','100%'],
+      zoom_list: ['10%','20%', '30%', '50%', '75%','100%', "120%", "150%", "200%"],
       sign_items: [],
       percent: '100%',
       percent_no: 4,
@@ -118,7 +118,9 @@ export default {
   },
   mounted() {
     this.src = pdf.createLoadingTask("doc/1.pdf");
-
+    if(window.innerWidth<500) {
+      this.toggleDoc = false;
+    }
     this.src.then(pdf => {
       this.numPages = pdf.numPages;
       this.viewPage = 1;
@@ -127,12 +129,14 @@ export default {
   },
   methods: {
     zoom_out() {
-      if(this.percent_no<5){
+      this.percent_no = this.zoom_list.indexOf(this.percent);
+      if(this.percent_no<8){
         this.percent_no++;
       }
       this.percent = this.zoom_list[this.percent_no];
     },
     zoom_in() {
+      this.percent_no = this.zoom_list.indexOf(this.percent);
       if(this.percent_no>0){
         this.percent_no--;
       }
@@ -144,6 +148,9 @@ export default {
     selectPage(src, no) {
       this.viewPage = no;
       this.viewSrc = src;
+      if(window.innerWidth<500) {
+        this.toggleDoc = false;
+      }
     },
     moveNextPage() {
       this.$router.push("/sign/signing");

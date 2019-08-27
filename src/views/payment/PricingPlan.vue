@@ -223,6 +223,7 @@ export default {
         console.error(error);
       }
     );
+    this.$root.$emit('toggleSidebar');
   },
   methods: {
     clickSwitch() {

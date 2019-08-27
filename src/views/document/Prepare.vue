@@ -16,14 +16,20 @@
             @changeValue="changePercent"
             class="mb-0 mx-2"
           />
-          <b-button variant="outline-primary">
-            <UserIcon icon="comment.svg" :button="true" />
-          </b-button>
+          <draggable
+            :list="[{ color: 'black', tool_name: 'Comment', tool_icon: 'fa fa-comment'}]"
+            :clone="cloneTool"
+            :group="{ name: 'people', pull: 'clone', put: false }"
+          >
+            <b-button variant="outline-primary">
+              <UserIcon icon="comment.svg" :button="true" />
+            </b-button>
+          </draggable>
         </div>
       </div>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-9 pr-3 pr-sm-0">
+        <div class="col-md-10 pr-3 pr-sm-0">
           <draggable :list="sign_items" class="doc-container" group="people" handle=".move">
             <div v-for="(item, index) in sign_items" :key="index" class="doc-control">
               <div class="doc-item">
@@ -39,25 +45,13 @@
                 </div>
                 <i class="fa fa-times-circle-o control" v-on:click="sign_items.splice(index, 1)"></i>
               </div>
-              <b-popover :target="`popover-${index}`" placement="bottom">
-                <div class="who-fill">
-                  <div class="arrow-popover"></div>
-                  <span>Who fills this out?</span>
-                  <b-form-select
-                    :plain="true"
-                    class="mt-2"
-                    :options="['Roger Waters','Barrett Nash-Will', 'William Jacobson']"
-                    value="Roger Waters"
-                  ></b-form-select>
-                </div>
-              </b-popover>
             </div>
           </draggable>
           <div class="doc-content w-100 mb-5">
             <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
           </div>
         </div>
-        <div class="col-md-3 pl-3">
+        <div class="col-md-2 pl-3">
           <div class="content-container">
             <div class="documents">
               <div class="title">
@@ -96,9 +90,6 @@
                   </b-collapse>
                 </div>
               </div>
-            </div>
-            <div class="details-right">
-              <i class="fa fa-chevron-right"></i>
             </div>
           </div>
           <div class="d-flex justify-content-end flex-wrap pt-4">
@@ -149,6 +140,13 @@ export default {
     });
   },
   methods: {
+    
+    cloneTool(item) {
+      this.$emit("dragTool");
+      return {
+        ...item
+      };
+    },
     changePercent(e) {
       this.percent = e;
     },

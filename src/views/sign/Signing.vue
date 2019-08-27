@@ -11,7 +11,7 @@
                   v-bind:style="{color: item.color, borderColor: item.color}"
                 >
                   <i :class="item.tool_icon"></i>
-                  <span class="ml-2">{{item.tool_name}}</span>
+                  <span class="ml-2">Click to {{item.tool_name}}</span>
                 </div>
                 <div class="doc-item-no" v-if="item_index <= signStep">
                   {{ item_index + 1 }}

@@ -104,7 +104,9 @@
         <div class="title">Change Profile Image</div>
 
         <div class="img-control-btns">
-          <b-button variant="outline-primary">Other Image</b-button>
+          <input type="file" ref="avatar_file"
+            style="display: none"  @change="onFileChange" />
+          <b-button variant="outline-primary" v-on:click="changeAvatarImg()">Other Image</b-button>
           <div>
             <i class="fa fa-rotate-left clickable-icon" v-on:click="rotate(-90)"/>
             <i class="fa fa-rotate-right clickable-icon mx-3" v-on:click="rotate(90)"/>
@@ -157,6 +159,19 @@ export default {
     }
   },
   methods: {
+    changeAvatarImg() {
+      this.$refs.avatar_file.click();
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files || !files.length) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        this.img_file = e.target.result;
+        console.log(this.img_file);
+      };
+      reader.readAsDataURL(files[0]);
+    },
     rotate(rotationAngle) {
       this.$refs['cropper'].rotate(rotationAngle);
     },

@@ -94,14 +94,7 @@
               </div>
               <hr class="mb-4" />
               <div class="form-group">
-                <label>
-                  Siging request Message
-                  <i class="fa fa-question-circle clickable-icon" id="exp-tooltip"></i>
-                  <b-tooltip
-                    target="exp-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-                </label>
+                <label>Siging request Message</label>
                 <input
                   type="text"
                   class="form-control"
@@ -112,17 +105,7 @@
                 />
               </div>
               <div class="form-group">
-                <label>
-                  Edge Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="top-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="top-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-                </label>
+                <label>Edge Color</label>
                 <div
                   class="select-color enable"
                   v-b-toggle="'top-color-collapse'"
@@ -135,17 +118,7 @@
                 </b-collapse>
               </div>
               <div class="form-group">
-                <label>
-                  Button Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="button-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="button-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-                </label>
+                <label>Button Color</label>
                 <div
                   class="select-color enable"
                   v-b-toggle="'button-color-collapse'"
@@ -158,17 +131,7 @@
                 </b-collapse>
               </div>
               <div class="form-group">
-                <label>
-                  Button Text Color
-                  <i
-                    class="fa fa-question-circle clickable-icon"
-                    id="button-text-color-tooltip"
-                  ></i>
-                  <b-tooltip
-                    target="button-text-color-tooltip"
-                    placement="topright"
-                  >Lorem ipsum dolor sit amet, sed adipisci efficiendi ne.</b-tooltip>
-                </label>
+                <label>Button Text Color</label>
                 <div
                   class="select-color enable"
                   v-b-toggle="'button-text-color-collapse'"

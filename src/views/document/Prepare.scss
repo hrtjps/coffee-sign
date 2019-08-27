@@ -15,12 +15,17 @@
   margin-bottom: 20px;
 }
 .doc-container {
-  border-radius: 3px;
-  box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
   display: flex;
   flex-wrap: wrap;
   font-size: 13px;
-  padding: 0 2px;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  // bottom: 0;
+  z-index: 2;
+
   min-height: 200px;
   .doc-control {
     display: flex;
@@ -142,6 +147,7 @@
   border-radius: 3px;
   box-shadow: 0 3px 6px 0 rgba(32, 20, 4, 0.05);
   background-color: #ffffff;
+
   .documents {
     padding: 15px;
     overflow-y: auto;
@@ -150,6 +156,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       .actions {
         color: #9ea0a5;
       }

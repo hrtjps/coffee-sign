@@ -159,13 +159,8 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="signature"
-                    placeholder="signature"
-                    name="signature"
-                    v-model="signature"
+                  <input type="text" class="form-control" id="signature" placeholder="signature"
+                    name="signature" v-model="signature" v-on:keyup="changeName"
                   />
                 </div>
               </div>
@@ -286,8 +281,15 @@
         <div class="row mb-4" v-if="stamp_type==0">
           <div class="col-12">
             <hr class="w-100" />
-            <div class="row">
-              <div class="col-8 pr-0 pr-lg-4 col-lg-10">
+            <div class="row mb-1">
+              <div class="col-12 col-sm-4 col-lg-2">
+                <UserSelect
+                  v-bind:value="stamp_language"
+                  v-bind:items="['English', 'Korean', 'Japanese']"
+                  @changeValue="stamp_language = $event"
+                />
+              </div>
+              <div class="col-12 col-sm-4 p-sm-0 col-lg-8">
                 <div class="form-group">
                   <input
                     type="text"
@@ -299,7 +301,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4 col-lg-2">
+              <div class="col-12 col-sm-4 col-lg-2">
                 <b-button variant="primary" block>Create</b-button>
               </div>
             </div>
@@ -425,6 +427,7 @@ export default {
 
     return {
       language: "English",
+      stamp_language: "English",
       drawable: false,
       img_file: "",
       initials_file: "",
@@ -434,6 +437,7 @@ export default {
       stamp_name: "",
 
       selected_no: 0,
+      stamp_font: [],
       signature_types: [
         ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
         ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
@@ -446,7 +450,11 @@ export default {
     };
   },
   methods: {
-    
+    changeName() {
+      var matches = this.signature.match(/\b(\w)/g); // ['J','S','O','N']
+      this.initials = matches.join(''); // JSON
+
+    },
     chunk(myArray, chunk_size){
       var index = 0;
       var arrayLength = myArray.length;

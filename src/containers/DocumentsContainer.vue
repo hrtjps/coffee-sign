@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="app-body">
-      <AppSidebar fixed>
+      <AppSidebar >
         <AppLogo></AppLogo>
         <div class="p-3 side-menu">
           <div class="w-100">
@@ -12,7 +12,7 @@
               class="d-block d-sm-none"
               block
               style="padding-top: 0.5rem;"
-              to="/payment/pricing-plan"
+              v-on:click="gotoPage('/payment/pricing-plan')"
             >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav" v-if="show_tool_menu">
               <hr class="seperate-bar" />
@@ -54,10 +54,6 @@
           <router-view></router-view>
         </div>
       </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside />
-      </AppAside>
     </div>
     <TheFooter>
       <!--footer-->
@@ -329,7 +325,11 @@ export default {
       this.$refs["welcomemodal"].show();
     }
     this.setOptions();
+    this.$refs.sidebarToggleBtn.toggle();
 
+    // this.$root.on('toggleSidebar', () => {
+    //   this.$refs.sidebarToggleBtn.toggle();
+    // });
   },
   methods: {
     dragTool() {
@@ -414,6 +414,7 @@ export default {
   },
   watch: {
     $route() {
+      this.$refs.sidebarToggleBtn.toggle();
       this.setOptions();
     }
   }

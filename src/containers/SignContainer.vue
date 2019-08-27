@@ -30,8 +30,8 @@
               <b-button variant="other" class="px-4 px-sm-4" v-on:click="finishSign()">
                 {{ endFlag? 'Finish': 'Next' }}
               </b-button>
-              <div class="doc-item-no" v-if="signStep > 0">
-                {{ signStep }}
+              <div class="doc-item-no" v-if="6-signStep > 0">
+                {{ 6-signStep }}
               </div>
             </div>
           </template>

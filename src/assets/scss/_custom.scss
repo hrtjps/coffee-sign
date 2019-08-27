@@ -318,8 +318,15 @@ h1 {
 .modal-content {
   border-radius: 8px;
 }
-
+.custom-control .custom-checkbox:hover  {
+  cursor: pointer;
+}
 .custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border: solid 2px #8a6454 !important;
+  background-color: #8a6454 !important;
+}
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
   color: #fff;
   border: solid 2px #8a6454 !important;
   background-color: #8a6454 !important;
