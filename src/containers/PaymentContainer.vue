@@ -6,7 +6,7 @@
         <div class="p-3 side-menu">
           <div class="w-100">
             <b-button block variant="other" v-on:click="gotoStartPage()">
-              {{ getSelected('doc')=="selected" ? "Start Now" : "Create Template" }}
+              {{ getSelected('temp')=="selected" ?"Create Template":  "Start Now" }}
             </b-button>
             <b-button
               variant="primary"

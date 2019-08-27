@@ -6,7 +6,7 @@
         <div class="action-search-field">
           <UserSelect
             v-bind:value="progress_status"
-            v-bind:items="['Status', 'All', 'Completed', 'Declined', 'Voided', 'Need my signiture', `Need other's signiture`]"
+            v-bind:items="['Status', 'All', 'Need my signiture', `Need other's signiture`, 'Completed', 'Declined', 'Voided']"
             @changeValue="changeProgressStatus"
             class="mb-0 mx-1 mobile-style"
           />
