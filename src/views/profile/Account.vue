@@ -288,7 +288,7 @@ export default {
         "img/avatars/suzanne@3x.png",
       ],
       avatar: "img/avatars/510-510.png",
-      selected_avatar: "img/avatars/510-510.png",
+      selected_avatar: "img/avatars/suzanne@3x.png",
       showOldPwd: false,
       showNewPwd: false,
       showNewConfirm: false,
@@ -323,11 +323,9 @@ export default {
       this.$refs['cropper'].rotate(rotationAngle);
     },
     saveAvatar() {
-      this.selected_avatar = this.avatar;
       this.$refs['change-avatar-modal'].hide();
     },
     changeAvatar() {
-      this.avatar = this.selected_avatar;
       this.$refs['change-avatar-modal'].show();
     },
     changePassword() {

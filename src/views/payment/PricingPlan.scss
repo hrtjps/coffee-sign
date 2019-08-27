@@ -49,13 +49,18 @@
     width: 88px;
   }
 }
-
+#modal-1 {
+  padding-left: 0 !important;
+}
 .payment-modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 60px;
+  @media (max-width: 500px) {
+    padding: 0 10px;
+  }
 }
 .modal-header {
   border-bottom: none;

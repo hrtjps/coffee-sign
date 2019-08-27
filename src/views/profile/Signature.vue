@@ -91,21 +91,21 @@
       <div class="create-signature-modal">
         <div class="title">Create Your Signature</div>
         <div class="row mb-4">
-          <div class="col-12 col-sm-4">
+          <div class="col-4 pr-0 pr-md-3">
             <b-button
               :variant="sign_type == 1?'primary':'outline-primary'"
               v-on:click="sign_type = 1"
               block
             >Choose</b-button>
           </div>
-          <div class="col-12 col-sm-4">
+          <div class="col-4 px-2 px-md-3">
             <b-button
               :variant="sign_type == 0?'primary':'outline-primary'"
               v-on:click="sign_type = 0"
               block
             >Draw</b-button>
           </div>
-          <div class="col-12 col-sm-4">
+          <div class="col-4 pl-0 pl-md-3">
             <b-button
               :variant="sign_type == 2?'primary':'outline-primary'"
               v-on:click="sign_type = 2"
@@ -150,21 +150,21 @@
           <div class="col-12">
             <hr class="w-100" />
             <div class="row">
-              <div class="col-6 col-sm-4 col-lg-2">
+              <div class="col-12 col-sm-4 col-lg-2">
                 <UserSelect
                   v-bind:value="language"
                   v-bind:items="['English', 'Korean', 'Japanese']"
                   @changeValue="language = $event"
                 />
               </div>
-              <div class="col-6">
+              <div class="col-8 col-sm-6">
                 <div class="form-group">
                   <input type="text" class="form-control" id="signature" placeholder="signature"
                     name="signature" v-model="signature" v-on:keyup="changeName"
                   />
                 </div>
               </div>
-              <div class="col-4 ">
+              <div class="col-4">
                 <div class="form-group">
                   <input
                     type="text"

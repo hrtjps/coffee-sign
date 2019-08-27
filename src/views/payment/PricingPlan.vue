@@ -86,7 +86,7 @@
             >Please input card number</div>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="form-group">
                 <label for="name">Expiration month</label>
                 <input
@@ -104,7 +104,7 @@
                 >Please input expiration month</div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="form-group">
                 <label for="name">Expiration year</label>
                 <input
@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="form-group">
                 <label for="name">First Name</label>
                 <input
@@ -142,7 +142,7 @@
                 >Please input First Name</div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="form-group">
                 <label for="name">Last Name</label>
                 <input
@@ -209,7 +209,7 @@
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-end align-items-center mb-5">
+          <div class="d-flex justify-content-end align-items-center mb-2 mb-md-5">
             <i class="fa fa-close"></i>
             <button class="btn btn-link mr-3" v-on:click="hideModal()">Revert</button>
             <button class="btn btn-primary min-width-124px" v-on:click="saveData()">Save</button>
