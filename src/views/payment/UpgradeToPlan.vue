@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="col-12 col-lg-6 pl-lg-0">
-                    <div class="d-flex align-items-end">
+                    <div class="d-flex align-items-start">
                       <div class="form-group">
                         <label for="name">Expiration month</label>
                         <div class="d-flex align-items-center">

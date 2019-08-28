@@ -166,25 +166,33 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="name">Billing address: Street address</label>
+            <label for="name">Country/Region</label>
+            <UserSelect
+              :value="country_region"
+              :items="countries"
+              @changeValue="country_region = $event"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Street address</label>
             <input
               type="text"
               class="form-control"
               id="billing_addr"
-              placeholder="Enter your billing address"
+              placeholder="Street address"
               name="billing_addr"
               v-bind:class="{'input-error': isError(billing_addr)}"
               v-model="billing_addr"
             />
-            <div v-if="isError(billing_addr)" class="error-text">Please enter a valid address</div>
+            <div v-if="isError(billing_addr)" class="error-text">Please enter a street address</div>
           </div>
           <div class="form-group">
-            <label for="name">Street Address Line 2 (Optional)</label>
+            <label for="name">Street address line 2</label>
             <input
               type="text"
               class="form-control"
               id="billing_addr1"
-              placeholder="Enter your Street Address Line 2 (Optional)"
+              placeholder="Enter your street address line 2 (Optional)"
               name="billing_addr1"
               v-model="billing_addr1"
             />
@@ -235,16 +243,6 @@
                 <div v-if="isError(state)" class="error-text">Please enter a state</div>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="name">Country/Region</label>
-                <UserSelect
-                  :value="country_region"
-                  :items="countries"
-                  @changeValue="country_region = $event"
-                />
-              </div>
-            </div>
           </div>
           <div class="d-flex justify-content-end align-items-center mb-2 mb-md-5">
             <i class="fa fa-close"></i>
@@ -286,6 +284,7 @@ export default {
       exp_month: "",
       exp_year: "",
       state: "",
+      cvv: "",
       city: "",
       billing_addr: "",
       billing_addr1: "",
