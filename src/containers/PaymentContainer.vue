@@ -13,7 +13,7 @@
               class="d-block d-sm-none"
               block
               style="padding-top: 0.5rem;"
-              to="/payment/pricing-plan"
+              v-on:click="gotoPage('/payment/pricing-plan'); $refs.sidebarToggleBtn.toggle()"
             >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav">
               <hr class="seperate-bar" />

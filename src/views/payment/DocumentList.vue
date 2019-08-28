@@ -35,9 +35,9 @@
               <span>{{selected_items.length}} Selected</span>
               <b-button variant="outline-primary" class="mx-3">Delete</b-button>
             </template>
-            <div class="col-basic-info comments">DOCUMENT SUBJECT</div>
+            <div class="col-basic-info comments d-mobile-none">DOCUMENT SUBJECT</div>
           </div>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center d-mobile-none">
             <div class="col-status comments">STATUS</div>
             <div class="col-last-change comments">LAST CHANGE</div>
             <div class="col-action comments">HISTORY</div>
