@@ -28,11 +28,6 @@
       align-items: center;
       padding: 12px 20px;
     }
-    .d-mobile-none {
-      @media (max-width: 500px) {
-        display: none !important;
-      }
-    }
     .table-body {
       .table-row {
         padding: 0 0;

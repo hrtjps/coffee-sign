@@ -797,3 +797,9 @@ label {
   display: flex;
   align-items: center;
 }
+
+.d-mobile-none {
+  @media (max-width: 500px) {
+    display: none !important;
+  }
+}
