@@ -138,12 +138,12 @@
               <div class="docu-pages">{{doc.doc_pages}} {{doc.doc_pages>1?"pages":"page"}}</div>
             </div>
           </div>
-          <div class="d-flex justify-content-end mt-4 flex-wrap">
+          <div class="d-flex justify-content-between mt-4 flex-wrap">
             <button
-              class="btn btn-outline-primary min-width-124px m-1"
+              class="btn btn-outline-primary min-width-124px my-1"
               v-on:click="moveBackPage()"
             >Back</button>
-            <button class="btn btn-primary min-width-124px m-1" v-on:click="moveNextPage()">Next</button>
+            <button class="btn btn-primary min-width-124px my-1" v-on:click="moveNextPage()">Next</button>
           </div>
         </div>
       </div>

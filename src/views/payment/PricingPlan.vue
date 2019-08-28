@@ -67,7 +67,7 @@
     <b-modal id="modal-1" ref="edit-payment-method-modal" hide-footer size="lg">
       <div class="payment-modal">
         <h1>Change payment method</h1>
-        <div class="w-100 mt-5">
+        <div class="w-100 mt-3">
           <div class="form-group">
             <label for="name">Credit/debit card number</label>
             <b-input-group class="pl-3" v-bind:class="{'input-error': isError(card_number)}">
@@ -86,40 +86,46 @@
             >Please input card number</div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-4 pr-0">
               <div class="form-group">
                 <label for="name">Expiration month</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exp_month"
-                  placeholder="Expiration month"
-                  name="exp_month"
-                  v-bind:class="{'input-error': isError(exp_month)}"
-                  v-model="exp_month"
-                />
-                <div
-                  v-if="isError(exp_month)"
-                  class="error-text"
-                >Please input expiration month</div>
+                <div class="d-flex align-items-center">
+                  <UserSelect
+                    v-bind:value="month"
+                    v-bind:items="['Month', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
+                    @changeValue="month=$event"
+                    class="mb-0"
+                    style="min-width:105px"
+                  />
+                  <span class="mx-2">/</span>
+                </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-group">
+            <div class="col-4 px-0">
+              <div class="form-group mr-3">
                 <label for="name">Expiration year</label>
+                <UserSelect
+                  v-bind:value="year"
+                  v-bind:items="years"
+                  @changeValue="year=$event"
+                  class="mb-0"
+                  style="min-width:95px"
+                />
+              </div>              
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="name">CVV</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="exp_year"
-                  placeholder="Expiration year"
-                  name="exp_year"
-                  v-bind:class="{'input-error': isError(exp_year)}"
-                  v-model="exp_year"
+                  id="cvv"
+                  placeholder="Your CVV"
+                  name="cvv"
+                  v-bind:class="{'input-error': isError(cvv)}"
+                  v-model="cvv"
                 />
-                <div
-                  v-if="isError(exp_year)"
-                  class="error-text"
-                >Please input expiration year</div>
+                <div v-if="isError(cvv)" class="error-text">Please input CVV</div>
               </div>
             </div>
           </div>
@@ -159,7 +165,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="name">Billing address</label>
+            <label for="name">Billing address: Street address</label>
             <input
               type="text"
               class="form-control"
@@ -172,7 +178,7 @@
             <div v-if="isError(billing_addr)" class="error-text">Please input billing address</div>
           </div>
           <div class="form-group">
-            <label for="name">Address 1</label>
+            <label for="name">Street Address Line 2 (Optional)</label>
             <input
               type="text"
               class="form-control"
@@ -183,7 +189,7 @@
             />
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
               <div class="form-group">
                 <label for="name">Zip code</label>
                 <input
@@ -198,7 +204,37 @@
                 <div v-if="isError(zip_code)" class="error-text">Please input billing address</div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label for="name">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="City"
+                  name="city"
+                  v-bind:class="{'input-error': isError(city)}"
+                  v-model="city"
+                />
+                <div v-if="isError(city)" class="error-text">Please input City</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="name">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="state"
+                  placeholder="state"
+                  name="state"
+                  v-bind:class="{'input-error': isError(state)}"
+                  v-model="state"
+                />
+                <div v-if="isError(state)" class="error-text">Please input State</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
               <div class="form-group">
                 <label for="name">Country/Region</label>
                 <UserSelect
@@ -239,16 +275,28 @@ export default {
       swtich_annual: true,
       plans: [{}],
       
+      years: [],      
+      month: "Month",
+      year: "Year",
       error_flag: false,
       card_number: "",
       first_name: "",
       last_name: "",
       exp_month: "",
       exp_year: "",
+      state: "",
+      city: "",
       billing_addr: "",
       billing_addr1: "",
       zip_code: ""
     };
+  },
+  created() {
+    const dt = new Date();
+    const start = dt.getYear();
+    for (let i = start; i < start + 10; i++) {
+      this.years.push((i + 1900).toString());
+    }
   },
   mounted() {
     axios({ method: "GET", url: "https://restcountries.eu/rest/v1/all" }).then(
