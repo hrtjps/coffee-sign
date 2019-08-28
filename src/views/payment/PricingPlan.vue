@@ -16,7 +16,8 @@
         <div>
           <div>
             <span class="comments mr-2">Available:</span>
-            <strong>2/3 Signitures</strong>
+            <strong>2/3</strong>
+            <span class="comments ml-2">Signitures</span>
           </div>
           <b-progress :value="30" :max="100" class="mb-3"></b-progress>
           <b-button variant="other" style="width: 186px" v-on:click="upgradePlan()">Upgrade Plan</b-button>
@@ -175,7 +176,7 @@
               v-bind:class="{'input-error': isError(billing_addr)}"
               v-model="billing_addr"
             />
-            <div v-if="isError(billing_addr)" class="error-text">Please enter billing address</div>
+            <div v-if="isError(billing_addr)" class="error-text">Please enter a valid address</div>
           </div>
           <div class="form-group">
             <label for="name">Street Address Line 2 (Optional)</label>
@@ -201,7 +202,7 @@
                   v-bind:class="{'input-error': isError(zip_code)}"
                   v-model="zip_code"
                 />
-                <div v-if="isError(zip_code)" class="error-text">Please enter Zip Code</div>
+                <div v-if="isError(zip_code)" class="error-text">Please enter a valid zip Code</div>
               </div>
             </div>
             <div class="col-sm-8">
@@ -216,7 +217,7 @@
                   v-bind:class="{'input-error': isError(city)}"
                   v-model="city"
                 />
-                <div v-if="isError(city)" class="error-text">Please enter city name</div>
+                <div v-if="isError(city)" class="error-text">Please enter a valid city</div>
               </div>
             </div>
             <div class="col-sm-12">
@@ -231,7 +232,7 @@
                   v-bind:class="{'input-error': isError(state)}"
                   v-model="state"
                 />
-                <div v-if="isError(state)" class="error-text">Please enter the state name</div>
+                <div v-if="isError(state)" class="error-text">Please enter a state</div>
               </div>
             </div>
             <div class="col-sm-12">

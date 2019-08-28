@@ -29,7 +29,7 @@
       </div>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-10 pr-3 pr-sm-0">
+        <div class="col-md-9 pr-3 pr-sm-0">
           <draggable :list="sign_items" class="doc-container" group="people" handle=".move">
             <div v-for="(item, index) in sign_items" :key="index" class="doc-control">
               <div class="doc-item">
@@ -51,7 +51,7 @@
             <pdf :src="viewSrc" class="w-100" :page="viewPage"></pdf>
           </div>
         </div>
-        <div class="col-md-2 pl-3">
+        <div class="col-md-3 pl-3">
           <div class="content-container">
             <div class="documents">
               <div class="title">
@@ -94,10 +94,10 @@
           </div>
           <div class="d-flex justify-content-between flex-wrap pt-4">
             <button
-              class="btn btn-outline-primary min-width-75px my-1"
+              class="btn btn-outline-primary min-width-124px my-1"
               v-on:click="moveBackPage()"
             >Back</button>
-            <button class="btn btn-primary min-width-75px my-1" v-on:click="moveNextPage()">Next</button>
+            <button class="btn btn-primary min-width-124px my-1" v-on:click="moveNextPage()">Next</button>
           </div>
         </div>
       </div>
