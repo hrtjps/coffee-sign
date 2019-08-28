@@ -83,7 +83,7 @@
             <div
               v-if="isError(card_number)"
               class="error-text"
-            >Please input card number</div>
+            >Please enter a valid credit/debit card number</div>
           </div>
           <div class="row">
             <div class="col-4 pr-0">
@@ -125,7 +125,7 @@
                   v-bind:class="{'input-error': isError(cvv)}"
                   v-model="cvv"
                 />
-                <div v-if="isError(cvv)" class="error-text">Please input CVV</div>
+                <div v-if="isError(cvv)" class="error-text">Please enter a valid CVV number</div>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
                 <div
                   v-if="isError(first_name)"
                   class="error-text"
-                >Please input First Name</div>
+                >Please enter the first name</div>
               </div>
             </div>
             <div class="col-6">
@@ -160,7 +160,7 @@
                   v-bind:class="{'input-error': isError(last_name)}"
                   v-model="last_name"
                 />
-                <div v-if="isError(last_name)" class="error-text">Please input Last Name</div>
+                <div v-if="isError(last_name)" class="error-text">Please enter the last name</div>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@
               v-bind:class="{'input-error': isError(billing_addr)}"
               v-model="billing_addr"
             />
-            <div v-if="isError(billing_addr)" class="error-text">Please input billing address</div>
+            <div v-if="isError(billing_addr)" class="error-text">Please enter billing address</div>
           </div>
           <div class="form-group">
             <label for="name">Street Address Line 2 (Optional)</label>
@@ -183,7 +183,7 @@
               type="text"
               class="form-control"
               id="billing_addr1"
-              placeholder="Enter your billing address 1"
+              placeholder="Enter your Street Address Line 2 (Optional)"
               name="billing_addr1"
               v-model="billing_addr1"
             />
@@ -201,7 +201,7 @@
                   v-bind:class="{'input-error': isError(zip_code)}"
                   v-model="zip_code"
                 />
-                <div v-if="isError(zip_code)" class="error-text">Please input billing address</div>
+                <div v-if="isError(zip_code)" class="error-text">Please enter Zip Code</div>
               </div>
             </div>
             <div class="col-sm-8">
@@ -216,7 +216,7 @@
                   v-bind:class="{'input-error': isError(city)}"
                   v-model="city"
                 />
-                <div v-if="isError(city)" class="error-text">Please input City</div>
+                <div v-if="isError(city)" class="error-text">Please enter city name</div>
               </div>
             </div>
             <div class="col-sm-12">
@@ -231,7 +231,7 @@
                   v-bind:class="{'input-error': isError(state)}"
                   v-model="state"
                 />
-                <div v-if="isError(state)" class="error-text">Please input State</div>
+                <div v-if="isError(state)" class="error-text">Please enter the state name</div>
               </div>
             </div>
             <div class="col-sm-12">
