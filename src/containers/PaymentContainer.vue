@@ -19,12 +19,12 @@
               <hr class="seperate-bar" />
               <SidebarNav :navItems="nav"></SidebarNav>
             </div>
-            <template  v-if="show_add_folder">
+            <!-- <template  v-if="show_add_folder"> -->
               <hr class="seperate-bar" />
               <div class="user-sidebar-folders">
                 <SideFolders :folders="folders" :layer_id="''"/>
               </div>
-            </template>
+            <!-- </template> -->
           </div>
           <Logout></Logout>
         </div>

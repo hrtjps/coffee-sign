@@ -164,10 +164,60 @@
         <b-pagination align="right" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
       </div>
     </div>
+    <b-modal id="share-modal" ref="share-modal"
+       hide-footer centered size="lg">
+      <div class="share-modal" v-if="selected_template">
+        <div class="title">Do you want to share the XXX template with other users?</div>
+        <b-form-group>
+          <b-input-group>
+            <b-input-group-prepend>
+              <b-input-group-text>
+                <!-- <i class="fa fa-lock"></i> -->
+                <UserIcon icon="file_name.svg" class="mr-2"/>
+              </b-input-group-text>
+            </b-input-group-prepend>
+            <b-form-input
+              type="text"
+              placeholder="Input file name"
+              v-model="selected_template.fileName"
+            ></b-form-input>
+          </b-input-group>
+        </b-form-group>
+        <div class="doc-container mb-2">
+          <div class="doc-tag" v-for="(item, index) in tags" :key="index">
+            {{item}} <i class="fa fa-close ml-1 clickable-icon" v-on:click="tags.splice(index,1);"/>
+          </div>
+        </div>
+        
+        <b-form-group>
+          <b-input-group>
+            <b-input-group-prepend>
+              <b-input-group-text>
+                <i class="fa fa-tag"/>
+              </b-input-group-text>
+            </b-input-group-prepend>
+            <b-form-input
+              type="text"
+              placeholder="Input Tag name and click 'Enter'"
+              v-model="tag_name"
+              v-on:keyup.enter="tags.push(tag_name); tag_name='';"
+            ></b-form-input>
+          </b-input-group>
+        </b-form-group>
+        <div class="d-flex flex-wrap mb-4">
+          <div class="proposed-tag" v-for="(item, index) in proposed_tag" :key="index">
+            {{item}}
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" v-on:click="shareTemplate()">Share this template</button>
+        </div>
+      </div>
+    </b-modal>
     <vue-context ref="menu">
       <template slot-scope="child">
         <li><a href="#" @click.prevent="onClick($event, child.data)">Create a copy</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Save as template</a></li>
+        <li><a href="#" @click.prevent="openShareModal(child.data)">Save as template</a></li>
         <li><a href="#" @click.prevent="onClick($event, child.data)">History</a></li>
         <li><a href="#" @click.prevent="onClick($event, child.data)">Export as CSV</a></li>
         <li><a href="#" @click.prevent="onClick($event, child.data)">Delete</a></li>
@@ -194,6 +244,10 @@ export default {
       selected_items: [],
       items_per_page: 10,
       pages: [10, 25, 50, 100],
+      tag_name: "",
+      selected_template: null,
+      tags: ["Inquiry", "Report", "Tag #3", "Tag #4", "Tag #5", "Tag 6", "Report", "Tag #3", "Tag #4"],
+      proposed_tag: ["Proposed tag", "Example proposed tag", "Proposed tag"],
       doc_list: [
         {selected: false},
         {selected: false},
@@ -212,6 +266,14 @@ export default {
     };
   },
   methods: {
+    
+    shareTemplate() {
+
+    },
+    openShareModal(item) {
+      this.selected_template = item;
+      this.$refs['share-modal'].show();
+    },
     clickHeaderCheckbox($event) {
       this.selected_items = [];
       this.doc_list.forEach((item, index) => {

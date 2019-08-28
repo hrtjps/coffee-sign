@@ -170,6 +170,69 @@
     }
   }
 }
+#share-modal{
+  .modal-dialog {
+    width: 688px;
+    @media (max-width: 600px) {
+      width: unset;
+    }
+    .share-modal {
+      padding: 60px;
+      
+      @media (max-width: 600px) {
+        padding: 20px;
+        padding-top: 0;
+      }
+
+      padding-top: 0;
+      background: white;
+
+      .title {  
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.35;
+        text-align: center;
+        color: #41302a;
+        margin-bottom: 25px;
+      }
+      .doc-container {
+        padding: 10px 15px;
+        border-radius: 4px;
+        border: solid 1px #ebebeb;
+        background-color: #ffffff;  
+        font-size: 14px;
+        line-height: 1.36;
+        color: #202020;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .doc-tag{
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 5px;
+        min-width: 82px;
+        border: solid 1px #775649;
+        background-color: rgba(119, 86, 73, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i {
+          color: #9ea0a5;
+          cursor: pointer;
+        }
+      }
+      .proposed-tag {
+        border-radius: 5px;
+        border: solid 1px #ebebeb;
+        background-color: #fcfafa;
+        padding: 5px 10px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
 
 .selected {
   font-weight: bold;
