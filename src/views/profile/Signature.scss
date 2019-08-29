@@ -8,6 +8,12 @@
 @font-face { font-family: 'Dovemayo-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'SDMiSaeng'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SDMiSaeng.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'HSGyoulnoonkot'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face {
+  font-family: "4990810";
+  src: 
+  url("../../../public/fonts/kr/4990810.ttf") format("truetype"),
+}
+
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css); .jejuhallasan * { font-family: 'Jeju Hallasan', cursive; }
 @font-face {
   font-family: "Badhead Typeface";
@@ -161,6 +167,14 @@
     }
     .max-width-260px {
       max-width: 260px;
+    }
+    @media (max-width: 1320px) {
+      justify-content: center;
+      flex-direction: column;
+      button {
+        margin-top: 10px;
+      }
+
     }
   }
   .sign-signature {
@@ -482,6 +496,25 @@
           position: relative;
           cursor: pointer;
 
+          .kr-stamp {
+            font-family: 'Goyang';
+            font-size: 30px;
+            color: red;
+            border: solid 3px red;
+            border-radius: 50%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: keep-all;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            line-height: 30px;
+          }
+          .jp-stamp {
+            font-family: 'crayon_1-1';
+          }
           .signature-text {
             font-size: 39px;
           }

@@ -16,11 +16,9 @@
                   >Add cool signiture and initials from here.</div>
                 </div>
               </div>
-              <b-button
-                variant="primary"
-                class="my-3"
-                v-on:click="createSignature()"
-              >Add Singiture/Initials</b-button>
+              <b-button variant="primary" v-on:click="createSignature()">
+                Add Singiture/Initials
+              </b-button>
             </div>
           </div>
 
@@ -58,7 +56,7 @@
                   >Add personnel / Corporate seal from here.</div>
                 </div>
               </div>
-              <b-button variant="primary" class="my-3" v-on:click="createStamp()">Add stamp</b-button>
+              <b-button variant="primary" v-on:click="createStamp()">Add stamp</b-button>
             </div>
           </div>
 
@@ -150,14 +148,14 @@
           <div class="col-12">
             <hr class="w-100" />
             <div class="row">
-              <div class="col-12 col-sm-4 col-lg-2">
+              <div class="col-12 col-lg-2">
                 <UserSelect
                   v-bind:value="language"
                   v-bind:items="['English', 'Korean', 'Japanese']"
                   @changeValue="language = $event"
                 />
               </div>
-              <div class="col-8 col-sm-6">
+              <div class="col-8 col-lg-6">
                 <div class="form-group">
                   <input type="text" class="form-control" id="signature" placeholder="signature"
                     name="signature" v-model="signature" v-on:keyup="changeName"
@@ -184,7 +182,7 @@
                 v-on:click="selected_no = index"
               >
                 <div class="row">
-                  <div class="col-12 col-sm-9 d-flex-align-center pl-40px">>
+                  <div class="col-10 pr-2 d-flex-align-center pl-40px">>
                     <div class="d-flex flex-column justify-content-between">
                       <div class="signed-by">CoffeSigned by:</div>
                       <div class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</div>
@@ -192,7 +190,7 @@
                     </div>
                     <div class="right-border"></div>
                   </div>
-                  <div class="col-12 col-sm-3 d-flex-align-center justify-content-center">
+                  <div class="col-2 pl-0 d-flex-align-center justify-content-center">
                     <div class="signature-text"  v-bind:style="{fontFamily: item}">{{initials}}</div>
                   </div>
                 </div>
@@ -302,23 +300,14 @@
                 </div>
               </div>
               <div class="col-12 col-sm-4 col-lg-2">
-                <b-button variant="primary" block>Create</b-button>
+                <b-button variant="primary" block v-on:click="creatStamp()">Create</b-button>
               </div>
             </div>
             <div class="signatures">
-              <div class="row">
-                <div
-                  class="col-12 mb-4 mb-lg-0 col-lg-4"
-                  v-for="(item, index) in stamp_types"
-                  :key="index"
-                >
-                  <div
-                    class="sign-result"
-                    v-bind:class="index==selected_no?'checked':''"
-                    v-on:click="selected_no = index"
-                  >
+              <div class="row" v-if="stamp_language == 'English'">
+                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in stamp_types" :key="index" >
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''" v-on:click="selected_no = index">
                     <img src="img/payment/stamp-2x.png" />
-
                     <div class="check-box" v-if="index == selected_no">
                       <img src="img/icons/check-2.svg" />
                     </div>
@@ -326,6 +315,26 @@
                 </div>
                 <i class="fa fa-long-arrow-left left-button clickable-icon" />
                 <i class="fa fa-long-arrow-right right-button clickable-icon" />
+              </div>
+              <div class="row" v-if="stamp_language == 'Korean'">
+                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in stamp_kr_types" :key="index" >
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''" v-on:click="selected_no = index">
+                    <div class="kr-stamp">{{item}}</div>
+                    <div class="check-box" v-if="index == selected_no">
+                      <img src="img/icons/check-2.svg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" v-if="stamp_language == 'Japanese'">
+                <div class="col-12 mb-4 mb-lg-0 col-lg-4" v-for="(item, index) in stamp_jp_types" :key="index" >
+                  <div class="sign-result" v-bind:class="index==selected_no?'checked':''" v-on:click="selected_no = index">
+                    <div class="kr-stamp jp-stamp">{{item}}</div>
+                    <div class="check-box" v-if="index == selected_no">
+                      <img src="img/icons/check-2.svg" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -389,6 +398,8 @@ export default {
       stamp_type: 0,
       selected_stamp_no: 0,
       stamp_types: ["", "", ""],
+      stamp_kr_types: ["오늘 뉴스", "정한 한"],
+      stamp_jp_types: ["音信", "産毛"],
       stamp_name: "",
 
       selected_no: 0,
@@ -405,6 +416,19 @@ export default {
     };
   },
   methods: {
+    creatStamp() {
+      this.stamp_name = this.stamp_name.replace(' ','');
+      if (this.stamp_name.length>2){
+        this.stamp_name = this.stamp_name.substr(0, 2) + ' ' + this.stamp_name.substr(2,2);
+      }
+      if (this.stamp_language == 'Korean') {
+        this.stamp_kr_types.push(this.stamp_name);
+        console.log(this.stamp_kr_types);
+      } else if(this.stamp_language =="Japanese") {
+        this.stamp_jp_types.push(this.stamp_name);
+      }
+      this.stamp_name = "";
+    },
     changeName() {
       var matches = this.signature.match(/\b(\w)/g); // ['J','S','O','N']
       this.initials = matches.join(''); // JSON

@@ -309,6 +309,7 @@ h1 {
 }
 .seperate-bar {
   background: gray;
+  width: 100%;
 }
 
 .modal-dialog {
@@ -375,6 +376,8 @@ h1 {
   border: solid 1px #ebebeb;
 
   .input-group-prepend {
+    
+    border-radius: 4px;
     .input-group-text {
       height: 40px;
       width: 46px;
@@ -383,6 +386,8 @@ h1 {
       background: white;
       justify-content: center;
       display: flex;
+      
+      border-radius: 4px;
     }
   }
   .form-control {
@@ -499,7 +504,7 @@ h1 {
   section {
     position: unset !important;
     width: 100% !important;
-    max-height: 170px !important;
+    max-height: 176px !important;
     ul.nav {
       width: 100%;
       .nav-dropdown.open {

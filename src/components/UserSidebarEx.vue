@@ -59,8 +59,8 @@ export default {
       { name: "Title", icon: "fa fa-briefcase" },
       { name: "Text", icon: "fa fa-file-text" },
       { name: "Date Signed", icon: "fa fa-calendar" },
-      { name: "Initials", icon: "initial.png", img_mode: true},
-      { name: "Stamp", icon: "stamp.png", img_mode: true},
+      { name: "Initials", icon: "initial_white.svg", img_mode: true},
+      { name: "Stamp", icon: "stamp_white.svg", img_mode: true},
       { name: "Attachments", icon: "fa fa-paperclip" },
     ];
     const items = this.navItems.map(item => {

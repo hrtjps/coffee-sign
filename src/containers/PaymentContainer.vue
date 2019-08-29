@@ -1,10 +1,10 @@
 <template>
   <div class="app">
-    <div class="app-body">
+    <div class="app-body payment-container">
       <AppSidebar fixed>
         <AppLogo />
         <div class="p-3 side-menu">
-          <div class="w-100">
+          <div class="sidebar-auto-scoroll">
             <b-button block variant="other" v-on:click="gotoStartPage()">
               {{ getSelected('temp')=="selected" ?"Create Template":  "Start Now" }}
             </b-button>
@@ -13,7 +13,7 @@
               class="d-block d-sm-none"
               block
               style="padding-top: 0.5rem;"
-              v-on:click="gotoPage('/payment/pricing-plan'); $refs.sidebarToggleBtn.toggle()"
+              v-on:click="gotoPage('/payment/pricing-plan'); toggleSidebar();"
             >Upgrade Your Plan</b-button>
             <div class="prepare-tool-nav">
               <hr class="seperate-bar" />
@@ -213,12 +213,15 @@ export default {
       this.folder_remove_id = index;
       this.renameFolder(this.folders, layer_id);
     });
-    this.$refs.sidebarToggleBtn.toggle();
-    // this.$root.on('toggleSidebar', () => {
-    //   this.$refs.sidebarToggleBtn.toggle();
-    // });
+    this.toggleSidebar();
   },
   methods: {
+    toggleSidebar() {
+      if(window.innerWidth<500){
+        console.log("toggled sidebar in paymentContainer");
+        this.$refs.sidebarToggleBtn.toggle();
+      }
+    },
     renameFolder(folders, layer_id) {
       const pos = layer_id.indexOf('/', 1);
       
@@ -258,7 +261,7 @@ export default {
     },
     clickMain(e) {
       if (e.target.className == "main") {
-        this.$refs.sidebarToggleBtn.toggle();
+        this.toggleSidebar
       }
     },
     gotoPage(page) {
@@ -273,8 +276,6 @@ export default {
   },
   watch: {
     $route(to) {
-      
-      // this.$refs.sidebarToggleBtn.toggle();
       if (to.fullPath == "/prepare") {
         this.show_tool_menu = true;
       } else {

@@ -26,7 +26,7 @@
                           </b-input-group-text>
                         </b-input-group-prepend>
                       </b-input-group>
-                      <div v-if="isError(last_name)" class="error-text">Please input card number</div>
+                      <div v-if="isError(card_number)" class="error-text">Please input card number</div>
                     </div>
                   </div>
                   <div class="col-12 col-lg-6 pl-lg-0">
@@ -40,9 +40,11 @@
                             @changeValue="month=$event"
                             class="mb-0"
                             style="min-width:105px"
+                            v-bind:class="{'input-error': month == 'Month' && error_flag}"
                           />
                           <span class="mx-2">/</span>
                         </div>
+                        <div v-if="month == 'Month' && error_flag" class="error-text">Select a month</div>
                       </div>
 
                       <div class="form-group mr-3">
@@ -53,7 +55,9 @@
                           @changeValue="year=$event"
                           class="mb-0"
                           style="min-width:95px"
+                          v-bind:class="{'input-error': year == 'Year' && error_flag}"
                         />
+                        <div v-if="year == 'Year' && error_flag" class="error-text">Select a year</div>
                       </div>
                       <div class="form-group">
                         <label for="name">CVV</label>
@@ -82,80 +86,43 @@
           </div>
           <div class="content-card">
             <div class="content-header">Billing information</div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="first_name"
-                    placeholder="First Name"
-                    name="first_name"
-                    v-bind:class="{'input-error': isError(first_name)}"
-                    v-model="first_name"
-                  />
-                  <div v-if="isError(first_name)" class="error-text">Please input First Name</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="last_name"
-                    placeholder="Last Name"
-                    name="last_name"
-                    v-bind:class="{'input-error': isError(last_name)}"
-                    v-model="last_name"
-                  />
-                  <div v-if="isError(last_name)" class="error-text">Please input Last Name</div>
-                </div>
-              </div>
+            
+            <div class="form-group">
+              <label for="name">Country</label>
+              <UserSelect
+                :value="country"
+                :items="countries"
+                @changeValue="changeCountry($event)"
+                v-bind:class="{'input-error': country == 'Select country' && error_flag}"
+              />
+              <div v-if="country == 'Select country' && error_flag" class="error-text">Please select a country</div>
+            </div>
+            <div class="form-group">
+              <label for="name">Street address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="billing_addr"
+                placeholder="Street address"
+                name="billing_addr"
+                v-bind:class="{'input-error': isError(billing_addr)}"
+                v-model="billing_addr"
+              />
+              <div v-if="isError(billing_addr)" class="error-text">Please enter a street address</div>
+            </div>
+            <div class="form-group">
+              <label for="name">Street address line 2</label>
+              <input
+                type="text"
+                class="form-control"
+                id="billing_addr1"
+                placeholder="Enter your street address line 2 (Optional)"
+                name="billing_addr1"
+                v-model="billing_addr1"
+              />
             </div>
             <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="name">Country</label>
-                  <UserSelect
-                    v-bind:value="country"
-                    v-bind:items="countries"
-                    @changeValue="country=$event"
-                  />
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="name">State</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="state"
-                    placeholder="State"
-                    name="state"
-                    v-bind:class="{'input-error': isError(state)}"
-                    v-model="state"
-                  />
-                  <div v-if="isError(state)" class="error-text">Please input state</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="name">Street Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="street_addr"
-                    placeholder="Street Address"
-                    name="street_addr"
-                    v-bind:class="{'input-error': isError(street_addr)}"
-                    v-model="street_addr"
-                  />
-                  <div v-if="isError(street_addr)" class="error-text">Please input Street Address</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label for="name">Zip code</label>
                   <input
@@ -167,7 +134,34 @@
                     v-bind:class="{'input-error': isError(zip_code)}"
                     v-model="zip_code"
                   />
-                  <div v-if="isError(zip_code)" class="error-text">Please input Zip code</div>
+                  <div v-if="isError(zip_code)" class="error-text">Please enter a valid zip Code</div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="form-group">
+                  <label for="name">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    placeholder="City"
+                    name="city"
+                    v-bind:class="{'input-error': isError(city)}"
+                    v-model="city"
+                  />
+                  <div v-if="isError(city)" class="error-text">Please enter a valid city</div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="name">State</label>
+                  <UserSelect
+                    :value="state"
+                    :items="states"
+                    @changeValue="state = $event"
+                    v-bind:class="{'input-error': state == 'Select state' && error_flag}"
+                  />
+                  <div v-if="state == 'Select state' && error_flag" class="error-text">Please select a state</div>
                 </div>
               </div>
             </div>
@@ -256,7 +250,7 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
-import axios from "axios";
+import country_region_list from "country-region-data/data";
 
 export default {
   name: "UpgradeToPlan",
@@ -270,9 +264,9 @@ export default {
       edit_promo_code: false,
       plan: null,
       subscription: "Monthly subscription",
-      country: "Select Country",
+      country: "Select country",
       countries: [],
-      region: "Select Region",
+      region: "Select region",
       month: "Month",
       year: "Year",
       years: [],
@@ -282,8 +276,11 @@ export default {
       last_name: "",
       card_number: "",
       cvv: "",
-      state: "",
-      street_addr: "",
+      state: "Select state",
+      states: [],
+      billing_addr: "",
+      billing_addr1: "",
+      city: "",
       zip_code: ""
     };
   },
@@ -300,20 +297,28 @@ export default {
     for (let i = start; i < start + 10; i++) {
       this.years.push((i + 1900).toString());
     }
-    axios({ method: "GET", url: "https://restcountries.eu/rest/v1/all" }).then(
-      result => {
-        this.countries = [];
-        this.countries.push("Select Country");
-        result.data.forEach(country => {
-          this.countries.push(country.name);
-        });
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    
+    this.states = [];
+    this.state = "Select state";
+    this.states.push("Select state");
+    this.countries = [];
+    this.countries.push("Select country");
+    country_region_list.forEach(country => {
+      this.countries.push(country.countryName);
+    });
   },
   methods: {
+    changeCountry($event) {
+      this.country = $event;
+      this.states = [];
+      this.state = "Select state";
+      this.states.push("Select state");
+      if(this.country == "Select country") return;
+      const region = country_region_list.find(item => (item.countryName == this.country));
+      region.regions.forEach(item => {
+        this.states.push(item.name);
+      });
+    },
     showModal() {
       this.error_flag = true;
       if (this.isError(this.first_name)) return;

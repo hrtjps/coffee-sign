@@ -1,12 +1,11 @@
 <template>
   <div class="app">
-    <div class="app-body">
-      <AppSidebar >
+    <div class="app-body document-container">
+      <AppSidebar fixed>
         <AppLogo></AppLogo>
         <div class="p-3 side-menu">
-          <div class="w-100">
+          <div class="w-100 h-100">
             <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
-
             <b-button
               variant="primary"
               class="d-block d-sm-none"
@@ -14,9 +13,9 @@
               style="padding-top: 0.5rem;"
               v-on:click="gotoPage('/payment/pricing-plan')"
             >Upgrade Your Plan</b-button>
+            <hr class="seperate-bar" v-if="show_tool_menu"/>
             <div class="prepare-tool-nav" v-if="show_tool_menu">
-              <hr class="seperate-bar" />
-              <UserSidebarEx :navItems="nav" @dragTool="dragTool"></UserSidebarEx>
+              <UserSidebarEx :navItems="nav" @toggleSidebar="toggleSidebar"></UserSidebarEx>
             </div>
           </div>
           <Logout></Logout>
@@ -325,19 +324,18 @@ export default {
       this.$refs["welcomemodal"].show();
     }
     this.setOptions();
-    this.$refs.sidebarToggleBtn.toggle();
-
-    // this.$root.on('toggleSidebar', () => {
-    //   this.$refs.sidebarToggleBtn.toggle();
-    // });
+    this.toggleSidebar();
   },
   methods: {
-    dragTool() {
-      this.$refs.sidebarToggleBtn.toggle();
+    toggleSidebar() {
+      if(window.innerWidth<500){
+        console.log("toggled sidebar");
+        this.$refs.sidebarToggleBtn.toggle();
+      }
     },
     clickMain(e) {
       if (e.target.className == "main") {
-        this.$refs.sidebarToggleBtn.toggle();
+        this.toggleSidebar();
       }
     },
     hideModal(e) {
@@ -414,7 +412,6 @@ export default {
   },
   watch: {
     $route() {
-      // this.$refs.sidebarToggleBtn.toggle();
       this.setOptions();
     }
   }

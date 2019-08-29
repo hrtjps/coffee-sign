@@ -29,7 +29,7 @@
       </div>
       <hr class="mb-4" />
       <div class="row">
-        <div class="col-md-9 pr-3 pr-sm-0">
+        <div class="col-md-9 pr-3 pr-sm-0 doc-layout">
           <draggable :list="sign_items" class="doc-container" group="people" handle=".move">
             <div v-for="(item, index) in sign_items" :key="index" class="doc-control">
               <div class="doc-item">
@@ -40,7 +40,7 @@
                   :id="`popover-${index}`"
                 >
                   <i :class="item.tool_icon" v-if="!item.img_mode" ></i>
-                  <UserIcon :icon="item.tool_icon" v-if="item.img_mode" class="mr-2" />
+                  <UserIcon :icon="item.tool_icon=='stamp_white.svg'?'stamp_brown.svg':(item.tool_icon =='initial_white.svg'?'initial_brown.svg':item.tool_icon)" v-if="item.img_mode" class="mr-2" />
                   <span class="ml-2">{{item.tool_name}}</span>
                 </div>
                 <i class="fa fa-times-circle-o control" v-on:click="sign_items.splice(index, 1)"></i>

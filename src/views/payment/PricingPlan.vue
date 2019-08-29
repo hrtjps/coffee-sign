@@ -97,9 +97,11 @@
                     @changeValue="month=$event"
                     class="mb-0"
                     style="min-width:105px"
+                    v-bind:class="{'input-error': month == 'Month' && error_flag}"
                   />
                   <span class="mx-2">/</span>
                 </div>
+                <div v-if="month == 'Month' && error_flag" class="error-text">Please select a month</div>
               </div>
             </div>
             <div class="col-4 px-0">
@@ -111,7 +113,9 @@
                   @changeValue="year=$event"
                   class="mb-0"
                   style="min-width:95px"
+                  v-bind:class="{'input-error': year == 'Year' && error_flag}"
                 />
+                <div v-if="year == 'Year' && error_flag" class="error-text">Please select a year</div>
               </div>              
             </div>
             <div class="col-4">
@@ -166,12 +170,14 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="name">Country/Region</label>
+            <label for="name">Country</label>
             <UserSelect
-              :value="country_region"
+              :value="country"
               :items="countries"
-              @changeValue="country_region = $event"
+              @changeValue="changeCountry($event)"
+              v-bind:class="{'input-error': country == 'Select country' && error_flag}"
             />
+            <div v-if="country == 'Select country' && error_flag" class="error-text">Please select a country</div>
           </div>
           <div class="form-group">
             <label for="name">Street address</label>
@@ -231,16 +237,13 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label for="name">State</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="state"
-                  placeholder="state"
-                  name="state"
-                  v-bind:class="{'input-error': isError(state)}"
-                  v-model="state"
+                <UserSelect
+                  :value="state"
+                  :items="states"
+                  @changeValue="state = $event"
+                  v-bind:class="{'input-error': state == 'Select state' && error_flag}"
                 />
-                <div v-if="isError(state)" class="error-text">Please enter a state</div>
+                <div v-if="state == 'Select state' && error_flag" class="error-text">Please select a state</div>
               </div>
             </div>
           </div>
@@ -258,7 +261,7 @@
 <script>
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
-import axios from "axios";
+import country_region_list from "country-region-data/data";
 
 export default {
   name: "PricingPlan",
@@ -269,8 +272,9 @@ export default {
   data() {
     return {
       payment_method: "Credit Card",
-      country_region: "Select Country",
+      country: "Select country",
       countries: [],
+
       swtich_annual: true,
       plans: [{}],
       
@@ -283,7 +287,8 @@ export default {
       last_name: "",
       exp_month: "",
       exp_year: "",
-      state: "",
+      state: "Select state",
+      states: [],
       cvv: "",
       city: "",
       billing_addr: "",
@@ -299,21 +304,29 @@ export default {
     }
   },
   mounted() {
-    axios({ method: "GET", url: "https://restcountries.eu/rest/v1/all" }).then(
-      result => {
-        this.countries = [];
-        this.countries.push("Select Country");
-        result.data.forEach(country => {
-          this.countries.push(country.name);
-        });
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.countries = [];
+    this.countries.push("Select country");
+    
+    this.states = [];
+    this.state = "Select state";
+    this.states.push("Select state");
+    country_region_list.forEach(country => {
+      this.countries.push(country.countryName);
+    });
     this.$root.$emit('toggleSidebar');
   },
   methods: {
+    changeCountry($event) {
+      this.country = $event;
+      this.states = [];
+      this.state = "Select state";
+      this.states.push("Select state");
+      if(this.country == "Select country") return;
+      const region = country_region_list.find(item => (item.countryName == this.country));
+      region.regions.forEach(item => {
+        this.states.push(item.name);
+      });
+    },
     isError(value) {
       return (
         this.error_flag &&
