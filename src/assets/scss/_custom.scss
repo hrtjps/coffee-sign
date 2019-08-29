@@ -307,6 +307,7 @@ h1 {
   font-weight: 400 !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
+  margin-bottom: 0 !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out !important;
   &::before, &::after {
     background: unset !important;
