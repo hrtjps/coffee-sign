@@ -189,6 +189,12 @@
       line-height: 1.53;
       color: #775649;
       text-align: center;
+      
+      @media (max-width: 500px) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
     }
     .initials {
       font-size: 40px;
@@ -204,6 +210,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 500px) {
+      width: 100%;
+    }
     .action {
       margin: 10px;
       display: flex;
@@ -350,18 +359,18 @@
             border-right: none;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
-            height: 72px;
+            height: calc(100% - 20px);
             min-width: 15px;
-            margin-right: 10px;
+            margin-right: 5px;
           }
           .right-border {
             border: solid 2px #8a6454;
             border-left: none;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
-            height: 72px;
+            height: calc(100% - 20px);
             min-width: 15px;
-            margin-left: 10px;
+            margin-left: 5px;
           }
           .signed-by {
             font-size: 1rem;
@@ -374,6 +383,9 @@
           }
           .signature-text {
             font-size: 29px;
+            @media screen {
+
+            }
           }
           .hr-bar {
             border-top: solid 1px #ebebeb;

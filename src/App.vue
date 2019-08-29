@@ -23,4 +23,7 @@ export default {
   @import '~bootstrap-vue/dist/bootstrap-vue.css';
   // Import Main styles for this application
   @import 'assets/scss/style';
+  @import "~@syncfusion/ej2-base/styles/material.css";
+  @import "~@syncfusion/ej2-inputs/styles/material.css";
+  @import "~@syncfusion/ej2-vue-dropdowns/styles/material.css";
 </style>

@@ -182,16 +182,17 @@
                 v-on:click="selected_no = index"
               >
                 <div class="row">
-                  <div class="col-10 pr-2 d-flex-align-center pl-40px">>
-                    <div class="d-flex flex-column justify-content-between">
+                  <div class="col-10 pr-2 d-flex-align-center pl-40px">
+                    <div class="d-flex flex-column justify-content-between ">
                       <div class="signed-by">CoffeSigned by:</div>
-                      <div class="signature-text" v-bind:style="{fontFamily: item}">{{signature}}</div>
+                      <!-- , -->
+                      <div class="signature-text" v-bind:style="{fontFamily: item ,  fontSize: (fontsize_change?fontsize_list[language=='English'?0:(language=='Korean'?2:1)][index]:'29px')}">{{signature}}</div>
                       <div class="signed-id">C55F18C25</div>
                     </div>
                     <div class="right-border"></div>
                   </div>
                   <div class="col-2 pl-0 d-flex-align-center justify-content-center">
-                    <div class="signature-text"  v-bind:style="{fontFamily: item}">{{initials}}</div>
+                    <div class="signature-text" v-bind:style="{fontFamily: item ,  fontSize: (fontsize_change?fontsize_list[language=='English'?0:(language=='Korean'?2:1)][index]:'29px')}">{{initials}}</div>
                   </div>
                 </div>
                 <div class="check-box" v-if="selected_no == index">
@@ -401,6 +402,7 @@ export default {
       stamp_kr_types: ["오늘 뉴스", "정한 한"],
       stamp_jp_types: ["音信", "産毛"],
       stamp_name: "",
+      fontsize_change: false,
 
       selected_no: 0,
       stamp_font: [],
@@ -408,6 +410,11 @@ export default {
         ["Mrs Saint Delafield", "Badhead Typeface", "Banthers", "Connoisseurs", "Cutepunk_Regular", "Elrotex Basic", "GreatVibes-Regular", "KLSweetPineappleRegular", "Mightype Script", "pops_08_REGULAR", "somethingwild-Regular"],
         ["AsobiMemogaki-Regular-1-01", "crayon_1-1", "RiiPopkkR", "RiiT_F", "sjis_sp_setofont", "GenEiLateGoN_v2", "GenEiAntiquePv5-M", "GenEiGothicN-Regular"],
         ["KimNamyun", "KCC-eunyoung", "Goyang", "SangSangFlowerRoad", "InkLipquid", "OTEnjoystoriesBA", "Dovemayo-Medium", "SDMiSaeng", "HSGyoulnoonkot", "Jeju Hallasan"]],
+      fontsize_list: [
+        ["26px", "29px", "19px", "29px", "29px", "14px", "21px", "29px", "19px", "18px", "29px"],
+        ["21px", "17px", "15px", "15px", "15px", "15px", "15px", "15px"],
+        ["27px", "23px", "21px", "26px", "23px", "23px", "16px", "24px", "17px", "16px"],
+        ],
       signature: "Suzanne Thompson",
       initials: "ST",
       sign_type: 1,
@@ -415,7 +422,23 @@ export default {
       stams: ["", "", "", ""]
     };
   },
+  
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
   methods: {
+    handleResize() {
+      if(window.innerWidth <500) {
+        this.fontsize_change = true;
+      } else {
+        this.fontsize_change = false;
+      }
+      
+    },
     creatStamp() {
       this.stamp_name = this.stamp_name.replace(' ','');
       if (this.stamp_name.length>2){
@@ -428,6 +451,7 @@ export default {
         this.stamp_jp_types.push(this.stamp_name);
       }
       this.stamp_name = "";
+
     },
     changeName() {
       var matches = this.signature.match(/\b(\w)/g); // ['J','S','O','N']

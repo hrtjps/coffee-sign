@@ -89,13 +89,15 @@
             
             <div class="form-group">
               <label for="name">Country</label>
-              <UserSelect
-                :value="country"
-                :items="countries"
-                @changeValue="changeCountry($event)"
-                v-bind:class="{'input-error': country == 'Select country' && error_flag}"
-              />
-              <div v-if="country == 'Select country' && error_flag" class="error-text">Please select a country</div>
+              <div v-bind:class="{'input-error': (country == '' || country == 'Select country') && error_flag}">
+                <ejs-dropdownlist id='dropdownlist' 
+                  :dataSource="countries"
+                  :change = "changeCountryEx"
+                  placeholder = "Select country"
+                  >
+                </ejs-dropdownlist>
+              </div>
+              <div v-if="(country == '' || country == 'Select country') && error_flag" class="error-text">Please select a country</div>
             </div>
             <div class="form-group">
               <label for="name">Street address</label>
@@ -155,13 +157,15 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="name">State</label>
-                  <UserSelect
-                    :value="state"
-                    :items="states"
-                    @changeValue="state = $event"
-                    v-bind:class="{'input-error': state == 'Select state' && error_flag}"
-                  />
-                  <div v-if="state == 'Select state' && error_flag" class="error-text">Please select a state</div>
+                  <div v-bind:class="{'input-error': (state == '' || state == 'Select state') && error_flag}">
+                    <ejs-dropdownlist id='dropdownlist-state' 
+                      :dataSource="states"
+                      :change = "changeStateEx"
+                      placeholder = "Select state"
+                      >
+                    </ejs-dropdownlist>
+                  </div>
+                  <div v-if="(state == '' || state == 'Select state') && error_flag" class="error-text">Please select a state</div>
                 </div>
               </div>
             </div>
@@ -251,6 +255,9 @@
 import UserIcon from "../../components/UserIcon";
 import UserSelect from "../../components/UserSelect";
 import country_region_list from "country-region-data/data";
+import Vue from "vue";
+import { DropDownListPlugin  } from '@syncfusion/ej2-vue-dropdowns';
+Vue.use(DropDownListPlugin);
 
 export default {
   name: "UpgradeToPlan",
@@ -300,19 +307,19 @@ export default {
     
     this.states = [];
     this.state = "Select state";
-    this.states.push("Select state");
     this.countries = [];
-    this.countries.push("Select country");
     country_region_list.forEach(country => {
       this.countries.push(country.countryName);
     });
   },
   methods: {
-    changeCountry($event) {
-      this.country = $event;
+    changeStateEx(arg) {
+      this.state = arg.value;
+    },
+    changeCountryEx(arg) {
+      this.country = arg.value;
       this.states = [];
       this.state = "Select state";
-      this.states.push("Select state");
       if(this.country == "Select country") return;
       const region = country_region_list.find(item => (item.countryName == this.country));
       region.regions.forEach(item => {
