@@ -177,11 +177,11 @@
             </div>
             <div class="signatures">
               <div v-for="(item, index) in signature_types[language=='English'?0:(language=='Korean'?2:1)]" :key="index"
-                class="sign-result" 
+                class="sign-result d-flex-align-center"  
                 v-bind:class="index==selected_no?'checked':''"
                 v-on:click="selected_no = index"
               >
-                <div class="row">
+                <div class="row w-100">
                   <div class="col-10 pr-2 d-flex-align-center pl-40px">
                     <div class="d-flex flex-column justify-content-between ">
                       <div class="signed-by">CoffeSigned by:</div>
