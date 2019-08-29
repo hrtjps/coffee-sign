@@ -4,7 +4,7 @@
       <AppSidebar fixed>
         <AppLogo></AppLogo>
         <div class="p-3 side-menu">
-          <div class="w-100 h-100">
+          <div class="sidebar-auto-scoroll">
             <b-button block variant="primary" v-on:click="gotoPage('/landing')">Cancel</b-button>
             <b-button
               variant="primary"
