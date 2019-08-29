@@ -39,16 +39,17 @@
     }
   }
 
-  .rename-folder-modal {
-    padding: 20px;
+}
+
+.rename-folder-modal {
+  padding: 20px;
+  text-align: center;
+  .title {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.33;
     text-align: center;
-    .title {
-      font-size: 26px;
-      font-weight: bold;
-      line-height: 1.33;
-      text-align: center;
-      color: #2e221e;
-      margin-bottom: 20px;
-    }
+    color: #2e221e;
+    margin-bottom: 20px;
   }
 }
