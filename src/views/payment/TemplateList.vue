@@ -150,10 +150,10 @@
     </b-modal>
     <vue-context ref="menu">
       <template slot-scope="child">
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Preview</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Send for signature</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Edit Template</a></li>
-        <li><a href="#" @click.prevent="openShareModal(child.data)">Share your template with other users</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="preview.svg"/>Preview</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sent.svg"/>Send for signature</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sign.svg"/>Edit Template</a></li>
+        <li><a href="#" @click.prevent="openShareModal(child.data)"><i class="fa fa-share-alt mr-2 clickable-icon"/>Share your template with other users</a></li>
       </template>
     </vue-context>
   </div>

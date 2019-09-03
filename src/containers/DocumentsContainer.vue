@@ -57,7 +57,7 @@
     <TheFooter>
       <!--footer-->
       <div>
-        <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved..</span>
+        <span class="ml-1">&copy; 2019 CoffeeSign All rights reserved</span>
       </div>
     </TheFooter>
     <b-modal

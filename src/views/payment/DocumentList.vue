@@ -46,30 +46,28 @@
         <div class="table-body">
           <div class="table-row content-card" v-for="(item, index) in doc_list" :key="index" @contextmenu.prevent="$refs.menu.open($event, {item: item})">
             <div class="row-content">
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center" v-bind:style="item.status == 'Voided'?{opacity: 0.4}:null">
                 <b-form-checkbox v-on:change="clickCheckBox($event, index)" v-model="item.selected"></b-form-checkbox>
                 <div class="col-basic-info">
-                  <img :src="getFileType('Continuous Improvement.doc')" class="doc-icon" />
+                  <img :src="getFileType(item.title)" class="doc-icon" />
                   <div class="ml-3">
-                    <div class="doc-name">Continuous Improvement</div>
+                    <div class="doc-name">{{item.title}}</div>
                     <div class="senders comments">
-                      to me
-                      <span>, Scott Wilkerson</span>
-                      <span>, Hannah Harmon</span>
+                      {{item.description}}
                     </div>
                   </div>
                 </div>
               </div>
               <div class="d-flex align-items-center">
                 <div class="col-status">
-                  <div class="status completed">Completed</div>
+                  <div :class="getStyle(item.status)">{{item.status}}</div>
                 </div>
                 <div class="col-last-change comments">
-                  <div class="date">01.04.2019</div>
-                  <div class="comments">11:03:53 am</div>
+                  <div class="date">{{item.date}}</div>
+                  <div class="comments">{{item.time}}</div>
                 </div>
-                <div class="col-action comments">
-                  <i class="fa fa-caret-down" v-b-toggle="'collapse'+index.toString()"></i>
+                <div class="col-action comments collapsed-header" v-b-toggle="'collapse'+index.toString()">
+                  <span class="collapsed-icon"><i class="fa fa-caret-down " ></i></span>
                 </div>
               </div>
             </div>
@@ -216,11 +214,12 @@
     </b-modal>
     <vue-context ref="menu">
       <template slot-scope="child">
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Create a copy</a></li>
-        <li><a href="#" @click.prevent="openShareModal(child.data)">Save as template</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">History</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Export as CSV</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)">Delete</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sign.svg"/>Sign</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="copy.svg"/>Create a copy</a></li>
+        <li><a href="#" @click.prevent="openShareModal(child.data)"> <UserIcon class="mr-2" button icon="download.svg"/>Save as template</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="history.svg"/>History</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="document.svg"/>Export as CSV</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="delete.svg"/>Delete</a></li>
       </template>
     </vue-context>
   </div>
@@ -249,10 +248,62 @@ export default {
       tags: ["Inquiry", "Report", "Tag #3", "Tag #4", "Tag #5", "Tag 6", "Report", "Tag #3", "Tag #4"],
       proposed_tag: ["Proposed tag", "Example proposed tag", "Proposed tag"],
       doc_list: [
-        {selected: false},
-        {selected: false},
-        {selected: false},
-        {selected: false}
+        {
+          selected: false, 
+          title: 'Continuous Improvement.doc', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Completed',
+        },
+        {
+          selected: false, 
+          title: 'to me, Scott Wilkerson, Hannah Harmon.pdf', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Waiting to sign',
+        },
+        {
+          selected: false, 
+          title: 'Wisi paulo graeci vis at, est minimum suavitate assentior eu.doc', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Rejected',
+        },
+        {
+          selected: false, 
+          title: 'Ea paulo fastidii convenire duo.doc', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Waiting to sign',
+        },
+        {
+          selected: false, 
+          title: 'Nec ubique facilisi no, id eius percipitur eum.pdf', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Waiting to sign',
+        },
+        {
+          selected: false, 
+          title: 'Wisi paulo graeci vis at, est minimum suavitate assentior eu.doc', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Rejected',
+        },
+        {
+          selected: false, 
+          title: 'Populo prompta nam te, has tritani fabellas assueverit te pro ex inermis oportere.doc', 
+          description: 'to me, Scott Wilkerson, Hannah Harmon',
+          date: '22.05.2019',
+          time: '06:15:16 am',
+          status: 'Voided',
+        },
       ],
       currentPage: 1,
       period: "Date",
@@ -266,7 +317,18 @@ export default {
     };
   },
   methods: {
-    
+    getStyle(status){
+      if(status == 'Completed') {
+        return "status completed"
+      } else if(status == 'Waiting to sign') {
+        return "status waiting"
+      } else if(status == 'Rejected') {
+        return "status rejected"
+      } else if(status == 'Voided') {
+        return "status voided"
+      } 
+      return "status completed";
+    },
     shareTemplate() {
 
     },
