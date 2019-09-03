@@ -146,6 +146,19 @@
     }
   }
 }
+.context-menu {
+  li {
+    &:hover {
+      a {
+        color:#41302a !important; 
+        i {
+          color:#41302a !important; 
+        }
+      }
+
+    }   
+  }
+}
 #share-modal{
   .modal-dialog {
     width: 688px;

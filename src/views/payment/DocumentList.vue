@@ -212,14 +212,14 @@
         </div>
       </div>
     </b-modal>
-    <vue-context ref="menu">
+    <vue-context ref="menu" class="context-menu">
       <template slot-scope="child">
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sign.svg"/>Sign</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="copy.svg"/>Create a copy</a></li>
-        <li><a href="#" @click.prevent="openShareModal(child.data)"> <UserIcon class="mr-2" button icon="download.svg"/>Save as template</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="history.svg"/>History</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="document.svg"/>Export as CSV</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="delete.svg"/>Delete</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-pencil mr-2 clickable-icon"/>Sign</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-copy mr-2 clickable-icon"/>Create a copy</a></li>
+        <li><a href="#" @click.prevent="openShareModal(child.data)"> <i class="fa fa-download mr-2 clickable-icon"/>Save as template</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-clock-o mr-2 clickable-icon"/>History</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-file-excel-o mr-2 clickable-icon"/>Export as CSV</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-trash mr-2 clickable-icon"/>Delete</a></li>
       </template>
     </vue-context>
   </div>

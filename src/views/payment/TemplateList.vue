@@ -148,11 +148,11 @@
         </div>
       </div>
     </b-modal>
-    <vue-context ref="menu">
+    <vue-context ref="menu" class="context-menu">
       <template slot-scope="child">
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="preview.svg"/>Preview</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sent.svg"/>Send for signature</a></li>
-        <li><a href="#" @click.prevent="onClick($event, child.data)"><UserIcon class="mr-2" button icon="sign.svg"/>Edit Template</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-eye mr-2 clickable-icon"/>Preview</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-paper-plane mr-2 clickable-icon"/>Send for signature</a></li>
+        <li><a href="#" @click.prevent="onClick($event, child.data)"><i class="fa fa-pencil mr-2 clickable-icon"/>Edit Template</a></li>
         <li><a href="#" @click.prevent="openShareModal(child.data)"><i class="fa fa-share-alt mr-2 clickable-icon"/>Share your template with other users</a></li>
       </template>
     </vue-context>
@@ -172,6 +172,7 @@ export default {
   },
   data() {
     return {
+      parent_hover: [false, false, false, false] ,
       header_checkbox: false,
       indeterminate: false,
       selected_items: [],
@@ -243,7 +244,9 @@ export default {
     };
   },
   methods: {
-    
+    hoverEvent(index, flag){
+      this.parent_hover[index] = flag;
+    },
     clickHeaderCheckbox($event) {
       this.selected_items = [];
       this.templates.forEach((item, index) => {

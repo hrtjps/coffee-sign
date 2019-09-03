@@ -27,6 +27,10 @@ export default {
     height: {
       type: Number,
       default: 18
+    },
+    parent_hover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -34,7 +38,8 @@ export default {
       hover: false,
       icon_name: this.icon,
       icon_only_name: this.icon.substring(0, this.icon.length - 4),
-      icon_type: this.icon.substring(this.icon.length - 4)
+      icon_type: this.icon.substring(this.icon.length - 4),
+      parent_event: this.parent_hover
     };
   },
   methods: {
@@ -45,6 +50,13 @@ export default {
     leaveIcon() {
       if (!this.button) return;
       this.icon_name = this.icon_only_name + this.icon_type;
+    }
+  },
+  watch: {
+    parent_event: function (newVal, oldVal) {
+      console.log(newVal);
+      if(newVal == true) this.hoverIcon();
+      else this.leaveIcon();
     }
   }
 };
