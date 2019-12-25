@@ -9,17 +9,19 @@
         <b>{{ result }}</b>
       </div>
 
-      <StreamBarcodeReader @decode="onDecode" @loaded="onInit"></StreamBarcodeReader>
+      <!-- <StreamBarcodeReader @decode="onDecode" @loaded="onInit"></StreamBarcodeReader> -->
+      <qrcode-stream @decode="onDecode" @init="onInit" />
     </div>
   </div>
 </template>
 
 <script>
-import { StreamBarcodeReader } from "vue-barcode-reader";
+// import { StreamBarcodeReader } from "vue-barcode-reader";
 export default {
   name: "Camera",
   components: {
-    StreamBarcodeReader
+    // StreamBarcodeReader,
+    // QrcodeStream
   },
   data() {
     return {
@@ -27,12 +29,49 @@ export default {
       error: ""
     };
   },
+  mounted() {
+    this.video = this.$refs.video;
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        this.video.src = window.URL.createObjectURL(stream);
+        this.video.play();
+      });
+    }
+    // if (!navigator.getUserMedia) {
+    //   this.userMediaSupported = false;
+    //   this.renderQrHandle = true;
+    // } else {
+    //   navigator.mediaDevices
+    //     .getUserMedia({ video: true })
+    //     .then(
+    //       function(stream) {
+    //         console.log(stream);
+    //         this.userMediaSupported = true;
+    //       }.bind(this)
+    //     )
+    //     .catch(
+    //       function(err) {
+    //         console.log(err);
+    //         this.userMediaSupported = false;
+    //       }.bind(this)
+    //     )
+    //     .then(
+    //       function() {
+    //         this.renderQrHandle = true;
+    //       }.bind(this)
+    //     );
+    // }
+  },
   methods: {
     onDecode(result) {
       this.result = result;
     },
 
     async onInit(promise) {
+      // promise.catch(function() {
+      //   console.log(this);
+      //   this.userMediaSupported = false;
+      // });
       try {
         await promise;
       } catch (error) {
@@ -48,6 +87,8 @@ export default {
           this.error = "ERROR: installed cameras are not suitable";
         } else if (error.name === "StreamApiNotSupportedError") {
           this.error = "ERROR: Stream API is not supported in this browser";
+        } else {
+          this.error = error.name;
         }
       }
     }
@@ -58,4 +99,9 @@ export default {
 <style lang="scss">
 @import "../document/AddDocuments.scss";
 </style>
-
+<style scoped>
+.error {
+  font-weight: bold;
+  color: red;
+}
+</style>
