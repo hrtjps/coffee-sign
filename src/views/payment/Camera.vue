@@ -9,17 +9,17 @@
         <b>{{ result }}</b>
       </div>
 
-      <qrcode-stream @decode="onDecode" @init="onInit" />
+      <StreamBarcodeReader @decode="onDecode" @loaded="onInit"></StreamBarcodeReader>
     </div>
   </div>
 </template>
 
 <script>
-import { QrcodeStream } from "vue-qrcode-reader";
+import { StreamBarcodeReader } from "vue-barcode-reader";
 export default {
   name: "Camera",
   components: {
-    QrcodeStream
+    StreamBarcodeReader
   },
   data() {
     return {

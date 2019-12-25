@@ -52,6 +52,7 @@
     "v-calendar": "^0.9.7",
     "v-mask": "^2.0.1",
     "vue": "^2.5.17",
+    "vue-barcode-reader": "0.0.3",
     "vue-chartjs": "^3.4.0",
     "vue-codemirror": "^4.0.5",
     "vue-context": "^4.0.3",
