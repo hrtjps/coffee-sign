@@ -11,6 +11,8 @@ const Review = () => import("@/views/document/Review");
 // Container and Views of Pricing and Payment
 const PaymentContainer = () => import("@/containers/PaymentContainer");
 const NormalSign = () => import("@/views/payment/NormalSigin");
+const Camera = () => import("@/views/payment/Camera");
+
 const DocumentList = () => import("@/views/payment/DocumentList");
 const TemplateList = () => import("@/views/payment/TemplateList");
 const UpgradeYourPlan = () => import("@/views/payment/UpgradeYourPlan");
@@ -111,7 +113,7 @@ export default new Router({
           path: "complition",
           name: "Complition",
           component: Complition
-        },
+        }
       ]
     },
     {
@@ -124,6 +126,11 @@ export default new Router({
           path: "/landing",
           name: "NormalSign",
           component: NormalSign
+        },
+        {
+          path: "/camera",
+          name: "Camera",
+          component: Camera
         }
       ]
     },
