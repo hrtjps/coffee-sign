@@ -31,11 +31,11 @@ export default {
   },
   mounted() {
     this.video = this.$refs.video;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-        this.video.src = window.URL.createObjectURL(stream);
-        this.video.play();
-      });
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    if (navigator.getUserMedia) {
+      this.error = "allowed in this browser";
+    } else {
+      this.error = "not allowed in this browser";
     }
     // if (!navigator.getUserMedia) {
     //   this.userMediaSupported = false;
@@ -75,21 +75,21 @@ export default {
       try {
         await promise;
       } catch (error) {
-        if (error.name === "NotAllowedError") {
-          this.error = "ERROR: you need to grant camera access permisson";
-        } else if (error.name === "NotFoundError") {
-          this.error = "ERROR: no camera on this device";
-        } else if (error.name === "NotSupportedError") {
-          this.error = "ERROR: secure context required (HTTPS, localhost)";
-        } else if (error.name === "NotReadableError") {
-          this.error = "ERROR: is the camera already in use?";
-        } else if (error.name === "OverconstrainedError") {
-          this.error = "ERROR: installed cameras are not suitable";
-        } else if (error.name === "StreamApiNotSupportedError") {
-          this.error = "ERROR: Stream API is not supported in this browser";
-        } else {
-          this.error = error.name;
-        }
+        // if (error.name === "NotAllowedError") {
+        //   this.error = "ERROR: you need to grant camera access permisson";
+        // } else if (error.name === "NotFoundError") {
+        //   this.error = "ERROR: no camera on this device";
+        // } else if (error.name === "NotSupportedError") {
+        //   this.error = "ERROR: secure context required (HTTPS, localhost)";
+        // } else if (error.name === "NotReadableError") {
+        //   this.error = "ERROR: is the camera already in use?";
+        // } else if (error.name === "OverconstrainedError") {
+        //   this.error = "ERROR: installed cameras are not suitable";
+        // } else if (error.name === "StreamApiNotSupportedError") {
+        //   this.error = "ERROR: Stream API is not supported in this browser";
+        // } else {
+        //   this.error = error.name;
+        // }
       }
     }
   }
